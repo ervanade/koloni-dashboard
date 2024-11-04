@@ -8,3 +8,9 @@ body {
   color: #2F2B3DE6;
   font-weight: 400;
 }
+
+.MuiInputBase-input {
+font-family: "Public Sans" !important;
+padding-top: 5.5px !important;
+padding-bottom: 5.5px !important;
+}

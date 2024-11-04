@@ -11,7 +11,7 @@ const Analyser = () => {
         <p className='font-thin text-textThin'>Analyser the right creators for your campaigns</p>
     </div>
     <div className='bg-[#efeff1] text-blue-500 rounded-full px-4 py-2 shadow-sm'>
-        <p className='font-normal'>Remaining Analyser Credits / Remaining Credits 2</p>
+        <p className='font-normal'>Remaining Analyser Credits: 2</p>
     </div>
         </div>
         <Card>
