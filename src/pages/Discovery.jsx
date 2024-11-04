@@ -3,8 +3,8 @@ import Card from "../components/Card/Card";
 import { FaInstagram, FaMinus } from "react-icons/fa6";
 import { FaLine, FaTiktok, FaYoutube } from "react-icons/fa";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 import top100Films from "../data/top100Films";
 
 const Discovery = () => {
@@ -85,201 +85,218 @@ const Discovery = () => {
           </div>
 
           <div className="form mt-6 flex items-center gap-4">
-
             <div className="w-1/4">
-            
-          <p className="font-thin text-textBold text-sm mb-2">
-            Topic
-</p>
-          <Autocomplete
-      disablePortal
-      options={top100Films}
-      sx={{ width: "100%"}}
-      renderInput={(params) => <TextField {...params} label="Topic" />}
-    />
+              <p className="font-thin text-textBold text-sm mb-2">Topic</p>
+              <Autocomplete
+                disablePortal
+                options={top100Films}
+                sx={{ width: "100%" }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Topic" />
+                )}
+              />
             </div>
 
             <div className="w-1/4">
-            
-            <p className="font-thin text-textBold text-sm mb-2">
-              Hashtag
-  </p>
-            <Autocomplete
-        disablePortal
-        options={top100Films}
-        sx={{ width: "100%"}}
-        renderInput={(params) => <TextField {...params} label="Hashtag" />}
-      />
-              </div>
+              <p className="font-thin text-textBold text-sm mb-2">Hashtag</p>
+              <Autocomplete
+                disablePortal
+                options={top100Films}
+                sx={{ width: "100%" }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Hashtag" />
+                )}
+              />
+            </div>
 
-              <div className="w-1/4">
-            
-            <p className="font-thin text-textBold text-sm mb-2">
-              Interest
-  </p>
-            <Autocomplete
-        disablePortal
-        options={top100Films}
-        sx={{ width: "100%"}}
-        renderInput={(params) => <TextField {...params} label="Interest" />}
-      />
-              </div>
+            <div className="w-1/4">
+              <p className="font-thin text-textBold text-sm mb-2">Interest</p>
+              <Autocomplete
+                disablePortal
+                options={top100Films}
+                sx={{ width: "100%" }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Interest" />
+                )}
+              />
+            </div>
 
-              <div className="w-1/4">
-            
-            <p className="font-thin text-textBold text-sm mb-2">
-              Keyword
-  </p>
-            <Autocomplete
-        disablePortal
-        options={top100Films}
-        sx={{ width: "100%"}}
-        renderInput={(params) => <TextField {...params} label="Keyword" />}
-      />
-              </div>
-
+            <div className="w-1/4">
+              <p className="font-thin text-textBold text-sm mb-2">Keyword</p>
+              <Autocomplete
+                disablePortal
+                options={top100Films}
+                sx={{ width: "100%" }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Keyword" />
+                )}
+              />
+            </div>
           </div>
           <div className="creator-form p-6 border border-[#C4C4C4] rounded-md mt-6">
-          <div className="flex items-center justify-between">
-          <h1 className="font-medium text-lg text-textBold">Creator</h1>
-          {!showCreator ? (
-            <button
-              className="rounded-full border border-textBold"
-              onClick={() => setShowCreator(true)}
+            <div className="flex items-center justify-between">
+              <h1 className="font-medium text-lg text-textBold">Creator</h1>
+              {!showCreator ? (
+                <button
+                  className="rounded-full border border-textBold"
+                  onClick={() => setShowCreator(true)}
+                >
+                  <BiChevronDown size={22} />
+                </button>
+              ) : (
+                <button
+                  className="rounded-full border border-textBold"
+                  onClick={() => setShowCreator(false)}
+                >
+                  <BiChevronUp size={22} />
+                </button>
+              )}
+            </div>
+
+            <div
+              className={`${
+                !showCreator ? "hidden" : ""
+              } card font-thin text-textThin text-[15px] mt-4`}
             >
-              <BiChevronDown size={22} />
-            </button>
-          ) : (
-            <button
-              className="rounded-full border border-textBold"
-              onClick={() => setShowCreator(false)}
-            >
-              <BiChevronUp size={22} />
-            </button>
-          )}
-        </div>
+              <div className="form mt-6 flex items-center gap-4">
+                <div className="w-1/4">
+                  <p className="font-thin text-textBold text-sm mb-2">
+                    Followers Range
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="number"
+                      id="number-input"
+                      aria-describedby="helper-text-explanation"
+                      class="bg-gray-50 border border-[#C4C4C4] text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Min"
+                      required
+                    />
+                    <FaMinus className="text-2xl" />
+                    <input
+                      type="number"
+                      id="number-input"
+                      aria-describedby="helper-text-explanation"
+                      class="bg-gray-50 border border-[#C4C4C4] text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Max"
+                      required
+                    />
+                  </div>
+                </div>
 
-        <div
-          className={`${
-            !showCreator ? "hidden" : ""
-          } card font-thin text-textThin text-[15px] mt-4`}
-        >
+                <div className="w-1/4">
+                  <p className="font-thin text-textBold text-sm mb-2">
+                    Average Likes
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="number"
+                      id="number-input"
+                      aria-describedby="helper-text-explanation"
+                      class="bg-gray-50 border border-[#C4C4C4] text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Min"
+                      required
+                    />
+                    <FaMinus className="text-2xl" />
+                    <input
+                      type="number"
+                      id="number-input"
+                      aria-describedby="helper-text-explanation"
+                      class="bg-gray-50 border border-[#C4C4C4] text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Max"
+                      required
+                    />
+                  </div>
+                </div>
 
-<div className="form mt-6 flex items-center gap-4">
+                <div className="w-1/4">
+                  <p className="font-thin text-textBold text-sm mb-2">
+                    Creator Country
+                  </p>
+                  <Autocomplete
+                    disablePortal
+                    options={top100Films}
+                    sx={{ width: "100%" }}
+                    renderInput={(params) => (
+                      <TextField {...params} label="Creator Country" />
+                    )}
+                  />
+                </div>
 
-<div className="w-1/4">
+                <div className="w-1/4">
+                  <p className="font-thin text-textBold text-sm mb-2">
+                    Creator City
+                  </p>
+                  <Autocomplete
+                    disablePortal
+                    options={top100Films}
+                    sx={{ width: "100%" }}
+                    renderInput={(params) => (
+                      <TextField {...params} label="Creator City" />
+                    )}
+                  />
+                </div>
+              </div>
 
-<p className="font-thin text-textBold text-sm mb-2">
-Followers Range
-</p>
-<div className="flex items-center gap-2">
-<input type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-[#C4C4C4] text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Min" required />
-<FaMinus className="text-2xl" />
-<input type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-[#C4C4C4] text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Max" required />
+              <div className="form mt-6 flex items-center gap-4">
+                <div className="w-1/4">
+                  <p className="font-thin text-textBold text-sm mb-2">
+                    Creator Gender
+                  </p>
+                  <Autocomplete
+                    disablePortal
+                    options={top100Films}
+                    sx={{ width: "100%" }}
+                    renderInput={(params) => (
+                      <TextField {...params} label="Creator Gender" />
+                    )}
+                  />
+                </div>
 
-</div>
-</div>
+                <div className="w-1/4">
+                  <p className="font-thin text-textBold text-sm mb-2">
+                    Creator Age
+                  </p>
+                  <Autocomplete
+                    disablePortal
+                    options={top100Films}
+                    sx={{ width: "100%" }}
+                    renderInput={(params) => (
+                      <TextField {...params} label="Creator Age" />
+                    )}
+                  />
+                </div>
 
-<div className="w-1/4">
+                <div className="w-1/4">
+                  <p className="font-thin text-textBold text-sm mb-2">
+                    Verified
+                  </p>
+                  <Autocomplete
+                    disablePortal
+                    options={top100Films}
+                    sx={{ width: "100%" }}
+                    renderInput={(params) => (
+                      <TextField {...params} label="Verified" />
+                    )}
+                  />
+                </div>
 
-<p className="font-thin text-textBold text-sm mb-2">
-  Average Likes
-</p>
-<div className="flex items-center gap-2">
-<input type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-[#C4C4C4] text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Min" required />
-<FaMinus className="text-2xl" />
-<input type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-[#C4C4C4] text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Max" required />
-
-</div>
-  </div>
-
-  <div className="w-1/4">
-
-<p className="font-thin text-textBold text-sm mb-2">
-  Creator Country
-</p>
-<Autocomplete
-disablePortal
-options={top100Films}
-sx={{ width: "100%"}}
-renderInput={(params) => <TextField {...params} label="Creator Country" />}
-/>
-  </div>
-
-  <div className="w-1/4">
-
-<p className="font-thin text-textBold text-sm mb-2">
-  Creator City
-</p>
-<Autocomplete
-disablePortal
-options={top100Films}
-sx={{ width: "100%"}}
-renderInput={(params) => <TextField {...params} label="Creator City" />}
-/>
-  </div>
-
-</div>
-
-<div className="form mt-6 flex items-center gap-4">
-
-<div className="w-1/4">
-
-<p className="font-thin text-textBold text-sm mb-2">
-Creator Gender
-</p>
-<Autocomplete
-disablePortal
-options={top100Films}
-sx={{ width: "100%"}}
-renderInput={(params) => <TextField {...params} label="Creator Gender" />}
-/>
-</div>
-
-<div className="w-1/4">
-
-<p className="font-thin text-textBold text-sm mb-2">
-  Creator Age
-</p>
-<Autocomplete
-disablePortal
-options={top100Films}
-sx={{ width: "100%"}}
-renderInput={(params) => <TextField {...params} label="Creator Age" />}
-/>
-  </div>
-
-  <div className="w-1/4">
-
-<p className="font-thin text-textBold text-sm mb-2">
-  Verified
-</p>
-<Autocomplete
-disablePortal
-options={top100Films}
-sx={{ width: "100%"}}
-renderInput={(params) => <TextField {...params} label="Verified" />}
-/>
-  </div>
-
-  <div className="w-1/4">
-
-<p className="font-thin text-textBold text-sm mb-2">
-  Account Type
-</p>
-<Autocomplete
-disablePortal
-options={top100Films}
-sx={{ width: "100%"}}
-renderInput={(params) => <TextField {...params} label="Account Type" />}
-/>
-  </div>
-
-</div>
-
+                <div className="w-1/4">
+                  <p className="font-thin text-textBold text-sm mb-2">
+                    Account Type
+                  </p>
+                  <Autocomplete
+                    disablePortal
+                    options={top100Films}
+                    sx={{ width: "100%" }}
+                    renderInput={(params) => (
+                      <TextField {...params} label="Account Type" />
+                    )}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-          </div>
-
         </div>
       </Card>
     </div>
