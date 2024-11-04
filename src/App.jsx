@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
 import Discovery from './pages/Discovery'
 import Analyser from './pages/Analyser'
+import Analytics from './pages/Analytics'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,6 +18,7 @@ function App() {
    <Route index element={<Dashboard />} />
    <Route path="/discovery"  element={<Discovery />} />
    <Route path="/analyser"  element={<Analyser />} />
+   <Route path="/analytics"  element={<Analytics />} />
    
 
    </Route>

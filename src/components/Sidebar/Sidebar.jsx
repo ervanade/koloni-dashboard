@@ -6,6 +6,8 @@ import { AiOutlineDatabase } from "react-icons/ai";
 import { MdContentPasteSearch, MdOutlineDomainVerification, MdReport } from "react-icons/md";
 import { FaBars, FaChevronLeft, FaTasks, FaUsers } from "react-icons/fa";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { FaChartBar, FaChartColumn } from "react-icons/fa6";
+import { RiUserSearchLine } from "react-icons/ri";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const location = useLocation();
@@ -124,8 +126,21 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
                   }`}
                 >
-                  <MdContentPasteSearch size={22} />
+                  <RiUserSearchLine size={22} />
                   Analyser
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to="/analytics"
+                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-normal hover:text-white text-textBold duration-100 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                    (pathname === "/analytics" || pathname.includes("analytics")) &&
+                    "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
+                  }`}
+                >
+                  <FaChartColumn size={22} />
+                  Brand Analytics
                 </NavLink>
               </li>
 
