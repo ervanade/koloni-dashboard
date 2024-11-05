@@ -16,20 +16,20 @@ const Discovery = () => {
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h1 className="text-textBold font-bold text-2xl mb-1">Discovery</h1>
-          <p className="font-thin text-textThin">
+          <p className="font-normal text-textThin">
             Discover the right creators for your campaigns
           </p>
         </div>
         <div className="bg-[#efeff1] text-blue-500 rounded-full px-4 py-2 shadow-sm">
-          <p className="font-normal">
+          <p className="font-medium">
             Remaining Discovery Credits / Remaining Credits 2
           </p>
         </div>
       </div>
       <Card>
         <div></div>
-        <h1 className="font-normal text-lg mb-4">Discovery Analytics</h1>
-        <div className="card font-thin text-textThin text-[15px]">
+        <h1 className="font-medium text-lg mb-4">Discovery Analytics</h1>
+        <div className="card font-normal text-textThin text-[15px]">
           <p>
             Revolutionize influencer marketing with our smart discovery and
             analytics. Effortlessly find, assess, and collaborate with
@@ -60,7 +60,7 @@ const Discovery = () => {
         <div
           className={`${
             !showFilter ? "hidden" : ""
-          } card font-thin text-textThin text-[15px] mt-4`}
+          } card font-normal text-textThin text-[15px] mt-4`}
         >
           <p>Social Media</p>
           <div className="flex items-center gap-4">
@@ -70,23 +70,23 @@ const Discovery = () => {
                 alt="Logo Instagram"
                 className="w-6"
               />
-              <p className="font-normal">Instagram</p>
+              <p className="font-medium">Instagram</p>
             </button>
 
             <button className="bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center">
               <img src="logo-tiktok.png" alt="Logo Tiktok" className="w-6" />{" "}
-              <p className="font-normal">Tiktok</p>
+              <p className="font-medium">Tiktok</p>
             </button>
 
             <button className="bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center">
               <img src="logo-youtube.png" alt="Logo Youtube" className="w-6" />{" "}
-              <p className="font-normal">Youtube</p>
+              <p className="font-medium">Youtube</p>
             </button>
           </div>
 
           <div className="form mt-6 flex items-center gap-4">
             <div className="w-1/4">
-              <p className="font-thin text-textBold text-sm mb-2">Topic</p>
+              <p className="font-normal text-textBold text-sm mb-2">Topic</p>
               <Autocomplete
                 disablePortal
                 options={top100Films}
@@ -98,7 +98,7 @@ const Discovery = () => {
             </div>
 
             <div className="w-1/4">
-              <p className="font-thin text-textBold text-sm mb-2">Hashtag</p>
+              <p className="font-normal text-textBold text-sm mb-2">Hashtag</p>
               <Autocomplete
                 disablePortal
                 options={top100Films}
@@ -110,7 +110,7 @@ const Discovery = () => {
             </div>
 
             <div className="w-1/4">
-              <p className="font-thin text-textBold text-sm mb-2">Interest</p>
+              <p className="font-normal text-textBold text-sm mb-2">Interest</p>
               <Autocomplete
                 disablePortal
                 options={top100Films}
@@ -122,7 +122,7 @@ const Discovery = () => {
             </div>
 
             <div className="w-1/4">
-              <p className="font-thin text-textBold text-sm mb-2">Keyword</p>
+              <p className="font-normal text-textBold text-sm mb-2">Keyword</p>
               <Autocomplete
                 disablePortal
                 options={top100Films}
@@ -156,11 +156,11 @@ const Discovery = () => {
             <div
               className={`${
                 !showCreator ? "hidden" : ""
-              } card font-thin text-textThin text-[15px] mt-4`}
+              } card font-normal text-textThin text-[15px] mt-4`}
             >
               <div className="form mt-6 flex items-center gap-4">
                 <div className="w-1/4">
-                  <p className="font-thin text-textBold text-sm mb-2">
+                  <p className="font-normal text-textBold text-sm mb-2">
                     Followers Range
                   </p>
                   <div className="flex items-center gap-2">
@@ -185,7 +185,7 @@ const Discovery = () => {
                 </div>
 
                 <div className="w-1/4">
-                  <p className="font-thin text-textBold text-sm mb-2">
+                  <p className="font-normal text-textBold text-sm mb-2">
                     Average Likes
                   </p>
                   <div className="flex items-center gap-2">
@@ -210,7 +210,7 @@ const Discovery = () => {
                 </div>
 
                 <div className="w-1/4">
-                  <p className="font-thin text-textBold text-sm mb-2">
+                  <p className="font-normal text-textBold text-sm mb-2">
                     Creator Country
                   </p>
                   <Autocomplete
@@ -224,7 +224,7 @@ const Discovery = () => {
                 </div>
 
                 <div className="w-1/4">
-                  <p className="font-thin text-textBold text-sm mb-2">
+                  <p className="font-normal text-textBold text-sm mb-2">
                     Creator City
                   </p>
                   <Autocomplete
@@ -240,7 +240,7 @@ const Discovery = () => {
 
               <div className="form mt-6 flex items-center gap-4">
                 <div className="w-1/4">
-                  <p className="font-thin text-textBold text-sm mb-2">
+                  <p className="font-normal text-textBold text-sm mb-2">
                     Creator Gender
                   </p>
                   <Autocomplete
@@ -254,7 +254,7 @@ const Discovery = () => {
                 </div>
 
                 <div className="w-1/4">
-                  <p className="font-thin text-textBold text-sm mb-2">
+                  <p className="font-normal text-textBold text-sm mb-2">
                     Creator Age
                   </p>
                   <Autocomplete
@@ -268,7 +268,7 @@ const Discovery = () => {
                 </div>
 
                 <div className="w-1/4">
-                  <p className="font-thin text-textBold text-sm mb-2">
+                  <p className="font-normal text-textBold text-sm mb-2">
                     Verified
                   </p>
                   <Autocomplete
@@ -282,7 +282,7 @@ const Discovery = () => {
                 </div>
 
                 <div className="w-1/4">
-                  <p className="font-thin text-textBold text-sm mb-2">
+                  <p className="font-normal text-textBold text-sm mb-2">
                     Account Type
                   </p>
                   <Autocomplete

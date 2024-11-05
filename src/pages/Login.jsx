@@ -60,16 +60,15 @@ const Login = () => {
       });
   };
   const handleShowPassword = (e) => {
-    e.preventDefault()
-    setShowPassword(prev => (!prev))
-  }
+    e.preventDefault();
+    setShowPassword((prev) => !prev);
+  };
   const handleLogin = async (e) => {
     e.preventDefault();
-  
+
     setLoading(true);
     navigate("/");
     // postApiLogin();
-
   };
 
   const handleCheckboxChange = (event) => {
@@ -77,17 +76,21 @@ const Login = () => {
   };
   return (
     <div className="w-full !dark:bg-boxdark-2 flex justify-center items-center min-h-[calc(100vh-0px)] bg-transparent object-cover bg-center py-6 !bg-[#F7F9FA]">
-        <div className="flex-1 items-center justify-center px-6 hidden lg:flex">
-            <img src="/koloni-illustration.png" className="w-full" alt="" />
-        </div>
+      <div className="flex-1 items-center justify-center px-6 hidden lg:flex">
+        <img
+          src="/koloni-illustration.png"
+          className=" max-h-[90vh] w-auto"
+          alt=""
+        />
+      </div>
       <div className="w-full flex-[2_2_0%] max-w-lg bg-white shadow-md rounded-md  pt-8 pb-12 mb-4 mx-6">
         <div className="px-5 sm:px-8">
           <div className="title mb-6">
-            <h1 className="text-textBold text-xl sm:text-2xl mb-2 font-normal text-center">
+            <h1 className="text-textBold text-xl sm:text-2xl mb-2 font-medium text-center">
               Welcome To KOLONI Inlfuencer Analytics!
             </h1>
-            <p className="text-textThin text-sm mb-6 font-thin text-center">
-            Please sign-in to your account and start the adventure
+            <p className="text-textThin text-sm mb-6 font-normal text-center">
+              Please sign-in to your account and start the adventure
             </p>
           </div>
           <form className="mt-5" onSubmit={handleLogin}>
@@ -99,7 +102,7 @@ const Login = () => {
 
             <div className="mb-3">
               <label
-                className="block text-[#728294] text-sm font-normal mb-2"
+                className="block text-[#728294] text-sm font-medium mb-2"
                 htmlFor="email"
               >
                 Email
@@ -123,48 +126,48 @@ const Login = () => {
             </div>
             <div className="mb-3">
               <label
-                className="block text-[#728294] text-sm font-normal mb-2"
+                className="block text-[#728294] text-sm font-medium mb-2"
                 htmlFor="password"
               >
                 Password
               </label>
               <div className="relative">
-    <input
-      className={`bg-white appearance-none border border-[#cacaca] focus:border-[#0ACBC2]
+                <input
+                  className={`bg-white appearance-none border border-[#cacaca] focus:border-[#0ACBC2]
         "border-red-500" 
         rounded w-full py-3 px-3 text-[#728294] mb-3 leading-tight focus:outline-none focus:shadow-outline`}
-      id="password"
-      type={showPassword ? "text" : "password"}
-      value={formData.password}
-      onChange={(e) =>
-        setFormData((prev) => ({
-          ...prev,
-          password: e.target.value,
-        }))
-      }
-      placeholder="*******"
-    />
-    <button
-      className="absolute right-4 top-3.5"
-      onClick={handleShowPassword}
-    >
-      {showPassword ? (
-        <FaEye size={16} className="text-bodydark2"/>
-      ) : (
-        <FaEyeSlash size={16} className="text-bodydark2"/>
-      )}
-    </button>
-  </div>
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  value={formData.password}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      password: e.target.value,
+                    }))
+                  }
+                  placeholder="*******"
+                />
                 <button
-      className="absolute right-3 top-3"
-      onClick={() => setShowPassword(!showPassword)}
-    >
-      {showPassword ? (
-        <i className="fas fa-eye-slash"></i>
-      ) : (
-        <i className="fas fa-eye"></i>
-      )}
-    </button>
+                  className="absolute right-4 top-3.5"
+                  onClick={handleShowPassword}
+                >
+                  {showPassword ? (
+                    <FaEye size={16} className="text-bodydark2" />
+                  ) : (
+                    <FaEyeSlash size={16} className="text-bodydark2" />
+                  )}
+                </button>
+              </div>
+              <button
+                className="absolute right-3 top-3"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? (
+                  <i className="fas fa-eye-slash"></i>
+                ) : (
+                  <i className="fas fa-eye"></i>
+                )}
+              </button>
             </div>
 
             <div className="flex items-center justify-center mt-6">

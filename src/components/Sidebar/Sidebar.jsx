@@ -3,7 +3,11 @@ import { NavLink, useLocation } from "react-router-dom";
 import SidebarLinkGroup from "./SidebarLinkGroup";
 import { HiOutlineHome } from "react-icons/hi";
 import { AiOutlineDatabase } from "react-icons/ai";
-import { MdContentPasteSearch, MdOutlineDomainVerification, MdReport } from "react-icons/md";
+import {
+  MdContentPasteSearch,
+  MdOutlineDomainVerification,
+  MdReport,
+} from "react-icons/md";
 import { FaBars, FaChevronLeft, FaTasks, FaUsers } from "react-icons/fa";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { FaChartBar, FaChartColumn } from "react-icons/fa6";
@@ -31,7 +35,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         trigger.current.contains(target)
       )
         return;
-    //   setSidebarOpen(false);
+      //   setSidebarOpen(false);
     };
     document.addEventListener("click", clickHandler);
     return () => document.removeEventListener("click", clickHandler);
@@ -76,7 +80,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           aria-expanded={sidebarOpen}
           className="block bg-sky-500 text-white rounded-md p-1.5"
         >
-         <BsChevronRight size={24} className="font-bold" />
+          <BsChevronRight size={24} className="font-bold" />
         </button>
       </div>
       {/* <!-- SIDEBAR HEADER --> */}
@@ -95,7 +99,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               <li>
                 <NavLink
                   to="/"
-                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-normal hover:text-white text-textBold duration-100 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-100 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
                     (pathname === "/" || pathname.includes("dashboard")) &&
                     "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
                   }`}
@@ -108,8 +112,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               <li>
                 <NavLink
                   to="/discovery"
-                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-normal hover:text-white text-textBold duration-100 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
-                    (pathname === "/discovery" || pathname.includes("discovery")) &&
+                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-100 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                    (pathname === "/discovery" ||
+                      pathname.includes("discovery")) &&
                     "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
                   }`}
                 >
@@ -121,8 +126,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               <li>
                 <NavLink
                   to="/analyser"
-                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-normal hover:text-white text-textBold duration-100 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
-                    (pathname === "/analyser" || pathname.includes("analyser")) &&
+                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-100 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                    (pathname === "/analyser" ||
+                      pathname.includes("analyser")) &&
                     "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
                   }`}
                 >
@@ -134,8 +140,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               <li>
                 <NavLink
                   to="/analytics"
-                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-normal hover:text-white text-textBold duration-100 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
-                    (pathname === "/analytics" || pathname.includes("analytics")) &&
+                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-100 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                    (pathname === "/analytics" ||
+                      pathname.includes("analytics")) &&
                     "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
                   }`}
                 >
@@ -143,9 +150,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   Brand Analytics
                 </NavLink>
               </li>
-
-              </ul>
-            </div>
+            </ul>
+          </div>
         </nav>
         {/* <!-- Sidebar Menu --> */}
       </div>

@@ -12,7 +12,7 @@ const DropdownUser = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = {
-    username: "Username"
+    username: "Username",
   };
   const fetchLogout = async () => {
     try {
@@ -45,10 +45,10 @@ const DropdownUser = () => {
         to="#"
       >
         <span className="hidden text-right lg:block">
-          <span className="block text-sm font-normal text-black dark:text-white">
+          <span className="block text-sm font-medium text-black dark:text-white">
             {user.username || "Username"}
           </span>
-          <span className="block text-xs capitalize font-thin">
+          <span className="block text-xs capitalize font-normal">
             {user.role ? returnRole(user.role) : "" || "Role"}
           </span>
         </span>
@@ -88,7 +88,7 @@ const DropdownUser = () => {
           className={`absolute right-0 mt-4 flex w-62.5 flex-col py-2 rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark`}
         >
           <ul className="hover:bg-[#F3F3F4] hover:cursor-pointer flex flex-col gap-5 border-b border-stroke px-6 py-4 dark:border-strokedark">
-            <li >
+            <li>
               <Link
                 to="/profile"
                 className="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out  lg:text-base"
@@ -113,7 +113,6 @@ const DropdownUser = () => {
                 My Profile
               </Link>
             </li>
-
           </ul>
           <button
             onClick={handleLogout}

@@ -30,7 +30,7 @@ export default {
         'black-2': '#010101',
         body: '#64748B',
         textBold: '#2F2B3DE6',
-        textThin: '#2F2B3DB3',
+        textThin: '#2f2b3d8c',
         bodydark: '#AEB7C0',
         bodydark1: '#728294',
         bodydark2: '#8A99AF',
