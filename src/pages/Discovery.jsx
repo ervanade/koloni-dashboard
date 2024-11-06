@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import Card from "../components/Card/Card";
-import { FaInstagram, FaMinus } from "react-icons/fa6";
-import { FaLine, FaTiktok, FaYoutube } from "react-icons/fa";
+import { FaFilter, FaInstagram, FaMinus } from "react-icons/fa6";
+import { FaHistory, FaLine, FaTiktok, FaUserPlus, FaYoutube } from "react-icons/fa";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import top100Films from "../data/top100Films";
+import Filter from "../components/Discovery/Filter";
+import Similiar from "../components/Discovery/Similiar";
+import History from "../components/Discovery/History";
 
 const Discovery = () => {
   const [showFilter, setShowFilter] = useState(true);
-  const [showCreator, setShowCreator] = useState(true);
+  const [activeTab, setActiveTab] = useState("filter");
 
   return (
     <div>
@@ -21,12 +24,12 @@ const Discovery = () => {
           </p>
         </div>
         <div className="bg-[#efeff1] text-blue-500 rounded-full px-4 py-2 shadow-sm">
-          <p className="font-medium">
+          <p className="font-medium text-sm md:text-base">
             Remaining Discovery Credits / Remaining Credits 2
           </p>
         </div>
       </div>
-      <Card>
+      {/* <Card>
         <div></div>
         <h1 className="font-medium text-lg mb-4">Discovery Analytics</h1>
         <div className="card font-normal text-textThin text-[15px]">
@@ -36,269 +39,42 @@ const Discovery = () => {
             influencers. Simplify campaigns and succeed with real-time insights.
           </p>
         </div>
-      </Card>
+      </Card> */}
 
-      <Card className="mt-6">
-        <div className="flex items-center justify-between">
-          <h1 className="font-medium text-lg text-textBold">Filter</h1>
-          {!showFilter ? (
-            <button
-              className="rounded-full border border-textBold"
-              onClick={() => setShowFilter(true)}
-            >
-              <BiChevronDown size={22} />
+
+
+<div className="border border-[#edebeb] dark:border-gray-700 w-full bg-slate-150 mt-6 shadow-sm">
+    <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-textBold dark:text-gray-400 w-full">
+        
+        <li className={`me-2 flex-1 ${activeTab == "filter" ? "border-b-2 border-blue-500" : ""}`}>
+            <button onClick={() => setActiveTab("filter")} className={`w-full flex items-center justify-center p-4  rounded-t-lg active ${activeTab == "filter" ? "text-blue-500 dark:text-blue-500 dark:border-blue-500" : ""} group`} aria-current="page">
+               <FaFilter className="me-2"/>
+                Filter
             </button>
-          ) : (
-            <button
-              className="rounded-full border border-textBold"
-              onClick={() => setShowFilter(false)}
-            >
-              <BiChevronUp size={22} />
+        </li>
+        <li className={`me-2 flex-1 ${activeTab == "similiar" ? "border-b-2 border-blue-500" : ""}`}>
+            <button onClick={() => setActiveTab("similiar")} className={`w-full flex items-center justify-center p-4  rounded-t-lg active ${activeTab == "similiar" ? "text-blue-500 dark:text-blue-500 dark:border-blue-500" : ""} group`}>
+                <FaUserPlus className="me-2"/>
+                By Similiar
             </button>
-          )}
-        </div>
-        <div
-          className={`${
-            !showFilter ? "hidden" : ""
-          } card font-normal text-textThin text-[15px] mt-4`}
-        >
-          <p>Social Media</p>
-          <div className="flex items-center gap-4">
-            <button className="bg-[#dcdcdf] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] border-2 border-blue-500 rounded-full px-6 py-2 shadow-sm flex items-center">
-              <img
-                src="logo-instagram.png"
-                alt="Logo Instagram"
-                className="w-6"
-              />
-              <p className="font-bold text-blue-500">Instagram</p>
+        </li>
+        <li className={`me-2 flex-1 ${activeTab == "history" ? "border-b-2 border-blue-500" : ""}`}>
+            <button onClick={() => setActiveTab("history")} className={`w-full flex items-center justify-center p-4  rounded-t-lg active ${activeTab == "history" ? "text-blue-500 dark:text-blue-500 dark:border-blue-500" : ""} group`}>
+                <FaHistory className="me-2" />
+                History Discovery
             </button>
+        </li>
+    </ul>
+</div>
 
-            <button className="bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center">
-              <img src="logo-tiktok.png" alt="Logo Tiktok" className="w-6" />{" "}
-              <p className="font-medium">Tiktok</p>
-            </button>
+{
+  activeTab === "filter" ?  <Filter showFilter={showFilter} setShowFilter={setShowFilter} /> : activeTab === "similiar" ?  <Similiar showFilter={showFilter} setShowFilter={setShowFilter} /> : activeTab === "history" ? <History /> : ""
+}
+     
 
-            <button className="bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center">
-              <img src="logo-youtube.png" alt="Logo Youtube" className="w-6" />{" "}
-              <p className="font-medium">Youtube</p>
-            </button>
-          </div>
+     
 
-          <div className="form mt-6 flex items-center gap-4">
-            <div className="w-1/4">
-              <p className="font-normal text-textThin text-sm mb-2">Topic</p>
-              <Autocomplete
-                disablePortal
-                options={top100Films}
-                sx={{ width: "100%" }}
-                renderInput={(params) => (
-                  <TextField {...params} label="Topic" />
-                )}
-              />
-            </div>
 
-            <div className="w-1/4">
-              <p className="font-normal text-textThin text-sm mb-2">Hashtag</p>
-              <Autocomplete
-                disablePortal
-                options={top100Films}
-                sx={{ width: "100%" }}
-                renderInput={(params) => (
-                  <TextField {...params} label="Hashtag" />
-                )}
-              />
-            </div>
-
-            <div className="w-1/4">
-              <p className="font-normal text-textThin text-sm mb-2">Interest</p>
-              <Autocomplete
-                disablePortal
-                options={top100Films}
-                sx={{ width: "100%" }}
-                renderInput={(params) => (
-                  <TextField {...params} label="Interest" />
-                )}
-              />
-            </div>
-
-            <div className="w-1/4">
-              <p className="font-normal text-textThin text-sm mb-2">Keyword</p>
-              <Autocomplete
-                disablePortal
-                options={top100Films}
-                sx={{ width: "100%" }}
-                renderInput={(params) => (
-                  <TextField {...params} label="Keyword" />
-                )}
-              />
-            </div>
-          </div>
-          <div className="creator-form p-6 border border-[#C4C4C4] rounded-md mt-6">
-            <div className="flex items-center justify-between">
-              <h1 className="font-medium text-lg text-textBold">Creator</h1>
-              {!showCreator ? (
-                <button
-                  className="rounded-full border border-textBold"
-                  onClick={() => setShowCreator(true)}
-                >
-                  <BiChevronDown size={22} />
-                </button>
-              ) : (
-                <button
-                  className="rounded-full border border-textBold"
-                  onClick={() => setShowCreator(false)}
-                >
-                  <BiChevronUp size={22} />
-                </button>
-              )}
-            </div>
-
-            <div
-              className={`${
-                !showCreator ? "hidden" : ""
-              } card font-normal text-textThin text-[15px] mt-4`}
-            >
-              <div className="form mt-6 flex items-center gap-4">
-                <div className="w-1/4">
-                  <p className="font-normal text-textThin text-sm mb-2">
-                    Followers Range
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="number"
-                      id="number-input"
-                      aria-describedby="helper-text-explanation"
-                      class="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Min"
-                      required
-                    />
-                    <FaMinus className="text-2xl" />
-                    <input
-                      type="number"
-                      id="number-input"
-                      aria-describedby="helper-text-explanation"
-                      class="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Max"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="w-1/4">
-                  <p className="font-normal text-textThin text-sm mb-2">
-                    Average Likes
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="number"
-                      id="number-input"
-                      aria-describedby="helper-text-explanation"
-                      class="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Min"
-                      required
-                    />
-                    <FaMinus className="text-2xl" />
-                    <input
-                      type="number"
-                      id="number-input"
-                      aria-describedby="helper-text-explanation"
-                      class="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Max"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="w-1/4">
-                  <p className="font-normal text-textThin text-sm mb-2">
-                    Creator Country
-                  </p>
-                  <Autocomplete
-                    disablePortal
-                    options={top100Films}
-                    sx={{ width: "100%" }}
-                    renderInput={(params) => (
-                      <TextField {...params} label="Creator Country" />
-                    )}
-                  />
-                </div>
-
-                <div className="w-1/4">
-                  <p className="font-normal text-textThin text-sm mb-2">
-                    Creator City
-                  </p>
-                  <Autocomplete
-                    disablePortal
-                    options={top100Films}
-                    sx={{ width: "100%" }}
-                    renderInput={(params) => (
-                      <TextField {...params} label="Creator City" />
-                    )}
-                  />
-                </div>
-              </div>
-
-              <div className="form mt-6 flex items-center gap-4">
-                <div className="w-1/4">
-                  <p className="font-normal text-textThin text-sm mb-2">
-                    Creator Gender
-                  </p>
-                  <Autocomplete
-                    disablePortal
-                    options={top100Films}
-                    sx={{ width: "100%" }}
-                    renderInput={(params) => (
-                      <TextField {...params} label="Creator Gender" />
-                    )}
-                  />
-                </div>
-
-                <div className="w-1/4">
-                  <p className="font-normal text-textThin text-sm mb-2">
-                    Creator Age
-                  </p>
-                  <Autocomplete
-                    disablePortal
-                    options={top100Films}
-                    sx={{ width: "100%" }}
-                    renderInput={(params) => (
-                      <TextField {...params} label="Creator Age" />
-                    )}
-                  />
-                </div>
-
-                <div className="w-1/4">
-                  <p className="font-normal text-textThin text-sm mb-2">
-                    Verified
-                  </p>
-                  <Autocomplete
-                    disablePortal
-                    options={top100Films}
-                    sx={{ width: "100%" }}
-                    renderInput={(params) => (
-                      <TextField {...params} label="Verified" />
-                    )}
-                  />
-                </div>
-
-                <div className="w-1/4">
-                  <p className="font-normal text-textThin text-sm mb-2">
-                    Account Type
-                  </p>
-                  <Autocomplete
-                    disablePortal
-                    options={top100Films}
-                    sx={{ width: "100%" }}
-                    renderInput={(params) => (
-                      <TextField {...params} label="Account Type" />
-                    )}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Card>
     </div>
   );
 };
