@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../components/Card/Card";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   return (
@@ -15,6 +16,17 @@ const Dashboard = () => {
           </p>
         </div>
       </Card>
+      <div className="grid grid-cols-3 gap-6 mt-6">
+        <Link>
+<Card className="bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white flex justify-center items-center font-medium"><span>Discovery</span></Card>
+</Link>
+<Link>
+<Card className="bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white flex justify-center items-center font-medium"><span className="text-center">Analszer</span></Card>
+</Link>
+<Link>
+<Card className="bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white flex justify-center items-center font-medium"><span>Brand Analytics</span></Card>
+</Link>
+      </div>
     </div>
   );
 };

@@ -119,7 +119,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   }`}
                 >
                   <MdContentPasteSearch size={22} />
-                  Discovery
+                  Creator Discovery
                 </NavLink>
               </li>
 
@@ -151,6 +151,28 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 </NavLink>
               </li>
             </ul>
+            <div>
+              <h3 className="mb-3 ml-4 text-sm font-semibold text-bodydark2">
+                ADMIN
+              </h3>
+
+              <ul className="mb-6 flex flex-col gap-1.5 text-[15px]">
+                {/* <!-- Menu Item Dashboard --> */}
+
+                <li>
+                  <NavLink
+                    to="/users"
+                    className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-100 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                      (pathname === "/users" || pathname.includes("users")) &&
+                      "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
+                    }`}
+                  >
+                    <FaUsers size={22} />
+                    User Management
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
           </div>
         </nav>
         {/* <!-- Sidebar Menu --> */}
