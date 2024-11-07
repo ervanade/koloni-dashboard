@@ -18,14 +18,20 @@ const Dashboard = () => {
       </Card>
       <div className="grid grid-cols-3 gap-6 mt-6">
         <Link>
-<Card className="bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white flex justify-center items-center font-medium"><span>Discovery</span></Card>
-</Link>
-<Link>
-<Card className="bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white flex justify-center items-center font-medium"><span className="text-center">Analszer</span></Card>
-</Link>
-<Link>
-<Card className="bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white flex justify-center items-center font-medium"><span>Brand Analytics</span></Card>
-</Link>
+          <Card className="h-32 bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white flex justify-center items-center font-medium">
+            <span>Discovery</span>
+          </Card>
+        </Link>
+        <Link>
+          <Card className="h-32 bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white flex justify-center items-center font-medium">
+            <span className="text-center">Analszer</span>
+          </Card>
+        </Link>
+        <Link>
+          <Card className="h-32 bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white flex justify-center items-center font-medium">
+            <span>Brand Analytics</span>
+          </Card>
+        </Link>
       </div>
     </div>
   );
