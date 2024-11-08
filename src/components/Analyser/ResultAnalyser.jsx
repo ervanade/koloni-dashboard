@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaCheckCircle, FaEye, FaSearch } from "react-icons/fa";
-import { FaAt } from "react-icons/fa6";
+import { FaAt, FaComment, FaHeart } from "react-icons/fa6";
 import { BiCheckCircle, BiLike, BiSolidComment, BiSolidLike } from "react-icons/bi";
 import { BsViewList } from "react-icons/bs";
 import { PieChart } from "@mui/x-charts/PieChart";
@@ -142,7 +142,8 @@ const ResultAnalyser = ({data}) => {
     <>
     
         {
-            data ? <Card className={`mt-6`}><div className="flex items-center border border-[#C4C4C4] p-4 rounded-md justify-between ">
+            data ? <Card className={`mt-6`}>
+                <div className="flex items-center border border-[#C4C4C4] p-4 rounded-md justify-between ">
             <div className="flex items-center gap-4 ">
               <div className="rounded-full w-16 overflow-hidden">
                 <img src="/cristiano.jpeg" alt="" className="w-full" />
@@ -408,7 +409,7 @@ const ResultAnalyser = ({data}) => {
                     data: ["group A", "group B", "group C", "group D", "group E"],
                   },
                 ]}
-                series={[{ data: [200, 500, 600, 100, 1000], color: "#53D86A" }]}
+                series={[{ data: [200, 500, 540, 100, 1000], color: "#53D86A" }]}
                 height={300}
               />
             </div>
@@ -417,6 +418,150 @@ const ResultAnalyser = ({data}) => {
               <h1 className="font-medium text-textBold ">Age Range            </h1>
               <Chart options={options} series={series} type='bar' height={400} />
             </div>
+          </div>
+
+          <div className="flex flex-col border border-[#C4C4C4] p-4 rounded-md mt-6 overflow-hidden">
+          <h1 className="font-medium text-textBold ">Top Contents            </h1>
+          <div className="scroll items-center mt-6 !overflow-x-auto w-full whitespace-nowrap">
+
+          <div className='w-54 inline-block me-4'>
+            <div className="img w-full h-54 flex justify-center items-center">
+                <img src="/cr-1.jpeg" className='w-full object-cover max-h-54' alt="" />
+            </div>
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+                <div className="flex items-center gap-1 mt-2">
+                    <FaHeart className='text-red-500'/>
+                    <span>20.978.467                    </span>
+                </div>
+                <div className="flex items-center gap-1 mt-2">
+                    <FaComment className='text-blue-500'/>
+                    <span>143.492                    </span>
+                </div>
+            </div>
+            </div>
+            
+
+            <div className='w-54 inline-block me-4'>
+            <div className="img w-full h-54 flex justify-center items-center">
+                <img src="/cr-2.jpeg" className='w-full object-cover max-h-54' alt="" />
+            </div>
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+                <div className="flex items-center gap-1 mt-2">
+                    <FaHeart className='text-red-500'/>
+                    <span>20.978.467                    </span>
+                </div>
+                <div className="flex items-center gap-1 mt-2">
+                    <FaComment className='text-blue-500'/>
+                    <span>143.492                    </span>
+                </div>
+            </div>
+            </div>
+
+            <div className='w-54 inline-block me-4'>
+            <div className="img w-full h-54 flex justify-center items-center">
+                <img src="/cr-1.jpeg" className='w-full object-cover max-h-54' alt="" />
+            </div>
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+                <div className="flex items-center gap-1 mt-2">
+                    <FaHeart className='text-red-500'/>
+                    <span>20.978.467                    </span>
+                </div>
+                <div className="flex items-center gap-1 mt-2">
+                    <FaComment className='text-blue-500'/>
+                    <span>143.492                    </span>
+                </div>
+            </div>
+            </div>
+
+            <div className='w-54 inline-block me-4'>
+            <div className="img w-full h-54 flex justify-center items-center">
+                <img src="/cr-2.jpeg" className='w-full object-cover max-h-54' alt="" />
+            </div>
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+                <div className="flex items-center gap-1 mt-2">
+                    <FaHeart className='text-red-500'/>
+                    <span>20.978.467                    </span>
+                </div>
+                <div className="flex items-center gap-1 mt-2">
+                    <FaComment className='text-blue-500'/>
+                    <span>143.492                    </span>
+                </div>
+            </div>
+            </div>
+
+          </div>
+          </div>
+
+          <div className="flex flex-col border border-[#C4C4C4] p-4 rounded-md mt-6 overflow-hidden">
+          <h1 className="font-medium text-textBold ">Lookalikes Content Creator          </h1>
+          <div className="scroll items-center mt-6 !overflow-x-auto w-full whitespace-nowrap">
+
+          <div className='w-54 inline-block me-4'>
+            <div className="img w-full h-54 flex justify-center items-center">
+                <img src="/cr-1.jpeg" className='w-full object-cover max-h-54' alt="" />
+            </div>
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+                <div className="flex items-center gap-1 mt-2">
+                    <FaHeart className='text-red-500'/>
+                    <span>20.978.467                    </span>
+                </div>
+                <div className="flex items-center gap-1 mt-2">
+                    <FaComment className='text-blue-500'/>
+                    <span>143.492                    </span>
+                </div>
+            </div>
+            </div>
+            
+
+            <div className='w-54 inline-block me-4'>
+            <div className="img w-full h-54 flex justify-center items-center">
+                <img src="/cr-1.jpeg" className='w-full object-cover max-h-54' alt="" />
+            </div>
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+                <div className="flex items-center gap-1 mt-2">
+                    <FaHeart className='text-red-500'/>
+                    <span>20.978.467                    </span>
+                </div>
+                <div className="flex items-center gap-1 mt-2">
+                    <FaComment className='text-blue-500'/>
+                    <span>143.492                    </span>
+                </div>
+            </div>
+            </div>
+
+            <div className='w-54 inline-block me-4'>
+            <div className="img w-full h-54 flex justify-center items-center">
+                <img src="/cr-1.jpeg" className='w-full object-cover max-h-54' alt="" />
+            </div>
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+                <div className="flex items-center gap-1 mt-2">
+                    <FaHeart className='text-red-500'/>
+                    <span>20.978.467                    </span>
+                </div>
+                <div className="flex items-center gap-1 mt-2">
+                    <FaComment className='text-blue-500'/>
+                    <span>143.492                    </span>
+                </div>
+            </div>
+            </div>
+
+            <div className='w-54 inline-block me-4'>
+            <div className="img w-full h-54 flex justify-center items-center">
+                <img src="/cr-1.jpeg" className='w-full object-cover max-h-54' alt="" />
+            </div>
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+                <div className="flex items-center gap-1 mt-2">
+                    <FaHeart className='text-red-500'/>
+                    <span>20.978.467                    </span>
+                </div>
+                <div className="flex items-center gap-1 mt-2">
+                    <FaComment className='text-blue-500'/>
+                    <span>143.492                    </span>
+                </div>
+            </div>
+            </div>
+
+          </div>
           </div>
           </Card> : ""
         }
