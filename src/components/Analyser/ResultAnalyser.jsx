@@ -7,7 +7,137 @@ import { PieChart } from "@mui/x-charts/PieChart";
 import { desktopOS, desktopOS2, valueFormatter } from "../../data/data";
 import { BarChart, LineChart } from "@mui/x-charts";
 import Card from '../Card/Card';
+import Chart from 'react-apexcharts'
 const ResultAnalyser = ({data}) => {
+    const options = {
+        chart: {
+          zoom: {
+            enabled: false
+          },
+          parentHeightOffset: 0,
+          toolbar: {
+            show: false
+          }
+        },
+    
+        markers: {
+          strokeWidth: 7,
+          strokeOpacity: 1,
+          strokeColors: ['#fff'],
+          colors: ["#826af9"]
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'straight'
+        },
+        colors: ["#826af9"],
+        grid: {
+          xaxis: {
+            lines: {
+              show: true
+            }
+          }
+        },
+        tooltip: {
+          custom(data) {
+            return `<div class='px-1 py-4'>
+                  <span>${data.series[data.seriesIndex][data.dataPointIndex]}%</span>
+                </div>`
+          }
+        },
+        xaxis: {
+          categories: [
+            '13-17',
+            '18-24',
+            '25-34',
+            '35-34',
+            '45-64',
+
+
+            
+          ]
+        },
+        yaxis: {
+
+        }
+      }
+    
+      // ** Chart Series
+      const series = [
+        {
+          data: [6.1, 36.4, 43.7, 10.9, 2.7]
+        }
+      ]
+
+      const columnColors = {
+        series1: '#826af9',
+        series2: '#d2b0ff',
+        bg: '#f8d3ff'
+      }
+    
+      // ** Chart Options
+      const optionsBar = {
+        chart: {
+          height: 400,
+          type: 'bar',
+          stacked: true,
+          parentHeightOffset: 0,
+          toolbar: {
+            show: false
+          }
+        },
+        plotOptions: {
+          bar: {
+            columnWidth: '15%',
+            colors: {
+              backgroundBarColors: [columnColors.bg, columnColors.bg, columnColors.bg, columnColors.bg, columnColors.bg],
+              backgroundBarRadius: 10
+            }
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'start'
+        },
+        colors: [columnColors.series1, columnColors.series2],
+        stroke: {
+          show: true,
+          colors: ['transparent']
+        },
+        grid: {
+          xaxis: {
+            lines: {
+              show: true
+            }
+          }
+        },
+        xaxis: {
+          categories: ['7/12', '8/12', '9/12', '10/12', '11/12', '12/12', '13/12', '14/12', '15/12', '16/12']
+        },
+        fill: {
+          opacity: 1
+        },
+        yaxis: {
+          opposite: 'rtl'
+        }
+      }
+    
+      // ** Chart Series
+      const seriesBar = [
+        {
+          name: 'Apple',
+          data: [90, 120, 55, 100, 80, 125, 175, 70, 88, 180]
+        },
+        {
+          name: 'Samsung',
+          data: [85, 100, 30, 40, 95, 90, 30, 110, 62, 20]
+        }
+      ]
   return (
     <>
     
@@ -285,19 +415,10 @@ const ResultAnalyser = ({data}) => {
       
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
               <h1 className="font-medium text-textBold ">Age Range            </h1>
-              <BarChart
-              className="font-publicSans"
-                xAxis={[
-                  {
-                    scaleType: "band",
-                    data: ["group A", "group B", "group C", "group D", "group E"],
-                  },
-                ]}
-                series={[{ data: [200, 500, 600, 100, 1000], color: "#2E96FF" }]}
-                height={300}
-              />
+              <Chart options={options} series={series} type='bar' height={400} />
             </div>
-          </div></Card> : ""
+          </div>
+          </Card> : ""
         }
     
   

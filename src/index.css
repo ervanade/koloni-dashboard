@@ -26,3 +26,81 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.apexcharts-canvas line[stroke='transparent'] {
+  display: none;
+}
+.apexcharts-canvas .apexcharts-tooltip {
+  background: #fff;
+  border-color: "#ebe9f1";
+}
+.apexcharts-canvas .apexcharts-tooltip .apexcharts-tooltip-title {
+  background: #fff !important;
+  border-color: "#ebe9f1" !important;
+  font-weight: 600;
+}
+.apexcharts-canvas .apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-text-label, .apexcharts-canvas .apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-text-value {
+  color: #fff;
+}
+.apexcharts-canvas .apexcharts-xaxistooltip, .apexcharts-canvas .apexcharts-yaxistooltip {
+  background: "#f8f8f8";
+  border-color: "#ebe9f1";
+}
+.apexcharts-canvas .apexcharts-xaxistooltip-bottom:before {
+  border-bottom-color: "#ebe9f1";
+}
+.apexcharts-canvas .apexcharts-xaxistooltip-bottom::after {
+  border-bottom-color: "#f8f8f8";
+}
+.apexcharts-canvas .apexcharts-xaxistooltip-top:before {
+  border-top-color: "#ebe9f1";
+}
+.apexcharts-canvas .apexcharts-xaxistooltip-top::after {
+  border-top-color: "#f8f8f8";
+}
+.apexcharts-canvas .apexcharts-yaxistooltip-left:before {
+  border-left-color: "#ebe9f1";
+}
+.apexcharts-canvas .apexcharts-yaxistooltip-left:after {
+  border-left-color: "#f8f8f8";
+}
+.apexcharts-canvas .apexcharts-yaxistooltip-right:before {
+  border-right-color: "#ebe9f1";
+}
+.apexcharts-canvas .apexcharts-yaxistooltip-right:after {
+  border-right-color: "#f8f8f8";
+}
+.apexcharts-canvas .apexcharts-text, .apexcharts-canvas .apexcharts-tooltip-text, .apexcharts-canvas .apexcharts-datalabel-label, .apexcharts-canvas .apexcharts-datalabel {
+  font-family: "Public Sans" !important;
+  fill: "#6e6b7b";
+  font-weight: 400;
+  filter: none;
+}
+.apexcharts-canvas .apexcharts-pie-label {
+  fill: white;
+  filter: none;
+}
+.apexcharts-canvas .apexcharts-pie .apexcharts-pie-series .apexcharts-pie-area {
+  stroke-width: 0;
+}
+.apexcharts-canvas .apexcharts-pie .apexcharts-datalabel-label, .apexcharts-canvas .apexcharts-pie .apexcharts-datalabel-value {
+  font-size: 1.5rem;
+}
+.apexcharts-canvas .apexcharts-marker {
+  box-shadow: none;
+}
+.apexcharts-canvas .apexcharts-legend-series + .apexcharts-legend-series {
+  margin-top: 0.625rem;
+}
+.apexcharts-canvas .apexcharts-legend-series .apexcharts-legend-text {
+  margin-left: 0.5rem;
+  color: "#6e6b7b" !important;
+  font-size: 1rem !important;
+}
+.apexcharts-canvas .apexcharts-xcrosshairs, .apexcharts-canvas .apexcharts-ycrosshairs, .apexcharts-canvas .apexcharts-gridline {
+  stroke: "#ebe9f1";
+}
+.apexcharts-legend.position-bottom {
+  bottom: 3rem;
+}
+
