@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 body {
-  font-family: 'Public Sans';
+  font-family: 'Public Sans' !important;
   background: #F7F7FA;
   color: #2F2B3DE6;
   font-weight: 400;

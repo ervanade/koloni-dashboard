@@ -17,7 +17,7 @@ const columns = [
     id: 'population',
     label: 'Based On',
     minWidth: 100,
-    align: 'right',
+    align: 'center',
     format: (value) => value.toLocaleString('en-US'),
   },
   {

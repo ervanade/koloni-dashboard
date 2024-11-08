@@ -59,6 +59,130 @@ export const platforms = [
   },
 ];
 
+export const countryOptions = [
+  {
+    label: 'Indonesia',
+    value: "Indonesia",
+  },
+
+];
+export const cityOptions = [
+  {
+    label: 'Jakarta',
+    value: "Jakarta",
+  },
+  {
+    label: 'Bandung',
+    value: "Bandung",
+  },
+  {
+    label: 'Surabaya',
+    value: "Surabaya",
+  },
+  {
+    label: 'Yogyakarta',
+    value: "Yogyakarta",
+  },
+  {
+    label: 'Makassar',
+    value: "Makassar",
+  },
+  {
+    label: 'Medan',
+    value: "Medan",
+  },
+  {
+    label: 'Bekasi',
+    value: "Bekasi",
+  },
+  {
+    label: 'Semarang',
+    value: "Semarang",
+  },
+  {
+    label: 'Denpasar',
+    value: "Denpasar",
+  },
+  {
+    label: 'Bogor',
+    value: "Bogor",
+  },
+
+];
+
+export const genderOptions = [
+  {
+    label: 'Any',
+    value: "Any",
+  },
+  {
+    label: 'Male',
+    value: "Male",
+  },
+  {
+    label: 'Female',
+    value: "Female",
+  },
+
+];
+export const verifiedOptions = [
+  {
+    label: 'Any',
+    value: "Any",
+  },
+  {
+    label: 'Verified',
+    value: "Verified",
+  },
+
+];
+export const accountOptions = [
+  {
+    label: 'Any',
+    value: "Any",
+  },
+  {
+    label: 'Busines',
+    value: "Busines",
+  },
+  {
+    label: 'Creator',
+    value: "Creator",
+  },
+  {
+    label: 'Personal',
+    value: "Personal",
+  },
+
+];
+export const ageOptions = [
+  {
+    label: 'Any',
+    value: "Any",
+  },
+  {
+    label: '18 - 24',
+    value: "18 - 24",
+  },
+  {
+    label: '25 - 34',
+    value: "25 - 34",
+  },
+  {
+    label: '35 - 44',
+    value: "35 - 44",
+  },
+  {
+    label: '45 - 54',
+    value: "45 - 54",
+  },
+  {
+    label: '55 >',
+    value: "55 >",
+  },
+
+];
+
 const normalize = (v, v2) => Number.parseFloat(((v * v2) / 100).toFixed(2));
 
 export const mobileAndDesktopOS = [
