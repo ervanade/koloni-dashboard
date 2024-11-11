@@ -149,9 +149,7 @@ const Similiar = ({showFilter, setShowFilter}) => {
                   />
                 </div>
               </div>
-        </div>
-
-        <div className="flex items-center justify-between mt-6">
+              <div className="flex items-center justify-between mt-6">
         <button
                 className="border border-sky-500  text-sky-500 font-bold py-3 px-8 rounded focus:outline-none focus:shadow-outline"
                 type="submit"
@@ -166,6 +164,9 @@ const Similiar = ({showFilter, setShowFilter}) => {
                 Search
               </button>
         </div>
+        </div>
+
+       
       </Card>
 
       <Card className="mt-6">

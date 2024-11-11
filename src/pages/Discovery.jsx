@@ -12,6 +12,7 @@ import History from "../components/Discovery/History";
 
 const Discovery = () => {
   const [showFilter, setShowFilter] = useState(true);
+  const [showSimiliar, setShowSimiliar] = useState(true);
   const [activeTab, setActiveTab] = useState("filter");
 
   return (
@@ -68,7 +69,7 @@ const Discovery = () => {
 </div>
 
 {
-  activeTab === "filter" ?  <Filter showFilter={showFilter} setShowFilter={setShowFilter} /> : activeTab === "similiar" ?  <Similiar showFilter={showFilter} setShowFilter={setShowFilter} /> : activeTab === "history" ? <History /> : ""
+  activeTab === "filter" ?  <Filter showFilter={showFilter} setShowFilter={setShowFilter} /> : activeTab === "similiar" ?  <Similiar showFilter={showSimiliar} setShowFilter={setShowSimiliar} /> : activeTab === "history" ? <History /> : ""
 }
      
 

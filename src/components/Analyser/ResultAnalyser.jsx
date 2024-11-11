@@ -8,6 +8,7 @@ import { desktopOS, desktopOS2, followersChart, optionsFollowers, optionsProfile
 import { BarChart, LineChart } from "@mui/x-charts";
 import Card from '../Card/Card';
 import Chart from 'react-apexcharts'
+import { topContents, topHashtag, topMentions, topSimiliar } from '../../data/dataAnalyser';
 const ResultAnalyser = ({data}) => {
     const options = {
         chart: {
@@ -193,14 +194,14 @@ const ResultAnalyser = ({data}) => {
           </div>
       
           <div className=" border border-[#C4C4C4] p-4 rounded-md justify-between mt-6 ">
-            <h1 className="font-medium text-textBold ">User Performance</h1>
+            <h1 className="font-bold text-textBold ">User Performance</h1>
       
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
               <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 px-6 rounded-md  ">
                 <div className="rounded-full bg-slate-200 flex items-center justify-center w-9 h-9 ">
                   <BiSolidLike className="text-sky-500" size={20} />
                 </div>
-                <h2 className="font-medium text-textBold text-base">
+                <h2 className="font-bold text-textBold text-base">
                   AVG. LIKES
                 </h2>
                 <p className="font-bold text-sky-500 text-2xl">7.786.266</p>
@@ -210,7 +211,7 @@ const ResultAnalyser = ({data}) => {
                 <div className="rounded-full bg-slate-200 flex items-center justify-center w-9 h-9 ">
                   <BiSolidComment className="text-sky-500" size={20} />
                 </div>
-                <h2 className="font-medium text-textBold text-base">
+                <h2 className="font-bold text-textBold text-base">
                   AVG. COMMENTS
                 </h2>
                 <p className="font-bold text-sky-500 text-2xl">59.593</p>
@@ -220,7 +221,7 @@ const ResultAnalyser = ({data}) => {
                 <div className="rounded-full bg-slate-200 flex items-center justify-center w-9 h-9 ">
                   <FaEye className="text-sky-500" size={20} />
                 </div>
-                <h2 className="font-medium text-textBold text-base">
+                <h2 className="font-bold text-textBold text-base">
                   AVG. REELS VIEW
                 </h2>
                 <p className="font-bold text-sky-500 text-2xl">99.612.620</p>
@@ -230,7 +231,7 @@ const ResultAnalyser = ({data}) => {
       
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mt-6">
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
-              <h1 className="font-medium text-textBold ">User Authenticity </h1>
+              <h1 className="font-bold text-textBold ">User Authenticity </h1>
               <PieChart
                 className="mt-4 !text-sm"
                 sx={{
@@ -257,7 +258,7 @@ const ResultAnalyser = ({data}) => {
             </div>
       
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
-              <h1 className="font-medium text-textBold ">Significant Followers</h1>
+              <h1 className="font-bold text-textBold ">Significant Followers</h1>
       <div className="grid grid-cols-3 gap-2 mt-6">
       <div className="p-2 bg-slate-200 rounded-md flex flex-col justify-center items-center gap-2"><div class="relative inline-flex w-fit">
       <div
@@ -344,7 +345,7 @@ const ResultAnalyser = ({data}) => {
       
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mt-6">
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
-              <h1 className="font-medium text-textBold ">Followers Reachability              </h1>
+              <h1 className="font-bold text-textBold ">Followers Reachability              </h1>
               <PieChart
                 className="mt-4 !text-sm"
                 sx={{
@@ -371,7 +372,7 @@ const ResultAnalyser = ({data}) => {
             </div>
       
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
-              <h1 className="font-medium text-textBold ">
+              <h1 className="font-bold text-textBold ">
                 Profile Growth - Last 6 Months{" "}
               </h1>
               {/* <LineChart
@@ -402,156 +403,139 @@ const ResultAnalyser = ({data}) => {
       
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mt-6">
           <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
-              <h1 className="font-medium text-textBold ">Top Cities            </h1>
+              <h1 className="font-bold text-textBold ">Top Cities            </h1>
               <Chart options={optionsFollowers} series={seriesFollowers} type='bar' height={420} />
             </div>
       
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
-              <h1 className="font-medium text-textBold ">Age Range            </h1>
+              <h1 className="font-bold text-textBold ">Age Range            </h1>
               <Chart options={options} series={series} type='bar' height={400} />
             </div>
           </div>
 
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 mt-6">
+
+          <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
+          <h1 className="font-bold text-textBold ">Top Hashtags
+          </h1>
+          <div className="mt-4">
+          {
+              topHashtag.map((item,index) => (
+                <p className='text-[#1E3A8A]'>{item} <span className={`${index == (topHashtag.length -1) ? "hidden" : ""} pl-4 text-slate-300 text-lg`}>/</span></p>
+
+              ))
+            }
+          </div>
+
+          </div>
+
+          <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
+          <h1 className="font-bold text-textBold ">Top Mentions
+          </h1>
+          <div className="mt-4">
+            {
+              topMentions.map((item,index) => (
+                <p className='text-[#1E3A8A]'>{item} <span className={`${index == (topMentions.length -1) ? "hidden" : ""} pl-4 text-slate-300 text-lg`}>/</span></p>
+
+              ))
+            }
+          </div>
+
+          </div>
+
+          <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
+          <h1 className="font-bold text-textBold ">Top Interests
+          </h1>
+          <div className="mt-4 flex flex-col gap-4">
+
+           <div>
+            <p className="text-sm text-textBold font-medium ">Friends, Family & Relationships</p>
+            <div className="w-full bg-slate-200 rounded-full dark:bg-gray-700 mt-2">
+    <div className="bg-sky-500 text-xs font-medium text-blue-100 text-center p-[3px] leading-none rounded-full w-[32.3%]" > 32.3%</div>
+  </div>
+           </div>
+
+           <div>
+            <p className="text-sm text-textBold font-medium ">Clothes, Shoes, Handbags & Accessories
+            </p>
+            <div className="w-full bg-slate-200 rounded-full dark:bg-gray-700 mt-2">
+    <div className="bg-sky-500 text-xs font-medium text-blue-100 text-center p-[3px] leading-none rounded-full w-[27.9%]" > 27.9%</div>
+  </div>
+           </div>
+
+           <div>
+            <p className="text-sm text-textBold font-medium ">Sports
+            </p>
+            <div className="w-full bg-slate-200 rounded-full dark:bg-gray-700 mt-2">
+    <div className="bg-sky-500 text-xs font-medium text-blue-100 text-center p-[3px] leading-none rounded-full w-[27.4%]" > 27.4%</div>
+  </div>
+           </div>
+
+           <div>
+            <p className="text-sm text-textBold font-medium ">Camera & Photography
+            </p>
+            <div className="w-full bg-slate-200 rounded-full dark:bg-gray-700 mt-2">
+    <div className="bg-sky-500 text-xs font-medium text-blue-100 text-center p-[3px] leading-none rounded-full w-[24.8%]" > 24.8%</div>
+  </div>
+           </div>
+
+          </div>
+
+          </div>
+
+</div>
+
           <div className="flex flex-col border border-[#C4C4C4] p-4 rounded-md mt-6 overflow-hidden">
-          <h1 className="font-medium text-textBold ">Top Contents            </h1>
+          <h1 className="font-bold text-textBold ">Top Contents            </h1>
           <div className="scroll items-center mt-6 !overflow-x-auto w-full whitespace-nowrap">
 
-          <div className='w-54 inline-block me-4'>
-            <div className="img w-full h-54 flex justify-center items-center">
-                <img src="/cr-1.jpeg" className='w-full object-cover max-h-54' alt="" />
-            </div>
-            <div className="flex items-center justify-between gap-2 flex-wrap">
-                <div className="flex items-center gap-1 mt-2">
-                    <FaHeart className='text-red-500'/>
-                    <span>20.978.467                    </span>
+            {
+              topContents.map((item, index) => (
+                <div className='w-54 inline-block me-4'>
+                  <a href={item.link} target="_blank" rel="noopener noreferrer">
+                <div className="img w-full h-54 flex justify-center items-center">
+                    <img src={item.img} className='w-full object-cover max-h-54' alt="" />
                 </div>
-                <div className="flex items-center gap-1 mt-2">
-                    <FaComment className='text-blue-500'/>
-                    <span>143.492                    </span>
+                  </a>
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <div className="flex items-center gap-1 mt-2">
+                        <FaHeart className='text-red-500'/>
+                        <span>{item.like}</span>
+                    </div>
+                    <div className="flex items-center gap-1 mt-2">
+                        <FaComment className='text-blue-500'/>
+                        <span>{item.comments}</span>
+                    </div>
                 </div>
-            </div>
-            </div>
-            
-
-            <div className='w-54 inline-block me-4'>
-            <div className="img w-full h-54 flex justify-center items-center">
-                <img src="/cr-2.jpeg" className='w-full object-cover max-h-54' alt="" />
-            </div>
-            <div className="flex items-center justify-between gap-2 flex-wrap">
-                <div className="flex items-center gap-1 mt-2">
-                    <FaHeart className='text-red-500'/>
-                    <span>20.978.467                    </span>
                 </div>
-                <div className="flex items-center gap-1 mt-2">
-                    <FaComment className='text-blue-500'/>
-                    <span>143.492                    </span>
-                </div>
-            </div>
-            </div>
-
-            <div className='w-54 inline-block me-4'>
-            <div className="img w-full h-54 flex justify-center items-center">
-                <img src="/cr-1.jpeg" className='w-full object-cover max-h-54' alt="" />
-            </div>
-            <div className="flex items-center justify-between gap-2 flex-wrap">
-                <div className="flex items-center gap-1 mt-2">
-                    <FaHeart className='text-red-500'/>
-                    <span>20.978.467                    </span>
-                </div>
-                <div className="flex items-center gap-1 mt-2">
-                    <FaComment className='text-blue-500'/>
-                    <span>143.492                    </span>
-                </div>
-            </div>
-            </div>
-
-            <div className='w-54 inline-block me-4'>
-            <div className="img w-full h-54 flex justify-center items-center">
-                <img src="/cr-2.jpeg" className='w-full object-cover max-h-54' alt="" />
-            </div>
-            <div className="flex items-center justify-between gap-2 flex-wrap">
-                <div className="flex items-center gap-1 mt-2">
-                    <FaHeart className='text-red-500'/>
-                    <span>20.978.467                    </span>
-                </div>
-                <div className="flex items-center gap-1 mt-2">
-                    <FaComment className='text-blue-500'/>
-                    <span>143.492                    </span>
-                </div>
-            </div>
-            </div>
+              ))
+            }
 
           </div>
           </div>
 
           <div className="flex flex-col border border-[#C4C4C4] p-4 rounded-md mt-6 overflow-hidden">
-          <h1 className="font-medium text-textBold ">Lookalikes Content Creator          </h1>
+          <h1 className="font-bold text-textBold ">Lookalikes Content Creator          </h1>
           <div className="scroll items-center mt-6 !overflow-x-auto w-full whitespace-nowrap">
 
-          <div className='w-54 inline-block me-4'>
-            <div className="img w-full h-54 flex justify-center items-center">
-                <img src="/cr-1.jpeg" className='w-full object-cover max-h-54' alt="" />
-            </div>
-            <div className="flex items-center justify-between gap-2 flex-wrap">
-                <div className="flex items-center gap-1 mt-2">
-                    <FaHeart className='text-red-500'/>
-                    <span>20.978.467                    </span>
+          {
+              topSimiliar.map((item, index) => (
+                <div className='w-54 inline-block me-4'>
+                  <a href={item.link} target="_blank" rel="noopener noreferrer">
+                <div className="img w-full h-54 flex justify-center items-center">
+                    <img src={item.img} className='w-full object-cover max-h-54' alt="" />
                 </div>
-                <div className="flex items-center gap-1 mt-2">
-                    <FaComment className='text-blue-500'/>
-                    <span>143.492                    </span>
+                  </a>
+                <div className="flex mt-3 flex-col">
+                  <h2 className='text-textThin font-medium '>FOLLOWERS</h2>
+                    <div className="flex items-center ">
+                        <span className=' text-sky-500 font-bold'>{item.followers}</span>
+                    </div>
+                    <a href={item.link} className='text-[#1E3A8A] mt-2'>See Instagram Post</a>
                 </div>
-            </div>
-            </div>
-            
-
-            <div className='w-54 inline-block me-4'>
-            <div className="img w-full h-54 flex justify-center items-center">
-                <img src="/cr-1.jpeg" className='w-full object-cover max-h-54' alt="" />
-            </div>
-            <div className="flex items-center justify-between gap-2 flex-wrap">
-                <div className="flex items-center gap-1 mt-2">
-                    <FaHeart className='text-red-500'/>
-                    <span>20.978.467                    </span>
                 </div>
-                <div className="flex items-center gap-1 mt-2">
-                    <FaComment className='text-blue-500'/>
-                    <span>143.492                    </span>
-                </div>
-            </div>
-            </div>
-
-            <div className='w-54 inline-block me-4'>
-            <div className="img w-full h-54 flex justify-center items-center">
-                <img src="/cr-1.jpeg" className='w-full object-cover max-h-54' alt="" />
-            </div>
-            <div className="flex items-center justify-between gap-2 flex-wrap">
-                <div className="flex items-center gap-1 mt-2">
-                    <FaHeart className='text-red-500'/>
-                    <span>20.978.467                    </span>
-                </div>
-                <div className="flex items-center gap-1 mt-2">
-                    <FaComment className='text-blue-500'/>
-                    <span>143.492                    </span>
-                </div>
-            </div>
-            </div>
-
-            <div className='w-54 inline-block me-4'>
-            <div className="img w-full h-54 flex justify-center items-center">
-                <img src="/cr-1.jpeg" className='w-full object-cover max-h-54' alt="" />
-            </div>
-            <div className="flex items-center justify-between gap-2 flex-wrap">
-                <div className="flex items-center gap-1 mt-2">
-                    <FaHeart className='text-red-500'/>
-                    <span>20.978.467                    </span>
-                </div>
-                <div className="flex items-center gap-1 mt-2">
-                    <FaComment className='text-blue-500'/>
-                    <span>143.492                    </span>
-                </div>
-            </div>
-            </div>
+              ))
+            }
 
           </div>
           </div>

@@ -479,7 +479,7 @@ export const optionsProfile = {
     strokeWidth: 7,
     strokeOpacity: 1,
     strokeColors: ['#fff'],
-    colors: ["#23A4E9"]
+    colors: ["#61BDEE"]
   },
   dataLabels: {
     enabled: false
@@ -487,7 +487,7 @@ export const optionsProfile = {
   stroke: {
     curve: 'straight'
   },
-  colors: ["#23A4E9"],
+  colors: ["#61BDEE"],
   grid: {
     xaxis: {
       lines: {
