@@ -450,19 +450,17 @@ export const seriesFollowers = [
 // profile Growth Chart
 
 const DataFormater = (number) => {
-  if(number > 1000000000 || number < 1000000000) {
-      //eslint-disable-next-line
-    return (number / 1000000000).toString() + 'B';
-  } else if (number > 1000000 || number < 1000000) {
-      //eslint-disable-next-line
-    return (number / 1000000).toString() + 'M';
-  } else if (number > 1000 || number < 1000) {
-      //eslint-disable-next-line
-    return (number / 1000).toString() + 'K';
-  } else{
+  if (number >= 1000000000) {
+    return (number / 1000000000).toFixed(1) + 'B';
+  } else if (number >= 1000000) {
+    return (number / 1000000).toFixed(1) + 'M';
+  } else if (number >= 1000) {
+    return (number / 1000).toFixed(1) + 'K';
+  } else {
     return number.toString();
   }
-}
+};
+
 
 export const optionsProfile = {
   chart: {
