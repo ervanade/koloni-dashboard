@@ -6,8 +6,9 @@ import { BiChevronDown, BiChevronUp } from 'react-icons/bi';
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import top100Films from '../../data/top100Films';
-import { accountOptions, ageOptions, cityOptions, genderOptions, verifiedOptions } from '../../data/data';
+import { accountOptions, ageOptions, cityOptions, countryOptions, genderOptions, interestOption, topicOptions, verifiedOptions } from '../../data/data';
 import ResultDiscovery from './ResultDiscovery';
+import { FilledInput, FormControl, FormHelperText, InputAdornment, OutlinedInput } from '@mui/material';
 
 const Filter = ({showFilter, setShowFilter}) => {
     const [showCreator, setShowCreator] = useState(true);
@@ -67,7 +68,7 @@ const Filter = ({showFilter, setShowFilter}) => {
               <p className="font-normal text-textThin text-sm mb-2">Topic</p>
               <Autocomplete
                 disablePortal
-                options={top100Films}
+                options={topicOptions}
                 sx={{ width: "100%" }}
                 renderInput={(params) => (
                   <TextField {...params} label="Topic" />
@@ -77,21 +78,33 @@ const Filter = ({showFilter, setShowFilter}) => {
 
             <div className="">
               <p className="font-normal text-textThin text-sm mb-2">Hashtag</p>
-              <Autocomplete
-                disablePortal
-                options={top100Films}
-                sx={{ width: "100%" }}
-                renderInput={(params) => (
-                  <TextField {...params} label="Hashtag" />
-                )}
-              />
+              <FormControl sx={{ width: '100%' }} variant="outlined">
+              <OutlinedInput
+            id="outlined-adornment-hashtag"
+            className='py-2'
+            placeholder='Hashtag'
+            endAdornment={<InputAdornment position="end"><FaSearch className='text-textThin font-thin'/></InputAdornment>}
+            aria-describedby="outlined-hashtag-helper-text"
+            inputProps={{
+              'aria-label': 'hashtag',
+            }}
+          />
+        </FormControl>
+              {/* <input
+                      type="text"
+                      id="number-input"
+                      aria-describedby="helper-text-explanation"
+                      className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Hashtag"
+                      required
+                    /> */}
             </div>
 
             <div className="">
               <p className="font-normal text-textThin text-sm mb-2">Interest</p>
               <Autocomplete
                 disablePortal
-                options={top100Films}
+                options={interestOption}
                 sx={{ width: "100%" }}
                 renderInput={(params) => (
                   <TextField {...params} label="Interest" />
@@ -101,14 +114,18 @@ const Filter = ({showFilter, setShowFilter}) => {
 
             <div className="">
               <p className="font-normal text-textThin text-sm mb-2">Keyword</p>
-              <Autocomplete
-                disablePortal
-                options={top100Films}
-                sx={{ width: "100%" }}
-                renderInput={(params) => (
-                  <TextField {...params} label="Keyword" />
-                )}
-              />
+              <FormControl sx={{ width: '100%' }} variant="outlined">
+              <OutlinedInput
+            id="outlined-adornment-keyword"
+            className='py-2'
+            placeholder='Keyword'
+            endAdornment={<InputAdornment position="end"><FaSearch className='text-textThin font-thin'/></InputAdornment>}
+            aria-describedby="outlined-keyword-helper-text"
+            inputProps={{
+              'aria-label': 'keyword',
+            }}
+          />
+        </FormControl>
             </div>
           </div>
 
@@ -194,7 +211,7 @@ const Filter = ({showFilter, setShowFilter}) => {
                   </p>
                   <Autocomplete
                     disablePortal
-                    options={top100Films}
+                    options={countryOptions}
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
                       <TextField {...params} label="Creator Country" />
@@ -309,7 +326,7 @@ const Filter = ({showFilter, setShowFilter}) => {
                   </p>
                   <Autocomplete
                     disablePortal
-                    options={top100Films}
+                    options={genderOptions}
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
                       <TextField {...params} label="Audience Gender" />
@@ -323,7 +340,7 @@ const Filter = ({showFilter, setShowFilter}) => {
                   </p>
                   <Autocomplete
                     disablePortal
-                    options={top100Films}
+                    options={ageOptions}
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
                       <TextField {...params} label="Audience Age" />
@@ -337,7 +354,7 @@ const Filter = ({showFilter, setShowFilter}) => {
                   </p>
                   <Autocomplete
                     disablePortal
-                    options={top100Films}
+                    options={countryOptions}
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
                       <TextField {...params} label="Audience Country" />
@@ -351,7 +368,7 @@ const Filter = ({showFilter, setShowFilter}) => {
                   </p>
                   <Autocomplete
                     disablePortal
-                    options={top100Films}
+                    options={cityOptions}
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
                       <TextField {...params} label="Audience City" />

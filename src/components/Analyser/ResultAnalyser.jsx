@@ -4,7 +4,7 @@ import { FaAt, FaComment, FaHeart } from "react-icons/fa6";
 import { BiCheckCircle, BiLike, BiSolidComment, BiSolidLike } from "react-icons/bi";
 import { BsViewList } from "react-icons/bs";
 import { PieChart } from "@mui/x-charts/PieChart";
-import { desktopOS, desktopOS2, valueFormatter } from "../../data/data";
+import { desktopOS, desktopOS2, followersChart, optionsFollowers, optionsProfile, seriesFollowers, seriesProfile, valueFormatter } from "../../data/data";
 import { BarChart, LineChart } from "@mui/x-charts";
 import Card from '../Card/Card';
 import Chart from 'react-apexcharts'
@@ -74,7 +74,8 @@ const ResultAnalyser = ({data}) => {
       const columnColors = {
         series1: '#826af9',
         series2: '#d2b0ff',
-        bg: '#f8d3ff'
+        bg: '#f8d3ff',
+        bg2: '#53D86A'
       }
     
       // ** Chart Options
@@ -269,7 +270,7 @@ const ResultAnalyser = ({data}) => {
       
       
       </div><h2 className="text-sm text-center font-bold text-textBold">nike
-      </h2><p className="text-sm text-center text-bold font-medium">303.462.935 Followers</p></div>
+      </h2><p className="text-sm text-center text-textBold font-medium">303.462.935 Followers</p></div>
       
       <div className="p-2 bg-slate-200 rounded-md flex flex-col justify-center items-center gap-2"><div class="relative inline-flex w-fit">
       <div
@@ -278,24 +279,11 @@ const ResultAnalyser = ({data}) => {
       </div>
       
       
-      <img src="/nike.jpeg" className="rounded-full w-10"/>
+      <img src="/virat.jpeg" className="rounded-full w-10"/>
       
       
-      </div><h2 className="text-sm text-center font-bold text-textBold">nike
-      </h2><p className="text-sm text-center text-bold font-medium">303.462.935 Followers</p></div>
-      
-      <div className="p-2 bg-slate-200 rounded-md flex flex-col justify-center items-center gap-2"><div class="relative inline-flex w-fit">
-      <div
-      className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
-      <FaCheckCircle className="text-blue-500"/>
-      </div>
-      
-      
-      <img src="/nike.jpeg" className="rounded-full w-10"/>
-      
-      
-      </div><h2 className="text-sm text-center font-bold text-textBold">nike
-      </h2><p className="text-sm text-center text-bold font-medium">303.462.935 Followers</p></div>
+      </div><h2 className="text-sm text-center font-bold text-textBold">virat.kohli
+      </h2><p className="text-sm text-center text-textBold font-medium">270.700.837 Followers</p></div>
       
       <div className="p-2 bg-slate-200 rounded-md flex flex-col justify-center items-center gap-2"><div class="relative inline-flex w-fit">
       <div
@@ -304,24 +292,11 @@ const ResultAnalyser = ({data}) => {
       </div>
       
       
-      <img src="/nike.jpeg" className="rounded-full w-10"/>
+      <img src="/jlo.jpeg" className="rounded-full w-10"/>
       
       
-      </div><h2 className="text-sm text-center font-bold text-textBold">nike
-      </h2><p className="text-sm text-center text-bold font-medium">303.462.935 Followers</p></div>
-      
-      <div className="p-2 bg-slate-200 rounded-md flex flex-col justify-center items-center gap-2"><div class="relative inline-flex w-fit">
-      <div
-      className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
-      <FaCheckCircle className="text-blue-500"/>
-      </div>
-      
-      
-      <img src="/nike.jpeg" className="rounded-full w-10"/>
-      
-      
-      </div><h2 className="text-sm text-center font-bold text-textBold">nike
-      </h2><p className="text-sm text-center text-bold font-medium">303.462.935 Followers</p></div>
+      </div><h2 className="text-sm text-center font-bold text-textBold">jlo
+      </h2><p className="text-sm text-center text-textBold font-medium">250.777.388 Followers</p></div>
       
       <div className="p-2 bg-slate-200 rounded-md flex flex-col justify-center items-center gap-2"><div class="relative inline-flex w-fit">
       <div
@@ -330,11 +305,37 @@ const ResultAnalyser = ({data}) => {
       </div>
       
       
-      <img src="/nike.jpeg" className="rounded-full w-10"/>
+      <img src="/neymar.jpeg" className="rounded-full w-10"/>
       
       
-      </div><h2 className="text-sm text-center font-bold text-textBold">nike
-      </h2><p className="text-sm text-center text-bold font-medium">303.462.935 Followers</p></div>
+      </div><h2 className="text-sm text-center font-bold text-textBold">neymar
+      </h2><p className="text-sm text-center text-textBold font-medium">225.158.410 Followers</p></div>
+      
+      <div className="p-2 bg-slate-200 rounded-md flex flex-col justify-center items-center gap-2"><div class="relative inline-flex w-fit">
+      <div
+      className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
+      <FaCheckCircle className="text-blue-500"/>
+      </div>
+      
+      
+      <img src="/kevin.jpeg" className="rounded-full w-10"/>
+      
+      
+      </div><h2 className="text-sm text-center font-bold text-textBold">kevin
+      </h2><p className="text-sm text-center text-textBold font-medium">178.562.767 Followers</p></div>
+      
+      <div className="p-2 bg-slate-200 rounded-md flex flex-col justify-center items-center gap-2"><div class="relative inline-flex w-fit">
+      <div
+      className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
+      <FaCheckCircle className="text-blue-500"/>
+      </div>
+      
+      
+      <img src="/kingjames.jpeg" className="rounded-full w-10"/>
+      
+      
+      </div><h2 className="text-sm text-center font-bold text-textBold">kingjames
+      </h2><p className="text-sm text-center text-textBold font-medium">159.885.215 Followers</p></div>
       </div>
             </div>
       
@@ -343,7 +344,7 @@ const ResultAnalyser = ({data}) => {
       
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mt-6">
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
-              <h1 className="font-medium text-textBold ">User Authenticity </h1>
+              <h1 className="font-medium text-textBold ">Followers Reachability              </h1>
               <PieChart
                 className="mt-4 !text-sm"
                 sx={{
@@ -354,7 +355,7 @@ const ResultAnalyser = ({data}) => {
                 }}
                 series={[
                   {
-                    data: desktopOS2,
+                    data: followersChart,
                     highlightScope: { fade: "global", highlight: "item" },
                     faded: {
                       innerRadius: 30,
@@ -373,7 +374,7 @@ const ResultAnalyser = ({data}) => {
               <h1 className="font-medium text-textBold ">
                 Profile Growth - Last 6 Months{" "}
               </h1>
-              <LineChart
+              {/* <LineChart
                 xAxis={[
                   {
                     scaleType: "time",
@@ -394,24 +395,15 @@ const ResultAnalyser = ({data}) => {
                   },
                 ]}
                 height={300}
-              />
+              /> */}
+              <Chart options={optionsProfile} series={seriesProfile} type='area' height={300} />
             </div>
           </div>
       
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mt-6">
           <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
               <h1 className="font-medium text-textBold ">Top Cities            </h1>
-              <BarChart
-              className="font-publicSans"
-                xAxis={[
-                  {
-                    scaleType: "band",
-                    data: ["group A", "group B", "group C", "group D", "group E"],
-                  },
-                ]}
-                series={[{ data: [200, 500, 540, 100, 1000], color: "#53D86A" }]}
-                height={300}
-              />
+              <Chart options={optionsFollowers} series={seriesFollowers} type='bar' height={420} />
             </div>
       
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">

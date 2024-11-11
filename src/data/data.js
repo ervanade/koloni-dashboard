@@ -33,6 +33,28 @@ export const desktopOS2 = [
   },
 ];
 
+export const followersChart = [
+  {
+    label: '<500',
+    value: 65,
+  },
+  {
+    label: '500-1000',
+    value: 16.2,
+
+  },
+  {
+    label: '1000-1500',
+    value: 6.5,
+
+  },
+  {
+    label: '>1500',
+    value: 12.3,
+
+  },
+];
+
 export const mobileOS = [
   {
     label: 'Android',
@@ -183,6 +205,139 @@ export const ageOptions = [
 
 ];
 
+export const interestOption = [
+  { label: "Television & Film", value: "Television & Film" },
+  { label: "Music", value: "Music" },
+  { label: "Shopping & Retail", value: "Shopping & Retail" },
+  { label: "Coffee, Tea & Beverages", value: "Coffee, Tea & Beverages" },
+  { label: "Camera & Photography", value: "Camera & Photography" },
+  { label: "Clothes, Shoes, Handbags & Accessories", value: "Clothes, Shoes, Handbags & Accessories" },
+  { label: "Beer, Wine & Spirits", value: "Beer, Wine & Spirits" },
+  { label: "Sports", value: "Sports" },
+  { label: "Electronics & Computers", value: "Electronics & Computers" },
+  { label: "Gaming", value: "Gaming" },
+  { label: "Activewear", value: "Activewear" },
+  { label: "Art & Design", value: "Art & Design" },
+  { label: "Travel, Tourism & Aviation", value: "Travel, Tourism & Aviation" },
+  { label: "Business & Careers", value: "Business & Careers" },
+  { label: "Beauty & Cosmetics", value: "Beauty & Cosmetics" },
+  { label: "Healthcare & Medicine", value: "Healthcare & Medicine" },
+  { label: "Jewellery & Watches", value: "Jewellery & Watches" },
+  { label: "Restaurants, Food & Grocery", value: "Restaurants, Food & Grocery" },
+  { label: "Toys, Children & Baby", value: "Toys, Children & Baby" },
+  { label: "Fitness & Yoga", value: "Fitness & Yoga" },
+  { label: "Wedding", value: "Wedding" },
+  { label: "Tobacco & Smoking", value: "Tobacco & Smoking" },
+  { label: "Pets", value: "Pets" },
+  { label: "Healthy Lifestyle", value: "Healthy Lifestyle" },
+  { label: "Luxury Goods", value: "Luxury Goods" },
+  { label: "Home Decor, Furniture & Garden", value: "Home Decor, Furniture & Garden" },
+  { label: "Friends, Family & Relationships", value: "Friends, Family & Relationships" },
+  { label: "Cars & Motorbikes", value: "Cars & Motorbikes" }
+];
+
+export const topicOptions = [
+  { label: "Travel", value: "travel" },
+  { label: "Food", value: "food" },
+  { label: "Fitness", value: "fitness" },
+  { label: "Finance", value: "finance" },
+  { label: "Mindfulness", value: "mindfulness" },
+  { label: "Fashion", value: "fashion" },
+  { label: "Home", value: "home" },
+  { label: "Sustainability", value: "sustainability" },
+  { label: "Pets", value: "pets" },
+  { label: "Technology", value: "technology" },
+  { label: "MentalHealth", value: "mental_health" },
+  { label: "Parenting", value: "parenting" },
+  { label: "Marketing", value: "marketing" },
+  { label: "RealEstate", value: "real_estate" },
+  { label: "Cars", value: "cars" },
+  { label: "Health", value: "health" },
+  { label: "Photography", value: "photography" },
+  { label: "SocialMedia", value: "social_media" },
+  { label: "Coding", value: "coding" },
+  { label: "Eco", value: "eco" },
+  { label: "Career", value: "career" },
+  { label: "Entrepreneurship", value: "entrepreneurship" },
+  { label: "Budgeting", value: "budgeting" },
+  { label: "Interior", value: "interior" },
+  { label: "Recipes", value: "recipes" },
+  { label: "Art", value: "art" },
+  { label: "Crypto", value: "crypto" },
+  { label: "Productivity", value: "productivity" },
+  { label: "Cooking", value: "cooking" },
+  { label: "Training", value: "training" },
+  { label: "SelfHelp", value: "self_help" },
+  { label: "Cultures", value: "cultures" },
+  { label: "Languages", value: "languages" },
+  { label: "Budget", value: "budget" },
+  { label: "Beauty", value: "beauty" },
+  { label: "Science", value: "science" },
+  { label: "Movies", value: "movies" },
+  { label: "Books", value: "books" },
+  { label: "Workouts", value: "workouts" },
+  { label: "Diet", value: "diet" },
+  { label: "Plants", value: "plants" },
+  { label: "Luxury", value: "luxury" },
+  { label: "DIY", value: "diy" },
+  { label: "Skin", value: "skin" },
+  { label: "Relationships", value: "relationships" },
+  { label: "Outdoors", value: "outdoors" },
+  { label: "Wellness", value: "wellness" },
+  { label: "Music", value: "music" },
+  { label: "Investing", value: "investing" },
+  { label: "Space", value: "space" },
+  { label: "Yoga", value: "yoga" },
+  { label: "Coaching", value: "coaching" },
+  { label: "Grooming", value: "grooming" },
+  { label: "Astrology", value: "astrology" },
+  { label: "Aging", value: "aging" },
+  { label: "Beer", value: "beer" },
+  { label: "Weddings", value: "weddings" },
+  { label: "Hiking", value: "hiking" },
+  { label: "Film", value: "film" },
+  { label: "Nutrition", value: "nutrition" },
+  { label: "Minimalism", value: "minimalism" },
+  { label: "Spices", value: "spices" },
+  { label: "Cars", value: "cars" },
+  { label: "Camping", value: "camping" },
+  { label: "Streetwear", value: "streetwear" },
+  { label: "Bootcamps", value: "bootcamps" },
+  { label: "Gardening", value: "gardening" },
+  { label: "Reality", value: "reality" },
+  { label: "Coffee", value: "coffee" },
+  { label: "Renovation", value: "renovation" },
+  { label: "History", value: "history" },
+  { label: "Skincare", value: "skincare" },
+  { label: "Sneakers", value: "sneakers" },
+  { label: "Cycling", value: "cycling" },
+  { label: "PublicSpeaking", value: "public_speaking" },
+  { label: "History", value: "history" },
+  { label: "Camping", value: "camping" },
+  { label: "Watercolor", value: "watercolor" },
+  { label: "Street", value: "street" },
+  { label: "Guitar", value: "guitar" },
+  { label: "Wine", value: "wine" },
+  { label: "Remote", value: "remote" },
+  { label: "EVs", value: "evs" },
+  { label: "Editing", value: "editing" },
+  { label: "Baking", value: "baking" },
+  { label: "Urban", value: "urban" },
+  { label: "Fishing", value: "fishing" },
+  { label: "Luxury", value: "luxury" },
+  { label: "PR", value: "pr" },
+  { label: "Digital", value: "digital" },
+  { label: "Riding", value: "riding" },
+  { label: "Podcasts", value: "podcasts" },
+  { label: "Biking", value: "biking" },
+  { label: "Branding", value: "branding" },
+  { label: "Cosplay", value: "cosplay" },
+  { label: "Sustainable", value: "sustainable" },
+  { label: "Diving", value: "diving" },
+  { label: "Hacks", value: "hacks" }
+];
+
+
 const normalize = (v, v2) => Number.parseFloat(((v * v2) / 100).toFixed(2));
 
 export const mobileAndDesktopOS = [
@@ -199,3 +354,151 @@ export const mobileAndDesktopOS = [
 ];
 
 export const valueFormatter = (item) => `${item.value}%`;
+
+// chartOptionsFollowersChart
+
+export const optionsFollowers = {
+  chart: {
+    zoom: {
+      enabled: false
+    },
+    parentHeightOffset: 0,
+    toolbar: {
+      show: false
+    }
+  },
+
+  markers: {
+    strokeWidth: 7,
+    strokeOpacity: 1,
+    strokeColors: ['#fff'],
+    colors: ["#53D86A"]
+  },
+  dataLabels: {
+    enabled: false
+  },
+  stroke: {
+    curve: 'straight'
+  },
+  colors: ["#53D86A"],
+  grid: {
+    xaxis: {
+      lines: {
+        show: true
+      }
+    }
+  },
+  tooltip: {
+    custom(data) {
+      return `<div class='px-1 py-4'>
+            <span>${data.series[data.seriesIndex][data.dataPointIndex]}%</span>
+          </div>`
+    }
+  },
+  xaxis: {
+    categories: [
+      'Sao Paulo',
+      'Rio De Janeiro',
+      'Jakarta',
+      'Istanbul',
+      'Los Angeles',
+
+
+      
+    ]
+  },
+  yaxis: {
+
+  }
+}
+
+// ** Chart Series
+export const seriesFollowers = [
+  {
+    data: [1.089, 0.976, 0.751, 0.676, 0.563]
+  }
+]
+
+// profile Growth Chart
+
+const DataFormater = (number) => {
+  if(number > 1000000000 || number < 1000000000) {
+      //eslint-disable-next-line
+    return (number / 1000000000).toString() + 'B';
+  } else if (number > 1000000 || number < 1000000) {
+      //eslint-disable-next-line
+    return (number / 1000000).toString() + 'M';
+  } else if (number > 1000 || number < 1000) {
+      //eslint-disable-next-line
+    return (number / 1000).toString() + 'K';
+  } else{
+    return number.toString();
+  }
+}
+
+export const optionsProfile = {
+  chart: {
+    zoom: {
+      enabled: false
+    },
+    parentHeightOffset: 0,
+    toolbar: {
+      show: false
+    }
+  },
+
+  markers: {
+    strokeWidth: 7,
+    strokeOpacity: 1,
+    strokeColors: ['#fff'],
+    colors: ["#23A4E9"]
+  },
+  dataLabels: {
+    enabled: false
+  },
+  stroke: {
+    curve: 'straight'
+  },
+  colors: ["#23A4E9"],
+  grid: {
+    xaxis: {
+      lines: {
+        show: true
+      }
+    }
+  },
+  tooltip: {
+    custom(data) {
+      return `<div class='px-1 py-4'>
+            <span>${DataFormater(data.series[data.seriesIndex][data.dataPointIndex])}</span>
+          </div>`
+    }
+  },
+  xaxis: {
+    categories: [
+      '2024-05',
+      '2024-06',
+      '2024-07',
+      '2024-08',
+      '2024-09',
+      '2024-10',
+
+
+      
+    ]
+  },
+  yaxis: {
+labels: {
+    formatter: function (value) {
+      return DataFormater(value)
+    }
+  },
+  }
+}
+
+// ** Chart Series
+export const seriesProfile = [
+  {
+    data: [629781011, 632032999, 634620948, 636067300, 639399888, 641325352]
+  }
+]
