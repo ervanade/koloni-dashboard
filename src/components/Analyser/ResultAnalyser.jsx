@@ -487,7 +487,7 @@ const ResultAnalyser = ({data}) => {
 
           <div className="flex flex-col border border-[#C4C4C4] p-4 rounded-md mt-6 overflow-hidden">
           <h1 className="font-bold text-textBold ">Top Contents            </h1>
-          <div className="scroll items-center mt-4 !overflow-x-auto w-full whitespace-nowrap py-2">
+          <div className="scroll items-center mt-6 !overflow-x-auto w-full whitespace-nowrap pb-2">
 
             {
               topContents.map((item, index) => (
@@ -516,7 +516,7 @@ const ResultAnalyser = ({data}) => {
 
           <div className="flex flex-col border border-[#C4C4C4] p-4 rounded-md mt-6 overflow-hidden">
           <h1 className="font-bold text-textBold ">Lookalikes Content Creator          </h1>
-          <div className="scroll items-center mt-4 !overflow-x-auto w-full whitespace-nowrap py-2">
+          <div className="scroll items-center mt-6 !overflow-x-auto w-full whitespace-nowrap pb-2">
 
           {
               topSimiliar.map((item, index) => (
