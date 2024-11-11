@@ -88,6 +88,34 @@ export const countryOptions = [
   },
 
 ];
+
+export const basedOptions = [
+  {
+    label: 'Creator',
+    value: "Creator",
+  },
+  {
+    label: 'Audience',
+    value: "Audience",
+  },
+
+];
+
+export const socialOptions = [
+  {
+    label: 'Instagram',
+    value: "Instagram",
+  },
+  {
+    label: 'Tiktok',
+    value: "Tiktok",
+  },
+  {
+    label: 'Youtube',
+    value: "Youtube",
+  },
+
+];
 export const cityOptions = [
   {
     label: 'Jakarta',

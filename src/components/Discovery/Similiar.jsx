@@ -6,6 +6,8 @@ import { BiChevronDown, BiChevronUp } from 'react-icons/bi';
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import top100Films from '../../data/top100Films';
+import { FormControl, InputAdornment, OutlinedInput } from '@mui/material';
+import { accountOptions, basedOptions, cityOptions, countryOptions, socialOptions } from '../../data/data';
 
 const Similiar = ({showFilter, setShowFilter}) => {
     const [showCreator, setShowCreator] = useState(true);
@@ -40,21 +42,25 @@ const Similiar = ({showFilter, setShowFilter}) => {
           <div className="form mt-6 items-center gap-4 grid grid-cols-2 md:grid-cols-4">
             <div className="">
               <p className="font-normal text-textThin text-sm mb-2">Creator Name</p>
-              <Autocomplete
-                disablePortal
-                options={top100Films}
-                sx={{ width: "100%" }}
-                renderInput={(params) => (
-                  <TextField {...params} label="Creator Name" />
-                )}
-              />
+              <FormControl sx={{ width: '100%' }} variant="outlined">
+              <OutlinedInput
+            id="outlined-adornment-creator-name"
+            className='py-2'
+            placeholder='Creator Name'
+            endAdornment={<InputAdornment position="end"><FaSearch className='text-textThin font-thin'/></InputAdornment>}
+            aria-describedby="outlined-creator-name-helper-text"
+            inputProps={{
+              'aria-label': 'creator-name',
+            }}
+          />
+        </FormControl>
             </div>
 
             <div className="">
               <p className="font-normal text-textThin text-sm mb-2">Based On</p>
               <Autocomplete
                 disablePortal
-                options={top100Films}
+                options={basedOptions}
                 sx={{ width: "100%" }}
                 renderInput={(params) => (
                   <TextField {...params} label="Based On" />
@@ -66,7 +72,7 @@ const Similiar = ({showFilter, setShowFilter}) => {
               <p className="font-normal text-textThin text-sm mb-2">Social Media</p>
               <Autocomplete
                 disablePortal
-                options={top100Films}
+                options={socialOptions}
                 sx={{ width: "100%" }}
                 renderInput={(params) => (
                   <TextField {...params} label="Social Media" />
@@ -99,6 +105,50 @@ const Similiar = ({showFilter, setShowFilter}) => {
                   </div>
                 </div>
           </div>
+
+          <div className="form mt-6 items-center gap-4 grid grid-cols-1 md:grid-cols-3">
+          <div className="">
+                  <p className="font-normal text-textThin text-sm mb-2">
+                    Creator Country
+                  </p>
+                  <Autocomplete
+                    disablePortal
+                    options={countryOptions}
+                    sx={{ width: "100%" }}
+                    renderInput={(params) => (
+                      <TextField {...params} label="Creator Country" />
+                    )}
+                  />
+                </div>
+
+                <div className="">
+                  <p className="font-normal text-textThin text-sm mb-2">
+                    Creator City
+                  </p>
+                  <Autocomplete
+                    disablePortal
+                    options={cityOptions}
+                    sx={{ width: "100%" }}
+                    renderInput={(params) => (
+                      <TextField {...params} label="Creator City" />
+                    )}
+                  />
+                </div>
+
+                <div className="">
+                  <p className="font-normal text-textThin text-sm mb-2">
+                    Account Type
+                  </p>
+                  <Autocomplete
+                    disablePortal
+                    options={accountOptions}
+                    sx={{ width: "100%" }}
+                    renderInput={(params) => (
+                      <TextField {...params} label="Account Type" />
+                    )}
+                  />
+                </div>
+              </div>
         </div>
 
         <div className="flex items-center justify-between mt-6">
