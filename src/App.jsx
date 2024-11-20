@@ -8,6 +8,7 @@ import Discovery from "./pages/Discovery";
 import Analyser from "./pages/Analyser";
 import Analytics from "./pages/Analytics";
 import Users from "./pages/admin/Users";
+import History from "./pages/History";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -33,6 +34,7 @@ function App() {
             <Route path="/discovery" element={<Discovery />} />
             <Route path="/analyser" element={<Analyser />} />
             <Route path="/analytics" element={<Analytics />} />
+            <Route path="/history" element={<History />} />
             <Route path="/users" element={<Users />} />
           </Route>
           <Route path="login" element={<Login />} />

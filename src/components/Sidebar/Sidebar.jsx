@@ -8,7 +8,7 @@ import {
   MdOutlineDomainVerification,
   MdReport,
 } from "react-icons/md";
-import { FaBars, FaChevronLeft, FaTasks, FaUsers } from "react-icons/fa";
+import { FaBars, FaChevronLeft, FaHistory, FaTasks, FaUsers } from "react-icons/fa";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { FaChartBar, FaChartColumn } from "react-icons/fa6";
 import { RiUserSearchLine } from "react-icons/ri";
@@ -148,6 +148,20 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 >
                   <FaChartColumn size={22} />
                   Brand Analytics
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to="/history"
+                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-100 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                    (pathname === "/history" ||
+                      pathname.includes("history")) &&
+                    "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
+                  }`}
+                >
+                  <FaHistory size={22} />
+                  History
                 </NavLink>
               </li>
             </ul>
