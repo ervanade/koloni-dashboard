@@ -8,9 +8,12 @@ import { PieChart } from "@mui/x-charts/PieChart";
 import { desktopOS, desktopOS2, valueFormatter } from "../data/data";
 import { BarChart, LineChart } from "@mui/x-charts";
 import ResultAnalyser from "../components/Analyser/ResultAnalyser";
+import Drawer from "../components/Modal/Drawer";
 
 const Analyser = () => {
   const [showResult, setShowResult] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+
 
   return (
     <div>
@@ -28,6 +31,7 @@ const Analyser = () => {
           <button
             className=" bg-sky-500 flex gap-2 items-center text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
             type="submit"
+            onClick={() => setIsDrawerOpen(true)}
           >
             History
           </button>
@@ -78,6 +82,7 @@ const Analyser = () => {
         <p className="text-textThin font-normal mt-2">Example: @cristiano</p>
       </Card>
     <ResultAnalyser title="tes" data={showResult}/> 
+    <Drawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen}/>
 
     </div>
   );
