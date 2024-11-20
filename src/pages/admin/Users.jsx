@@ -129,7 +129,7 @@ const Users = () => {
             // onClick={() => setShowResult(!showResult)}
           >
             {" "}
-            Tambah User
+            Add User
           </button>
             </div>
             <Paper sx={{ width: '100%', overflow: 'hidden' }} className='mt-6'>

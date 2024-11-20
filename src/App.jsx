@@ -9,6 +9,7 @@ import Analyser from "./pages/Analyser";
 import Analytics from "./pages/Analytics";
 import Users from "./pages/admin/Users";
 import History from "./pages/History";
+import Profile from "./pages/Profile";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -36,6 +37,7 @@ function App() {
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/history" element={<History />} />
             <Route path="/users" element={<Users />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
           <Route path="login" element={<Login />} />
         </Routes>
