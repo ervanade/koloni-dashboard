@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from '../../components/Card/Card';
-import { FaSearch } from 'react-icons/fa'
+import { FaSearch, FaUser } from 'react-icons/fa'
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -10,6 +10,8 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import DataTable from "react-data-table-component";
+import UserDefault from "../../assets/user/user-default.png";
+
 
 const columns = [
   { id: 'name', label: 'Email', minWidth: 100 },
@@ -36,11 +38,51 @@ function createData(name, code, population, discoverResult) {
 }
 
 const rows = [
-  createData('name@email.com', 'User Name', "Admin", <button className='px-4 py-2 text-white rounded-md bg-sky-500'>Edit</button>),
-  createData('name@email.com', 'User Name', "User", <button className='px-4 py-2 text-white rounded-md bg-sky-500'>Edit</button>),
-  createData('name@email.com', 'User Name', "User", <button className='px-4 py-2 text-white rounded-md bg-sky-500'>Edit</button>),
-  createData('name@email.com', 'User Name', "User", <button className='px-4 py-2 text-white rounded-md bg-sky-500'>Edit</button>),
-  createData('name@email.com', 'User Name', "User", <button className='px-4 py-2 text-white rounded-md bg-sky-500'>Edit</button>),
+  createData(<div className="flex items-center gap-2  text-sm font-publicSans"> <img
+            src={UserDefault}
+            className="rounded-full w-8 h-8"
+            alt="Brand Image"
+            onError={({ currentTarget }) => {
+              currentTarget.onerror = null; // prevents looping
+              currentTarget.src = UserDefault;
+            }}
+          /><p className=''>example@email.com</p></div>, 'User Name', "Admin", <button className='px-4 py-2 text-white rounded-md bg-sky-500'>Edit</button>),
+  createData(<div className="flex items-center gap-2  text-sm font-publicSans"> <img
+            src={UserDefault}
+            className="rounded-full w-8 h-8"
+            alt="Brand Image"
+            onError={({ currentTarget }) => {
+              currentTarget.onerror = null; // prevents looping
+              currentTarget.src = UserDefault;
+            }}
+          /><p className=''>example@email.com</p></div>, 'User Name', "User", <button className='px-4 py-2 text-white rounded-md bg-sky-500'>Edit</button>),
+  createData(<div className="flex items-center gap-2  text-sm font-publicSans"> <img
+            src={UserDefault}
+            className="rounded-full w-8 h-8"
+            alt="Brand Image"
+            onError={({ currentTarget }) => {
+              currentTarget.onerror = null; // prevents looping
+              currentTarget.src = UserDefault;
+            }}
+          /><p className=''>example@email.com</p></div>, 'User Name', "User", <button className='px-4 py-2 text-white rounded-md bg-sky-500'>Edit</button>),
+  createData(<div className="flex items-center gap-2  text-sm font-publicSans"> <img
+            src={UserDefault}
+            className="rounded-full w-8 h-8"
+            alt="Brand Image"
+            onError={({ currentTarget }) => {
+              currentTarget.onerror = null; // prevents looping
+              currentTarget.src = UserDefault;
+            }}
+          /><p className=''>example@email.com</p></div>, 'User Name', "User", <button className='px-4 py-2 text-white rounded-md bg-sky-500'>Edit</button>),
+  createData(<div className="flex items-center gap-2  text-sm font-publicSans"> <img
+            src={UserDefault}
+            className="rounded-full w-8 h-8"
+            alt="Brand Image"
+            onError={({ currentTarget }) => {
+              currentTarget.onerror = null; // prevents looping
+              currentTarget.src = UserDefault;
+            }}
+          /><p className=''>example@email.com</p></div>, 'User Name', "User", <button className='px-4 py-2 text-white rounded-md bg-sky-500'>Edit</button>),
 ];
 
 const Users = () => {
@@ -70,8 +112,18 @@ const Users = () => {
           </div>
           <Card>
             <div className='flex items-center justify-between'>
-            <h1 className="font-medium text-lg mb-4">Users Management</h1>
-            <button
+            <div className="relative ">
+            <button className="absolute left-2 top-1/2 -translate-y-1/2">
+              <FaSearch className='text-[#bebaba]'/>
+            </button>
+
+            <input
+              type="text"
+              placeholder="Search..."
+              className="w-full bg-white pl-9 pr-4 text-black outline outline-1 outline-zinc-200 focus:outline-primary dark:text-white py-2 rounded-md"
+            />
+          </div>            
+          <button
             className=" bg-sky-500 text-sm flex gap-2 items-center text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
             type="submit"
             // onClick={() => setShowResult(!showResult)}
