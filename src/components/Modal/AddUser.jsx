@@ -54,28 +54,6 @@ const AddUser = ({isDrawerOpen, setIsDrawerOpen}) => {
               <div className="mb-4 flex-col  sm:gap-1 w-full flex ">
                 <div className="">
                   <label
-                    className="block text-textBold text-sm font-medium mb-2"
-                    htmlFor="password"
-                  >
-                    Password
-                  </label>
-                </div>
-                <div className="">
-                  <input
-                    className={` bg-white appearance-none border border-[#cacaca] focus:border-sky-500
-                  "border-red-500" 
-               rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
-                    id="password"
-                    type="password"
-                    required
-                    placeholder="*******"
-                  />
-                </div>
-              </div>
-
-              <div className="mb-4 flex-col  sm:gap-1 w-full flex ">
-                <div className="">
-                  <label
                     className=" block text-textBold text-sm font-medium mb-2"
                     htmlFor="email"
                   >
@@ -95,12 +73,33 @@ const AddUser = ({isDrawerOpen, setIsDrawerOpen}) => {
                   />
                 </div>
               </div>
-
               
+              <div className="mb-4 flex-col  sm:gap-1 w-full flex ">
+                <div className="">
+                  <label
+                    className="block text-textBold text-sm font-medium mb-2"
+                    htmlFor="password"
+                  >
+                    Password
+                  </label>
+                </div>
+                <div className="">
+                  <input
+                    className={` bg-white appearance-none border border-[#cacaca] focus:border-sky-500
+                  "border-red-500" 
+               rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
+                    id="password"
+                    type="password"
+                    required
+                    placeholder="*******"
+                  />
+                </div>
+              </div>
+
               <div className="flex items-center justify-center">
 
               <button
-                className="bg-sky-500 disabled:bg-slate-500 cursor-not-allowed  text-white font-bold py-2 px-6 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"
+                className="bg-sky-500 disabled:bg-slate-500  text-white font-bold py-2 px-6 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"
                 type="submit"
 
               >
