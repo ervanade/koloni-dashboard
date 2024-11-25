@@ -13,11 +13,14 @@ import DataTable from "react-data-table-component";
 import UserDefault from "../../assets/user/user-default.png";
 import { CgSpinner } from "react-icons/cg";
 import { dataUser } from "../../data/dummyData";
+import AddUser from "../../components/Modal/AddUser";
 
 
 const Users = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+
 
   const [search, setSearch] = useState(""); // Initialize search state with an empty string
   const [data, setData] = useState([]);
@@ -98,6 +101,11 @@ const Users = () => {
         sortable: true,
       },
       {
+        name: "Credits",
+        selector: (row) => row.credits,
+        sortable: true,
+      },
+      {
         name: "Aksi",
         cell: (row) => (
           <div className="flex items-center space-x-2">
@@ -122,6 +130,10 @@ const Users = () => {
   };
     return (
         <div>
+          <AddUser 
+          isDrawerOpen={isDrawerOpen}
+          setIsDrawerOpen={setIsDrawerOpen}
+          />
           <div className="mb-6 flex items-center justify-between">
             <div>
               <h1 className="text-textBold font-bold text-2xl mb-1">
@@ -149,7 +161,7 @@ const Users = () => {
           <button
             className=" bg-sky-500 text-sm flex gap-2 items-center text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
             type="submit"
-            // onClick={() => setShowResult(!showResult)}
+            onClick={() => setIsDrawerOpen(true)}
           >
             {" "}
             Add User
