@@ -1,0 +1,1358 @@
+{
+  "success": true,
+  "message": "SUCCESS",
+  "data": {
+    "id": null,
+    "brand_id": "86",
+    "search_date": 1732277797172,
+    "platform": "Instagram",
+    "username": "raffinagita1717",
+    "email": "ransdigital.id@gmail.com",
+    "phone": null,
+    "instagram": null,
+    "tiktok": null,
+    "youtube": null,
+    "followers": 76295177,
+    "following": 7468,
+    "top_contents": [
+      {
+        "like": 2335151,
+        "comment": 20079,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbDQsA0ZqDdEaUH4Y93DXxcsnQNTqPJh%2BLmpiE4AfJzS2Rgrhv3MqpILUn4h2VAMm9zrfQMvbcNEF9weEwqq0guXt%2FYzeksBPYLUknr5ild2A%3D%3D",
+        "content_url": "https://www.instagram.com/p/DAavKPrvxdt/",
+        "description": "Alhamdulillah, terimakasih atas pemberian Gelar Doktor Kehormatan (Dr. HC) kepada saya dari Professor Kanoksak Likitpriwan, President Universal Institute of Professional Management (UIPM), Thailand.\n@uipmacademy / @uipmun \n\nMerupakan suatu kehormatan serta kebanggaan bagi saya  menerima gelar kehormatan di bidang \"Event Management and Global Digital Development\" atas kontribusi saya selama puluhan tahun dalam pengembangan industri hiburan konvensional, offline, serta digital di Indonesia.\n\nPenghargaan ini saya dedikasikan untuk Allah SWT serta orang-orang yang telah berjasa dalam kehidupan saya : keluarga, mentor, sehabat, rekan, tim, serta semua orang yang telah membimbing serta menginspirasi saya sampai saat ini. Penghargaan ini sejatinya juga milik kalian semua.\n\nSebagai seseorang yang memiliki kesempatan berinteraksi ke puluhan juta orang di berbagai platform digital dan juga secara event offline, saya akan terus berupaya memberikan pengaruh yang baik kepada pengikut saya dan terus membantu memotivasi mereka dalam mengejar impiannya. \n\nDan tentunya, saya bersama tim akan membantu menciptakan lingkungan dimana orang-orang mampu menyumbangkan bakat uniknya dan menciptakan pengalaman yang membawa kebahagiaan bagi orang lain.\n\n( Gelar Honoris Causa /Gelar Kehormatan adalah sebuah gelar kesarjanaan yang diberikan oleh suatu perguruan tinggi/universitas yang memenuhi syarat kepada seseorang, tanpa orang tersebut perlu untuk mengikuti dan lulus dari pendidikan yang sesuai untuk mendapatkan gelar kesarjanaannya tersebut )\n\nTerimakasih Semua \uD83D\uDE4F❤️\uD83C\uDDEE\uD83C\uDDE9"
+      },
+      {
+        "like": 1735828,
+        "comment": 10949,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZYmZ4eGQ1lFBg%2BQ9O%2FU0LcwzwwursWzPvn29LZ9VslhXHwJjV1POTyLmpE%2BkWj2cHhm5yVxeKDqM6XOSTOpcwogNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "content_url": "https://www.instagram.com/p/DAX7SaZv77W/",
+        "description": "AllahuAkbar \uD83E\uDD79 Alhamdulillah Bisa Temenin Rafathar Untuk Pertama Kali Cium Hajar Aswad"
+      },
+      {
+        "like": 1713174,
+        "comment": 12518,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZuBsMrjz9pWUFUC0x1z%2BfEoD%2BK1%2Bs0tzC60aihxgec%2FTpRXe19o11iafP4AZYAlJK9vnrDauXeYR%2BADMMYLMVtXt%2FYzeksBPYLUknr5ild2A%3D%3D",
+        "content_url": "https://www.instagram.com/p/DBa6JrrvjyH/",
+        "description": "Bismillah .... Ya Allah Ya Rabb .... \nMohon Doa dan Restu \uD83C\uDDEE\uD83C\uDDE9\uD83E\uDEE1 \uD83E\uDD79\uD83E\uDE75\uD83D\uDE4F\n\nSelasa 22 Oktober 2024"
+      },
+      {
+        "like": 1496159,
+        "comment": 11228,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZuBsMrjz9pWUFUC0x1z%2BfE5eXpBEaMrUvcwth8eHtqcpMCV8DmBuwfnFCnZYZZNG1gQYSMXa55QrYldBVxogFGXt%2FYzeksBPYLUknr5ild2A%3D%3D",
+        "content_url": "https://www.instagram.com/p/DBbTzWKvzHr/",
+        "description": "Saya ingin mengucapkan Terimakasih Kepada Presiden Republik Indonesia Bapak @prabowo atas kepercayaan dan kehormatan ini.\nSaya diminta membantu pemerintahan Beliau sebagai\n \nUtusan Khusus Presiden \uD83C\uDDEE\uD83C\uDDE9\n\" Bidang Pembinaan Generasi Muda dan Pekerja Seni \"\n\nJujur saja saya merasa sangat terkejut sekaligus sangat terhormat ketika dihubungi oleh Bapak Presiden, yang kemudian dilanjutkan dgn pertemuan langsung untuk menerima pengarahan beliau. InsyaAllah saya langsung menerima penugasan ini karena saya merasa sudah begitu banyak yang saya pribadi dapatkan dari Allah SWT dan dari Bangsa Indonesia sampai saat ini. Dan dibandingkan semua kebaikan yang sdh saya rasakan dan dapatkan, penugasan ini adalah kehormatan yang terbesar dan terbaik yang tidak pernah saya bayangkan. Untuk seluruh Masyarakat Indonesia saya mohon doa restu dari semua pihak agar saya bisa menyelesaikan penugasan ini dengan sebaik2nya. \nKarena ini waktunya saya membalas semua kebaikan yang saya sudah dapatkan selama ini, untuk TUHAN dan TANAH AIR \uD83C\uDDEE\uD83C\uDDE9\uD83E\uDEE1\uD83E\uDE75"
+      },
+      {
+        "like": 1472774,
+        "comment": 3646,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZYmZ4eGQ1lFBg%2BQ9O%2FU0LcILPiqOhQ8s2l4wGeMZJ9SZrnGPolIwBT3%2BNHMIE45P5dqHX%2BRuRBNaJciUf8sxoPXt%2FYzeksBPYLUknr5ild2A%3D%3D",
+        "content_url": "https://www.instagram.com/p/DAS-PrLPdOd/",
+        "description": "❤️❤️❤️❤️"
+      },
+      {
+        "like": 1378312,
+        "comment": 2028,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbDQsA0ZqDdEaUH4Y93DXxc2Qloa%2BxsvN8j5IySIm9iOuvXUJ6N95tbxZCS1oagtbo1aTdrX01x6bwGG%2FiE4qyhXt%2FYzeksBPYLUknr5ild2A%3D%3D",
+        "content_url": "https://www.instagram.com/p/DATEFYNsiyt/",
+        "description": "Alhamdulillah bisa ketemu lagi di Madinah ❤️\uD83D\uDE07"
+      },
+      {
+        "like": 1329678,
+        "comment": 4568,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbDQsA0ZqDdEaUH4Y93DXxc9QC3HlbRAuCzDVkZkJohvvEaKlvfyRAyTDnX1wtY0%2BUFQBK90YUsCU2T6LbemubuXt%2FYzeksBPYLUknr5ild2A%3D%3D",
+        "content_url": "https://www.instagram.com/p/DAUSGJxzQZs/",
+        "description": "Alhamdulillah Ya Allah ❤️ UMROH"
+      },
+      {
+        "like": 1137650,
+        "comment": 1458,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbDQsA0ZqDdEaUH4Y93DXxcXEvqGXDAsfSsaUucJQqgrglmO7ons%2BPW%2BNfVepa19BShwm2bBq5kYQC5eDeI4r4QXt%2FYzeksBPYLUknr5ild2A%3D%3D",
+        "content_url": "https://www.instagram.com/p/DAPdafXy9xY/",
+        "description": "Morning ❤️"
+      },
+      {
+        "like": 1002548,
+        "comment": 1602,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZuBsMrjz9pWUFUC0x1z%2BfEaIYNmho8DnhVtWoro6YHf0urZPnQVuSb1p0v65sgZVbgDxEDeuoYdLbXKBfiEtn7gNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "content_url": "https://www.instagram.com/p/DBQRk-zv71y/",
+        "description": "❤️ Home ❤️"
+      },
+      {
+        "like": 976770,
+        "comment": 1671,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZuBsMrjz9pWUFUC0x1z%2BfExbOabbFdFzAV6GlPvO83NutI%2BZbc4GVKrF3cOSt4kziMqEkUfePK7VbmyvmAxlxhXt%2FYzeksBPYLUknr5ild2A%3D%3D",
+        "content_url": "https://www.instagram.com/p/DCLn8x7POOR/",
+        "description": "❤️\uD83C\uDDEE\uD83C\uDDE9\uD83E\uDEE1"
+      },
+      {
+        "like": 547038,
+        "comment": 1724,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZYmZ4eGQ1lFBg%2BQ9O%2FU0LcLC2rYu78VM%2FASw1vO124X8O%2FNgk4mrwMINYkqXtgArU3agofVjigkpsXLZov%2FlxRXt%2FYzeksBPYLUknr5ild2A%3D%3D",
+        "content_url": "https://www.instagram.com/p/DBvi2tZPjXb/",
+        "description": "“Innalillahi wa inna ilaihi raji’un. \n\nTurut berduka cita atas berpulangnya Ayahanda tercinta @king_uyakuya / @astridkuya \uD83E\uDD72\n\nBpk Nararya Sutrasno\n\nSemoga Allah SWT memberikan ketabahan dan menguatkan hati keluarga yang ditinggalkan. \nAmin YRA"
+      },
+      {
+        "like": 380886,
+        "comment": 1481,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZYmZ4eGQ1lFBg%2BQ9O%2FU0LcaV7YIoV4gipHVP7HpV0FhjL%2BYnwXy1cN9RLrTKa9K7Qx24UKkV8fYtGnTWl3SN4QXt%2FYzeksBPYLUknr5ild2A%3D%3D",
+        "content_url": "https://www.instagram.com/p/DBqeTHzvd4-/",
+        "description": "Teteh Lily makan cantik dulu ya❤️"
+      },
+      {
+        "like": 517019,
+        "comment": 4089,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZYmZ4eGQ1lFBg%2BQ9O%2FU0Lc9fNLesqxKFZmRS9Eg8ZVzCiQZd%2FSa07r5OmngA%2BMVFKnEqMCQIRbNr3C5i16IixDXt%2FYzeksBPYLUknr5ild2A%3D%3D",
+        "content_url": "https://www.instagram.com/p/DBhXjnnoQ0A/",
+        "description": "Pamit Keluarga Sejenak untuk menuju Magelang \uD83D\uDE07\n\nPak Presiden @prabowo menyatakan Kabinet Merah Putih diajak ke Akademi Militer (Akmil) Magelang untuk membentuk kerja sama tim yang baik \uD83E\uDEE1\n\n\uD83C\uDDEE\uD83C\uDDE9Kabinet Merah Putih\uD83C\uDDEE\uD83C\uDDE9"
+      },
+      {
+        "like": 465140,
+        "comment": 9113,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZYmZ4eGQ1lFBg%2BQ9O%2FU0Lci7w99CezutHue0NyxpPKPBEObns8eNnFR1fGovksK0lmb8K%2FG7GQ2yiVoVxtjwPNgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "content_url": "https://www.instagram.com/p/DBjK1NyPOst/",
+        "description": "Tonton Sampai Selsai \uD83D\uDE4F\uD83E\uDD79Chemistry Magic Yang Luar Biasaaaa \uD83E\uDEE1\uD83C\uDDEE\uD83C\uDDE9 Merinding rasanya sampai ke HATI karena KEBERSAMAAN adalah Kata kuncinya !!!!\nDan yakinlah kita PASTI BISA !!!!!!\nDengan semangat kebersamaan, kita bisa lakukan yang terbaik !!!!\n\uD83D\uDD25MENYALA \uD83E\uDE75 SOLID ❤️\n\n\uD83D\uDE07 PRICELESS \uD83E\uDD79\n\n\uD83C\uDDEE\uD83C\uDDE9 Kabinet Merah Putih \uD83C\uDDEE\uD83C\uDDE9"
+      },
+      {
+        "like": 353046,
+        "comment": 1115,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZYmZ4eGQ1lFBg%2BQ9O%2FU0LcntXpLYB2Fl3LJRy%2FcV0NFJypUdLPGaCoMUZHmkVjLA6ID41DjWorCyB7bi9it3wtgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "content_url": "https://www.instagram.com/p/DCT922pPsdE/",
+        "description": "Teh Lily udah gede aja, baju-bajunya udah pada kekecilan semua! \uD83D\uDE06 Tumbuh terus ya sayang, makin gemesin aja ❤️❤️\uD83E\uDD70 \uD83E\uDD70"
+      },
+      {
+        "like": 531830,
+        "comment": 3850,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZYmZ4eGQ1lFBg%2BQ9O%2FU0Lce7OPo0yGsKXxSv1I3eg4lh%2F7W19BhXLsvZpDOqnwsQMKH1%2FU3%2BFMdAv5ufQPKAt3Xt%2FYzeksBPYLUknr5ild2A%3D%3D",
+        "content_url": "https://www.instagram.com/p/DCLUGuIvQ6A/",
+        "description": "10 November \uD83C\uDDEE\uD83C\uDDE9\uD83E\uDEE1 \n\"Selamat Hari Pahlawan\"\n\nSelamat Hari Pahlawan! Semoga seluruh semangat juang pahlawan Tanah Air bisa menjadi teladan bagi hidup dan kehidupan kita.\n\nTerima kasih kepada seluruh pahlawan atas pengorbanannya untuk bangsa ini.\nMari kita bersama-sama untuk meneruskan perjuangan para pahlawan demi Indonesia yang lebih baik dan maju! \nSelamat Hari Pahlawan! \uD83D\uDCAA\uD83C\uDFFB\uD83D\uDCAA\uD83C\uDFFB\uD83C\uDDEE\uD83C\uDDE9\uD83C\uDDEE\uD83C\uDDE9❤️❤️\n\n\uD83C\uDDEE\uD83C\uDDE9 Kabinet Merah Putih \uD83C\uDDEE\uD83C\uDDE9"
+      },
+      {
+        "like": 282932,
+        "comment": 707,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZYmZ4eGQ1lFBg%2BQ9O%2FU0Lc5SIjRslMxTry5RsmF%2B%2FsjXHTBCZZDtCl4T2s%2Fp8VvNTXpIuBRbdSsprao574M6JKXt%2FYzeksBPYLUknr5ild2A%3D%3D",
+        "content_url": "https://www.instagram.com/p/DBirzgyvGDS/",
+        "description": "APT with Aja❤️"
+      },
+      {
+        "like": 108573,
+        "comment": 1327,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZuBsMrjz9pWUFUC0x1z%2BfEensef2zwnRLZVXcAEOmHcow4YnyJ0hmO0u9ymydfDudaLFN81YL0rWXLq24%2Fv8IHXt%2FYzeksBPYLUknr5ild2A%3D%3D",
+        "content_url": "https://www.instagram.com/p/DCL7URlP42o/",
+        "description": "Jadi Terharu,, uda @vasco_ruseimy pertemukan #raffiahmad dengan keluarga besar #nagitaslavina di Ranah #minang .. #vaskoruseimy"
+      },
+      {
+        "like": 315463,
+        "comment": 958,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZYmZ4eGQ1lFBg%2BQ9O%2FU0LcHQ3AXFOI2DlvnNRbSVpLc9oema4fsnsd2IWlQGOUrc69uCl0KrFCeThaJWZiFc5wXt%2FYzeksBPYLUknr5ild2A%3D%3D",
+        "content_url": "https://www.instagram.com/p/DBggf_sPgL1/",
+        "description": "Sebelum Ke Magelang ❤️"
+      },
+      {
+        "like": 155683,
+        "comment": 1187,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZYmZ4eGQ1lFBg%2BQ9O%2FU0LcZEYm1583xOcwhqLb1unyaxic6AWmYXLBCesBTZpqkYgamCnl8tkDCXl0CJP18WLzXt%2FYzeksBPYLUknr5ild2A%3D%3D",
+        "content_url": "https://www.instagram.com/p/DBi3adBvbIh/",
+        "description": "ENDULL!!! \uD83D\uDE0D❤️\nSumpaaah, ini mi singapur favorit aku banget !!! Loppppp bangetttt @littlereddot.id ❤️❤️"
+      }
+    ],
+    "top_hashtags": [
+      { "name": "andrasoni", "value": 8.235299999999999 },
+      { "name": "bantenmajuadilmeratatidakkorup", "value": 6.4706 },
+      { "name": "raffiahmad", "value": 5.8824000000000005 },
+      { "name": "dimyatinatakusumah", "value": 5.8824000000000005 },
+      { "name": "mrdim", "value": 5.8824000000000005 },
+      { "name": "kabupatenbandungbarat", "value": 5.2941 },
+      { "name": "jajaransfestival", "value": 5.2941 },
+      { "name": "andradimyati", "value": 5.2941 },
+      { "name": "indonesia", "value": 4.7059 },
+      { "name": "bandungbarat", "value": 4.7059 },
+      { "name": "jejeasepamanah", "value": 4.1175999999999995 },
+      { "name": "utusankhususpresiden", "value": 4.1175999999999995 },
+      { "name": "generasimuda", "value": 4.1175999999999995 },
+      { "name": "sctvsports", "value": 4.1175999999999995 },
+      { "name": "pekerjaseni", "value": 4.1175999999999995 },
+      { "name": "tosi_sctv", "value": 4.1175999999999995 },
+      { "name": "sekolahgeratis", "value": 3.5294 },
+      { "name": "turnamenolahragaselebritiindon", "value": 3.5294 },
+      { "name": "nagitaslavina", "value": 3.5294 },
+      { "name": "thedudasminusone", "value": 3.5294 },
+      { "name": "bni46", "value": 3.5294 },
+      { "name": "sctvvarietyshow", "value": 3.5294 },
+      { "name": "gaspolsctv", "value": 2.9412000000000003 },
+      { "name": "berjamaah", "value": 2.9412000000000003 },
+      { "name": "jadiinmaumu", "value": 2.9412000000000003 },
+      { "name": "prabowo", "value": 2.9412000000000003 },
+      { "name": "tosiseason3", "value": 2.3529 },
+      { "name": "sekolahgratis", "value": 2.3529 },
+      { "name": "danautoba", "value": 2.3529 },
+      { "name": "bantenmaju", "value": 2.3529 }
+    ],
+    "top_interest": [
+      { "name": "Clothes, Shoes, Handbags & Accessories", "value": 20.6452 },
+      { "name": "Friends, Family & Relationships", "value": 20.4301 },
+      { "name": "Restaurants, Food & Grocery", "value": 16.4516 },
+      { "name": "Toys, Children & Baby", "value": 15.698899999999998 },
+      { "name": "Shopping & Retail", "value": 14.8387 },
+      { "name": "Electronics & Computers", "value": 13.0108 },
+      { "name": "Travel, Tourism & Aviation", "value": 12.258099999999999 },
+      { "name": "Camera & Photography", "value": 11.935500000000001 },
+      { "name": "Beauty & Cosmetics", "value": 11.1828 },
+      { "name": "Cars & Motorbikes", "value": 10.5376 },
+      { "name": "Television & Film", "value": 10.430100000000001 },
+      { "name": "Wedding", "value": 9.5699 },
+      { "name": "Music", "value": 8.064499999999999 },
+      { "name": "Sports", "value": 7.5269 },
+      { "name": "Healthy Lifestyle", "value": 6.2366 },
+      { "name": "Coffee, Tea & Beverages", "value": 5.4839 },
+      { "name": "Art & Design", "value": 5.0538 },
+      { "name": "Activewear", "value": 4.5161 },
+      { "name": "Luxury Goods", "value": 4.4086 },
+      { "name": "Fitness & Yoga", "value": 3.7634 },
+      { "name": "Pets", "value": 3.2258 },
+      { "name": "Gaming", "value": 3.1183 },
+      { "name": "Home Decor, Furniture & Garden", "value": 2.7957 },
+      { "name": "Business & Careers", "value": 2.5806 },
+      { "name": "Jewellery & Watches", "value": 2.2581 }
+    ],
+    "top_mentions": [
+      { "name": "raffinagita1717", "value": 37.0203 },
+      { "name": "rans_entertainment", "value": 9.4808 },
+      { "name": "andrasoni12", "value": 6.9977 },
+      { "name": "prabowo", "value": 6.9977 },
+      { "name": "ritchieismail", "value": 4.7404 },
+      { "name": "dimyati_natakusumah", "value": 4.2889 },
+      { "name": "gerindra", "value": 4.0632 },
+      { "name": "sufmi_dasco", "value": 3.8375 },
+      { "name": "h_asepismail", "value": 3.8375 },
+      { "name": "gadiiing", "value": 3.6117000000000004 },
+      { "name": "arielnoah", "value": 3.386 },
+      { "name": "desta80s", "value": 3.386 },
+      { "name": "dpdgerindrabanten", "value": 2.4831 },
+      { "name": "dimyatinatakusumah99", "value": 2.2573 },
+      { "name": "bni46", "value": 2.2573 },
+      { "name": "amanatnasional", "value": 2.2573 },
+      { "name": "ahmadmuzani2", "value": 2.0316 },
+      { "name": "brightgas", "value": 2.0316 },
+      { "name": "prabowo_gibran2", "value": 2.0316 }
+    ],
+    "profile_image": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZLvyftIRjMu1eI49ns0vK0A6IwAzzflwtX3rCBOSD5xHHW1t55Uw9w9q5TMmO5Uqa5NTHZttscVcUye5oe2P2BrOPQt%2BBH8xfdE2dL1avFgg%3D%3D",
+    "audience_likers": {
+      "gender": { "male": 24.049699999999998, "female": 75.9503 },
+      "top_city": [
+        {
+          "name": "Jakarta",
+          "value": 6.7866,
+          "latitude": -6.21462,
+          "longitude": 106.84513
+        },
+        {
+          "name": "Surabaya",
+          "value": 4.096,
+          "latitude": -7.274209,
+          "longitude": 112.723526
+        },
+        {
+          "name": "Bandung",
+          "value": 3.856,
+          "latitude": -6.92222,
+          "longitude": 107.60694
+        },
+        {
+          "name": "Yogyakarta",
+          "value": 2.7763,
+          "latitude": -7.80139,
+          "longitude": 110.36472
+        },
+        {
+          "name": "Semarang",
+          "value": 2.4336,
+          "latitude": -6.99306,
+          "longitude": 110.42083
+        },
+        {
+          "name": "Makassar",
+          "value": 2.3822,
+          "latitude": -5.14861,
+          "longitude": 119.43194
+        },
+        {
+          "name": "Medan",
+          "value": 1.9537,
+          "latitude": 3.58333,
+          "longitude": 98.66667
+        },
+        {
+          "name": "Malang",
+          "value": 1.9195,
+          "latitude": -7.9797,
+          "longitude": 112.6304
+        },
+        {
+          "name": "Denpasar",
+          "value": 1.2682,
+          "latitude": -8.65,
+          "longitude": 115.21667
+        },
+        {
+          "name": "Bogor",
+          "value": 1.2339,
+          "latitude": -6.59444,
+          "longitude": 106.78917
+        },
+        {
+          "name": "Bandar Lampung",
+          "value": 1.1654,
+          "latitude": -5.42917,
+          "longitude": 105.26111
+        },
+        {
+          "name": "Bekasi",
+          "value": 1.114,
+          "latitude": -6.2349,
+          "longitude": 106.9896
+        },
+        {
+          "name": "Jember",
+          "value": 0.9083000000000001,
+          "latitude": -8.17211,
+          "longitude": 113.69953
+        },
+        {
+          "name": "Pekan Baru",
+          "value": 0.9083000000000001,
+          "latitude": 0.541713,
+          "longitude": 101.461023
+        },
+        {
+          "name": "Padang",
+          "value": 0.9083000000000001,
+          "latitude": -0.94924,
+          "longitude": 100.35427
+        },
+        {
+          "name": "Palembang",
+          "value": 0.8055,
+          "latitude": -2.91673,
+          "longitude": 104.7458
+        },
+        {
+          "name": "Depok",
+          "value": 0.7712,
+          "latitude": -7.7625,
+          "longitude": 110.43167
+        },
+        {
+          "name": "Samarinda",
+          "value": 0.7541,
+          "latitude": -0.49167,
+          "longitude": 117.14583
+        },
+        {
+          "name": "Manado",
+          "value": 0.7369,
+          "latitude": 1.48218,
+          "longitude": 124.84892
+        },
+        {
+          "name": "Kendari",
+          "value": 0.6684,
+          "latitude": -3.9778,
+          "longitude": 122.51507
+        },
+        {
+          "name": "Banda Aceh",
+          "value": 0.6684,
+          "latitude": 5.558484,
+          "longitude": 95.326762
+        },
+        {
+          "name": "Gorontalo",
+          "value": 0.5827,
+          "latitude": 0.584049,
+          "longitude": 122.445668
+        },
+        {
+          "name": "Banjarmasin",
+          "value": 0.5656,
+          "latitude": -3.31987,
+          "longitude": 114.59075
+        },
+        {
+          "name": "Batam",
+          "value": 0.5484,
+          "latitude": 0.963081,
+          "longitude": 104.065621
+        },
+        {
+          "name": "Bengkulu",
+          "value": 0.5141,
+          "latitude": -3.80044,
+          "longitude": 102.26554
+        }
+      ],
+      "age_ranges": [
+        { "gender": "MALE", "age_range": "13-17", "value": 1.5262 },
+        { "gender": "MALE", "age_range": "18-24", "value": 9.0495 },
+        { "gender": "MALE", "age_range": "25-34", "value": 11.5007 },
+        { "gender": "MALE", "age_range": "35-44", "value": 1.8191 },
+        { "gender": "MALE", "age_range": "45-64", "value": 0.1542 },
+        { "gender": "FEMALE", "age_range": "13-17", "value": 9.8584 },
+        {
+          "gender": "FEMALE",
+          "age_range": "18-24",
+          "value": 32.088499999999996
+        },
+        { "gender": "FEMALE", "age_range": "25-34", "value": 28.3935 },
+        { "gender": "FEMALE", "age_range": "35-44", "value": 4.9367 },
+        { "gender": "FEMALE", "age_range": "45-64", "value": 0.6732 }
+      ]
+    },
+    "engagement_rate": 0.2583,
+    "influencer_name": "raffinagita1717",
+    "user_performance": {
+      "avg_likes_per_post": 197037,
+      "avg_comment_per_post": 876,
+      "avg_engagement_per_post": 0.002583,
+      "avg_reels": 2014747
+    },
+    "audience_breakdown": {
+      "gender": { "male": 34.5391, "female": 65.461 },
+      "top_city": [
+        {
+          "name": "Jakarta",
+          "value": 8.1081,
+          "latitude": -6.21462,
+          "longitude": 106.84513
+        },
+        {
+          "name": "Bandung",
+          "value": 3.1797,
+          "latitude": -6.92222,
+          "longitude": 107.60694
+        },
+        {
+          "name": "Surabaya",
+          "value": 2.0986000000000002,
+          "latitude": -7.274209,
+          "longitude": 112.723526
+        },
+        {
+          "name": "Yogyakarta",
+          "value": 2.0667999999999997,
+          "latitude": -7.80139,
+          "longitude": 110.36472
+        },
+        {
+          "name": "Makassar",
+          "value": 1.876,
+          "latitude": -5.14861,
+          "longitude": 119.43194
+        },
+        {
+          "name": "Semarang",
+          "value": 1.4307999999999998,
+          "latitude": -6.99306,
+          "longitude": 110.42083
+        },
+        {
+          "name": "Denpasar",
+          "value": 1.3037,
+          "latitude": -8.65,
+          "longitude": 115.21667
+        },
+        {
+          "name": "Medan",
+          "value": 1.3037,
+          "latitude": 3.58333,
+          "longitude": 98.66667
+        },
+        {
+          "name": "Bekasi",
+          "value": 1.2083,
+          "latitude": -6.2349,
+          "longitude": 106.9896
+        },
+        {
+          "name": "Bogor",
+          "value": 1.1447,
+          "latitude": -6.59444,
+          "longitude": 106.78917
+        },
+        {
+          "name": "Depok",
+          "value": 0.6995,
+          "latitude": -7.7625,
+          "longitude": 110.43167
+        },
+        {
+          "name": "Bandar Lampung",
+          "value": 0.6995,
+          "latitude": -5.42917,
+          "longitude": 105.26111
+        },
+        {
+          "name": "Pekan Baru",
+          "value": 0.6995,
+          "latitude": 0.541713,
+          "longitude": 101.461023
+        },
+        {
+          "name": "Malang",
+          "value": 0.6677,
+          "latitude": -7.9797,
+          "longitude": 112.6304
+        },
+        {
+          "name": "Palembang",
+          "value": 0.6677,
+          "latitude": -2.91673,
+          "longitude": 104.7458
+        },
+        {
+          "name": "Palu",
+          "value": 0.6041000000000001,
+          "latitude": -0.90833,
+          "longitude": 119.87083
+        },
+        {
+          "name": "Banda Aceh",
+          "value": 0.6041000000000001,
+          "latitude": 5.558484,
+          "longitude": 95.326762
+        },
+        {
+          "name": "Tangerang",
+          "value": 0.5723,
+          "latitude": -6.17806,
+          "longitude": 106.63
+        },
+        {
+          "name": "Gorontalo",
+          "value": 0.5405,
+          "latitude": 0.584049,
+          "longitude": 122.445668
+        }
+      ],
+      "top_country": [
+        { "code": "ID", "value": 91.00160000000001 },
+        { "code": "MY", "value": 2.035 },
+        { "code": "IN", "value": 0.9221 },
+        { "code": "US", "value": 0.6359 },
+        { "code": "BR", "value": 0.5087 },
+        { "code": "SA", "value": 0.3816 },
+        { "code": "RU", "value": 0.2862 }
+      ],
+      "age_ranges": [
+        { "gender": "MALE", "age_range": "13-17", "value": 2.0705999999999998 },
+        { "gender": "MALE", "age_range": "18-24", "value": 11.1239 },
+        { "gender": "MALE", "age_range": "25-34", "value": 15.6395 },
+        { "gender": "MALE", "age_range": "35-44", "value": 4.4495 },
+        { "gender": "MALE", "age_range": "45-64", "value": 1.2556 },
+        {
+          "gender": "FEMALE",
+          "age_range": "13-17",
+          "value": 6.294700000000001
+        },
+        { "gender": "FEMALE", "age_range": "18-24", "value": 24.3895 },
+        {
+          "gender": "FEMALE",
+          "age_range": "25-34",
+          "value": 26.986300000000004
+        },
+        {
+          "gender": "FEMALE",
+          "age_range": "35-44",
+          "value": 6.814099999999999
+        },
+        { "gender": "FEMALE", "age_range": "45-64", "value": 0.9764 }
+      ]
+    },
+    "look_alies_content_creators": [
+      {
+        "followers": 23592473,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbi%2FzCyzJZ6fg43%2BYylAG3q8KLRftvgsbMPLiQPJXCyZqC4Ip5NAMGul%2FLukFXNYaLd388AMakoD59N2WEPj6RFWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "profile_url": "https://www.instagram.com/maiaestiantyreal"
+      },
+      {
+        "followers": 1279858,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDaCDen1qTsfMZNhfrsrv9gSwR8soLQfScOVOqTnJa3TQHaaIbxeEDsdr639aDIU4tE8i7L4nIFGPl5gFBMr39slWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "profile_url": "https://www.instagram.com/sheilaon7"
+      },
+      {
+        "followers": 39389323,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUi0KUNdDEAL1zcQmkmzAMsQ1MTwmIVZcaeZPYLjrAZlxiBWKvNlWQmFMSWOlX01gLbWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "profile_url": "https://www.instagram.com/attahalilintar"
+      },
+      {
+        "followers": 23365036,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbi%2FzCyzJZ6fg43%2BYylAG3qqjBpDi6DCDdf0j8mJnEc67rZyovEniD0G6wMEt%2FsRau9buwZBY4MSgSJ%2FFJR9qzPWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "profile_url": "https://www.instagram.com/_irishbella_"
+      },
+      {
+        "followers": 7568554,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbi%2FzCyzJZ6fg43%2BYylAG3qhi5%2FLIj2emQ5RuJ35h97jfs6%2B3wXn1aPhV75prJlZACw2dLmQwwGnPPR7gzGzAhRgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "profile_url": "https://www.instagram.com/aniesbaswedan"
+      },
+      {
+        "followers": 620840,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbL6c3yyQ1fIuJmCtJ9JHtMlNS15HC0MJ7pEdXtFPRXxGLm5RfI7tpdBpU8GAfucqCanzmOSitXd3STzPuJBrkfWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "profile_url": "https://www.instagram.com/infoserang"
+      },
+      {
+        "followers": 459373,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZJmHB%2FJQVia9h6eajZVUPaog0SH4g310lvtoi43SoQnw4Oc0A9onzTGdPBf9HAxPU0%2BAgKXBpzwB1trPIR6bshWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "profile_url": "https://www.instagram.com/mochamadiriawan84"
+      },
+      {
+        "followers": 175071,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZaA66r0CnD4GFnNbQsizrHR67cFqKJ2mfnKr1dKJ8poGYx7QDoYZp9rwyv206wnJg2j%2FPAi4P%2F3VtXzBYEw9K5Wwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "profile_url": "https://www.instagram.com/maiaaleldultv"
+      },
+      {
+        "followers": 170707,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDa8D2QZszhqeCpK47Z0M%2BpOiNLiJy1bFaP3TmGrjCdzRkznz4pOU%2FOptuGi5fKF6sYHy%2FMwcvhfDJLLCyGFdDmcWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "profile_url": "https://www.instagram.com/ayuningtyas_aurora"
+      },
+      {
+        "followers": 4745353,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbi%2FzCyzJZ6fg43%2BYylAG3q%2B2hq%2FM5GJ3n%2BCOPYAP21gDsLxLJdvViFPVrRBtM9ChdNcEzKee95ZUaAoWeeclxsgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "profile_url": "https://www.instagram.com/detikcom"
+      },
+      {
+        "followers": 134804,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDY6%2BlN4nI8g5ywMDf0jnSXRxM7B4P3cXaHXMi6e25Pn8LaXEc8P5uHlSlaK5DVLq1ZveJelSIcpgIOHU6tkZHyMWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "profile_url": "https://www.instagram.com/lollyunyu"
+      },
+      {
+        "followers": 206417,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDaQT9J41vvqGc9ZgWo6tNKp3X63S7%2FcVuOjDBqAiOOkGyIQWFY4QAeE5AOslEoryQ0n3rcHA4EfuatZqMhVBzAT",
+        "profile_url": "https://www.instagram.com/ikangfawzi"
+      },
+      {
+        "followers": 36537601,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbi%2FzCyzJZ6fg43%2BYylAG3q8CGA9J2xDpaoyi8A0V05QThhpc95oRf7UieUN8%2FTRtZSVZ5j5kyKIzl3DmjN5Wi1gNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "profile_url": "https://www.instagram.com/aurelie.hermansyah"
+      },
+      {
+        "followers": 261565,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDY5nlApmG9cg%2Fwnt%2FQiAMMFjVwrY9GxGX8YravBxIz02%2FahSq9gtsxiyxrW72HvEcuOx6XXnmpPGOwf8X72v0a8Wwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "profile_url": "https://www.instagram.com/aplausmedia"
+      },
+      {
+        "followers": 15536781,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZsz1LVX8S%2FipPLQImJSERAldCEmLfUmEy0Uw5DralWWjiA0k5DalIPbfOGBifIY3qHN1nn7WKwduRjRb5v10D3rOPQt%2BBH8xfdE2dL1avFgg%3D%3D",
+        "profile_url": "https://www.instagram.com/irwansyah_15"
+      },
+      {
+        "followers": 1850285,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDY6%2BlN4nI8g5ywMDf0jnSXRhi5KkhD%2BjdkgUclZlKN7Ts%2FSGqHilIqS%2BMwfd4Do4LPuTPP2iqTxltO1Sv4HDS4WWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "profile_url": "https://www.instagram.com/fenitarie"
+      },
+      {
+        "followers": 17638,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZaA66r0CnD4GFnNbQsizrHn1d0DctXkqm8s8GZ9lwMW12Nk0%2BV9M%2BMPUO90dgQB3ufQSvpxd58qlg1EmFkFCw6gNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "profile_url": "https://www.instagram.com/ayuzahra2005"
+      },
+      {
+        "followers": 363815,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDathq8InmpwK5fXf5yRd0lvakmuGxQcew%2Bbs76BqM6f6cVc9H89pP5urvzFgJ7XngTyiPx8tuxY1Ft4HcYrh72tWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "profile_url": "https://www.instagram.com/dicoganinduto"
+      },
+      {
+        "followers": 135615,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDapkT93Ek4kXpMcLMvSEOzoohwIXnf0tD8pPfo561Uq5CqlVDVu0qnfbuJ65sJubPNHaCQBWt6Bd%2BU6nH9XczG6Wwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "profile_url": "https://www.instagram.com/mr_ceremony6"
+      },
+      {
+        "followers": 1352241,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUiMREzhn7qDU6mdCpCVv57rTWJtTV8VnA2U03t1aV89Dq0UM86mlDoTQ4MPcMqtLqlgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "profile_url": "https://www.instagram.com/nuonline_id"
+      },
+      {
+        "followers": 38955,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDY6%2BlN4nI8g5ywMDf0jnSXR0xt%2Fg3w8xr%2BRgGWLDn5QGwPZ4uXDtb9rwD%2Bu80SNmCfo%2BeNtwnUgAQHDXtXU5J4oWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "profile_url": "https://www.instagram.com/annisa_kuswanto"
+      },
+      {
+        "followers": 267885,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUimd7XUHsnmBPGBzq%2BtPJEaFzEJoIDXOGvagzHu2Gt5XnmpIc5qKhtV7Bvhnwjh8UtgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "profile_url": "https://www.instagram.com/golkar.indonesia"
+      },
+      {
+        "followers": 78110,
+        "image_url": "https://imgp.sptds.icu/v2?c%2BZ6gMi8pzyyj3IdIuQSsDBpwchEsdg%2FtvYkoZ9FuoT2W%2BjsHSqeq26QBkmrYWZl4ZWYgk0jbMxDzVmrtLwM3s%2FVb16A5VynOrLHevq8pZvulky4lkgVKbeFNxMPk1NH",
+        "profile_url": "https://www.instagram.com/darsalirboyo"
+      },
+      {
+        "followers": 111406,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDY9%2Br8r4giAd6E%2F2dMmpWM%2B2lnDFsUsQjcesPMSV4rod3YJC7dqxs22wVCJ3IuJ%2B13DiUOGy6SJb83BTvFmjVMcrOPQt%2BBH8xfdE2dL1avFgg%3D%3D",
+        "profile_url": "https://www.instagram.com/haikalfateer"
+      },
+      {
+        "followers": 292408,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZqwMezQuCGaZDpqOPjbUqjR9BGtOzKAu7w7xxaC%2BQVB%2BJ%2B9ba25mlNuVgwzakZvcv33Hbgbzwr0CXnZg6zW8cZWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "profile_url": "https://www.instagram.com/ctd.insider"
+      },
+      {
+        "followers": 2394889,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUiELajujddLZoAFWK2lyplOpmDqyNz6KP%2BTRM672VBMOcG%2BoqYXl0SBMLL4a5Q2%2FYyWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "profile_url": "https://www.instagram.com/mommy_starla"
+      },
+      {
+        "followers": 1738080,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbi%2FzCyzJZ6fg43%2BYylAG3qJtRWgUcaTXQIgBKTvg2YO6ij%2Bgjw4vrz4JtR%2BPWiJGEhugCzxqpPhdfK%2BupV4DFNgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "profile_url": "https://www.instagram.com/medantalk"
+      },
+      {
+        "followers": 76504,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZlWmgYQw8mX1KSF3S3nA7n9tym4wO64YtFLZ7OG5vmhGA3ryAbu28kURoqkcBiuQNUaW9f4jNlPQ7hZq38ipydWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "profile_url": "https://www.instagram.com/yulienasution.official"
+      },
+      {
+        "followers": 244646,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUiRUubZd%2FBsMyUjFoZRbVIO2RwOi%2Bc5G7lbb33ojk%2FqV2oJV1OSLYiLRdNeNdZ4G1EgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "profile_url": "https://www.instagram.com/baturajaupdate"
+      },
+      {
+        "followers": 1095995,
+        "image_url": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUiOcAXZ875DUwtjIZO3rbdcEOBuV0BmR%2ByYDF9m%2BtZIBeHIB%2B4oBERMZfUPKM8mIb6rOPQt%2BBH8xfdE2dL1avFgg%3D%3D",
+        "profile_url": "https://www.instagram.com/natalie_sarahs"
+      }
+    ],
+    "user_authenticity": [
+      { "name": "mass_followers", "value": 9.77 },
+      { "name": "suspicious", "value": 11.67 },
+      { "name": "influencers", "value": 3.37 },
+      { "name": "real", "value": 75.19 }
+    ],
+    "significant_followers": [
+      {
+        "externalId": "522969993",
+        "platformUsername": "ayutingting92",
+        "url": "https://www.instagram.com/ayutingting92",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbuwW0Ef%2BRcyAokGxb3wwGt3rlkKexfpAh7rhp%2FI0pd%2BoW%2BDZduDBgVRwBnL9Qzxkz2GDnWH5NqFIvZ9KaU%2BZ%2FZWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 57142193,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "225064794",
+        "platformUsername": "prillylatuconsina96",
+        "url": "https://www.instagram.com/prillylatuconsina96",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbi%2FzCyzJZ6fg43%2BYylAG3qB9qDFe9HtInNT%2BUZwDjKoXtSiOgXuyegXRoQZnAYquFxaIaiNhv1C63rQCIWur6SgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 56533308,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "24239929",
+        "platformUsername": "princessyahrini",
+        "url": "https://www.instagram.com/princessyahrini",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDY6%2BlN4nI8g5ywMDf0jnSXRUkIfrKPEA%2Fz8YMnKpr8CvFyB0r%2FxgV%2BiPQVUvTSlz9eVP6kgnzkDrzytt6E15jx6Wwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 45244719,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "26444210",
+        "platformUsername": "ruben_onsu",
+        "url": "https://www.instagram.com/ruben_onsu",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDY5nlApmG9cg%2Fwnt%2FQiAMMF1zWubdsYxtutm5KqBEzlceMAOQpnNNsk6cUQ5k9%2FEDK08fq9lhhj2kllPRYU6icUWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 45196375,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "361869464",
+        "platformUsername": "natashawilona12",
+        "url": "https://www.instagram.com/natashawilona12",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZ%2Fuc3eREMYRmlucP5lauWcDiWOWHjYOWTtXKQTSbR%2BHnB14Z16nQ5cg2ohst5qsztBEhZEvQ18Wxvn9fxbEsM3rOPQt%2BBH8xfdE2dL1avFgg%3D%3D",
+        "followerCount": 43291334,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "186744830",
+        "platformUsername": "attahalilintar",
+        "url": "https://www.instagram.com/attahalilintar",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUi0KUNdDEAL1zcQmkmzAMsQ1MTwmIVZcaeZPYLjrAZlxiBWKvNlWQmFMSWOlX01gLbWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 39389323,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "3261799",
+        "platformUsername": "gisel_la",
+        "url": "https://www.instagram.com/gisel_la",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZj4UrfWGAy5Wf6hqrZWyBGwAYCKffm7OcrSIPkGAvag5TEjhObZqCZjuxBeChIOu%2FTSLX2hPYPYrzg63GP%2B8eMWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 39121311,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "1948416",
+        "platformUsername": "lunamaya",
+        "url": "https://www.instagram.com/lunamaya",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDY6%2BlN4nI8g5ywMDf0jnSXRB8Q%2FA0YcjR6e3qeWPeuveZkBDQTMbuxIPdn7Cy8X4X56ujUe%2BynZNhhLwLSbajwcWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 38292307,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "2993265",
+        "platformUsername": "laudyacynthiabella",
+        "url": "https://www.instagram.com/laudyacynthiabella",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDY6%2BlN4nI8g5ywMDf0jnSXRB4hHD1iS0SzLXtQP03obrZ566tAhAlqPpw0y479QUfewN1mO%2FrpjfvZqSKZw4qK4gNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 37461360,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "1832652847",
+        "platformUsername": "aurelie.hermansyah",
+        "url": "https://www.instagram.com/aurelie.hermansyah",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbi%2FzCyzJZ6fg43%2BYylAG3q8CGA9J2xDpaoyi8A0V05QThhpc95oRf7UieUN8%2FTRtZSVZ5j5kyKIzl3DmjN5Wi1gNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 36537601,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "1440116683",
+        "platformUsername": "riaricis1795",
+        "url": "https://www.instagram.com/riaricis1795",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbi%2FzCyzJZ6fg43%2BYylAG3q8SWX6iJBHcJDt4ffKNTSR6kzzuqUH%2Bv98MNHiccdEMe%2BdwMwMm%2BflAnR5s8%2BG8pSgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 36242183,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "27058559",
+        "platformUsername": "sarwendah29",
+        "url": "https://www.instagram.com/sarwendah29",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbi%2FzCyzJZ6fg43%2BYylAG3qU9S7hBTCd7v6b7P%2BH5r%2FBSMJt3FNssAnCYGu7V1%2BPStVnTyhGqOcocQtGg%2BSTorFWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 35813278,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "173715345",
+        "platformUsername": "ashanty_ash",
+        "url": "https://www.instagram.com/ashanty_ash",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUi50fG0mYOL8zV%2FdVklPoMNeck%2BVh1EBsg0JgxuC6PmHfMEFRS5jOnUgROQ6oI0GZSgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 33731269,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "1190758433",
+        "platformUsername": "rinanose16",
+        "url": "https://www.instagram.com/rinanose16",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUiNLjjZNz9UGrbtXSbkgRb%2FTgRyrLyoR3Nrw6BCmdCOWLEq1Ro73ccT348imxskcOsWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 31175677,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "52867781",
+        "platformUsername": "zaskiasungkar15",
+        "url": "https://www.instagram.com/zaskiasungkar15",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbi%2FzCyzJZ6fg43%2BYylAG3q1XAa8CEID8Uo1ilwo5PR45%2FLtThoRBMnbFBw7fiWHbBDheqMVF4ryJtHh8dMkhiFrOPQt%2BBH8xfdE2dL1avFgg%3D%3D",
+        "followerCount": 31173153,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "12708478",
+        "platformUsername": "ivan_gunawan",
+        "url": "https://www.instagram.com/ivan_gunawan",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbi%2FzCyzJZ6fg43%2BYylAG3qAA3wqTC%2FTjf2gAoZXaNZUeDZszTAaBWFVhJWQQrhXp9yUnf6H3gVwTE6CfKrgc4vgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 31145139,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "21130126",
+        "platformUsername": "syahnazs",
+        "url": "https://www.instagram.com/syahnazs",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUinL%2B4yTBZBXZh4qF8TAaJs8HOoRDs8PjL1ruBlb%2F9cSTHhpbawDHL6G81tCIxyzmggNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 30034537,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "5735890",
+        "platformUsername": "chelseaoliviaa",
+        "url": "https://www.instagram.com/chelseaoliviaa",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDb05bk9EAgW7oQoJCzCEnmGn29p%2FNvFO4p%2BY45PrgJK9XI%2BOL0y3Jc%2FsUqym2uTFs4fgpZnIHJEiVBWkCtF5utbgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 28848200,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "1542976680",
+        "platformUsername": "lestikejora",
+        "url": "https://www.instagram.com/lestikejora",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUixLEc3l10SlUpFXTXzdDqo42KEMGMls6dmsSLXFuFFyTYUwZyn7METFn%2FlbOCO%2BhDWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 28471839,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "34523802",
+        "platformUsername": "bramastavrl",
+        "url": "https://www.instagram.com/bramastavrl",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUiBwgyJf5WERq0yDWNqsSTadeNbxSW9gGecr2UpScYS%2BxjA2g%2FgI%2FFwCYcAvbMtbkegNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 27422365,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "5729380",
+        "platformUsername": "shireensungkar",
+        "url": "https://www.instagram.com/shireensungkar",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbi%2FzCyzJZ6fg43%2BYylAG3qAcd%2BbqxLdQXD9stBihwCyT3MuZ2gwTEbXyI34i5gNQ9vUzDB79EJ3AyTIxVeFPBQrOPQt%2BBH8xfdE2dL1avFgg%3D%3D",
+        "followerCount": 27391811,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "6477149",
+        "platformUsername": "ramadhaniabakrie",
+        "url": "https://www.instagram.com/ramadhaniabakrie",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbaCb5f6TwzoIEOKbQbNgK6xvN8qgMdAxtdcMXmu4VII6WmhnvC7zlJ9n19HyrN72%2Bih97C4Aboi%2FIpGbuqHwwxrOPQt%2BBH8xfdE2dL1avFgg%3D%3D",
+        "followerCount": 26225237,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "4976175",
+        "platformUsername": "jscmila",
+        "url": "https://www.instagram.com/jscmila",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZamZ5Z7xQIUNO094fHaxAdW%2BteQnyMP7JuY0ZXZ%2Bbv2YN8dIgc3%2FHENMNELknwU3qiCGO4AbErd4kRzlv3EdXEWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 25809057,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "6359592",
+        "platformUsername": "gadiiing",
+        "url": "https://www.instagram.com/gadiiing",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDaCDen1qTsfMZNhfrsrv9gSEcD6IWY6gOSzDqp2W3O%2FZnJ2oza%2BoUkVbPkv36Yk89%2F8nWn1AbixoTMC08hA8FMXWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 24844987,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "11096738",
+        "platformUsername": "sandradewi88",
+        "url": "https://www.instagram.com/sandradewi88",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZxQuHbcQpDjIZGsZ570LujKFxcDnnBJgsIrpn7cx182cRGDAOUWwmlu67mJG%2BQ7wUvUpybs%2BWTwvWJGa3W5eNSrOPQt%2BBH8xfdE2dL1avFgg%3D%3D",
+        "followerCount": 24187199,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "367005646",
+        "platformUsername": "dagelan",
+        "url": "https://www.instagram.com/dagelan",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYwCkfbMxA5hs7Mya6WamPUK%2FkKits%2BW6adxbqj1bB9S5BBodEYezfSCl6EhXwmAP3BdnA9Jjct5yEnJeBy12vvWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 23881351,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "9653346",
+        "platformUsername": "itsmebcl",
+        "url": "https://www.instagram.com/itsmebcl",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUi0BRxwNqg%2FQniege7PsDmMyBIFA0Bgc8u%2B9cDafuZOFy1jpro4g%2BymGBsJyBdHy0ZWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 23707226,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "625162159",
+        "platformUsername": "maiaestiantyreal",
+        "url": "https://www.instagram.com/maiaestiantyreal",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbi%2FzCyzJZ6fg43%2BYylAG3q8KLRftvgsbMPLiQPJXCyZqC4Ip5NAMGul%2FLukFXNYaLd388AMakoD59N2WEPj6RFWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 23592473,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "2256123452",
+        "platformUsername": "_irishbella_",
+        "url": "https://www.instagram.com/_irishbella_",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbi%2FzCyzJZ6fg43%2BYylAG3qqjBpDi6DCDdf0j8mJnEc67rZyovEniD0G6wMEt%2FsRau9buwZBY4MSgSJ%2FFJR9qzPWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 23365036,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "1165577989",
+        "platformUsername": "ichasoebandono",
+        "url": "https://www.instagram.com/ichasoebandono",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDathq8InmpwK5fXf5yRd0lvoGJiuf7SR3A8ORvwvilrmXsCSYplImfRDzKHwqkm1NeTi9BAuL22C%2FB2TpXvwdF%2FgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 23115951,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "775564047",
+        "platformUsername": "irfanhakim75",
+        "url": "https://www.instagram.com/irfanhakim75",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZ1lZ8aZKTZKMNs3u6PocJJC49NK03CRLd4P%2FW16WB4O%2BuvnpbreGFTmd4SY2yW1L2fbsfIa5cNYBavIAr3NLWUgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 23053707,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "241440345",
+        "platformUsername": "zaskiadyamecca",
+        "url": "https://www.instagram.com/zaskiadyamecca",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZ%2Fuc3eREMYRmlucP5lauWcVEDX1IGoQG4XnPf6NpLQQDHlkJqdlFUc6H9OJ4mIcKaLtHOH73LuiQGNNMlqqZhOWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 22519565,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "284329260",
+        "platformUsername": "felicyangelista_",
+        "url": "https://www.instagram.com/felicyangelista_",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDathq8InmpwK5fXf5yRd0lv1d4QUvP%2BYDIimabastkgXXah8xSRp%2BeZYI9j%2Bb6kVYPF0Xauvph11Ulua3DIqV2JWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 22428015,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "25980770",
+        "platformUsername": "raditya_dika",
+        "url": "https://www.instagram.com/raditya_dika",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDY6%2BlN4nI8g5ywMDf0jnSXRbUfyDnEe96oStikBAOKOEgImobhsRO1NkIagmrrm%2Bwg1wA2bcuBsDmM5Lg21ITSEgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 22322856,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "40528624",
+        "platformUsername": "ridwankamil",
+        "url": "https://www.instagram.com/ridwankamil",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDY6%2BlN4nI8g5ywMDf0jnSXRioHKHTEUsIkbEVYpe%2Bsn%2B0GrVnLqpRdkv5roIzGgbCrx%2FnI%2BjLJMFmfqGKgKZV0PgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 21836675,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "146021669",
+        "platformUsername": "okisetianadewi",
+        "url": "https://www.instagram.com/okisetianadewi",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDY5nlApmG9cg%2Fwnt%2FQiAMMFesS2KezdjtzaLYloBEp%2Fhktm180MVY3PQwFe7Yw2H2HDl8Y8jL34iQTkITirz3sEWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 21295609,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "3163641671",
+        "platformUsername": "syifahadju",
+        "url": "https://www.instagram.com/syifahadju",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZqwMezQuCGaZDpqOPjbUqjrXe1ocS7DUKEzKEnP2whJA5nYVCuhhiBfY94SXj795iTuqUrRZMs4bB4XIkCyfejWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 21110346,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "267809931",
+        "platformUsername": "ollaramlan",
+        "url": "https://www.instagram.com/ollaramlan",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbi%2FzCyzJZ6fg43%2BYylAG3qvBJg0tZmLVce2aT4QJXi77oPmvum4ZanQ9QJo0sQwIXfSs8CNNi%2Fae53bUKMmFOhgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 21013030,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "289656497",
+        "platformUsername": "alghazali7",
+        "url": "https://www.instagram.com/alghazali7",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbuwW0Ef%2BRcyAokGxb3wwGtgcCVYSYsqtDwZyLVPPJ6f1ncqgbg4XIHtJVBjLv%2FmHbkMFvSeqfWwhwsVbev30kjgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 20871285,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "9902057",
+        "platformUsername": "ussypratama",
+        "url": "https://www.instagram.com/ussypratama",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZV%2BMI1sY1L8JvHJB4dXZLAmWvKd7evLnvm6ckZ2oBOQeCmPkd5zjKRK%2Bv3I9BHEsdzTx8R51uVSYFvfu9nmknaWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 20353847,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "30585021",
+        "platformUsername": "juliaperrezz",
+        "url": "https://www.instagram.com/juliaperrezz",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDaBR8%2BTE%2F5tCvVVkQBbXCWR%2BExXncZp0FLS%2BOVGGiCkqic2mYNRyqELwrEHkFN8cJT6LpbINxnf7txXsg2uNNF5Wwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 20239316,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "606119027",
+        "platformUsername": "inul.d",
+        "url": "https://www.instagram.com/inul.d",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbuwW0Ef%2BRcyAokGxb3wwGtMDmy%2B9gzRFnISOLb%2F7%2FN%2BLFR8gs0xUU8edp7ts7n9x7fUfQTWguMeo%2FVNx1nTP%2FgWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 20200016,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "328482450",
+        "platformUsername": "aliandooo",
+        "url": "https://www.instagram.com/aliandooo",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbog4iq8N7O8Ilpw2Uf5l9fViTgIiQoQU4Z1SlHEkIqJYg6NTJe599R1jzCo8A%2BlIJM76bepyCERSGjetfyLzpRWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 19467562,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "1595758878",
+        "platformUsername": "isdadahlia",
+        "url": "https://www.instagram.com/isdadahlia",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDaou00V3dIWSDHq8sLncF6YkMCx4UY7G3s4q9r3vBaST4hbmtaRIGH1ITsxuKB%2FHMoHF7gBMgZah1xPiTngPbeIWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 18903174,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "2016740443",
+        "platformUsername": "nissa_sabyan",
+        "url": "https://www.instagram.com/nissa_sabyan",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbi%2FzCyzJZ6fg43%2BYylAG3q1FzugG%2F0vntq1Sv1AKuq7T2wWVD2RkBzfaRDlJJ27Su4ELv4RDMvL1396oCvH%2FccgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 18577312,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "1044872779",
+        "platformUsername": "kartikaputriworld",
+        "url": "https://www.instagram.com/kartikaputriworld",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUiDApXcSfXHra2d3u11Cn2JfMBKe8zmH6ogfSnIQc%2FSSe9%2BJDoc1a4R%2FFEdVWIImAXgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 18487192,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "12945120",
+        "platformUsername": "itsrossa910",
+        "url": "https://www.instagram.com/itsrossa910",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUiLs5mvqmEtgVA6yeWputEVyAHexETmN%2FQQcYoR86voYIxAspgtz3t1M4ii9RYIK7YWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 18125115,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "4661600",
+        "platformUsername": "rickyharun",
+        "url": "https://www.instagram.com/rickyharun",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDb05bk9EAgW7oQoJCzCEnmG%2BoTLNTm47H6Dra5uFJ8FBdfS0g0zCdRAEw9Zt0czaYLvg3eUAjSlDAsD%2BKVTPztegNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 18026328,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "12808342",
+        "platformUsername": "citraciki",
+        "url": "https://www.instagram.com/citraciki",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZJmHB%2FJQVia9h6eajZVUPaIN%2Bh3EzAuQ9UC91u6oL8Rnc%2FkCIWze7GMNmEfplGmAcFpVCNJ0UialWdDuUmOdXJgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 17824896,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "3154294314",
+        "platformUsername": "fuji_an",
+        "url": "https://www.instagram.com/fuji_an",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUiJ%2Be%2FLTxnKlpbNLNrrtIGgp%2B38qNs8kEssm6wjwaPqMX0RemVuZdp4REYw%2BX1FxgNWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 17632668,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "2296809571",
+        "platformUsername": "supercarblondie",
+        "url": "https://www.instagram.com/supercarblondie",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZV%2BMI1sY1L8JvHJB4dXZLAiSs82UvUm%2BnRVomhjkNOxym%2F%2BKmweVE%2FAmRNdw0%2Bkwxw7%2FCL6bp7a5BOFRHpEh0DgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 17300583,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "25705198",
+        "platformUsername": "melly_goeslaw",
+        "url": "https://www.instagram.com/melly_goeslaw",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUic%2FcTLIhSGbZFtY%2BAdKA9kwbNn0DNk4oFDwLLAmfZLTgg9iFkRt6sz8w3pDAd0MQjWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 16838869,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "19361140",
+        "platformUsername": "showimah",
+        "url": "https://www.instagram.com/showimah",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDbGeCY4WbaUvEZ8r8Z%2B4khb8cLH63seg7oxfdRMp%2FjRAsjyviDVTBTOytqmZyk%2BzKNWcjfoFAo0FVbHKwUz9NRFWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 16791598,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "29837504",
+        "platformUsername": "titi_kamall",
+        "url": "https://www.instagram.com/titi_kamall",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZ%2BMq1TZGNxjKugfHND%2FZ8TFXoG5mBSy04QWxAfelKWNDLXOJqnodVuwtB%2BU%2FxMWEZtBvQQlLF8VSFqFzg6GqtOWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 16458707,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "188236161",
+        "platformUsername": "chelseaislan",
+        "url": "https://www.instagram.com/chelseaislan",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDapkT93Ek4kXpMcLMvSEOzoL%2B67OInmyN9nvdqLcGfvWgd4IDYHG9yskokX942AOv2XmP7BDYBH0T%2Fm2jZDtMcdrOPQt%2BBH8xfdE2dL1avFgg%3D%3D",
+        "followerCount": 16038668,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "12830386",
+        "platformUsername": "audimarissa",
+        "url": "https://www.instagram.com/audimarissa",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUi81XvrHiToyoXkh%2B0AVwBFlSNz3FiLWa9%2BA0rC5ha0Dvjmh%2BLQ0OEWqXDK2PNKtKvWwq5%2BhsabX0Nc9aXCBbcsw%3D%3D",
+        "followerCount": 15904098,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "23400298572",
+        "platformUsername": "nikitamirzanimawardi_172",
+        "url": "https://www.instagram.com/nikitamirzanimawardi_172",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDYEJpPTTZOdwDEdj3qpQOUisSfNtA0ngTwkpSGyfjffeRc58rccKaOvF%2Bc2nO4NZcct%2B%2Fosy2aw1xs4nwY70CKcgNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 15644411,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "1315886124",
+        "platformUsername": "cita_rahayu",
+        "url": "https://www.instagram.com/cita_rahayu",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDY6%2BlN4nI8g5ywMDf0jnSXRAUe1lsoZf5egkkAT77f%2BKNZ1aSndifTpI3QfhW2dtwwbFSPBAVF6rwBp367xanb8gNlJUwVYqIiahjW32e%2BqWA%3D%3D",
+        "followerCount": 15627029,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "207462511",
+        "platformUsername": "irwansyah_15",
+        "url": "https://www.instagram.com/irwansyah_15",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDZsz1LVX8S%2FipPLQImJSERAldCEmLfUmEy0Uw5DralWWjiA0k5DalIPbfOGBifIY3qHN1nn7WKwduRjRb5v10D3rOPQt%2BBH8xfdE2dL1avFgg%3D%3D",
+        "followerCount": 15536781,
+        "subscriberCount": null,
+        "isVerified": true
+      },
+      {
+        "externalId": "23767166",
+        "platformUsername": "dindahw",
+        "url": "https://www.instagram.com/dindahw",
+        "imageUrl": "https://imgp.sptds.icu/v2?mb0KwpL92uYofJiSjDn1%2F6peL1lBwv3s%2BUvShHERlDaDVMq5CUHy%2BkcsdYgF20nDEw0%2BZL5jx2SBvD47oNBWhKCYsxke4gGZblEpqasv3qxvLdcDHzDDIIWZ0Dj3c3bxrOPQt%2BBH8xfdE2dL1avFgg%3D%3D",
+        "followerCount": 15141512,
+        "subscriberCount": null,
+        "isVerified": true
+      }
+    ],
+    "significant_commenters": null,
+    "follower_reachabilities": [
+      { "followingRange": "-500", "value": 67.47999999999999 },
+      { "followingRange": "500-1000", "value": 16.75 },
+      { "followingRange": "1000-1500", "value": 6.0 },
+      { "followingRange": "1500-", "value": 9.77 }
+    ],
+    "reputation_histories": [
+      {
+        "month": "2024-05",
+        "followerCount": 75869498,
+        "subscriberCount": null,
+        "followingCount": 6837,
+        "averageLikes": 256658,
+        "totalViews": null,
+        "averageViews": null,
+        "averageComments": null,
+        "totalLikes": null
+      },
+      {
+        "month": "2024-06",
+        "followerCount": 76001247,
+        "subscriberCount": null,
+        "followingCount": 6928,
+        "averageLikes": 279016,
+        "totalViews": null,
+        "averageViews": null,
+        "averageComments": null,
+        "totalLikes": null
+      },
+      {
+        "month": "2024-07",
+        "followerCount": 76144454,
+        "subscriberCount": null,
+        "followingCount": 7022,
+        "averageLikes": 252202,
+        "totalViews": null,
+        "averageViews": null,
+        "averageComments": null,
+        "totalLikes": null
+      },
+      {
+        "month": "2024-08",
+        "followerCount": 76233828,
+        "subscriberCount": null,
+        "followingCount": 7126,
+        "averageLikes": 206571,
+        "totalViews": null,
+        "averageViews": null,
+        "averageComments": null,
+        "totalLikes": null
+      },
+      {
+        "month": "2024-09",
+        "followerCount": 75991592,
+        "subscriberCount": null,
+        "followingCount": 7203,
+        "averageLikes": 197077,
+        "totalViews": null,
+        "averageViews": null,
+        "averageComments": null,
+        "totalLikes": null
+      },
+      {
+        "month": "2024-10",
+        "followerCount": 76128640,
+        "subscriberCount": null,
+        "followingCount": 7328,
+        "averageLikes": 203923,
+        "totalViews": null,
+        "averageViews": null,
+        "averageComments": null,
+        "totalLikes": null
+      },
+      {
+        "month": "2024-11",
+        "followerCount": 76295177,
+        "subscriberCount": null,
+        "followingCount": 7468,
+        "averageLikes": 197037,
+        "totalViews": null,
+        "averageViews": null,
+        "averageComments": null,
+        "totalLikes": null
+      }
+    ]
+  }
+}

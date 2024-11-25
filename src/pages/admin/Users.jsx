@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useMemo, useState } from "react";
 import Card from '../../components/Card/Card';
 import { FaSearch, FaUser } from 'react-icons/fa'
 import Paper from '@mui/material/Paper';
@@ -11,83 +11,106 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import DataTable from "react-data-table-component";
 import UserDefault from "../../assets/user/user-default.png";
+import { CgSpinner } from "react-icons/cg";
+import { dataUser } from "../../data/dummyData";
 
-
-const columns = [
-  { id: 'name', label: 'Email', minWidth: 100 },
-  { id: 'code', label: 'User Name', minWidth: 100 },
-  {
-    id: 'population',
-    label: 'Role',
-    minWidth: 100,
-    align: 'center',
-    format: (value) => value.toLocaleString('en-US'),
-  },
-  {
-    id: 'discoverResult',
-    label: 'Action',
-    minWidth: 100,
-    align: 'center',
-    format: (value) => value.toLocaleString('en-US'),
-  },
-];
-
-function createData(name, code, population, discoverResult) {
-  // const density = population / size;
-  return { name, code, population, discoverResult };
-}
-
-const rows = [
-  createData(<div className="flex items-center gap-2  text-sm font-publicSans"> <img
-            src={UserDefault}
-            className="rounded-full w-8 h-8"
-            alt="Brand Image"
-            onError={({ currentTarget }) => {
-              currentTarget.onerror = null; // prevents looping
-              currentTarget.src = UserDefault;
-            }}
-          /><p className=''>example@email.com</p></div>, 'User Name', "Admin", <button className='px-4 py-2 text-white rounded-md bg-sky-500'>Edit</button>),
-  createData(<div className="flex items-center gap-2  text-sm font-publicSans"> <img
-            src={UserDefault}
-            className="rounded-full w-8 h-8"
-            alt="Brand Image"
-            onError={({ currentTarget }) => {
-              currentTarget.onerror = null; // prevents looping
-              currentTarget.src = UserDefault;
-            }}
-          /><p className=''>example@email.com</p></div>, 'User Name', "User", <button className='px-4 py-2 text-white rounded-md bg-sky-500'>Edit</button>),
-  createData(<div className="flex items-center gap-2  text-sm font-publicSans"> <img
-            src={UserDefault}
-            className="rounded-full w-8 h-8"
-            alt="Brand Image"
-            onError={({ currentTarget }) => {
-              currentTarget.onerror = null; // prevents looping
-              currentTarget.src = UserDefault;
-            }}
-          /><p className=''>example@email.com</p></div>, 'User Name', "User", <button className='px-4 py-2 text-white rounded-md bg-sky-500'>Edit</button>),
-  createData(<div className="flex items-center gap-2  text-sm font-publicSans"> <img
-            src={UserDefault}
-            className="rounded-full w-8 h-8"
-            alt="Brand Image"
-            onError={({ currentTarget }) => {
-              currentTarget.onerror = null; // prevents looping
-              currentTarget.src = UserDefault;
-            }}
-          /><p className=''>example@email.com</p></div>, 'User Name', "User", <button className='px-4 py-2 text-white rounded-md bg-sky-500'>Edit</button>),
-  createData(<div className="flex items-center gap-2  text-sm font-publicSans"> <img
-            src={UserDefault}
-            className="rounded-full w-8 h-8"
-            alt="Brand Image"
-            onError={({ currentTarget }) => {
-              currentTarget.onerror = null; // prevents looping
-              currentTarget.src = UserDefault;
-            }}
-          /><p className=''>example@email.com</p></div>, 'User Name', "User", <button className='px-4 py-2 text-white rounded-md bg-sky-500'>Edit</button>),
-];
 
 const Users = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const [search, setSearch] = useState(""); // Initialize search state with an empty string
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  const handleSearch = (event) => {
+    const value = event.target.value.toLowerCase();
+    setSearch(value);
+
+    const filtered = data.filter((item) => {
+      // return (
+
+      // );
+    });
+
+    setFilteredData(filtered);
+  };
+
+  const fetchUserData = async () => {
+    setLoading(true);
+    setError(false);
+    try {
+      const userData = dataUser
+      // const response = await axios({
+      //   method: "get",
+      //   url: `${import.meta.env.VITE_APP_API_URL}/api/users`,
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: `Bearer ${user?.token}`,
+      //   },
+      // });
+      setData(userData);
+      setFilteredData(userData);
+    } catch (error) {
+      setError(true);
+      setFilteredData([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  const columns = useMemo(
+    () => [
+      {
+        name: "Email",
+        selector: (row) => row.email,
+        cell: (row) => <div className="flex items-center gap-2  text-sm font-publicSans"> <img
+        src={UserDefault}
+        className="rounded-full w-8 h-8"
+        alt="Brand Image"
+        onError={({ currentTarget }) => {
+          currentTarget.onerror = null; // prevents looping
+          currentTarget.src = UserDefault;
+        }}
+      /><p className='text-center'>{row.email}</p></div>,
+        sortable: true,
+        width: "250px",
+      },
+      {
+        name: "Username",
+        selector: (row) => row.username,
+        sortable: true,
+      },
+      {
+        name: "Role",
+        selector: (row) =>
+          row.role == "1"
+            ? "Admin"
+            : row.role == "2"
+            ? "User"
+            : "" || "",
+        sortable: true,
+      },
+      {
+        name: "Aksi",
+        cell: (row) => (
+          <div className="flex items-center space-x-2">
+          <button className='px-4 py-2 text-white rounded-md bg-sky-500'>Edit</button>
+          </div>
+        ),
+        ignoreRowClick: true,
+        allowOverflow: true,
+        button: true,
+      },
+    ],
+    []
+  );
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -132,56 +155,44 @@ const Users = () => {
             Add User
           </button>
             </div>
-            <Paper sx={{ width: '100%', overflow: 'hidden' }} className='mt-6'>
-      <TableContainer sx={{ maxHeight: 440 }}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead
-          >
-            <TableRow >
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                   className='!bg-slate-100 !text-textBold'
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number'
-                            ? column.format(value)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-    </Paper>
+    <div className="overflow-x-auto mt-6 font-publicSans">
+          {loading ? (
+            <div className="flex justify-center items-center">
+              <CgSpinner className="animate-spin inline-block w-8 h-8 text-sky-500" />
+              <span className="ml-2">Loading...</span>
+            </div>
+          ) : error || filteredData.length === 0 ? (
+            <div className="text-center">Data Tidak Tersedia.</div>
+          ) : (
+            <DataTable
+              columns={columns}
+              data={filteredData}
+              pagination
+              persistTableHead
+              highlightOnHover
+              pointerOnHover
+              customStyles={{
+                headCells: {
+                  style: {
+                    backgroundColor: "#F1F5F9",
+                    color: "#433F4F",
+                    fontSize: 14,
+                    fontWeight: 500,
+                    fontFamily: "Public Sans"
+                  },
+                },
+                rows: {
+                  style: {
+                    paddingTop: '16px', // override the cell padding for data cells
+                    paddingBottom: '16px',
+                    fontFamily: "Public Sans",
+                    fontSize: "14px",
+                  }
+                }
+              }}
+            />
+          )}
+        </div>
           </Card>
         </div>
       );
