@@ -721,10 +721,10 @@
       }
     ],
     "user_authenticity": [
-      { "name": "mass_followers", "value": 9.77 },
-      { "name": "suspicious", "value": 11.67 },
-      { "name": "influencers", "value": 3.37 },
-      { "name": "real", "value": 75.19 }
+      { "name": "mass_followers", "value": 9.77, "color": "#9B88FA" },
+      { "name": "suspicious", "value": 11.67, "color": "#2E96FF" },
+      { "name": "influencers", "value": 3.37, "color": "#32D4BD" },
+      { "name": "real", "value": 75.19, "color": "#6DDE80" }
     ],
     "significant_followers": [
       {

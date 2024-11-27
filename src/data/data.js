@@ -1,3 +1,6 @@
+// eslint-disable-next-line no-undef
+import DataRaffi from './nagita.json';
+
 export const desktopOS = [
   {
     label: 'Mass Followers',
@@ -425,14 +428,14 @@ export const optionsFollowers = {
   },
   xaxis: {
     categories: [
-      'Sao Paulo',
-      'Rio De Janeiro',
       'Jakarta',
-      'Istanbul',
-      'Los Angeles',
+      'Surabaya',
+      'Bandung',
+      'Yogyakarta',
+      'Makassar',
 
 
-      
+
     ]
   },
   yaxis: {
@@ -443,13 +446,13 @@ export const optionsFollowers = {
 // ** Chart Series
 export const seriesFollowers = [
   {
-    data: [1.089, 0.976, 0.751, 0.676, 0.563]
+    data: [8.1, 3.1, 2.09, 2.06, 1.87]
   }
 ]
 
 // profile Growth Chart
 
-const DataFormater = (number) => {
+export const DataFormater = (number) => {
   if (number >= 1000000000) {
     return (number / 1000000000).toFixed(1) + 'B';
   } else if (number >= 1000000) {
@@ -508,23 +511,25 @@ export const optionsProfile = {
       '2024-08',
       '2024-09',
       '2024-10',
+      '2024-11',
 
 
-      
+
     ]
   },
   yaxis: {
-labels: {
-    formatter: function (value) {
-      return DataFormater(value)
-    }
-  },
+    labels: {
+      formatter: function (value) {
+        return DataFormater(value)
+      }
+    },
   }
 }
 
 // ** Chart Series
 export const seriesProfile = [
   {
-    data: [629781011, 632032999, 634620948, 636067300, 639399888, 641325352]
+    data: [75869498, 76001247, 76144454, 76233828, 75991592, 76128640, 76295177]
+    // data: [629781011, 632032999, 634620948, 636067300, 639399888, 641325352]
   }
 ]

@@ -28,6 +28,7 @@
     "react-router-dom": "^6.27.0",
     "react-select": "^5.8.2",
     "redux-persist": "^6.0.0",
+    "styled-components": "^6.1.11",
     "sweetalert2": "^11.14.4"
   },
   "devDependencies": {
