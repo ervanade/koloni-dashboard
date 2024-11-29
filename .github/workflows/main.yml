@@ -1,1 +1,41 @@
+name: Deploy to Server
 
+on:
+  push:
+    branches:
+      - main # Trigger hanya pada push ke branch `main`
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18 # Gunakan versi Node.js yang sesuai dengan proyek Anda
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build Project
+      run: npm run build
+
+    - name: Deploy to Server
+      env:
+        HOST: ${{ secrets.SSH_HOST }}
+        PORT: ${{ secrets.SSH_PORT }}
+        USER: ${{ secrets.SSH_USER }}
+        PASSWORD: ${{ secrets.SSH_PASSWORD }}
+      run: |
+        # Login menggunakan SSH (non-interaktif)
+        sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no -p $PORT $USER@$HOST << 'EOF'
+          cd /var/www/html/devel.kol
+          git pull
+          npm install --force
+          npm run build
+          cp -r dist/* /var/www/html/devel.kol
+        EOF
