@@ -133,7 +133,7 @@ const AddUser = ({isDrawerOpen, setIsDrawerOpen}) => {
                 </div>
             
 
-              <div className="flex items-center justify-center gap-2 mt-6">
+              <div className="flex items-center justify-center gap-2 mt-8">
 
               <button
                 className="bg-sky-500 disabled:bg-slate-500  text-white font-bold py-2 px-6 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"

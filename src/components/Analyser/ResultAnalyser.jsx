@@ -185,9 +185,9 @@ const ResultAnalyser = ({ data }) => {
     <>
       {data ? (
         <Card className={`mt-6`}>
-          <div className="flex items-center border border-[#C4C4C4] p-4 rounded-md justify-between ">
-            <div className="flex items-center gap-4 ">
-              <div className="rounded-full w-16 overflow-hidden">
+          <div className="flex items-center gap-4 border border-[#C4C4C4] p-4 rounded-md justify-between ">
+            <div className="flex items-center sm:flex-row flex-col gap-4 ">
+              <div className="rounded-full w-12 md:w-16 overflow-hidden">
                 <img
                   src={DataRaffi.data.profile_image || "/cristiano.jpeg"}
                   alt=""
@@ -195,7 +195,7 @@ const ResultAnalyser = ({ data }) => {
                 />
               </div>
               <div className="flex flex-col gap-3">
-                <h1 className="font-medium text-lg ">
+                <h1 className="font-medium md:text-lg ">
                   {DataRaffi.data.influencer_name || "cristiano"}
                 </h1>
                 <p className="text-textThin font-normal">
@@ -207,12 +207,12 @@ const ResultAnalyser = ({ data }) => {
                   <img
                     src="logo-instagram.png"
                     alt="Logo Instagram"
-                    className="w-6"
+                    className="w-5 md:w-6"
                   />
                   <img
                     src="logo-youtube.png"
                     alt="Logo youtube"
-                    className="w-6"
+                    className="w-5 md:w-6"
                   />
                 </div>
                 <button
@@ -224,24 +224,24 @@ const ResultAnalyser = ({ data }) => {
               </div>
             </div>
 
-            <div className="flex sm:items-center flex-col md:flex-row flex-1 justify-around ms-4">
+            <div className="flex sm:items-center text-sm md:text-base flex-col md:flex-row md:flex-1 justify-around">
               <div>
                 <h2 className="font-medium text-textThin">ENGAGEMENT RATE</h2>{" "}
-                <p className="font-bold text-sky-500 text-2xl">
+                <p className="font-bold text-sky-500 md:text-2xl">
                   {DataRaffi.data.engagement_rate + "%" || "1,2%"}
                 </p>
               </div>
 
               <div>
                 <h2 className="font-medium text-textThin">FOLLOWERS</h2>{" "}
-                <p className="font-bold text-sky-500 text-2xl">
+                <p className="font-bold text-sky-500 md:text-2xl">
                   {DataFormater(DataRaffi.data.followers) || "641.3M"}
                 </p>
               </div>
 
               <div>
                 <h2 className="font-medium text-textThin">FOLLOWING</h2>{" "}
-                <p className="font-bold text-sky-500 text-2xl">
+                <p className="font-bold text-sky-500 md:text-2xl">
                   {DataFormater(DataRaffi.data.following) || "584"}
                 </p>
               </div>
@@ -465,6 +465,7 @@ const ResultAnalyser = ({ data }) => {
                 Followers Reachability{" "}
               </h1>
               <PieChart
+                colors={['#9B88FA', '#2E96FF', '#32D4BD', '#6DDE80']} // Use palette
                 className="mt-4 !text-sm"
                 sx={{
                   "& .MuiChartsLegend-series text": {
