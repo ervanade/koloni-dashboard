@@ -84,18 +84,37 @@ const rows = DataBola.data.map((creator) => {
         {creator_name}
       </h2>
       <div className="flex items-center gap-2">
+        
         {ig_url && (
+           <a
+           href={ig_url}
+           target="_blank"
+           rel="noopener noreferrer"
+         >
           <img
             src="/logo-instagram.png"
             alt="Logo Instagram"
             className="w-5 h-5"
           />
+          </a>
         )}
         {tiktok_url && (
+           <a
+           href={tiktok_url}
+           target="_blank"
+           rel="noopener noreferrer"
+         >
           <img src="/logo-tiktok.png" alt="Logo Tiktok" className="w-5 h-5" />
+          </a>
         )}
         {youtube_url && (
+           <a
+           href={youtube_url}
+           target="_blank"
+           rel="noopener noreferrer"
+         >
           <img src="/logo-youtube.png" alt="Logo Youtube" className="w-5 h-5" />
+          </a>
         )}
       </div>
     </div>

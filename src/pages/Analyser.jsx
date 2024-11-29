@@ -14,7 +14,8 @@ const Analyser = () => {
   const [showResult, setShowResult] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const [formData, setFormData] = useState({
-    platform: "INSTAGRAM"
+    platform: "INSTAGRAM",
+    username: ""
   })
 
   return (
@@ -72,6 +73,8 @@ const Analyser = () => {
 
             <input
               type="text"
+              value={formData.username}
+              onChange={(e) => setFormData( prev => ({...prev, username:e.target.value}))}
               placeholder="Enter Instagram Username..."
               className="w-full bg-white pl-9 pr-4 text-black outline outline-1 outline-zinc-200 focus:outline-primary dark:text-white py-3 rounded-md"
             />

@@ -10,6 +10,7 @@ import Analytics from "./pages/Analytics";
 import Users from "./pages/admin/Users";
 import History from "./pages/History";
 import Profile from "./pages/Profile";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -40,6 +41,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
           </Route>
           <Route path="login" element={<Login />} />
+          <Route path="*" exact={true} element={<NotFound />} />
         </Routes>
       </Wrapper>
     </>

@@ -12,7 +12,31 @@ import { FilledInput, FormControl, FormHelperText, InputAdornment, OutlinedInput
 
 const Filter = ({showFilter, setShowFilter}) => {
   const [formData, setFormData] = useState({
-    platform: "INSTAGRAM"
+  "platform": "INSTAGRAM",
+    "audience_age_max": 100000,
+    "audience_age_min": 0,
+    "creator_age_max": 1000000,
+    "creator_age_min": 0,
+    "audience_gender": null,
+    "creator_gender": null,
+    "audience_location_name": "Indonesia",
+    "creator_location_name": "Indonesia",
+    "call_id": null,
+    "followers_min": null,
+    "followers_max": null,
+    "avg_views_min": null,
+    "avg_views_max": null,
+    "avg_like_max": null,
+    "avg_like_min": null,
+    "verified": null,
+    "previous_call_id": null,
+    "sorting_by": "REELS_VIEWS",
+    "next_page": 0,
+    "platform_account_type": null,
+    "discovery_interest_value":["Sports"],
+    "discovery_hashtag_value":["bola"],
+    "discovery_keyword_value":["bola"],
+    "discovery_topic_value":["bola"]
   })
     const [showCreator, setShowCreator] = useState(true);
   const [showAudience, setShowAudience] = useState(false);
