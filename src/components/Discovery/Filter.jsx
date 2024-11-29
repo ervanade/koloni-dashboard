@@ -11,6 +11,9 @@ import ResultDiscovery from './ResultDiscovery';
 import { FilledInput, FormControl, FormHelperText, InputAdornment, OutlinedInput } from '@mui/material';
 
 const Filter = ({showFilter, setShowFilter}) => {
+  const [formData, setFormData] = useState({
+    platform: "INSTAGRAM"
+  })
     const [showCreator, setShowCreator] = useState(true);
   const [showAudience, setShowAudience] = useState(false);
   const [showSort, setShowSort] = useState(true);
@@ -43,23 +46,23 @@ const Filter = ({showFilter, setShowFilter}) => {
         >
           <p>Social Media</p>
           <div className="flex items-center gap-4 flex-wrap">
-            <button className="bg-[#dcdcdf] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] border-2 border-blue-500 rounded-full px-6 py-2 shadow-sm flex items-center">
+            <button onClick={() => setFormData(prev => ({...prev, platform: "INSTAGRAM"}))} className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform == "INSTAGRAM" ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""}  rounded-full px-6 py-2 shadow-sm flex items-center`}>
               <img
                 src="logo-instagram.png"
                 alt="Logo Instagram"
                 className="w-6"
               />
-              <p className="font-bold text-blue-500">Instagram</p>
+              <p className="">Instagram</p>
             </button>
 
-            <button className="bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center">
+            <button onClick={() => setFormData(prev => ({...prev, platform: "TIKTOK"}))} className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform == "TIKTOK" ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""}  rounded-full px-6 py-2 shadow-sm flex items-center`}>
               <img src="logo-tiktok.png" alt="Logo Tiktok" className="w-6" />{" "}
-              <p className="font-medium">Tiktok</p>
+              <p className="">Tiktok</p>
             </button>
 
-            <button className="bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center">
+            <button onClick={() => setFormData(prev => ({...prev, platform: "YOUTUBE"}))} className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform == "YOUTUBE" ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""}  rounded-full px-6 py-2 shadow-sm flex items-center`}>
               <img src="logo-youtube.png" alt="Logo Youtube" className="w-6" />{" "}
-              <p className="font-medium">Youtube</p>
+              <p className="">Youtube</p>
             </button>
           </div>
 

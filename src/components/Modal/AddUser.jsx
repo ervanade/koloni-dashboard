@@ -1,10 +1,24 @@
-import React from 'react'
-import { FaTimes } from 'react-icons/fa';
+import React, { useState } from 'react'
+import { FaEye, FaEyeSlash, FaTimes } from 'react-icons/fa';
 
 const AddUser = ({isDrawerOpen, setIsDrawerOpen}) => {
+  const [formData, setFormData] = useState({
+    password: "",
+    email: "",
+    username: "",
+    role: "",
+  });
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = (e) => {
+    e.preventDefault();
+    setShowPassword((prev) => !prev);
+  };
+
   if (!isDrawerOpen) {
     return null;
   }
+  
   return (
     <>
     <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-999 outline-none focus:outline-none">
@@ -28,18 +42,11 @@ const AddUser = ({isDrawerOpen, setIsDrawerOpen}) => {
           <div className="modal-content">
             <form className="" ></form>
             <div className=" p-6 flex-auto w-full">
-              <div className="mb-4 flex-col  sm:gap-1 w-full flex ">
-                <div className="">
-                  <label
-                    className=" block text-textBold text-sm font-medium mb-2"
-                    htmlFor="email"
-                  >
-                    Email
-                  </label>
-                </div>
-                <div className="">
-                  <input
-                    className={` bg-white disabled:bg-[#F2F2F2] appearance-none border border-[#cacaca] focus:border-sky-500
+            <div className="grid gap-4 mb-4 grid-cols-2">
+                    <div className="col-span-2 md:col-span-1">
+                        <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                        <input
+                    className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
                   "border-red-500" 
                rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
                     id="jumlah_barang_dikirim"
@@ -48,21 +55,63 @@ const AddUser = ({isDrawerOpen, setIsDrawerOpen}) => {
                     placeholder="Email"
                     required
                   />
-                </div>
+                       
+                    </div>
+                    <div className="col-span-2 md:col-span-1">
+                    <label
+                    className="block text-textBold text-sm font-medium mb-2"
+                    htmlFor="password"
+                  >
+                    Password
+                  </label>
+                  <div className="relative">
+                <input
+                  className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
+                  "border-red-500" 
+               rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  value={formData.password}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      password: e.target.value,
+                    }))
+                  }
+                  placeholder="*******"
+                />
+                <button
+                  className="absolute right-4 top-2.5"
+                  onClick={handleShowPassword}
+                >
+                  {showPassword ? (
+                    <FaEye size={16} className="text-bodydark2" />
+                  ) : (
+                    <FaEyeSlash size={16} className="text-bodydark2" />
+                  )}
+                </button>
               </div>
-
-              <div className="mb-4 flex-col  sm:gap-1 w-full flex ">
-                <div className="">
-                  <label
+              <button
+                className="absolute right-3 top-3"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? (
+                  <i className="fas fa-eye-slash"></i>
+                ) : (
+                  <i className="fas fa-eye"></i>
+                )}
+              </button>
+                    </div>
+                    <div className="col-span-2 md:col-span-1">
+                    <label
                     className=" block text-textBold text-sm font-medium mb-2"
                     htmlFor="email"
                   >
                     Username
                   </label>
-                </div>
-                <div className="">
+             
                   <input
-                    className={` bg-white disabled:bg-[#F2F2F2] appearance-none border border-[#cacaca] focus:border-sky-500
+                    className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
                   "border-red-500" 
                rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
                     id="jumlah_barang_dikirim"
@@ -71,39 +120,35 @@ const AddUser = ({isDrawerOpen, setIsDrawerOpen}) => {
                     placeholder="Username"
                     required
                   />
-                </div>
-              </div>
-              
-              <div className="mb-4 flex-col  sm:gap-1 w-full flex ">
-                <div className="">
-                  <label
-                    className="block text-textBold text-sm font-medium mb-2"
-                    htmlFor="password"
-                  >
-                    Password
-                  </label>
-                </div>
-                <div className="">
-                  <input
-                    className={` bg-white appearance-none border border-[#cacaca] focus:border-sky-500
-                  "border-red-500" 
-               rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
-                    id="password"
-                    type="password"
-                    required
-                    placeholder="*******"
-                  />
-                </div>
-              </div>
+                    </div>
+                    <div className="col-span-2 md:col-span-1">
+                        <label for="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
+                        <select id="category" className="text-sm bg-white disabled:bg-[#F2F2F2] cursor-pointer  border border-[#cacaca] focus:border-sky-500 rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent">
+                            <option selected="">Select Role</option>
+                            <option value="TV">User</option>
+                            <option value="PC">Admin</option>
+                        </select>
+                    </div>
 
-              <div className="flex items-center justify-center">
+                </div>
+            
+
+              <div className="flex items-center justify-center gap-2 mt-6">
 
               <button
                 className="bg-sky-500 disabled:bg-slate-500  text-white font-bold py-2 px-6 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"
                 type="submit"
 
               >
-Add New User
+Submit
+              </button>
+              <button
+              onClick={() => setIsDrawerOpen(false)}
+                className="bg-slate-300 disabled:bg-slate-500  text-textThin font-bold py-2 px-6 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"
+                type="submit"
+
+              >
+Cancel
               </button>
             </div>
             </div>

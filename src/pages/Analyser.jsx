@@ -13,7 +13,9 @@ import Drawer from "../components/Modal/Drawer";
 const Analyser = () => {
   const [showResult, setShowResult] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-
+  const [formData, setFormData] = useState({
+    platform: "INSTAGRAM"
+  })
 
   return (
     <div>
@@ -38,21 +40,25 @@ const Analyser = () => {
         </div>
       </div>
       <div className="flex items-center gap-4 flex-wrap">
-        <button className="bg-[#dcdcdf] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] border-2 border-blue-500 rounded-full px-6 py-2 shadow-sm flex items-center">
-          <img src="logo-instagram.png" alt="Logo Instagram" className="w-6" />
-          <p className="font-medium text-blue-500">Instagram</p>
-        </button>
+            <button onClick={() => setFormData(prev => ({...prev, platform: "INSTAGRAM"}))} className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform == "INSTAGRAM" ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""}  rounded-full px-6 py-2 shadow-sm flex items-center`}>
+              <img
+                src="logo-instagram.png"
+                alt="Logo Instagram"
+                className="w-6"
+              />
+              <p className="">Instagram</p>
+            </button>
 
-        <button className="bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center">
-          <img src="logo-tiktok.png" alt="Logo Tiktok" className="w-6" />{" "}
-          <p className="font-medium">Tiktok</p>
-        </button>
+            <button onClick={() => setFormData(prev => ({...prev, platform: "TIKTOK"}))} className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform == "TIKTOK" ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""}  rounded-full px-6 py-2 shadow-sm flex items-center`}>
+              <img src="logo-tiktok.png" alt="Logo Tiktok" className="w-6" />{" "}
+              <p className="">Tiktok</p>
+            </button>
 
-        <button className="bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center">
-          <img src="logo-youtube.png" alt="Logo Youtube" className="w-6" />{" "}
-          <p className="font-medium">Youtube</p>
-        </button>
-      </div>
+            <button onClick={() => setFormData(prev => ({...prev, platform: "YOUTUBE"}))} className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform == "YOUTUBE" ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""}  rounded-full px-6 py-2 shadow-sm flex items-center`}>
+              <img src="logo-youtube.png" alt="Logo Youtube" className="w-6" />{" "}
+              <p className="">Youtube</p>
+            </button>
+          </div>
       <Card className="mt-6">
         <h1 className="font-medium text-lg mb-1">Instagram Profile Analyser</h1>
         <p className="font-normal text-sm text-textThin">

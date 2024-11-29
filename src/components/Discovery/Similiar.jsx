@@ -8,11 +8,13 @@ import Autocomplete from "@mui/material/Autocomplete";
 import top100Films from '../../data/top100Films';
 import { FormControl, InputAdornment, OutlinedInput } from '@mui/material';
 import { accountOptions, basedOptions, cityOptions, countryOptions, socialOptions } from '../../data/data';
+import ResultSImiliar from './ResultSimiliar';
 
 const Similiar = ({showFilter, setShowFilter}) => {
     const [showCreator, setShowCreator] = useState(true);
   const [showAudience, setShowAudience] = useState(false);
   const [showSort, setShowSort] = useState(true);
+  const [showResult, setShowResult] = useState(false);
   return (
     <div>
     <Card className="mt-6">
@@ -159,6 +161,7 @@ const Similiar = ({showFilter, setShowFilter}) => {
               <button
                 className=" bg-sky-500 flex gap-2 items-center text-white font-bold py-3 px-8 rounded focus:outline-none focus:shadow-outline"
                 type="submit"
+                onClick={() => setShowResult(!showResult)}
               >
                 <FaSearch />
                 Search
@@ -169,18 +172,8 @@ const Similiar = ({showFilter, setShowFilter}) => {
        
       </Card>
 
-      <Card className="mt-6">
-        <div className="flex items-center justify-between">
-          <h1 className="font-medium text-lg text-textBold">Result Discovery</h1>
-<p>Creator Found</p>
-        </div>
+      <ResultSImiliar title="Result History Discovery" data={showResult}/>
 
-<div className="py-6 flex items-center justify-center flex-col gap-2">
-    <img src="/NotFound.png" alt="" className='w-1/2 sm:w-1/3' />
-    <h1 className='font-medium text-textBold text-center'>No results found    </h1>
-    <p className='font-normat text-textThin text-center text-sm'>Looks like there's no data here. Try using our filters above to discover the information you need.    </p>
-</div>
-      </Card>
       </div>
   )
 }

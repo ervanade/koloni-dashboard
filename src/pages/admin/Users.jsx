@@ -32,10 +32,10 @@ const Users = () => {
     const value = event.target.value.toLowerCase();
     setSearch(value);
 
-    const filtered = data.filter((item) => {
-      // return (
-
-      // );
+    const filtered = dataUser.filter((item) => {
+      return (
+        (item?.email && item.email.toLowerCase().includes(value)) 
+      );
     });
 
     setFilteredData(filtered);
@@ -153,6 +153,8 @@ const Users = () => {
             </button>
 
             <input
+             value={search}
+             onChange={handleSearch}
               type="text"
               placeholder="Search..."
               className="w-full bg-white pl-9 pr-4 text-black outline outline-1 outline-zinc-200 focus:outline-primary dark:text-white py-2 rounded-md"
