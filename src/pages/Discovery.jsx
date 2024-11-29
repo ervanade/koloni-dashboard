@@ -19,7 +19,7 @@ const Discovery = () => {
     <div>
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-textBold font-bold text-2xl mb-1">Discovery Edit</h1>
+          <h1 className="text-textBold font-bold text-2xl mb-1">Discovery</h1>
           <p className="font-normal text-textThin">
             Discover the right creators for your campaigns
           </p>
