@@ -334,7 +334,7 @@ const ResultAnalyser = ({ data }) => {
               <h1 className="font-bold text-textBold ">
                 Significant Followers
               </h1>
-              <div className="grid grid-cols-3 gap-2 mt-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-6">
                 {DataRaffi.data.significant_followers
                   .slice(0, 6)
                   .map((item, index) => (
