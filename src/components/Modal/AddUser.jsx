@@ -40,7 +40,7 @@ const AddUser = ({isDrawerOpen, setIsDrawerOpen}) => {
             </button>
           </div>
           <div className="modal-content">
-            <form className="" ></form>
+            <form className="" >
             <div className=" p-6 flex-auto w-full">
             <div className="grid gap-4 mb-4 grid-cols-2">
                     <div className="col-span-2 md:col-span-1">
@@ -152,7 +152,7 @@ Cancel
               </button>
             </div>
             </div>
-            
+            </form>
           </div>
         </div>
       </div>

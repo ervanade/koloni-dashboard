@@ -1,12 +1,30 @@
 import React, { useState } from 'react'
 import { FaFilter, FaInstagram, FaMinus } from "react-icons/fa6";
-import { FaHistory, FaLine, FaTiktok, FaUserPlus, FaYoutube } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaHistory, FaLine, FaTiktok, FaUserPlus, FaYoutube } from "react-icons/fa";
 import Card from '../components/Card/Card';
+import UserDefault from "../assets/user/user-default.png";
+
 
 const Profile = () => {
   const [showFilter, setShowFilter] = useState(true);
   const [showSimiliar, setShowSimiliar] = useState(true);
   const [activeTab, setActiveTab] = useState("profile");
+  const [previewImages, setPreviewImages] = useState({
+    profile: null,
+  });
+  const [formData, setFormData] = useState({
+    password: "",
+    email: "",
+    username: "",
+    profile: "",
+    role: "",
+  });
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = (e) => {
+    e.preventDefault();
+    setShowPassword((prev) => !prev);
+  };
 
   return (
     <div>
@@ -56,6 +74,144 @@ const Profile = () => {
           <h1 className="font-medium text-lg text-textBold">Profile</h1>
 
         </div>
+        <div className="flex items-center gap-4">
+        <div className="h-14 w-14 rounded-full mt-6">
+                        <img
+                          src={previewImages.profile || UserDefault}
+                          className="rounded-full"
+                          alt="Profile Preview"
+                          onError={({ currentTarget }) => {
+                            currentTarget.onerror = null; // prevents looping
+                            currentTarget.src = UserDefault;
+                          }}
+                        />
+                    </div>
+                    <div className="flex items-center justify-center gap-2 mt-8">
+
+<button
+  className="bg-sky-500 disabled:bg-slate-500 text-white font-base py-2 px-4 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"
+  type="submit"
+
+>
+Change Profile
+</button>
+<button
+              onClick={() => setIsDrawerOpen(false)}
+                className="bg-slate-300 disabled:bg-slate-500  text-textThin font-base py-2 px-4 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"
+                type="submit"
+
+              >
+Reset
+              </button>
+
+</div>
+                    </div>
+        <form className="" >
+            <div className="mt-6 flex-auto w-full">
+            <div className="grid gap-4 mb-4 grid-cols-2">
+                    <div className="col-span-2 md:col-span-1">
+                        <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                        <input
+                    className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
+                  "border-red-500" 
+               rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
+                    id="jumlah_barang_dikirim"
+                    type="email"
+
+                    placeholder="Email"
+                    required
+                  />
+                       
+                    </div>
+                    <div className="col-span-2 md:col-span-1">
+                    <label
+                    className="block text-textBold text-sm font-medium mb-2"
+                    htmlFor="password"
+                  >
+                    Password
+                  </label>
+                  <div className="relative">
+                <input
+                  className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
+                  "border-red-500" 
+               rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  value={formData.password}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      password: e.target.value,
+                    }))
+                  }
+                  placeholder="*******"
+                />
+                <button
+                  className="absolute right-4 top-2.5"
+                  onClick={handleShowPassword}
+                >
+                  {showPassword ? (
+                    <FaEye size={16} className="text-bodydark2" />
+                  ) : (
+                    <FaEyeSlash size={16} className="text-bodydark2" />
+                  )}
+                </button>
+              </div>
+              <button
+                className="absolute right-3 top-3"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? (
+                  <i className="fas fa-eye-slash"></i>
+                ) : (
+                  <i className="fas fa-eye"></i>
+                )}
+              </button>
+                    </div>
+                    <div className="col-span-2 md:col-span-1">
+                    <label
+                    className=" block text-textBold text-sm font-medium mb-2"
+                    htmlFor="email"
+                  >
+                    Username
+                  </label>
+             
+                  <input
+                    className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
+                  "border-red-500" 
+               rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
+                    id="jumlah_barang_dikirim"
+                    type="text"
+
+                    placeholder="Username"
+                    required
+                  />
+                    </div>
+                    <div className="col-span-2 md:col-span-1">
+                        <label for="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
+                        <select id="category" className="text-sm bg-white disabled:bg-[#F2F2F2] cursor-pointer  border border-[#cacaca] focus:border-sky-500 rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent">
+                            <option selected="">Select Role</option>
+                            <option value="TV">User</option>
+                            <option value="PC">Admin</option>
+                        </select>
+                    </div>
+
+                </div>
+            
+
+              <div className="flex items-center justify-center gap-2 mt-8">
+
+              <button
+                className="bg-sky-500 disabled:bg-slate-500  text-white font-bold py-2 px-6 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"
+                type="submit"
+
+              >
+Submit
+              </button>
+            
+            </div>
+            </div>
+            </form>
        
        
       </Card>
