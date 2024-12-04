@@ -253,7 +253,7 @@ const ResultAnalyser = ({ data }) => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
               <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 px-6 rounded-md  ">
-                <div className="rounded-full bg-slate-200 flex items-center justify-center w-9 h-9 ">
+                <div className="rounded-full bg-[#EBEEF4] flex items-center justify-center w-9 h-9 ">
                   <BiSolidLike className="text-sky-500" size={20} />
                 </div>
                 <h2 className="font-bold text-textBold text-base">
@@ -267,7 +267,7 @@ const ResultAnalyser = ({ data }) => {
               </div>
 
               <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 px-6 rounded-md  ">
-                <div className="rounded-full bg-slate-200 flex items-center justify-center w-9 h-9 ">
+                <div className="rounded-full bg-[#EBEEF4] flex items-center justify-center w-9 h-9 ">
                   <BiSolidComment className="text-sky-500" size={20} />
                 </div>
                 <h2 className="font-bold text-textBold text-base">
@@ -281,7 +281,7 @@ const ResultAnalyser = ({ data }) => {
               </div>
 
               <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 px-6 rounded-md  ">
-                <div className="rounded-full bg-slate-200 flex items-center justify-center w-9 h-9 ">
+                <div className="rounded-full bg-[#EBEEF4] flex items-center justify-center w-9 h-9 ">
                   <FaEye className="text-sky-500" size={20} />
                 </div>
                 <h2 className="font-bold text-textBold text-base">
@@ -338,8 +338,11 @@ const ResultAnalyser = ({ data }) => {
                 {DataRaffi.data.significant_followers
                   .slice(0, 6)
                   .map((item, index) => (
+                    <a href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer" className="">
                     <div
-                      className="p-2 bg-slate-200 rounded-md flex flex-col justify-center items-center gap-2"
+                      className="p-2 hover:bg-white border border-[#EBEEF4] bg-[#EBEEF4] rounded-md flex flex-col justify-center items-center gap-2"
                       key={index}
                     >
                       <div className="relative inline-flex w-fit">
@@ -352,15 +355,16 @@ const ResultAnalyser = ({ data }) => {
                           className="rounded-full w-10"
                         />
                       </div>
-                      <h2 className="text-sm text-center font-bold text-textBold">
+                      <h2 className="text-[13px] text-center font-bold text-textBold">
                         {item.platformUsername}
                       </h2>
-                      <p className="text-sm text-center text-textBold font-medium">
-                        {item.followerCount} Followers
+                      <p className="text-[13px] text-center text-[#6B7280] font-medium">
+                        {item.followerCount.toLocaleString("id-ID")} Followers
                       </p>
                     </div>
+                    </a>
                   ))}
-                {/* <div className="p-2 bg-slate-200 rounded-md flex flex-col justify-center items-center gap-2">
+                {/* <div className="p-2 bg-[#EBEEF4] rounded-md flex flex-col justify-center items-center gap-2">
                   <div className="relative inline-flex w-fit">
                     <div className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
                       <FaCheckCircle className="text-blue-500" />
@@ -376,7 +380,7 @@ const ResultAnalyser = ({ data }) => {
                   </p>
                 </div>
 
-                <div className="p-2 bg-slate-200 rounded-md flex flex-col justify-center items-center gap-2">
+                <div className="p-2 bg-[#EBEEF4] rounded-md flex flex-col justify-center items-center gap-2">
                   <div className="relative inline-flex w-fit">
                     <div className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
                       <FaCheckCircle className="text-blue-500" />
@@ -392,7 +396,7 @@ const ResultAnalyser = ({ data }) => {
                   </p>
                 </div>
 
-                <div className="p-2 bg-slate-200 rounded-md flex flex-col justify-center items-center gap-2">
+                <div className="p-2 bg-[#EBEEF4] rounded-md flex flex-col justify-center items-center gap-2">
                   <div className="relative inline-flex w-fit">
                     <div className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
                       <FaCheckCircle className="text-blue-500" />
@@ -408,7 +412,7 @@ const ResultAnalyser = ({ data }) => {
                   </p>
                 </div>
 
-                <div className="p-2 bg-slate-200 rounded-md flex flex-col justify-center items-center gap-2">
+                <div className="p-2 bg-[#EBEEF4] rounded-md flex flex-col justify-center items-center gap-2">
                   <div className="relative inline-flex w-fit">
                     <div className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
                       <FaCheckCircle className="text-blue-500" />
@@ -424,7 +428,7 @@ const ResultAnalyser = ({ data }) => {
                   </p>
                 </div>
 
-                <div className="p-2 bg-slate-200 rounded-md flex flex-col justify-center items-center gap-2">
+                <div className="p-2 bg-[#EBEEF4] rounded-md flex flex-col justify-center items-center gap-2">
                   <div className="relative inline-flex w-fit">
                     <div className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
                       <FaCheckCircle className="text-blue-500" />
@@ -440,7 +444,7 @@ const ResultAnalyser = ({ data }) => {
                   </p>
                 </div>
 
-                <div className="p-2 bg-slate-200 rounded-md flex flex-col justify-center items-center gap-2">
+                <div className="p-2 bg-[#EBEEF4] rounded-md flex flex-col justify-center items-center gap-2">
                   <div className="relative inline-flex w-fit">
                     <div className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
                       <FaCheckCircle className="text-blue-500" />
@@ -599,7 +603,7 @@ const ResultAnalyser = ({ data }) => {
                     <p className="text-sm text-textBold font-medium ">
                       {item.name}
                     </p>
-                    <div className="w-full bg-slate-200 rounded-full dark:bg-gray-700 mt-2">
+                    <div className="w-full bg-[#EBEEF4] rounded-full dark:bg-gray-700 mt-2">
                       <div
                         className="bg-sky-500 text-xs font-medium text-blue-100 text-center p-[3px] leading-none rounded-full"
                         style={{ width: `${item.value.toFixed(2)}%` }}
@@ -613,7 +617,7 @@ const ResultAnalyser = ({ data }) => {
                   <p className="text-sm text-textBold font-medium ">
                     Friends, Family & Relationships
                   </p>
-                  <div className="w-full bg-slate-200 rounded-full dark:bg-gray-700 mt-2">
+                  <div className="w-full bg-[#EBEEF4] rounded-full dark:bg-gray-700 mt-2">
                     <div className="bg-sky-500 text-xs font-medium text-blue-100 text-center p-[3px] leading-none rounded-full w-[32.3%]">
                       {" "}
                       32.3%
@@ -625,7 +629,7 @@ const ResultAnalyser = ({ data }) => {
                   <p className="text-sm text-textBold font-medium ">
                     Clothes, Shoes, Handbags & Accessories
                   </p>
-                  <div className="w-full bg-slate-200 rounded-full dark:bg-gray-700 mt-2">
+                  <div className="w-full bg-[#EBEEF4] rounded-full dark:bg-gray-700 mt-2">
                     <div className="bg-sky-500 text-xs font-medium text-blue-100 text-center p-[3px] leading-none rounded-full w-[27.9%]">
                       {" "}
                       27.9%
@@ -635,7 +639,7 @@ const ResultAnalyser = ({ data }) => {
 
                 <div>
                   <p className="text-sm text-textBold font-medium ">Sports</p>
-                  <div className="w-full bg-slate-200 rounded-full dark:bg-gray-700 mt-2">
+                  <div className="w-full bg-[#EBEEF4] rounded-full dark:bg-gray-700 mt-2">
                     <div className="bg-sky-500 text-xs font-medium text-blue-100 text-center p-[3px] leading-none rounded-full w-[27.4%]">
                       {" "}
                       27.4%
@@ -647,7 +651,7 @@ const ResultAnalyser = ({ data }) => {
                   <p className="text-sm text-textBold font-medium ">
                     Camera & Photography
                   </p>
-                  <div className="w-full bg-slate-200 rounded-full dark:bg-gray-700 mt-2">
+                  <div className="w-full bg-[#EBEEF4] rounded-full dark:bg-gray-700 mt-2">
                     <div className="bg-sky-500 text-xs font-medium text-blue-100 text-center p-[3px] leading-none rounded-full w-[24.8%]">
                       {" "}
                       24.8%

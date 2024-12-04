@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Card from "../components/Card/Card";
-import { FaCheckCircle, FaEye, FaSearch } from "react-icons/fa";
+import { FaCheckCircle, FaEye, FaPlus, FaSearch } from "react-icons/fa";
 import { FaAt } from "react-icons/fa6";
 import { BiCheckCircle, BiLike, BiSolidComment, BiSolidLike } from "react-icons/bi";
 import { BsViewList } from "react-icons/bs";
@@ -9,10 +9,12 @@ import { desktopOS, desktopOS2, valueFormatter } from "../data/data";
 import { BarChart, LineChart } from "@mui/x-charts";
 import ResultAnalyser from "../components/Analyser/ResultAnalyser";
 import Drawer from "../components/Modal/Drawer";
+import AddComparison from "../components/Modal/addComparison";
 
 const Analyser = () => {
   const [showResult, setShowResult] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const [isModal, setIsModal] = useState(false)
   const [formData, setFormData] = useState({
     platform: "INSTAGRAM",
     username: ""
@@ -40,6 +42,7 @@ const Analyser = () => {
           </button>
         </div>
       </div>
+      <div className="flex items-center justify-between">
       <div className="flex items-center gap-4 flex-wrap">
             <button onClick={() => setFormData(prev => ({...prev, platform: "INSTAGRAM"}))} className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform == "INSTAGRAM" ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""}  rounded-full px-6 py-2 shadow-sm flex items-center`}>
               <img
@@ -59,6 +62,20 @@ const Analyser = () => {
               <img src="logo-youtube.png" alt="Logo Youtube" className="w-6" />{" "}
               <p className="">Youtube</p>
             </button>
+          </div>
+          {
+            showResult && <div className="flex items-center">
+            <button
+              className=" bg-sky-500 flex gap-2 items-center text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
+              type="submit"
+              onClick={() => setIsModal(true)}
+            >
+              <FaPlus />
+              <span>Add Comparison</span>
+            </button>
+            </div>
+          }
+          
           </div>
       <Card className="mt-6">
         <h1 className="font-medium text-lg mb-1">Instagram Profile Analyser</h1>
@@ -92,6 +109,7 @@ const Analyser = () => {
       </Card>
     <ResultAnalyser title="tes" data={showResult}/> 
     <Drawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen}/>
+    <AddComparison isDrawerOpen={isModal} setIsDrawerOpen={setIsModal} />
 
     </div>
   );
