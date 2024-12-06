@@ -26,10 +26,10 @@ jobs:
 
     - name: Deploy to Server
       env:
-        HOST: ${{ secrets.SSH_HOST }}
-        PORT: ${{ secrets.SSH_PORT }}
-        USER: ${{ secrets.SSH_USER }}
-        PASSWORD: ${{ secrets.SSH_PASSWORD }}
+        HOST: api.cpxi-asia.com
+        PORT: 2002
+        USER: root
+        PASSWORD: 2024@cpxi
       run: |
         # Login menggunakan SSH (non-interaktif)
         sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no -p $PORT $USER@$HOST << 'EOF'
