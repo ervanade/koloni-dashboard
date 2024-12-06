@@ -26,10 +26,10 @@ jobs:
 
     - name: Deploy to Server
       env:
-        HOST: api.cpxi-asia.com
-        PORT: 443
+        HOST: devel.cpxi-asia.com
+        PORT: 2002
         USER: root
-        PASSWORD: 2024@cpxi
+        PASSWORD: 2022@cpxi
       run: |
         # Login menggunakan SSH (non-interaktif)
         sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no -p $PORT $USER@$HOST << 'EOF'
