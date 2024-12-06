@@ -9,7 +9,7 @@ import { desktopOS, desktopOS2, valueFormatter } from "../data/data";
 import { BarChart, LineChart } from "@mui/x-charts";
 import ResultAnalyser from "../components/Analyser/ResultAnalyser";
 import Drawer from "../components/Modal/Drawer";
-import AddComparison from "../components/Modal/addComparison";
+import AddComparison from "../components/Modal/AddComparison";
 
 const Analyser = () => {
   const [showResult, setShowResult] = useState(false);
