@@ -27,7 +27,7 @@ jobs:
     - name: Deploy to Server
       env:
         HOST: api.cpxi-asia.com
-        PORT: 2002
+        PORT: 22
         USER: root
         PASSWORD: 2024@cpxi
       run: |
