@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: 18 # Gunakan versi Node.js yang sesuai dengan proyek Anda
+        node-version: 22 # Gunakan versi Node.js yang sesuai dengan proyek Anda
 
     - name: Install dependencies
       run: npm install
@@ -26,10 +26,10 @@ jobs:
 
     - name: Deploy to Server
       env:
-        HOST: devel.cpxi-asia.com
-        PORT: 2002
+        HOST: api.cpxi-asia.com
+        PORT: 22
         USER: root
-        PASSWORD: 2022@cpxi
+        PASSWORD: 2024@cpxi
       run: |
         # Login menggunakan SSH (non-interaktif)
         sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no -p $PORT $USER@$HOST << 'EOF'
