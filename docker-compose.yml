@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-  sampleproject:
-    image: sampleproject
+  app:
+    image: ervanade/koloni-dashboard:latest
     build:
       context: .
       dockerfile: ./Dockerfile
