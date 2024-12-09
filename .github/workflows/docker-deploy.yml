@@ -28,9 +28,9 @@ jobs:
       # Build Docker image menggunakan Dockerfile yang ada
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/my_image:latest .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/koloni-dashboard:latest .
 
       # Push Docker image ke Docker Hub
       - name: Push Docker image to Docker Hub
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/my_image:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/koloni-dashboard:latest
