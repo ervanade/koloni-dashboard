@@ -3,6 +3,7 @@ import { FaFilter, FaInstagram, FaMinus } from "react-icons/fa6";
 import { FaEye, FaEyeSlash, FaHistory, FaLine, FaLock, FaTiktok, FaUser, FaUserPlus, FaYoutube } from "react-icons/fa";
 import Card from '../components/Card/Card';
 import UserDefault from "../assets/user/user-default.png";
+import Swal from 'sweetalert2';
 
 
 const Profile = () => {
@@ -17,6 +18,7 @@ const Profile = () => {
     email: "",
     username: "",
     profile: "",
+    profileName: "",
     role: "",
   });
   const [showPassword, setShowPassword] = useState(false);
@@ -26,6 +28,24 @@ const Profile = () => {
     setShowPassword((prev) => !prev);
   };
 
+  const handleChange = (event) => {
+    const { id, value, files } = event.target;
+    if (files) {
+      const file = files[0];
+      if (file.size > 2 * 1024 * 1024) {
+        Swal.fire("Error", "File size harus dibawah 2 MB", "error");
+        return;
+      }
+      setFormData((prev) => ({
+        ...prev,
+        [id]: file,
+        profileName: file.name,
+      }));
+    } else {
+      setFormData((prev) => ({ ...prev, [id]: value }));
+    }
+  };
+console.log(formData)
   return (
     <div>
       <div className="mb-6 flex items-center justify-between">
@@ -71,11 +91,11 @@ const Profile = () => {
   activeTab === "profile" ?  
   <Card className="mt-6">
         <div className="flex items-center justify-between">
-          <h1 className="font-medium text-lg text-textBold">Profile Page</h1>
+          <h1 className="font-medium text-lg text-textBold">Profile</h1>
 
         </div>
-        <div className="flex items-center gap-4">
-        <div className="h-14 w-14 rounded-full mt-6">
+        <div className="flex items-center gap-4 mt-4">
+        <div className="h-14 w-14 rounded-full">
                         <img
                           src={previewImages.profile || UserDefault}
                           className="rounded-full"
@@ -87,32 +107,36 @@ const Profile = () => {
                         />
                     </div>
                     <div className="flex items-center justify-center gap-2">
-                    <div
-                    id="FileUpload"
-                    className="relative mb-5.5 block w-full xl:w-3/4 cursor-pointer appearance-none rounded border border-dashed border-primary bg-gray py-4 px-4 dark:bg-meta-4 sm:py-4"
+                    <div className="sm:flex-[5_5_0%] flex flex-col items-start gap-1">
+                <div className="flex items-center">
+                  <label className="bg-sky-500 disabled:bg-slate-500 text-white text-sm font-normal py-2 px-4 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"
                   >
                     <input
+                      className="hidden"
+                      id="profile"
+                      onChange={handleChange}
                       type="file"
                       accept="image/*"
-                      className="absolute inset-0 z-50 m-0 h-full w-full cursor-pointer p-0 opacity-0 outline-none"
                     />
-                    <div className="flex flex-col items-center justify-center space-y-3">
-                      <p>
-                        <span className="text-primary">
-                          Change Profile
-                        </span>
-                      </p>
-                      <p className="mt-1.5">SVG, PNG, JPG</p>
-                      <p>(max: 1MB size:800 X 800px)</p>
-                    </div>
-                  </div>
-<button
+                    Change Profile
+                  </label>
+                  {formData.profileName && (
+                    <p className="text-gray-500 text-xs ml-4">
+                      File: {formData.profileName}
+                    </p>
+                  )}
+                </div>
+                {/* <p className="text-gray-500 text-xs mt-1">
+                  Max file size: 2MB, Type: PNG/JPG
+                </p> */}
+              </div>
+{/* <button
   className="bg-sky-500 disabled:bg-slate-500 text-white text-sm font-normal py-2 px-4 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"
   type="submit"
 
 >
 Change Profile
-</button>
+</button> */}
 <button
               onClick={() => setIsDrawerOpen(false)}
                 className="bg-slate-300 disabled:bg-slate-500 text-sm text-textThin font-normal py-2 px-4 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"
