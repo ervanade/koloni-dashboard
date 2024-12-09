@@ -86,8 +86,26 @@ const Profile = () => {
                           }}
                         />
                     </div>
-                    <div className="flex items-center justify-center gap-2 mt-8">
-
+                    <div className="flex items-center justify-center gap-2">
+                    <div
+                    id="FileUpload"
+                    className="relative mb-5.5 block w-full xl:w-3/4 cursor-pointer appearance-none rounded border border-dashed border-primary bg-gray py-4 px-4 dark:bg-meta-4 sm:py-4"
+                  >
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="absolute inset-0 z-50 m-0 h-full w-full cursor-pointer p-0 opacity-0 outline-none"
+                    />
+                    <div className="flex flex-col items-center justify-center space-y-3">
+                      <p>
+                        <span className="text-primary">
+                          Change Profile
+                        </span>
+                      </p>
+                      <p className="mt-1.5">SVG, PNG, JPG</p>
+                      <p>(max: 1MB size:800 X 800px)</p>
+                    </div>
+                  </div>
 <button
   className="bg-sky-500 disabled:bg-slate-500 text-white text-sm font-normal py-2 px-4 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"
   type="submit"
@@ -104,7 +122,7 @@ Change Profile
 Reset
               </button>
 
-</div>
+                    </div>
                     </div>
         <form className="" >
             <div className="mt-6 flex-auto w-full">
