@@ -19,7 +19,7 @@ jobs:
         node-version: 22 # Gunakan versi Node.js yang sesuai dengan proyek Anda
 
     - name: Install dependencies
-      run: npm install
+      run: npm install --force
 
     - name: Build Project
       run: npm run build
@@ -33,9 +33,15 @@ jobs:
       run: |
         # Login menggunakan SSH (non-interaktif)
         sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no -p $PORT $USER@$HOST << 'EOF'
-          cd /var/www/html/devel.kol
+          # Pindah ke folder gitFile dan install dependencies serta build aplikasi
+          cd /var/www/html/devel.kol/gitFile
           git pull
           npm install --force
           npm run build
-          cp -r dist/* /var/www/html/devel.kol
+
+          # Pindahkan hasil build dari gitFile ke /var/www/html/devel.kol
+          cp -r /var/www/html/devel.kol/gitFile/dist/* /var/www/html/devel.kol/
+
+          # Opsional: Menghapus file build setelah dipindahkan
+          rm -rf /var/www/html/devel.kol/gitFile/dist/*
         EOF
