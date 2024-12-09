@@ -47,7 +47,7 @@ jobs:
           npm run build
 
           # Pindahkan hasil build dari gitFile ke /var/www/html/devel.kol
-          cp -r /var/www/html/devel.kol/gitFile/dist/* /var/www/html/devel.kol/
+          cp -rf /var/www/html/devel.kol/gitFile/dist/* /var/www/html/devel.kol/
 
           # Opsional: Menghapus file build setelah dipindahkan
           rm -rf /var/www/html/devel.kol/gitFile/dist/*
