@@ -45,7 +45,6 @@ const Profile = () => {
       setFormData((prev) => ({ ...prev, [id]: value }));
     }
   };
-console.log(formData)
   return (
     <div>
       <div className="mb-6 flex items-center justify-between">
