@@ -24,6 +24,13 @@ jobs:
     - name: Build Project
       run: npm run build
 
+    - name: Check if secrets are available
+      run: |
+        echo "SSH_HOST: ${{ secrets.SSH_HOST }}"
+        echo "SSH_PORT: ${{ secrets.SSH_PORT }}"
+        echo "SSH_USERNAME: ${{ secrets.SSH_USERNAME }}"
+        echo "SSH_USERNAME: ${{ secrets.SSH_PASSWORD }}"
+
     - name: Deploy to Server
       env:
         HOST: ${{ secrets.SSH_HOST }}
