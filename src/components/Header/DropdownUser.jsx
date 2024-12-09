@@ -87,6 +87,8 @@ const DropdownUser = () => {
         <div
           className={`absolute right-0 mt-4 flex w-62.5 flex-col py-2 rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark`}
         >
+          <Link
+          to="/profile">
           <ul className="hover:bg-[#F3F3F4] hover:cursor-pointer flex flex-col gap-5 border-b border-stroke px-6 py-4 dark:border-strokedark">
             <li>
               <Link
@@ -114,6 +116,7 @@ const DropdownUser = () => {
               </Link>
             </li>
           </ul>
+          </Link>
           <button
             onClick={handleLogout}
             className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:bg-[#F3F3F4] lg:text-base"
