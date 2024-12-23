@@ -11,9 +11,8 @@ import axios from "axios";
 const DropdownUser = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = {
-    username: "Username",
-  };
+  const user = useSelector((a) => a.auth.user);
+
   const fetchLogout = async () => {
     try {
       const response = await axios({
@@ -32,7 +31,9 @@ const DropdownUser = () => {
   };
   const handleLogout = (e) => {
     e.preventDefault();
-    fetchLogout();
+    // fetchLogout();
+    dispatch(logoutUser());
+      navigate("/login");
   };
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const userAvatar = user?.profile || UserDefault;
@@ -46,7 +47,7 @@ const DropdownUser = () => {
       >
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
-            {user.username || "Username"}
+            {user?.first_name + " " + user?.last_name || "Username"}
           </span>
           <span className="block text-xs capitalize font-normal">
             {user.role ? returnRole(user.role) : "" || "Role"}

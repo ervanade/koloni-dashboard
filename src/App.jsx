@@ -11,6 +11,7 @@ import Users from "./pages/admin/Users";
 import History from "./pages/History";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
+import ProtectedRoute from "./components/Layout/ProtectedRoutes";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -31,6 +32,8 @@ function App() {
     <>
       <Wrapper>
         <Routes>
+        <Route path="/" element={<ProtectedRoute />}>
+
           <Route path="/" element={<Layout />}>
             <Route index element={<Dashboard />} />
             <Route path="/discovery" element={<Discovery />} />
@@ -39,6 +42,7 @@ function App() {
             <Route path="/history" element={<History />} />
             <Route path="/users" element={<Users />} />
             <Route path="/profile" element={<Profile />} />
+          </Route>
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="*" exact={true} element={<NotFound />} />

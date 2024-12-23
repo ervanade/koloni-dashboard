@@ -14,6 +14,7 @@ import UserDefault from "../../assets/user/user-default.png";
 import { CgSpinner } from "react-icons/cg";
 import { dataUser } from "../../data/dummyData";
 import AddUser from "../../components/Modal/AddUser";
+import Swal from "sweetalert2";
 
 
 const Users = () => {
@@ -68,6 +69,26 @@ const Users = () => {
     fetchUserData();
   }, []);
 
+  const handleConfirmUser = async (id) => {
+    return Swal.fire({
+      title: "Are you sure?",
+      text: "You will Confirm This User!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Confirm it!",
+      confirmButtonColor: "#24A5E9",
+    }).then(async (result) => {
+      if (result.value) {
+        // await deleteDistribusi(id);
+        Swal.fire({
+          icon: "success",
+          title: "Confirmed!",
+          text: "Your User has been confirmed.",
+        });
+      }
+    });
+  };
+
   const columns = useMemo(
     () => [
       {
@@ -104,6 +125,18 @@ const Users = () => {
         name: "Credits",
         selector: (row) => row.credits,
         sortable: true,
+      },
+      {
+        name: "Status",
+        cell: (row) => (
+          <div className="flex items-center">
+          <button className='px-4 py-2 text-white text-xs rounded-md bg-yellow-500' onClick={() => handleConfirmUser(row.id)}
+          >Konfirmasi</button>
+          </div>
+        ),
+        ignoreRowClick: true,
+        allowOverflow: true,
+        button: true,
       },
       {
         name: "Aksi",

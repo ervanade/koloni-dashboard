@@ -21,44 +21,56 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const postApiLogin = async () => {
-    await axios({
-      method: "post",
-      url: `${import.meta.env.VITE_APP_API_URL}/api/login`,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: JSON.stringify({
-        email: formData?.email,
-        password: formData.password,
-      }),
-    })
-      .then(function (response) {
-        const data = response.data.data;
-        dispatch(loginUser(data));
-        localStorage.setItem("user", JSON.stringify(data));
+    try {
+        // Step 1: Login dan dapatkan token
+        const loginResponse = await axios.post(
+            `${import.meta.env.VITE_APP_API_URL}/auth/login`,
+            {
+                email: formData?.email,
+                password: formData.password,
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        );
+
+        const { access_token, refresh_token } = loginResponse.data;
+
+        // Step 2: Gunakan access_token untuk mendapatkan data pengguna
+        const userResponse = await axios.get(
+            `${import.meta.env.VITE_APP_API_URL}/user`,
+            {
+                headers: {
+                    Authorization: `Bearer ${access_token}`,
+                },
+            }
+        );
+
+        const userData = userResponse.data;
+
+        // Gabungkan data token dan user
+        const fullUserData = {
+            ...userData,
+            accessToken: access_token,
+            refreshToken: refresh_token,
+        };
+
+        // Simpan ke Redux dan localStorage
+        dispatch(loginUser(fullUserData));
+        localStorage.setItem("user", JSON.stringify(fullUserData));
+        localStorage.setItem("accessToken", access_token);
+        localStorage.setItem("refreshToken", refresh_token);
+
+        // Redirect sesuai role atau kondisi lain
+        navigate("/");
+    } catch (error) {
+        setError("Login gagal, Email atau Password Salah.");
         setLoading(false);
-        if (
-          (data.role === "2" || data.role === "3") &&
-          (!data.ttd || !data.name || !data.nip)
-        ) {
-          setLoading(false);
-          Swal.fire("Warning", "Anda Belum Input TTE / Nama / NIP", "warning");
-          navigate("/profile");
-          return;
-        } else if (data.role == "1") {
-          navigate("/");
-          return;
-        } else {
-          // handle other roles or default behavior
-          navigate("/");
-          return;
-        }
-      })
-      .catch((error) => {
-        setLoading(false);
-        return setError("Invalid email or password");
-      });
-  };
+    }
+};
+
   const handleShowPassword = (e) => {
     e.preventDefault();
     setShowPassword((prev) => !prev);
@@ -67,8 +79,8 @@ const Login = () => {
     e.preventDefault();
 
     setLoading(true);
-    navigate("/");
-    // postApiLogin();
+    // navigate("/");
+    postApiLogin();
   };
 
   const handleCheckboxChange = (event) => {
