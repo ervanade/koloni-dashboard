@@ -9,10 +9,47 @@ const AddUser = ({isDrawerOpen, setIsDrawerOpen}) => {
     role: "",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+
 
   const handleShowPassword = (e) => {
     e.preventDefault();
     setShowPassword((prev) => !prev);
+  };
+
+  const tambahUser = async () => {
+    if (!formData.email || !formData.password) {
+      Swal.fire("Error", "Ada Form yang belum di lengkapi", "error");
+      return;
+    }
+    try {
+      await axios({
+        method: "post",
+        url: `${import.meta.env.VITE_APP_API_URL}/register`,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.token}`,
+        },
+        data: JSON.stringify({
+          ...formData,
+        }),
+      });
+      Swal.fire("Data Berhasil di Input!", "", "success");
+      navigate("/users");
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+      if (error.response.status === 500) {
+        Swal.fire("Error", "Email Telah Digunakan", "error");
+        setLoading(false);
+        return;
+      }
+    }
+  };
+  const handleSimpan = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    tambahUser();
   };
 
   if (!isDrawerOpen) {
