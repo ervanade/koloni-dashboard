@@ -1,5 +1,9 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import { FaEye, FaEyeSlash, FaTimes } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const AddUser = ({isDrawerOpen, setIsDrawerOpen}) => {
   const [formData, setFormData] = useState({
@@ -10,6 +14,8 @@ const AddUser = ({isDrawerOpen, setIsDrawerOpen}) => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const user = useSelector((a) => a.auth.user);
 
 
   const handleShowPassword = (e) => {
@@ -28,7 +34,7 @@ const AddUser = ({isDrawerOpen, setIsDrawerOpen}) => {
         url: `${import.meta.env.VITE_APP_API_URL}/register`,
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `Bearer ${user?.accessToken}`,
         },
         data: JSON.stringify({
           ...formData,
@@ -39,7 +45,7 @@ const AddUser = ({isDrawerOpen, setIsDrawerOpen}) => {
     } catch (error) {
       setLoading(false);
       console.log(error);
-      if (error.response.status === 500) {
+      if (error?.response?.status === 500) {
         Swal.fire("Error", "Email Telah Digunakan", "error");
         setLoading(false);
         return;
@@ -77,7 +83,7 @@ const AddUser = ({isDrawerOpen, setIsDrawerOpen}) => {
             </button>
           </div>
           <div className="modal-content">
-            <form className="" >
+            <form className="" onSubmit={handleSimpan}>
             <div className=" p-6 flex-auto w-full">
             <div className="grid gap-4 mb-4 grid-cols-2">
                     <div className="col-span-2 md:col-span-1">
@@ -88,7 +94,13 @@ const AddUser = ({isDrawerOpen, setIsDrawerOpen}) => {
                rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
                     id="jumlah_barang_dikirim"
                     type="email"
-
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        email: e.target.value,
+                      }))
+                    }
                     placeholder="Email"
                     required
                   />

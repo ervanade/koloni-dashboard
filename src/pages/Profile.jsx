@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaFilter, FaInstagram, FaMinus } from "react-icons/fa6";
 import { FaEye, FaEyeSlash, FaHistory, FaLine, FaLock, FaTiktok, FaUser, FaUserPlus, FaYoutube } from "react-icons/fa";
 import Card from '../components/Card/Card';
 import UserDefault from "../assets/user/user-default.png";
 import Swal from 'sweetalert2';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 
 const Profile = () => {
+  const user = useSelector((a) => a.auth.user);
   const [showFilter, setShowFilter] = useState(true);
   const [showSimiliar, setShowSimiliar] = useState(true);
   const [activeTab, setActiveTab] = useState("profile");
@@ -22,6 +25,44 @@ const Profile = () => {
     role: "",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [getLoading, setGetLoading] = useState(false);
+
+  const fetchUserData = async () => {
+    setGetLoading(true);
+    try {
+      // eslint-disable-next-line
+      const responseUser = await axios({
+        method: "get",
+        url: `${import.meta.env.VITE_APP_API_URL}/user`,
+        headers: {
+          "Content-Type": "application/json",
+          //eslint-disable-next-line
+          Authorization: `Bearer ${user?.accessToken}`,
+        },
+      }).then(function (response) {
+        // handle success
+        // console.log(response)
+        const data = response.data;
+        setFormData({
+          email: data?.email,
+          username: data.first_name + data.last_name,
+          profile: "",
+          profileName: "",
+          role: "",
+        });
+        setPreviewImages({
+          profile: data.profile ? `${data.profile}` : null,
+        });
+      });
+      setGetLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+  console.log(formData)
 
   const handleShowPassword = (e) => {
     e.preventDefault();
@@ -158,7 +199,13 @@ Reset
                rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
                     id="jumlah_barang_dikirim"
                     type="email"
-
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        email: e.target.value,
+                      }))
+                    }
                     placeholder="Email"
                     required
                   />
@@ -223,7 +270,13 @@ Reset
                rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
                     id="jumlah_barang_dikirim"
                     type="text"
-
+                    value={formData.username}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        username: e.target.value,
+                      }))
+                    }
                     placeholder="Username"
                     required
                   />
