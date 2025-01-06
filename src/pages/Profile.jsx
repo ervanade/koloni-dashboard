@@ -6,6 +6,7 @@ import UserDefault from "../assets/user/user-default.png";
 import Swal from 'sweetalert2';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import { CgSpinner } from 'react-icons/cg';
 
 
 const Profile = () => {
@@ -22,7 +23,7 @@ const Profile = () => {
     username: "",
     profile: "",
     profileName: "",
-    role: "",
+    roles: "",
   });
   const [showPassword, setShowPassword] = useState(false);
   const [getLoading, setGetLoading] = useState(false);
@@ -48,7 +49,7 @@ const Profile = () => {
           username: data.first_name + data.last_name,
           profile: "",
           profileName: "",
-          role: data?.roles || "",
+          roles: data?.roles || "",
         });
         setPreviewImages({
           profile: data.profile ? `${data.profile}` : null,
@@ -57,6 +58,8 @@ const Profile = () => {
       setGetLoading(false);
     } catch (error) {
       console.log(error);
+      setGetLoading(false);
+
     }
   };
   useEffect(() => {
@@ -86,6 +89,15 @@ const Profile = () => {
       setFormData((prev) => ({ ...prev, [id]: value }));
     }
   };
+
+  if (getLoading) {
+    return (
+      <div className="flex justify-center  flex-col items-center">
+        <CgSpinner className="animate-spin inline-block w-10 h-10 text-blue-400" />
+        {/* <span className="ml-2">Loading...</span> */}
+      </div>
+    );
+  }
   return (
     <div>
       <div className="mb-6 flex items-center justify-between">
@@ -285,7 +297,7 @@ Reset
                     </div>
                     <div className="col-span-2 md:col-span-1">
                         <label for="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
-                        <select value={formData.role} onChange={(e) => setFormData(prev => ({ ...prev, role: e.target.value }))}
+                        <select value={formData.roles} onChange={(e) => setFormData(prev => ({ ...prev, roles: e.target.value }))}
  id="category" className="text-sm bg-white disabled:bg-[#F2F2F2] cursor-pointer  border border-[#cacaca] focus:border-sky-500 rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent">
                             <option selected="">Select Role</option>
                             <option value="user">User</option>

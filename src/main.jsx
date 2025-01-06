@@ -7,7 +7,7 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-// import "./store/axiosInterceptors"; // Pastikan path sesuai
+import "./store/axiosInterceptors"; // Pastikan path sesuai
 
 
 const theme = createTheme({
