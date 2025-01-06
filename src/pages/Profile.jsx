@@ -48,7 +48,7 @@ const Profile = () => {
           username: data.first_name + data.last_name,
           profile: "",
           profileName: "",
-          role: "",
+          role: data?.roles || "",
         });
         setPreviewImages({
           profile: data.profile ? `${data.profile}` : null,
@@ -132,7 +132,9 @@ const Profile = () => {
   <Card className="mt-6">
         <div className="flex items-center justify-between">
           <h1 className="font-medium text-lg text-textBold">Profile</h1>
-
+          <div>
+  <p className='font-xs'>Credits: <span className='font-bold'>{user.credit}</span></p>
+  </div>
         </div>
         <div className="flex items-center gap-4 mt-4">
         <div className="h-14 w-14 rounded-full">
@@ -283,10 +285,11 @@ Reset
                     </div>
                     <div className="col-span-2 md:col-span-1">
                         <label for="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
-                        <select id="category" className="text-sm bg-white disabled:bg-[#F2F2F2] cursor-pointer  border border-[#cacaca] focus:border-sky-500 rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent">
+                        <select value={formData.role} onChange={(e) => setFormData(prev => ({ ...prev, role: e.target.value }))}
+ id="category" className="text-sm bg-white disabled:bg-[#F2F2F2] cursor-pointer  border border-[#cacaca] focus:border-sky-500 rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent">
                             <option selected="">Select Role</option>
-                            <option value="TV">User</option>
-                            <option value="PC">Admin</option>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
                         </select>
                     </div>
 

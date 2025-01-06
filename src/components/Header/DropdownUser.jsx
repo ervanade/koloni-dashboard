@@ -50,7 +50,7 @@ const DropdownUser = () => {
             {user?.first_name + " " + user?.last_name || "Username"}
           </span>
           <span className="block text-xs capitalize font-normal">
-            {user.role ? returnRole(user.role) : "" || "Role"}
+            {user.roles ? user.roles : "" || "Role"}
           </span>
         </span>
 
