@@ -11,7 +11,7 @@ axios.interceptors.response.use(
     (error) => {
         if (
             error.response &&
-            error.response.status === 401
+            error.response.status === 401 && error.response.detail == "Token time expired: Signature has expired."
         ) {
             // Logout user
             store.dispatch(logoutUser());
