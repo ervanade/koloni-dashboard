@@ -149,7 +149,7 @@ const Profile = () => {
                     <div className="flex items-center justify-center gap-2">
                     <div className="sm:flex-[5_5_0%] flex flex-col items-start gap-1">
                 <div className="flex items-center">
-                  <label className="bg-sky-500 disabled:bg-slate-500 text-white text-sm font-normal py-2 px-4 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"
+                  <label className="bg-sky-500 disabled:bg-slate-500 cursor-pointer text-white text-sm font-normal py-2 px-4 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"
                   >
                     <input
                       className="hidden"

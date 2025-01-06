@@ -82,6 +82,11 @@ const Login = () => {
     // navigate("/");
     postApiLogin();
   };
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleLogin(e);
+    }
+  };
 
   const handleCheckboxChange = (event) => {
     setFormData((prev) => ({ ...prev, tanggal: event.target.value }));
@@ -105,7 +110,8 @@ const Login = () => {
               Please sign-in to your account and start the adventure
             </p>
           </div>
-          <form className="mt-5" onSubmit={handleLogin}>
+          <form className="mt-5" onSubmit={handleLogin}             onKeyDown={handleKeyDown}
+          >
             {error && (
               <div className="mb-3 bg-red-100 p-2 rounded-md">
                 <p className="text-center text-red-500">{error}</p>
