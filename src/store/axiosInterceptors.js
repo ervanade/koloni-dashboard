@@ -11,7 +11,11 @@ axios.interceptors.response.use(
     (error) => {
         if (
             error.response &&
-            error.response.status === 401 && error.response.detail == "Token time expired: Signature has expired."
+            error.response.status === 401 &&
+            (
+                error?.response?.data?.detail === "Token time expired: Signature has expired."
+                // || error?.response?.data?.detail === "Invalid token: Not enough segments"
+            )
         ) {
             // Logout user
             store.dispatch(logoutUser());

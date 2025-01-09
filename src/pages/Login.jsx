@@ -53,6 +53,8 @@ const Login = () => {
       // Gabungkan data token dan user
       const fullUserData = {
         ...userData,
+        accessToken: access_token,
+        refreshToken: refresh_token,
       };
 
       // Simpan ke Redux dan localStorage

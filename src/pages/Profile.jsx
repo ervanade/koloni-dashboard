@@ -66,7 +66,7 @@ const Profile = () => {
       });
       setGetLoading(false);
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data.detail);
       setGetLoading(false);
     }
   };

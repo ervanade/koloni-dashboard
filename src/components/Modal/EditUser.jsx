@@ -1,18 +1,33 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash, FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const AddUser = ({ isDrawerOpen, setIsDrawerOpen, fetchUserData }) => {
+const EditUser = ({
+  isDrawerOpen,
+  setIsDrawerOpen,
+  fetchUserData,
+  userData,
+}) => {
   const [formData, setFormData] = useState({
     password: "",
-    email: "",
-    first_name: "",
-    last_name: "",
-    roles: "",
+    email: userData?.email || "",
+    first_name: userData?.first_name || "",
+    last_name: userData?.last_name || "",
+    roles: userData?.roles || "",
   });
+  useEffect(() => {
+    setFormData({
+      password: "",
+      email: userData?.email || "",
+      first_name: userData?.first_name || "",
+      last_name: userData?.last_name || "",
+      roles: userData?.roles || "",
+    });
+  }, [userData]);
+
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -23,15 +38,17 @@ const AddUser = ({ isDrawerOpen, setIsDrawerOpen, fetchUserData }) => {
     setShowPassword((prev) => !prev);
   };
 
-  const tambahUser = async () => {
-    if (!formData.email || !formData.password) {
+  const editUser = async () => {
+    if (!formData.email) {
       Swal.fire("Error", "Ada Form yang belum di lengkapi", "error");
       return;
     }
     try {
       await axios({
-        method: "post",
-        url: `${import.meta.env.VITE_APP_API_URL}/users`,
+        method: "put",
+        url: `${import.meta.env.VITE_APP_API_URL}/users/${encodeURIComponent(
+          userData?._id
+        )}`,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${user?.accessToken}`,
@@ -56,7 +73,7 @@ const AddUser = ({ isDrawerOpen, setIsDrawerOpen, fetchUserData }) => {
   const handleSimpan = async (e) => {
     e.preventDefault();
     setLoading(true);
-    tambahUser();
+    editUser();
   };
 
   if (!isDrawerOpen) {
@@ -73,7 +90,7 @@ const AddUser = ({ isDrawerOpen, setIsDrawerOpen, fetchUserData }) => {
         <div className="relative my-6 mx-auto w-[85%] max-h-[80%] overflow-auto sm:w-3/4 xl:w-1/2 z-1">
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
             <div className="flex items-start justify-between p-5 border-b border-solid border-black/20 rounded-t ">
-              <h3 className="text-xl font-bold text-primary">Add User</h3>
+              <h3 className="text-xl font-bold text-primary">Edit User</h3>
               <button
                 className="bg-transparent border-0 text-black float-right"
                 onClick={() => setIsDrawerOpen(false)}
@@ -112,7 +129,7 @@ const AddUser = ({ isDrawerOpen, setIsDrawerOpen, fetchUserData }) => {
                         required
                       />
                     </div>
-                    <div className="col-span-2 md:col-span-1">
+                    {/* <div className="col-span-2 md:col-span-1">
                       <label
                         className="block text-textBold text-sm font-medium mb-2"
                         htmlFor="password"
@@ -156,6 +173,31 @@ const AddUser = ({ isDrawerOpen, setIsDrawerOpen, fetchUserData }) => {
                           <i className="fas fa-eye"></i>
                         )}
                       </button>
+                    </div> */}
+                    <div className="col-span-2 md:col-span-1">
+                      <label
+                        for="category"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                        Role
+                      </label>
+                      <select
+                        id="category"
+                        value={formData.roles}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            roles: e.target.value,
+                          }))
+                        }
+                        className="text-sm bg-white disabled:bg-[#F2F2F2] cursor-pointer  border border-[#cacaca] focus:border-sky-500 rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent"
+                      >
+                        <option selected disabled value="">
+                          Select Role
+                        </option>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                      </select>
                     </div>
                     <div className="col-span-2 md:col-span-1">
                       <label
@@ -208,14 +250,6 @@ const AddUser = ({ isDrawerOpen, setIsDrawerOpen, fetchUserData }) => {
                         }
                       />
                     </div>
-                    {/* <div className="col-span-2 md:col-span-1">
-                        <label for="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
-                        <select id="category" value={formData.roles} onChange={(e) => setFormData(prev => ({ ...prev, roles: e.target.value }))} className="text-sm bg-white disabled:bg-[#F2F2F2] cursor-pointer  border border-[#cacaca] focus:border-sky-500 rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent">
-                            <option selected="">Select Role</option>
-                            <option value="user">User</option>
-                            <option value="admin">Admin</option>
-                        </select>
-                    </div> */}
                   </div>
 
                   <div className="flex items-center justify-center gap-2 mt-8">
@@ -243,4 +277,4 @@ const AddUser = ({ isDrawerOpen, setIsDrawerOpen, fetchUserData }) => {
   );
 };
 
-export default AddUser;
+export default EditUser;
