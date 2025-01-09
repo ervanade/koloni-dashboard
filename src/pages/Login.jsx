@@ -22,54 +22,52 @@ const Login = () => {
 
   const postApiLogin = async () => {
     try {
-        // Step 1: Login dan dapatkan token
-        const loginResponse = await axios.post(
-            `${import.meta.env.VITE_APP_API_URL}/auth/login`,
-            {
-                email: formData?.email,
-                password: formData.password,
-            },
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }
-        );
+      // Step 1: Login dan dapatkan token
+      const loginResponse = await axios.post(
+        `${import.meta.env.VITE_APP_API_URL}/auth/login`,
+        {
+          email: formData?.email,
+          password: formData.password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-        const { access_token, refresh_token } = loginResponse.data;
+      const { access_token, refresh_token } = loginResponse.data;
 
-        // Step 2: Gunakan access_token untuk mendapatkan data pengguna
-        const userResponse = await axios.get(
-            `${import.meta.env.VITE_APP_API_URL}/user`,
-            {
-                headers: {
-                    Authorization: `Bearer ${access_token}`,
-                },
-            }
-        );
+      // Step 2: Gunakan access_token untuk mendapatkan data pengguna
+      // const userResponse = await axios.get(
+      //     `${import.meta.env.VITE_APP_API_URL}/user`,
+      //     {
+      //         headers: {
+      //             Authorization: `Bearer ${access_token}`,
+      //         },
+      //     }
+      // );
 
-        const userData = userResponse.data;
+      const userData = loginResponse.data.user;
 
-        // Gabungkan data token dan user
-        const fullUserData = {
-            ...userData,
-            accessToken: access_token,
-            refreshToken: refresh_token,
-        };
+      // Gabungkan data token dan user
+      const fullUserData = {
+        ...userData,
+      };
 
-        // Simpan ke Redux dan localStorage
-        dispatch(loginUser(fullUserData));
-        localStorage.setItem("user", JSON.stringify(fullUserData));
-        localStorage.setItem("accessToken", access_token);
-        localStorage.setItem("refreshToken", refresh_token);
+      // Simpan ke Redux dan localStorage
+      dispatch(loginUser(fullUserData));
+      localStorage.setItem("user", JSON.stringify(fullUserData));
+      localStorage.setItem("accessToken", access_token);
+      localStorage.setItem("refreshToken", refresh_token);
 
-        // Redirect sesuai role atau kondisi lain
-        navigate("/");
+      // Redirect sesuai role atau kondisi lain
+      navigate("/");
     } catch (error) {
-        setError("Login gagal, Email atau Password Salah.");
-        setLoading(false);
+      setError("Login gagal, Email atau Password Salah.");
+      setLoading(false);
     }
-};
+  };
 
   const handleShowPassword = (e) => {
     e.preventDefault();
@@ -110,7 +108,10 @@ const Login = () => {
               Please sign-in to your account and start the adventure
             </p>
           </div>
-          <form className="mt-5" onSubmit={handleLogin}             onKeyDown={handleKeyDown}
+          <form
+            className="mt-5"
+            onSubmit={handleLogin}
+            onKeyDown={handleKeyDown}
           >
             {error && (
               <div className="mb-3 bg-red-100 p-2 rounded-md">
