@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../components/Card/Card";
 import { FaCheckCircle, FaEye, FaPlus, FaSearch } from "react-icons/fa";
 import { FaAt } from "react-icons/fa6";
@@ -10,15 +10,125 @@ import { BarChart, LineChart } from "@mui/x-charts";
 import ResultAnalyser from "../components/Analyser/ResultAnalyser";
 import Drawer from "../components/Modal/Drawer";
 import AddComparison from "../components/Modal/AddComparison";
+import Swal from "sweetalert2";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 
 const Analyser = () => {
   const [showResult, setShowResult] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const [isModal, setIsModal] = useState(false)
+  const [dataAnalyse, setDataAnalyse] = useState({})
+  const user = useSelector((a) => a.auth.user);
+  const [dataCredits, setDataCredits] = useState(user)
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
-    platform: "INSTAGRAM",
-    username: ""
+    platform: "Instagram",
+    identifier: ""
   })
+
+  const fetchUserData = async () => {
+    try {
+      // eslint-disable-next-line
+      const responseUser = await axios({
+        method: "get",
+        url: `${import.meta.env.VITE_APP_API_URL}/user`,
+        headers: {
+          "Content-Type": "application/json",
+          //eslint-disable-next-line
+          Authorization: `Bearer ${user?.accessToken}`,
+        },
+      }).then(function (response) {
+        // handle success
+        // console.log(response)
+        const data = response.data;
+        setDataCredits({
+          email: data?.email,
+          username: data.first_name + data.last_name,
+          profile: "",
+          profileName: "",
+          roles: data?.roles || "",
+          credits: data?.credits || "",
+        });
+
+      });
+
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+  useEffect(() => {
+    fetchUserData()
+  }, [])
+  
+  const searchAnalyse = async () => {
+    if (!formData.identifier) {
+      Swal.fire("Error", "Username Belum Diisi", "error");
+      return;
+    }
+    setLoading(true);
+    Swal.fire({
+      title: "Search Analyse...",
+      text: "Please Wait Preparing Your Data...",
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      willOpen: () => {
+        Swal.showLoading();
+      },
+    });
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${import.meta.env.VITE_APP_API_URL}/analyze`,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.accessToken}`,
+        },
+        data: JSON.stringify({
+          ...formData,
+        }),
+      });
+      setDataAnalyse(response.data);
+      Swal.fire("Success Get Analyse Profile!", "", "success");
+      setShowResult(true)
+      fetchUserData()
+      setLoading(false);
+    } catch (error) {
+      console.log(error)
+       Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Failed Search Analyse Profile",
+          });
+      setDataAnalyse(null);
+      setFormData({
+        platform: "Instagram",
+        identifier: ""
+      })
+    } finally {
+      setLoading(false);
+      
+    }
+  };
+  const handleSimpan = async (e) => {
+    e.preventDefault();
+    return Swal.fire({
+      title: "Are you sure?",
+      text: "Are you sure this will reduce your credits?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Analyse it!",
+      confirmButtonColor: "#24A5E9",
+    }).then(async (result) => {
+      if (result.value) {
+        setLoading(true);
+    searchAnalyse();
+      }
+    });
+    
+  };
 
   return (
     <div>
@@ -31,7 +141,7 @@ const Analyser = () => {
         </div>
         <div className="flex gap-2 flex-wrap justify-end">
           <div className="bg-[#efeff1] text-blue-500 rounded-full px-4 py-2 shadow-sm">
-            <p className="font-medium">Remaining Analyser Credits: 2</p>
+            <p className="font-medium">Remaining Analyser Credits: {dataCredits?.credits}</p>
           </div>
           <button
             className=" bg-sky-500 flex gap-2 items-center text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
@@ -44,7 +154,7 @@ const Analyser = () => {
       </div>
       <div className="flex items-center justify-between">
       <div className="flex items-center gap-4 flex-wrap">
-            <button onClick={() => setFormData(prev => ({...prev, platform: "INSTAGRAM"}))} className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform == "INSTAGRAM" ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""}  rounded-full px-6 py-2 shadow-sm flex items-center`}>
+            <button onClick={() => setFormData(prev => ({...prev, platform: "Instagram"}))} className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform == "Instagram" ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""}  rounded-full px-6 py-2 shadow-sm flex items-center`}>
               <img
                 src="logo-instagram.png"
                 alt="Logo Instagram"
@@ -53,12 +163,12 @@ const Analyser = () => {
               <p className="">Instagram</p>
             </button>
 
-            <button onClick={() => setFormData(prev => ({...prev, platform: "TIKTOK"}))} className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform == "TIKTOK" ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""}  rounded-full px-6 py-2 shadow-sm flex items-center`}>
+            <button onClick={() => setFormData(prev => ({...prev, platform: "Tiktok"}))} className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform == "Tiktok" ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""}  rounded-full px-6 py-2 shadow-sm flex items-center`}>
               <img src="logo-tiktok.png" alt="Logo Tiktok" className="w-6" />{" "}
               <p className="">Tiktok</p>
             </button>
 
-            <button onClick={() => setFormData(prev => ({...prev, platform: "YOUTUBE"}))} className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform == "YOUTUBE" ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""}  rounded-full px-6 py-2 shadow-sm flex items-center`}>
+            <button onClick={() => setFormData(prev => ({...prev, platform: "Youtube"}))} className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform == "Youtube" ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""}  rounded-full px-6 py-2 shadow-sm flex items-center`}>
               <img src="logo-youtube.png" alt="Logo Youtube" className="w-6" />{" "}
               <p className="">Youtube</p>
             </button>
@@ -90,8 +200,8 @@ const Analyser = () => {
 
             <input
               type="text"
-              value={formData.username}
-              onChange={(e) => setFormData( prev => ({...prev, username:e.target.value}))}
+              value={formData.identifier}
+              onChange={(e) => setFormData( prev => ({...prev, identifier:e.target.value}))}
               placeholder="Enter Instagram Username..."
               className="w-full bg-white pl-9 pr-4 text-black outline outline-1 outline-zinc-200 focus:outline-primary dark:text-white py-3 rounded-md"
             />
@@ -99,7 +209,8 @@ const Analyser = () => {
           <button
             className=" bg-sky-500 flex gap-2 items-center text-white font-medium py-3 px-4 rounded-md focus:outline-none focus:shadow-outline"
             type="submit"
-            onClick={() => setShowResult(!showResult)}
+            onClick={(e) => handleSimpan(e)}
+            disabled={loading || dataCredits.credits < 1}
           >
             {" "}
             Analyse
@@ -107,7 +218,7 @@ const Analyser = () => {
         </div>
         <p className="text-textThin font-normal mt-2">Example: @cristiano</p>
       </Card>
-    <ResultAnalyser title="tes" data={showResult}/> 
+    <ResultAnalyser title="tes" data={showResult} dataAnalyse={dataAnalyse}/> 
     <Drawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen}/>
     <AddComparison isDrawerOpen={isModal} setIsDrawerOpen={setIsModal} />
 

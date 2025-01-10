@@ -460,7 +460,7 @@ export const DataFormater = (number) => {
   } else if (number >= 1000) {
     return (number / 1000).toFixed(1) + 'K';
   } else {
-    return number.toString();
+    return number?.toString();
   }
 };
 
@@ -530,6 +530,5 @@ export const optionsProfile = {
 export const seriesProfile = [
   {
     data: [75869498, 76001247, 76144454, 76233828, 75991592, 76128640, 76295177]
-    // data: [629781011, 632032999, 634620948, 636067300, 639399888, 641325352]
   }
 ]

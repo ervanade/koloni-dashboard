@@ -12,19 +12,19 @@ const EditUser = ({
   userData,
 }) => {
   const [formData, setFormData] = useState({
-    password: "",
     email: userData?.email || "",
     first_name: userData?.first_name || "",
     last_name: userData?.last_name || "",
     roles: userData?.roles || "",
+    credits: userData?.credits || "",
   });
   useEffect(() => {
     setFormData({
-      password: "",
       email: userData?.email || "",
       first_name: userData?.first_name || "",
       last_name: userData?.last_name || "",
       roles: userData?.roles || "",
+      credits: userData?.credits || "",
     });
   }, [userData]);
 
@@ -57,7 +57,7 @@ const EditUser = ({
           ...formData,
         }),
       });
-      Swal.fire("Data Berhasil di Input!", "", "success");
+      Swal.fire("Success Update User!", "", "success");
       setIsDrawerOpen(false);
       fetchUserData();
     } catch (error) {
@@ -240,7 +240,7 @@ const EditUser = ({
                         id="jumlah_barang_dikirim"
                         type="text"
                         placeholder="LastName"
-                        required
+                        // required
                         value={formData.last_name}
                         onChange={(e) =>
                           setFormData((prev) => ({
@@ -250,7 +250,34 @@ const EditUser = ({
                         }
                       />
                     </div>
+                    <div className="col-span-2 md:col-span-1">
+                      <label
+                        className=" block text-textBold text-sm font-medium mb-2"
+                        htmlFor="email"
+                      >
+                        Credits
+                      </label>
+
+                      <input
+                        className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
+                  "border-red-500" 
+               rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
+                        id="jumlah_barang_dikirim"
+                        type="number"
+                        placeholder="Credits"
+                        required
+                        value={formData.credits}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            credits: e.target.value,
+                          }))
+                        }
+                      />
+                    </div>
                   </div>
+
+                 
 
                   <div className="flex items-center justify-center gap-2 mt-8">
                     <button

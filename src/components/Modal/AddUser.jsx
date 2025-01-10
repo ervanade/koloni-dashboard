@@ -12,6 +12,7 @@ const AddUser = ({ isDrawerOpen, setIsDrawerOpen, fetchUserData }) => {
     first_name: "",
     last_name: "",
     roles: "",
+    credits: "",
   });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -40,12 +41,28 @@ const AddUser = ({ isDrawerOpen, setIsDrawerOpen, fetchUserData }) => {
           ...formData,
         }),
       });
-      Swal.fire("Data Berhasil di Input!", "", "success");
+      Swal.fire("Success Add User!", "", "success");
       setIsDrawerOpen(false);
+      setFormData({
+        password: "",
+        email: "",
+        first_name: "",
+        last_name: "",
+        roles: "",
+        credits: "",
+      })
       fetchUserData();
     } catch (error) {
       setLoading(false);
       console.log(error);
+      setFormData({
+        password: "",
+        email: "",
+        first_name: "",
+        last_name: "",
+        roles: "",
+        credits: "",
+      })
       if (error?.response?.status === 500) {
         Swal.fire("Error", "Email Telah Digunakan", "error");
         setLoading(false);
@@ -198,7 +215,7 @@ const AddUser = ({ isDrawerOpen, setIsDrawerOpen, fetchUserData }) => {
                         id="jumlah_barang_dikirim"
                         type="text"
                         placeholder="LastName"
-                        required
+                        // required
                         value={formData.last_name}
                         onChange={(e) =>
                           setFormData((prev) => ({
@@ -208,15 +225,42 @@ const AddUser = ({ isDrawerOpen, setIsDrawerOpen, fetchUserData }) => {
                         }
                       />
                     </div>
-                    {/* <div className="col-span-2 md:col-span-1">
+                    <div className="col-span-2 md:col-span-1">
                         <label for="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
                         <select id="category" value={formData.roles} onChange={(e) => setFormData(prev => ({ ...prev, roles: e.target.value }))} className="text-sm bg-white disabled:bg-[#F2F2F2] cursor-pointer  border border-[#cacaca] focus:border-sky-500 rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent">
-                            <option selected="">Select Role</option>
+                            <option selected disabled value="">Select Role</option>
                             <option value="user">User</option>
                             <option value="admin">Admin</option>
                         </select>
-                    </div> */}
+                    </div>
+                    <div className="col-span-2 md:col-span-1">
+                      <label
+                        className=" block text-textBold text-sm font-medium mb-2"
+                        htmlFor="email"
+                      >
+                        Credits
+                      </label>
+
+                      <input
+                        className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
+                  "border-red-500" 
+               rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
+                        id="jumlah_barang_dikirim"
+                        type="number"
+                        placeholder="Credits"
+                        required
+                        value={formData.credits}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            credits: e.target.value,
+                          }))
+                        }
+                      />
+                    </div>
                   </div>
+
+                
 
                   <div className="flex items-center justify-center gap-2 mt-8">
                     <button

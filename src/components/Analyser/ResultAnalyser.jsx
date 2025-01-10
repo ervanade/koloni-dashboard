@@ -30,9 +30,11 @@ import {
   topSimiliar,
 } from "../../data/dataAnalyser";
 import DataRaffi from "../../data/nagita.json";
-const ResultAnalyser = ({ data }) => {
-  const groupedByAgeRange = Object.values(
-    DataRaffi.data.audience_breakdown.age_ranges.reduce((acc, curr) => {
+const ResultAnalyser = ({ data, dataAnalyse}) => {
+// const dataAnalyse = DataRaffi.data
+const groupedByAgeRange = dataAnalyse?.audience_breakdown?.age_ranges
+? Object.values(
+    dataAnalyse.audience_breakdown.age_ranges.reduce((acc, curr) => {
       const key = curr.age_range; // Grouping key is age_range
       if (!acc[key]) {
         acc[key] = { age_range: curr.age_range, value: 0 }; // Initialize group
@@ -40,7 +42,9 @@ const ResultAnalyser = ({ data }) => {
       acc[key].value += curr.value; // Sum up values
       return acc;
     }, {})
-  );
+  )
+: []; // Return an empty array if age_ranges is null or undefined
+
   const options = {
     chart: {
       zoom: {
@@ -82,7 +86,7 @@ const ResultAnalyser = ({ data }) => {
       },
     },
     xaxis: {
-      categories: groupedByAgeRange.map((item) => item.age_range),
+      categories: groupedByAgeRange?.map((item) => item.age_range),
       // categories: ["13-17", "18-24", "25-34", "35-34", "45-64"],
     },
     yaxis: {},
@@ -91,7 +95,7 @@ const ResultAnalyser = ({ data }) => {
   // ** Chart Series
   const series = [
     {
-      data: groupedByAgeRange.map((item) => item.value.toFixed(2)),
+      data: groupedByAgeRange?.map((item) => item.value.toFixed(2)),
       // data: [6.1, 36.4, 43.7, 10.9, 2.7],
     },
   ];
@@ -189,18 +193,18 @@ const ResultAnalyser = ({ data }) => {
             <div className="flex items-center sm:flex-row flex-col gap-4 ">
               <div className="rounded-full w-12 md:w-16 overflow-hidden">
                 <img
-                  src={DataRaffi.data.profile_image || "/cristiano.jpeg"}
+                  src={dataAnalyse?.profile_image || "/cristiano.jpeg"}
                   alt=""
                   className="w-full"
                 />
               </div>
               <div className="flex flex-col gap-3">
                 <h1 className="font-medium md:text-lg ">
-                  {DataRaffi.data.influencer_name || "cristiano"}
+                  {dataAnalyse?.username || ""}
                 </h1>
                 <p className="text-textThin font-normal">
                   {" "}
-                  {"@" + DataRaffi.data.influencer_name || "@cristiano"}
+                  {"@" + dataAnalyse?.username || ""}
                 </p>
                 <div className="flex items-center gap-2">
                   {" "}
@@ -228,21 +232,22 @@ const ResultAnalyser = ({ data }) => {
               <div>
                 <h2 className="font-medium text-textThin">ENGAGEMENT RATE</h2>{" "}
                 <p className="font-bold text-sky-500 md:text-2xl">
-                  {DataRaffi.data.engagement_rate + "%" || "1,2%"}
+                {(dataAnalyse?.engagement_rate ? dataAnalyse.engagement_rate + "%" : "0%")}
+
                 </p>
               </div>
 
               <div>
                 <h2 className="font-medium text-textThin">FOLLOWERS</h2>{" "}
                 <p className="font-bold text-sky-500 md:text-2xl">
-                  {DataFormater(DataRaffi.data.followers) || "641.3M"}
+                  {DataFormater(dataAnalyse?.followers) || "641.3M"}
                 </p>
               </div>
 
               <div>
                 <h2 className="font-medium text-textThin">FOLLOWING</h2>{" "}
                 <p className="font-bold text-sky-500 md:text-2xl">
-                  {DataFormater(DataRaffi.data.following) || "584"}
+                  {DataFormater(dataAnalyse?.following) || "584"}
                 </p>
               </div>
             </div>
@@ -261,8 +266,8 @@ const ResultAnalyser = ({ data }) => {
                 </h2>
                 <p className="font-bold text-sky-500 text-2xl">
                   {DataFormater(
-                    DataRaffi.data.user_performance.avg_likes_per_post
-                  ) || "7.786.266"}
+                    dataAnalyse?.user_performance?.avg_likes_per_post
+                  ) || 0}
                 </p>
               </div>
 
@@ -275,8 +280,8 @@ const ResultAnalyser = ({ data }) => {
                 </h2>
                 <p className="font-bold text-sky-500 text-2xl">
                   {DataFormater(
-                    DataRaffi.data.user_performance.avg_comment_per_post
-                  ) || "59.593"}
+                    dataAnalyse?.user_performance?.avg_comment_per_post
+                  ) || 0}
                 </p>
               </div>
 
@@ -288,8 +293,8 @@ const ResultAnalyser = ({ data }) => {
                   AVG. REELS VIEW
                 </h2>
                 <p className="font-bold text-sky-500 text-2xl">
-                  {DataFormater(DataRaffi.data.user_performance.avg_reels) ||
-                    "99.612.620"}
+                  {DataFormater(dataAnalyse?.user_performance?.avg_reels) ||
+                    0}
                 </p>
               </div>
             </div>
@@ -299,6 +304,7 @@ const ResultAnalyser = ({ data }) => {
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
               <h1 className="font-bold text-textBold ">User Authenticity </h1>
               <PieChart
+                              colors={['#9B88FA', '#2E96FF', '#32D4BD', '#6DDE80' , '#FFA500']} // Use palette
                 className="mt-4 !text-sm"
                 sx={{
                   "& .MuiChartsLegend-series text": {
@@ -308,11 +314,10 @@ const ResultAnalyser = ({ data }) => {
                 }}
                 series={[
                   {
-                    data: DataRaffi.data.user_authenticity.map(
+                    data: dataAnalyse?.user_authenticity?.map(
                       ({ name, value, color }) => ({
                         label: name, // Use `name` as the label
                         value, // Keep the `value`,
-                        color,
                       })
                     ),
                     // data: desktopOS,
@@ -335,9 +340,9 @@ const ResultAnalyser = ({ data }) => {
                 Significant Followers
               </h1>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-6">
-                {DataRaffi.data.significant_followers
-                  .slice(0, 6)
-                  .map((item, index) => (
+                {dataAnalyse?.significant_followers
+                  ?.slice(0, 6)
+                  ?.map((item, index) => (
                     <a href={item.url}
                     target="_blank"
                     rel="noopener noreferrer" className="">
@@ -364,101 +369,7 @@ const ResultAnalyser = ({ data }) => {
                     </div>
                     </a>
                   ))}
-                {/* <div className="p-2 bg-[#EBEEF4] rounded-md flex flex-col justify-center items-center gap-2">
-                  <div className="relative inline-flex w-fit">
-                    <div className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
-                      <FaCheckCircle className="text-blue-500" />
-                    </div>
 
-                    <img src="/nike.jpeg" className="rounded-full w-10" />
-                  </div>
-                  <h2 className="text-sm text-center font-bold text-textBold">
-                    nike
-                  </h2>
-                  <p className="text-sm text-center text-textBold font-medium">
-                    303.462.935 Followers
-                  </p>
-                </div>
-
-                <div className="p-2 bg-[#EBEEF4] rounded-md flex flex-col justify-center items-center gap-2">
-                  <div className="relative inline-flex w-fit">
-                    <div className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
-                      <FaCheckCircle className="text-blue-500" />
-                    </div>
-
-                    <img src="/virat.jpeg" className="rounded-full w-10" />
-                  </div>
-                  <h2 className="text-sm text-center font-bold text-textBold">
-                    virat.kohli
-                  </h2>
-                  <p className="text-sm text-center text-textBold font-medium">
-                    270.700.837 Followers
-                  </p>
-                </div>
-
-                <div className="p-2 bg-[#EBEEF4] rounded-md flex flex-col justify-center items-center gap-2">
-                  <div className="relative inline-flex w-fit">
-                    <div className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
-                      <FaCheckCircle className="text-blue-500" />
-                    </div>
-
-                    <img src="/jlo.jpeg" className="rounded-full w-10" />
-                  </div>
-                  <h2 className="text-sm text-center font-bold text-textBold">
-                    jlo
-                  </h2>
-                  <p className="text-sm text-center text-textBold font-medium">
-                    250.777.388 Followers
-                  </p>
-                </div>
-
-                <div className="p-2 bg-[#EBEEF4] rounded-md flex flex-col justify-center items-center gap-2">
-                  <div className="relative inline-flex w-fit">
-                    <div className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
-                      <FaCheckCircle className="text-blue-500" />
-                    </div>
-
-                    <img src="/neymar.jpeg" className="rounded-full w-10" />
-                  </div>
-                  <h2 className="text-sm text-center font-bold text-textBold">
-                    neymar
-                  </h2>
-                  <p className="text-sm text-center text-textBold font-medium">
-                    225.158.410 Followers
-                  </p>
-                </div>
-
-                <div className="p-2 bg-[#EBEEF4] rounded-md flex flex-col justify-center items-center gap-2">
-                  <div className="relative inline-flex w-fit">
-                    <div className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
-                      <FaCheckCircle className="text-blue-500" />
-                    </div>
-
-                    <img src="/kevin.jpeg" className="rounded-full w-10" />
-                  </div>
-                  <h2 className="text-sm text-center font-bold text-textBold">
-                    kevin
-                  </h2>
-                  <p className="text-sm text-center text-textBold font-medium">
-                    178.562.767 Followers
-                  </p>
-                </div>
-
-                <div className="p-2 bg-[#EBEEF4] rounded-md flex flex-col justify-center items-center gap-2">
-                  <div className="relative inline-flex w-fit">
-                    <div className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
-                      <FaCheckCircle className="text-blue-500" />
-                    </div>
-
-                    <img src="/kingjames.jpeg" className="rounded-full w-10" />
-                  </div>
-                  <h2 className="text-sm text-center font-bold text-textBold">
-                    kingjames
-                  </h2>
-                  <p className="text-sm text-center text-textBold font-medium">
-                    159.885.215 Followers
-                  </p>
-                </div> */}
               </div>
             </div>
           </div>
@@ -469,7 +380,7 @@ const ResultAnalyser = ({ data }) => {
                 Followers Reachability{" "}
               </h1>
               <PieChart
-                colors={['#9B88FA', '#2E96FF', '#32D4BD', '#6DDE80']} // Use palette
+                colors={['#9B88FA', '#2E96FF', '#32D4BD', '#6DDE80' , '#FFA500']} // Use palette
                 className="mt-4 !text-sm"
                 sx={{
                   "& .MuiChartsLegend-series text": {
@@ -480,7 +391,7 @@ const ResultAnalyser = ({ data }) => {
                 series={[
                   {
                     // data: followersChart,
-                    data: DataRaffi.data.follower_reachabilities.map(
+                    data: dataAnalyse?.follower_reachabilities?.map(
                       ({ followingRange, value, color }) => ({
                         label: followingRange, // Use `name` as the label
                         value, // Keep the `value`,
@@ -505,28 +416,6 @@ const ResultAnalyser = ({ data }) => {
               <h1 className="font-bold text-textBold ">
                 Profile Growth - Last 6 Months{" "}
               </h1>
-              {/* <LineChart
-                xAxis={[
-                  {
-                    scaleType: "time",
-                    data: [
-                      new Date(2024, 1, 0),
-                      new Date(2024, 2, 0),
-                      new Date(2024, 3, 0),
-                      new Date(2024, 4, 0),
-                      new Date(2024, 5, 0),
-                      new Date(2024, 6, 0),
-                    ],
-                  },
-                ]}
-                series={[
-                  {
-                    data: [200, 550, 200, 850, 150, 500],
-                    color: "#2E96FF",
-                  },
-                ]}
-                height={300}
-              /> */}
               <Chart
                 options={optionsProfile}
                 series={seriesProfile}
@@ -562,7 +451,7 @@ const ResultAnalyser = ({ data }) => {
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
               <h1 className="font-bold text-textBold ">Top Hashtags</h1>
               <div className="mt-4">
-                {DataRaffi.data.top_hashtags.slice(0, 10).map((item, index) => (
+                {dataAnalyse?.top_hashtags?.slice(0, 10)?.map((item, index) => (
                   <p className="text-[#1E3A8A]" key={index}>
                     {"#" + item.name}{" "}
                     <span
@@ -580,8 +469,8 @@ const ResultAnalyser = ({ data }) => {
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
               <h1 className="font-bold text-textBold ">Top Mentions</h1>
               <div className="mt-4">
-                {DataRaffi.data.top_mentions.slice(0, 10).map((item, index) => (
-                  <p className="text-[#1E3A8A]">
+                {dataAnalyse?.top_mentions?.slice(0, 10)?.map((item, index) => (
+                  <p className="text-[#1E3A8A]" key={index}>
                     {"@" + item.name}{" "}
                     <span
                       className={`${
@@ -598,7 +487,7 @@ const ResultAnalyser = ({ data }) => {
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
               <h1 className="font-bold text-textBold ">Top Interests</h1>
               <div className="mt-4 flex flex-col gap-4">
-                {DataRaffi.data.top_interest.slice(0, 4).map((item, index) => (
+                {dataAnalyse?.top_interest?.slice(0, 4)?.map((item, index) => (
                   <div key={index}>
                     <p className="text-sm text-textBold font-medium ">
                       {item.name}
@@ -613,51 +502,6 @@ const ResultAnalyser = ({ data }) => {
                     </div>
                   </div>
                 ))}
-                {/* <div>
-                  <p className="text-sm text-textBold font-medium ">
-                    Friends, Family & Relationships
-                  </p>
-                  <div className="w-full bg-[#EBEEF4] rounded-full dark:bg-gray-700 mt-2">
-                    <div className="bg-sky-500 text-xs font-medium text-blue-100 text-center p-[3px] leading-none rounded-full w-[32.3%]">
-                      {" "}
-                      32.3%
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <p className="text-sm text-textBold font-medium ">
-                    Clothes, Shoes, Handbags & Accessories
-                  </p>
-                  <div className="w-full bg-[#EBEEF4] rounded-full dark:bg-gray-700 mt-2">
-                    <div className="bg-sky-500 text-xs font-medium text-blue-100 text-center p-[3px] leading-none rounded-full w-[27.9%]">
-                      {" "}
-                      27.9%
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <p className="text-sm text-textBold font-medium ">Sports</p>
-                  <div className="w-full bg-[#EBEEF4] rounded-full dark:bg-gray-700 mt-2">
-                    <div className="bg-sky-500 text-xs font-medium text-blue-100 text-center p-[3px] leading-none rounded-full w-[27.4%]">
-                      {" "}
-                      27.4%
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <p className="text-sm text-textBold font-medium ">
-                    Camera & Photography
-                  </p>
-                  <div className="w-full bg-[#EBEEF4] rounded-full dark:bg-gray-700 mt-2">
-                    <div className="bg-sky-500 text-xs font-medium text-blue-100 text-center p-[3px] leading-none rounded-full w-[24.8%]">
-                      {" "}
-                      24.8%
-                    </div>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>
@@ -665,7 +509,7 @@ const ResultAnalyser = ({ data }) => {
           <div className="flex flex-col border border-[#C4C4C4] p-4 rounded-md mt-6 overflow-hidden">
             <h1 className="font-bold text-textBold ">Top Contents </h1>
             <div className="scroll items-center mt-6 !overflow-x-auto w-full whitespace-nowrap pb-2">
-              {DataRaffi.data.top_contents.slice(0, 10).map((item, index) => (
+              {dataAnalyse?.top_contents?.slice(0, 10)?.map((item, index) => (
                 <div className="w-54 inline-block me-4" key={index}>
                   <a
                     href={item.content_url}
@@ -700,9 +544,9 @@ const ResultAnalyser = ({ data }) => {
               Lookalikes Content Creator{" "}
             </h1>
             <div className="scroll items-center mt-6 !overflow-x-auto w-full whitespace-nowrap pb-2">
-              {DataRaffi.data.look_alies_content_creators
-                .slice(0, 5)
-                .map((item, index) => (
+              {dataAnalyse?.look_alies_content_creators
+                ?.slice(0, 5)
+                ?.map((item, index) => (
                   <div className="w-54 inline-block me-4" key={index}>
                     <a
                       href={item.link}

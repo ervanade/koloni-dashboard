@@ -33,6 +33,8 @@ const Profile = () => {
     profile: "",
     profileName: "",
     roles: "",
+    credits: "",
+
   });
   const [showPassword, setShowPassword] = useState(false);
   const [getLoading, setGetLoading] = useState(false);
@@ -59,6 +61,7 @@ const Profile = () => {
           profile: "",
           profileName: "",
           roles: data?.roles || "",
+          credits: data?.credits || "",
         });
         setPreviewImages({
           profile: data.profile ? `${data.profile}` : null,
@@ -171,7 +174,7 @@ const Profile = () => {
             <h1 className="font-medium text-lg text-textBold">Profile</h1>
             <div>
               <p className="font-xs">
-                Credits: <span className="font-bold">{user.credit}</span>
+                Credits: <span className="font-bold">{formData?.credits}</span>
               </p>
             </div>
           </div>

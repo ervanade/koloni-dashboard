@@ -91,7 +91,7 @@ const Users = () => {
         data: JSON.stringify(updatedData),
       });
 
-      Swal.fire("Data Berhasil di Input!", "", "success");
+      Swal.fire("Success Confirm User!", "", "success");
       fetchUserData();
     } catch (error) {
       setLoading(false);
@@ -200,7 +200,7 @@ const Users = () => {
       },
       {
         name: "Credits",
-        selector: (row) => row.credit,
+        selector: (row) => row.credits,
         sortable: true,
       },
       {

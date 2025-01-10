@@ -172,7 +172,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 </NavLink>
               </li>
             </ul>
-            {user.roles === "admin" && (
+            {user?.roles === "admin" && (
               <div>
                 <h3 className="mb-3 ml-4 text-sm font-semibold text-bodydark2">
                   ADMIN
