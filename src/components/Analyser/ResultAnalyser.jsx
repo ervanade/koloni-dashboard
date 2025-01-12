@@ -30,20 +30,20 @@ import {
   topSimiliar,
 } from "../../data/dataAnalyser";
 import DataRaffi from "../../data/nagita.json";
-const ResultAnalyser = ({ data, dataAnalyse}) => {
-// const dataAnalyse = DataRaffi.data
-const groupedByAgeRange = dataAnalyse?.audience_breakdown?.age_ranges
-? Object.values(
-    dataAnalyse.audience_breakdown.age_ranges.reduce((acc, curr) => {
-      const key = curr.age_range; // Grouping key is age_range
-      if (!acc[key]) {
-        acc[key] = { age_range: curr.age_range, value: 0 }; // Initialize group
-      }
-      acc[key].value += curr.value; // Sum up values
-      return acc;
-    }, {})
-  )
-: []; // Return an empty array if age_ranges is null or undefined
+const ResultAnalyser = ({ data, dataAnalyse }) => {
+  // const dataAnalyse = DataRaffi.data
+  const groupedByAgeRange = dataAnalyse?.audience_breakdown?.age_ranges
+    ? Object.values(
+        dataAnalyse.audience_breakdown.age_ranges.reduce((acc, curr) => {
+          const key = curr.age_range; // Grouping key is age_range
+          if (!acc[key]) {
+            acc[key] = { age_range: curr.age_range, value: 0 }; // Initialize group
+          }
+          acc[key].value += curr.value; // Sum up values
+          return acc;
+        }, {})
+      )
+    : []; // Return an empty array if age_ranges is null or undefined
 
   const options = {
     chart: {
@@ -232,8 +232,9 @@ const groupedByAgeRange = dataAnalyse?.audience_breakdown?.age_ranges
               <div>
                 <h2 className="font-medium text-textThin">ENGAGEMENT RATE</h2>{" "}
                 <p className="font-bold text-sky-500 md:text-2xl">
-                {(dataAnalyse?.engagement_rate ? dataAnalyse.engagement_rate + "%" : "0%")}
-
+                  {dataAnalyse?.engagement_rate
+                    ? dataAnalyse.engagement_rate.toFixed(2) + "%"
+                    : "0%"}
                 </p>
               </div>
 
@@ -293,8 +294,7 @@ const groupedByAgeRange = dataAnalyse?.audience_breakdown?.age_ranges
                   AVG. REELS VIEW
                 </h2>
                 <p className="font-bold text-sky-500 text-2xl">
-                  {DataFormater(dataAnalyse?.user_performance?.avg_reels) ||
-                    0}
+                  {DataFormater(dataAnalyse?.user_performance?.avg_reels) || 0}
                 </p>
               </div>
             </div>
@@ -304,7 +304,7 @@ const groupedByAgeRange = dataAnalyse?.audience_breakdown?.age_ranges
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
               <h1 className="font-bold text-textBold ">User Authenticity </h1>
               <PieChart
-                              colors={['#9B88FA', '#2E96FF', '#32D4BD', '#6DDE80' , '#FFA500']} // Use palette
+                colors={["#9B88FA", "#2E96FF", "#32D4BD", "#6DDE80", "#FFA500"]} // Use palette
                 className="mt-4 !text-sm"
                 sx={{
                   "& .MuiChartsLegend-series text": {
@@ -343,33 +343,35 @@ const groupedByAgeRange = dataAnalyse?.audience_breakdown?.age_ranges
                 {dataAnalyse?.significant_followers
                   ?.slice(0, 6)
                   ?.map((item, index) => (
-                    <a href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer" className="">
-                    <div
-                      className="p-2 hover:bg-white border border-[#EBEEF4] bg-[#EBEEF4] rounded-md flex flex-col justify-center items-center gap-2"
-                      key={index}
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className=""
                     >
-                      <div className="relative inline-flex w-fit">
-                        <div className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
-                          <FaCheckCircle className="text-blue-500" />
-                        </div>
+                      <div
+                        className="p-2 hover:bg-white border border-[#EBEEF4] bg-[#EBEEF4] rounded-md flex flex-col justify-center items-center gap-2"
+                        key={index}
+                      >
+                        <div className="relative inline-flex w-fit">
+                          <div className="absolute bottom-auto left-auto right-0 top-0 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 whitespace-nowrap rounded-full px-1 py-1 text-center align-baseline text-xs font-bold leading-none text-white">
+                            <FaCheckCircle className="text-blue-500" />
+                          </div>
 
-                        <img
-                          src={item.imageUrl}
-                          className="rounded-full w-10"
-                        />
+                          <img
+                            src={item.imageUrl}
+                            className="rounded-full w-10"
+                          />
+                        </div>
+                        <h2 className="text-[13px] text-center font-bold text-textBold">
+                          {item.platformUsername}
+                        </h2>
+                        <p className="text-[13px] text-center text-[#6B7280] font-medium">
+                          {item.followerCount.toLocaleString("id-ID")} Followers
+                        </p>
                       </div>
-                      <h2 className="text-[13px] text-center font-bold text-textBold">
-                        {item.platformUsername}
-                      </h2>
-                      <p className="text-[13px] text-center text-[#6B7280] font-medium">
-                        {item.followerCount.toLocaleString("id-ID")} Followers
-                      </p>
-                    </div>
                     </a>
                   ))}
-
               </div>
             </div>
           </div>
@@ -380,7 +382,7 @@ const groupedByAgeRange = dataAnalyse?.audience_breakdown?.age_ranges
                 Followers Reachability{" "}
               </h1>
               <PieChart
-                colors={['#9B88FA', '#2E96FF', '#32D4BD', '#6DDE80' , '#FFA500']} // Use palette
+                colors={["#9B88FA", "#2E96FF", "#32D4BD", "#6DDE80", "#FFA500"]} // Use palette
                 className="mt-4 !text-sm"
                 sx={{
                   "& .MuiChartsLegend-series text": {
