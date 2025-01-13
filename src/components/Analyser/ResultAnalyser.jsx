@@ -60,12 +60,15 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
       const followerCounts = dataAnalyse.reputation_histories.map(
         (item) => item.followerCount
       );
+      const subscriberCounts = dataAnalyse.reputation_histories.map(
+        (item) => item.subscriberCount
+      );
 
       setProfileOptions((prev) => ({
         ...prev,
         xaxis: { ...prev.xaxis, categories: months },
       }));
-      setProfileSeries([{ name: "Followers", data: followerCounts }]);
+      setProfileSeries([{ name: "Followers", data: dataAnalyse?.platform == "Youtube" ? subscriberCounts : followerCounts }]);
     }
 
     // Top Cities
@@ -319,7 +322,9 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
           </div>
 
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mt-6">
-            <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
+            {
+              dataAnalyse?.follower_reachabilities.length > 0 &&
+              <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
               <h1 className="font-bold text-textBold ">
                 Followers Reachability{" "}
               </h1>
@@ -355,6 +360,8 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
                 height={180}
               />
             </div>
+            }
+           
 
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
               <h1 className="font-bold text-textBold ">
