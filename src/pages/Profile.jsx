@@ -76,7 +76,7 @@ const Profile = () => {
   useEffect(() => {
     fetchUserData();
   }, []);
-  console.log(formData);
+
 
   const handleShowPassword = (e) => {
     e.preventDefault();

@@ -50,7 +50,7 @@ const AddComparison = ({isDrawerOpen, setIsDrawerOpen, onSubmit, credits, user})
         id: Date.now(),
         data: response.data,
       });
-      Swal.fire("Success Get Analyse Profile!", "", "success");
+      Swal.fire("Success Get Analyse Profile!", "Scroll Right To View Data", "success");
       setFormData({
         platform: "Instagram",
         identifier: "",
