@@ -146,7 +146,7 @@ const Analyser = () => {
       }
     });
   };
-  console.log(comparisons)
+  
   return (
     <div>
       <div className="mb-4 flex items-center justify-between flex-wrap gap-2">
