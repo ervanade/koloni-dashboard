@@ -116,11 +116,20 @@ const Analyser = () => {
       setLoading(false);
     } catch (error) {
       console.log(error);
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "Failed Search Analyse Profile",
-      });
+      if(error.response.status === 403) {
+        return Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Not Enough Credit",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Failed Search Analyse Profile",
+        });
+      }
+     
       setDataAnalyse(null);
       setFormData({
         platform: "Instagram",

@@ -62,7 +62,19 @@ const AddComparison = ({isDrawerOpen, setIsDrawerOpen, onSubmit, credits, user})
 
     } catch (error) {
       console.error(error);
-      Swal.fire('Error', 'Failed to fetch analysis data.', 'error');
+      if(error.response.status === 403) {
+        return Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Not Enough Credit",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Failed Search Analyse Profile",
+        });
+      }
       setLoading(false); // Matikan loading state
 
     } finally {
