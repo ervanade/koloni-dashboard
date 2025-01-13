@@ -24,6 +24,15 @@ const AddComparison = ({isDrawerOpen, setIsDrawerOpen, onSubmit, credits, user})
     }
 
     setLoading(true); // Set loading state
+    Swal.fire({
+      title: "Search Analyse...",
+      text: "Please Wait Preparing Your Data...",
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      willOpen: () => {
+        Swal.showLoading();
+      },
+    });
     try {
       // Panggil API untuk analisis
       const response = await axios.post(

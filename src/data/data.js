@@ -647,3 +647,66 @@ export const seriesAge = [
     // data: [6.1, 36.4, 43.7, 10.9, 2.7],
   },
 ];
+
+export const optionsProfile2 = {
+  chart: {
+    zoom: {
+      enabled: false
+    },
+    parentHeightOffset: 0,
+    toolbar: {
+      show: false
+    }
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 10,
+      columnWidth: '50%',
+    }
+  },
+  markers: {
+    strokeWidth: 7,
+    strokeOpacity: 1,
+    strokeColors: ['#fff'],
+    colors: ["#4287f5"]
+  },
+  dataLabels: {
+    enabled: false
+  },
+  stroke: {
+    curve: 'straight'
+  },
+  colors: ["#4287f5"],
+  grid: {
+    xaxis: {
+      lines: {
+        show: true
+      }
+    }
+  },
+  tooltip: {
+    custom(data) {
+      return `<div class='px-1 py-4'>
+            <span>${DataFormater(data.series[data.seriesIndex][data.dataPointIndex])}</span>
+          </div>`
+    }
+  },
+  xaxis: {
+    categories: [
+      '2024-05',
+      '2024-06',
+      '2024-07',
+      '2024-08',
+      '2024-09',
+      '2024-10',
+      '2024-11',
+    ]
+  },
+  yaxis: {
+    labels: {
+      formatter: function (value) {
+        return DataFormater(value)
+      }
+    },
+  }
+}

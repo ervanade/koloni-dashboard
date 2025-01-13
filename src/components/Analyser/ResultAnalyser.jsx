@@ -19,6 +19,7 @@ import {
   optionsAge,
   optionsFollowers,
   optionsProfile,
+  optionsProfile2,
   optionsProfileGrowth,
   seriesFollowers,
   seriesProfile,
@@ -43,7 +44,7 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
     bg2: "#53D86A",
   };
 
-  const [profileOptions, setProfileOptions] = useState(optionsProfile);
+  const [profileOptions, setProfileOptions] = useState(optionsProfile2);
   const [profileSeries, setProfileSeries] = useState([]);
 
   const [citiesOptions, setCitiesOptions] = useState(optionsFollowers);
@@ -54,7 +55,7 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
   
   useEffect(() => {
     // Profile Growth
-    if (dataAnalyse?.reputation_histories?.length) {
+    if (dataAnalyse?.reputation_histories?.length > 0) {
       const months = dataAnalyse.reputation_histories.map((item) => item.month);
       const followerCounts = dataAnalyse.reputation_histories.map(
         (item) => item.followerCount
@@ -68,7 +69,7 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
     }
 
     // Top Cities
-    if (dataAnalyse?.audience_breakdown?.top_city?.length) {
+    if (dataAnalyse?.audience_breakdown?.top_city?.length > 0) {
       const topCities = dataAnalyse.audience_breakdown.top_city
         .sort((a, b) => b.value - a.value) // Sort by value descending
         .slice(0, 10); // Top 10 cities
@@ -84,7 +85,7 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
     }
 
     // Age Range
-    if (dataAnalyse?.audience_breakdown?.age_ranges?.length) {
+    if (dataAnalyse?.audience_breakdown?.age_ranges?.length > 0) {
       const groupedByAgeRange = Object.values(
         dataAnalyse.audience_breakdown.age_ranges.reduce((acc, curr) => {
           const key = curr.age_range;
@@ -359,16 +360,23 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
               <h1 className="font-bold text-textBold ">
                 Profile Growth - Last 6 Months{" "}
               </h1>
-              <Chart
-          options={profileOptions}
-          series={profileSeries}
-          type="area"
-          height={300}
-        />
+              {
+                profileSeries.length > 0 && <Chart
+                options={profileOptions}
+                series={profileSeries}
+                type="area"
+                height={350}
+              />
+              }
+              
             </div>
           </div>
 
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mt-6">
+               <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mt-6">
+                {
+                dataAnalyse?.audience_breakdown?.top_city?.length > 0
+                &&  
+                
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
               <h1 className="font-bold text-textBold ">Top Cities </h1>
               <Chart
@@ -378,7 +386,7 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
           height={420}
         />
             </div>
-
+          }
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
               <h1 className="font-bold text-textBold ">Age Range </h1>
               <Chart
@@ -389,6 +397,8 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
         />
             </div>
           </div>
+
+          
 
           {
             dataAnalyse?.topHashtag?.length > 0
