@@ -1,24 +1,82 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import { FaAt, FaEye, FaEyeSlash, FaTimes } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
-const AddComparison = ({isDrawerOpen, setIsDrawerOpen}) => {
+const AddComparison = ({isDrawerOpen, setIsDrawerOpen, onSubmit, credits, user}) => {
   const [formData, setFormData] = useState({
-    password: "",
-    email: "",
-    username: "",
-    role: "",
-    platform: "Instagram"
+    platform: "Instagram",
+    identifier: "",
   });
-  const [showPassword, setShowPassword] = useState(false);
 
-  const handleShowPassword = (e) => {
-    e.preventDefault();
-    setShowPassword((prev) => !prev);
-  };
+  const [loading, setLoading] = useState(false); // Untuk state loading
+
 
   if (!isDrawerOpen) {
     return null;
   }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent refresh halaman
+    if (!formData.identifier) {
+      Swal.fire('Error', 'Please enter a username.', 'error');
+      return;
+    }
+
+    setLoading(true); // Set loading state
+    try {
+      // Panggil API untuk analisis
+      const response = await axios.post(
+        `${import.meta.env.VITE_APP_API_URL}/analyze`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${user?.accessToken}`, // Ganti dengan token user Anda
+          },
+        }
+      );
+
+      // Kirim hasil ke komponen induk
+      onSubmit({
+        id: Date.now(),
+        data: response.data,
+      });
+      Swal.fire("Success Get Analyse Profile!", "", "success");
+      setFormData({
+        platform: "Instagram",
+        identifier: "",
+      })
+
+      // Tutup popup setelah submit berhasil
+      setIsDrawerOpen(false);
+      setLoading(false); // Matikan loading state
+
+    } catch (error) {
+      console.error(error);
+      Swal.fire('Error', 'Failed to fetch analysis data.', 'error');
+      setLoading(false); // Matikan loading state
+
+    } finally {
+      setLoading(false); // Matikan loading state
+    }
+  };
+
+  const handleSimpan = async (e) => {
+    e.preventDefault();
+    return Swal.fire({
+      title: "Are you sure?",
+      text: "Are you sure this will reduce your credits?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Analyse it!",
+      confirmButtonColor: "#24A5E9",
+    }).then(async (result) => {
+      if (result.value) {
+        setLoading(true);
+        handleSubmit(e);
+      }
+    });
+  };
   
   return (
     <>
@@ -64,8 +122,10 @@ const AddComparison = ({isDrawerOpen, setIsDrawerOpen}) => {
 
             <input
               type="text"
-              value={formData.username}
-              onChange={(e) => setFormData( prev => ({...prev, username:e.target.value}))}
+              value={formData.identifier}
+              onChange={(e) =>
+                setFormData((prev) => ({ ...prev, identifier: e.target.value }))
+              }
               placeholder="Enter Username..."
               className="w-full bg-white pl-9 pr-4 text-black outline outline-1 outline-zinc-200 focus:outline-primary dark:text-white py-3 rounded-md"
             />
@@ -73,7 +133,8 @@ const AddComparison = ({isDrawerOpen, setIsDrawerOpen}) => {
           <button
             className=" bg-sky-500 flex gap-2 items-center text-white font-medium py-3 px-4 rounded-md focus:outline-none focus:shadow-outline"
             type="submit"
-            onClick={() => setShowResult(!showResult)}
+            onClick={(e) => handleSimpan(e)}
+            disabled={loading || credits < 1}
           >
             {" "}
             Submit

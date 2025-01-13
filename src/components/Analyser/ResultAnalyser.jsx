@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaCheckCircle, FaEye, FaSearch } from "react-icons/fa";
 import { FaAt, FaComment, FaHeart } from "react-icons/fa6";
 import {
@@ -13,9 +13,13 @@ import {
   DataFormater,
   desktopOS,
   desktopOS2,
+  extractFollowerCounts,
+  extractMonths,
   followersChart,
+  optionsAge,
   optionsFollowers,
   optionsProfile,
+  optionsProfileGrowth,
   seriesFollowers,
   seriesProfile,
   valueFormatter,
@@ -31,74 +35,6 @@ import {
 } from "../../data/dataAnalyser";
 import DataRaffi from "../../data/nagita.json";
 const ResultAnalyser = ({ data, dataAnalyse }) => {
-  // const dataAnalyse = DataRaffi.data
-  const groupedByAgeRange = dataAnalyse?.audience_breakdown?.age_ranges
-    ? Object.values(
-        dataAnalyse.audience_breakdown.age_ranges.reduce((acc, curr) => {
-          const key = curr.age_range; // Grouping key is age_range
-          if (!acc[key]) {
-            acc[key] = { age_range: curr.age_range, value: 0 }; // Initialize group
-          }
-          acc[key].value += curr.value; // Sum up values
-          return acc;
-        }, {})
-      )
-    : []; // Return an empty array if age_ranges is null or undefined
-
-  const options = {
-    chart: {
-      zoom: {
-        enabled: false,
-      },
-      parentHeightOffset: 0,
-      toolbar: {
-        show: false,
-      },
-    },
-
-    markers: {
-      strokeWidth: 7,
-      strokeOpacity: 1,
-      strokeColors: ["#fff"],
-      colors: ["#826af9"],
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    stroke: {
-      curve: "straight",
-    },
-    colors: ["#826af9"],
-    grid: {
-      xaxis: {
-        lines: {
-          show: true,
-        },
-      },
-    },
-    tooltip: {
-      custom(data) {
-        return `<div className='px-1 py-4'>
-                  <span>${
-                    data.series[data.seriesIndex][data.dataPointIndex]
-                  }%</span>
-                </div>`;
-      },
-    },
-    xaxis: {
-      categories: groupedByAgeRange?.map((item) => item.age_range),
-      // categories: ["13-17", "18-24", "25-34", "35-34", "45-64"],
-    },
-    yaxis: {},
-  };
-
-  // ** Chart Series
-  const series = [
-    {
-      data: groupedByAgeRange?.map((item) => item.value.toFixed(2)),
-      // data: [6.1, 36.4, 43.7, 10.9, 2.7],
-    },
-  ];
 
   const columnColors = {
     series1: "#826af9",
@@ -107,84 +43,68 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
     bg2: "#53D86A",
   };
 
-  // ** Chart Options
-  const optionsBar = {
-    chart: {
-      height: 400,
-      type: "bar",
-      stacked: true,
-      parentHeightOffset: 0,
-      toolbar: {
-        show: false,
-      },
-    },
-    plotOptions: {
-      bar: {
-        columnWidth: "15%",
-        colors: {
-          backgroundBarColors: [
-            columnColors.bg,
-            columnColors.bg,
-            columnColors.bg,
-            columnColors.bg,
-            columnColors.bg,
-          ],
-          backgroundBarRadius: 10,
-        },
-      },
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    legend: {
-      position: "top",
-      horizontalAlign: "start",
-    },
-    colors: [columnColors.series1, columnColors.series2],
-    stroke: {
-      show: true,
-      colors: ["transparent"],
-    },
-    grid: {
-      xaxis: {
-        lines: {
-          show: true,
-        },
-      },
-    },
-    xaxis: {
-      categories: [
-        "7/12",
-        "8/12",
-        "9/12",
-        "10/12",
-        "11/12",
-        "12/12",
-        "13/12",
-        "14/12",
-        "15/12",
-        "16/12",
-      ],
-    },
-    fill: {
-      opacity: 1,
-    },
-    yaxis: {
-      opposite: "rtl",
-    },
-  };
+  const [profileOptions, setProfileOptions] = useState(optionsProfile);
+  const [profileSeries, setProfileSeries] = useState([]);
 
-  // ** Chart Series
-  const seriesBar = [
-    {
-      name: "Apple",
-      data: [90, 120, 55, 100, 80, 125, 175, 70, 88, 180],
-    },
-    {
-      name: "Samsung",
-      data: [85, 100, 30, 40, 95, 90, 30, 110, 62, 20],
-    },
-  ];
+  const [citiesOptions, setCitiesOptions] = useState(optionsFollowers);
+  const [citiesSeries, setCitiesSeries] = useState([]);
+
+  const [ageOptions, setAgeOptions] = useState(optionsAge);
+  const [ageSeries, setAgeSeries] = useState([]);
+  
+  useEffect(() => {
+    // Profile Growth
+    if (dataAnalyse?.reputation_histories?.length) {
+      const months = dataAnalyse.reputation_histories.map((item) => item.month);
+      const followerCounts = dataAnalyse.reputation_histories.map(
+        (item) => item.followerCount
+      );
+
+      setProfileOptions((prev) => ({
+        ...prev,
+        xaxis: { ...prev.xaxis, categories: months },
+      }));
+      setProfileSeries([{ name: "Followers", data: followerCounts }]);
+    }
+
+    // Top Cities
+    if (dataAnalyse?.audience_breakdown?.top_city?.length) {
+      const topCities = dataAnalyse.audience_breakdown.top_city
+        .sort((a, b) => b.value - a.value) // Sort by value descending
+        .slice(0, 10); // Top 10 cities
+
+      const cityNames = topCities.map((city) => city.name);
+      const cityValues = topCities.map((city) => city.value.toFixed(2));
+
+      setCitiesOptions((prev) => ({
+        ...prev,
+        xaxis: { ...prev.xaxis, categories: cityNames },
+      }));
+      setCitiesSeries([{ name: "Top Cities", data: cityValues }]);
+    }
+
+    // Age Range
+    if (dataAnalyse?.audience_breakdown?.age_ranges?.length) {
+      const groupedByAgeRange = Object.values(
+        dataAnalyse.audience_breakdown.age_ranges.reduce((acc, curr) => {
+          const key = curr.age_range;
+          if (!acc[key]) acc[key] = { age_range: key, value: 0 };
+          acc[key].value += curr.value;
+          return acc;
+        }, {})
+      );
+
+      const ageCategories = groupedByAgeRange.map((item) => item.age_range);
+      const ageValues = groupedByAgeRange.map((item) => item.value.toFixed(2));
+
+      setAgeOptions((prev) => ({
+        ...prev,
+        xaxis: { ...prev.xaxis, categories: ageCategories },
+      }));
+      setAgeSeries([{ name: "Age Distribution", data: ageValues }]);
+    }
+  }, [dataAnalyse]);
+  
   return (
     <>
       {data ? (
@@ -208,23 +128,40 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
                 </p>
                 <div className="flex items-center gap-2">
                   {" "}
-                  <img
+                  {
+                    dataAnalyse?.instagram &&   <img
                     src="logo-instagram.png"
                     alt="Logo Instagram"
                     className="w-5 md:w-6"
                   />
-                  <img
+                  }
+
+{
+                    dataAnalyse?.youtube &&   <img
                     src="logo-youtube.png"
                     alt="Logo youtube"
                     className="w-5 md:w-6"
                   />
+                  }
+                
+                {
+                    dataAnalyse?.tiktok &&   <img
+                    src="logo-tiktok.png"
+                    alt="Logo tiktok"
+                    className="w-5 md:w-6"
+                  />
+                  }
+                 
+                 
                 </div>
-                <button
+                <a
                   className=" bg-sky-500 text-sm flex gap-2 items-center text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
-                  type="submit"
+        target="_blank"
+        rel="noopener noreferrer"
+                  href={`https://api.whatsapp.com/send?phone=6281288756302&text=Halo%20Admin%2C%20Saya%20dari%20website%20koloni%20tertarik%20dan%20meminta%20perkiraan%20harga%20influencer%20dengan%20username%20%3A${dataAnalyse?.username || ""}%20di%20platform%20${"Instagram" || ""}`}
                 >
                   Ask For Price
-                </button>
+                </a>
               </div>
             </div>
 
@@ -301,7 +238,9 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
           </div>
 
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mt-6">
-            <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
+            {
+              dataAnalyse?.user_authenticity?.length > 0
+              &&  <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
               <h1 className="font-bold text-textBold ">User Authenticity </h1>
               <PieChart
                 colors={["#9B88FA", "#2E96FF", "#32D4BD", "#6DDE80", "#FFA500"]} // Use palette
@@ -317,7 +256,7 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
                     data: dataAnalyse?.user_authenticity?.map(
                       ({ name, value, color }) => ({
                         label: name, // Use `name` as the label
-                        value, // Keep the `value`,
+                        value : value.toFixed(2), // Keep the `value`,
                       })
                     ),
                     // data: desktopOS,
@@ -334,6 +273,8 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
                 height={180}
               />
             </div>
+            }
+           
 
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
               <h1 className="font-bold text-textBold ">
@@ -396,7 +337,7 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
                     data: dataAnalyse?.follower_reachabilities?.map(
                       ({ followingRange, value, color }) => ({
                         label: followingRange, // Use `name` as the label
-                        value, // Keep the `value`,
+                        value : value.toFixed(2), // Keep the `value`,
                         // color,
                       })
                     ),
@@ -419,11 +360,11 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
                 Profile Growth - Last 6 Months{" "}
               </h1>
               <Chart
-                options={optionsProfile}
-                series={seriesProfile}
-                type="area"
-                height={300}
-              />
+          options={profileOptions}
+          series={profileSeries}
+          type="area"
+          height={300}
+        />
             </div>
           </div>
 
@@ -431,25 +372,27 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
               <h1 className="font-bold text-textBold ">Top Cities </h1>
               <Chart
-                options={optionsFollowers}
-                series={seriesFollowers}
-                type="bar"
-                height={420}
-              />
+          options={citiesOptions}
+          series={citiesSeries}
+          type="bar"
+          height={420}
+        />
             </div>
 
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
               <h1 className="font-bold text-textBold ">Age Range </h1>
               <Chart
-                options={options}
-                series={series}
-                type="bar"
-                height={400}
-              />
+          options={ageOptions}
+          series={ageSeries}
+          type="bar"
+          height={400}
+        />
             </div>
           </div>
 
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 mt-6">
+          {
+            dataAnalyse?.topHashtag?.length > 0
+            && <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 mt-6">
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
               <h1 className="font-bold text-textBold ">Top Hashtags</h1>
               <div className="mt-4">
@@ -507,6 +450,9 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
               </div>
             </div>
           </div>
+          }
+
+          
 
           <div className="flex flex-col border border-[#C4C4C4] p-4 rounded-md mt-6 overflow-hidden">
             <h1 className="font-bold text-textBold ">Top Contents </h1>
@@ -540,47 +486,50 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
               ))}
             </div>
           </div>
-
-          <div className="flex flex-col border border-[#C4C4C4] p-4 rounded-md mt-6 overflow-hidden">
-            <h1 className="font-bold text-textBold ">
-              Lookalikes Content Creator{" "}
-            </h1>
-            <div className="scroll items-center mt-6 !overflow-x-auto w-full whitespace-nowrap pb-2">
-              {dataAnalyse?.look_alies_content_creators
-                ?.slice(0, 5)
-                ?.map((item, index) => (
-                  <div className="w-54 inline-block me-4" key={index}>
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <div className="img w-full h-54 flex justify-center items-center">
-                        <img
-                          src={item.image_url}
-                          className="w-full object-cover max-h-54"
-                          alt=""
-                        />
-                      </div>
-                    </a>
-                    <div className="flex mt-3 flex-col">
-                      <h2 className="text-textThin font-medium ">FOLLOWERS</h2>
-                      <div className="flex items-center ">
-                        <span className=" text-sky-500 font-bold">
-                          {item.followers.toLocaleString("id-ID")}
-                        </span>
-                      </div>
-                      <a
-                        href={item.profile_url}
-                        className="text-[#1E3A8A] mt-2"
-                      >
-                        See Instagram Post
-                      </a>
-                    </div>
-                  </div>
-                ))}
+{
+  dataAnalyse?.look_alies_content_creators?.length > 0
+  && <div className="flex flex-col border border-[#C4C4C4] p-4 rounded-md mt-6 overflow-hidden">
+  <h1 className="font-bold text-textBold ">
+    Lookalikes Content Creator{" "}
+  </h1>
+  <div className="scroll items-center mt-6 !overflow-x-auto w-full whitespace-nowrap pb-2">
+    {dataAnalyse?.look_alies_content_creators
+      ?.slice(0, 5)
+      ?.map((item, index) => (
+        <div className="w-54 inline-block me-4" key={index}>
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="img w-full h-54 flex justify-center items-center">
+              <img
+                src={item.image_url}
+                className="w-full object-cover max-h-54"
+                alt=""
+              />
             </div>
+          </a>
+          <div className="flex mt-3 flex-col">
+            <h2 className="text-textThin font-medium ">FOLLOWERS</h2>
+            <div className="flex items-center ">
+              <span className=" text-sky-500 font-bold">
+                {item.followers.toLocaleString("id-ID")}
+              </span>
+            </div>
+            <a
+              href={item.profile_url}
+              className="text-[#1E3A8A] mt-2"
+            >
+              See Instagram Post
+            </a>
           </div>
+        </div>
+      ))}
+  </div>
+</div>
+}
+          
         </Card>
       ) : (
         ""

@@ -464,6 +464,60 @@ export const DataFormater = (number) => {
   }
 };
 
+export function extractMonths(reputationHistories) {
+  return reputationHistories?.map((entry) => entry.month) || [];
+}
+
+export const optionsProfileGrowth = (categories) => ({
+  chart: {
+    zoom: {
+      enabled: false,
+    },
+    parentHeightOffset: 0,
+    toolbar: {
+      show: false,
+    },
+  },
+  markers: {
+    strokeWidth: 7,
+    strokeOpacity: 1,
+    strokeColors: ["#fff"],
+    colors: ["#61BDEE"],
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    curve: "straight",
+  },
+  colors: ["#61BDEE"],
+  grid: {
+    xaxis: {
+      lines: {
+        show: true,
+      },
+    },
+  },
+  tooltip: {
+    custom(data) {
+      return `<div class='px-1 py-4'>
+            <span>${DataFormater(
+              data.series[data.seriesIndex][data.dataPointIndex]
+            )}</span>
+          </div>`;
+    },
+  },
+  xaxis: {
+    categories,
+  },
+  yaxis: {
+    labels: {
+      formatter: function (value) {
+        return DataFormater(value);
+      },
+    },
+  },
+});
 
 export const optionsProfile = {
   chart: {
@@ -512,9 +566,6 @@ export const optionsProfile = {
       '2024-09',
       '2024-10',
       '2024-11',
-
-
-
     ]
   },
   yaxis: {
@@ -532,3 +583,67 @@ export const seriesProfile = [
     data: [75869498, 76001247, 76144454, 76233828, 75991592, 76128640, 76295177]
   }
 ]
+
+
+export function extractFollowerCounts(reputationHistories) {
+  return [
+    {
+      data: reputationHistories?.map((entry) => entry.followerCount),
+    },
+  ];
+}
+
+export const optionsAge = {
+  chart: {
+    zoom: {
+      enabled: false,
+    },
+    parentHeightOffset: 0,
+    toolbar: {
+      show: false,
+    },
+  },
+
+  markers: {
+    strokeWidth: 7,
+    strokeOpacity: 1,
+    strokeColors: ["#fff"],
+    colors: ["#826af9"],
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    curve: "straight",
+  },
+  colors: ["#826af9"],
+  grid: {
+    xaxis: {
+      lines: {
+        show: true,
+      },
+    },
+  },
+  tooltip: {
+    custom(data) {
+      return `<div className='px-1 py-4'>
+                <span>${
+                  data.series[data.seriesIndex][data.dataPointIndex]
+                }%</span>
+              </div>`;
+    },
+  },
+  xaxis: {
+    categories: [],
+    // categories: ["13-17", "18-24", "25-34", "35-34", "45-64"],
+  },
+  yaxis: {},
+};
+
+// ** Chart Series
+export const seriesAge = [
+  {
+    data: [],
+    // data: [6.1, 36.4, 43.7, 10.9, 2.7],
+  },
+];

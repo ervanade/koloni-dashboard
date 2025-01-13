@@ -66,6 +66,17 @@ const Analyser = () => {
     fetchUserData();
   }, []);
 
+  const [comparisons, setComparisons] = useState([]);
+  const handleAddComparison = (newComparison) => {
+    if (comparisons.length < 10) {
+      setComparisons((prev) => [...prev, newComparison]); // Tambah data baru ke comparisons
+    }
+  };
+
+  const handleRemoveComparison = (id) => {
+    setComparisons(comparisons.filter((comparison) => comparison.id !== id));
+  };
+
   const searchAnalyse = async () => {
     if (!formData.identifier) {
       Swal.fire("Error", "Username Belum Diisi", "error");
@@ -96,6 +107,9 @@ const Analyser = () => {
         }),
       });
       setDataAnalyse(response.data);
+      setComparisons([
+        { id: Date.now(), data: response.data }, // Simpan hasil ke dalam comparisons
+      ]);
       Swal.fire("Success Get Analyse Profile!", "", "success");
       setShowResult(true);
       fetchUserData();
@@ -132,7 +146,7 @@ const Analyser = () => {
       }
     });
   };
-
+  console.log(comparisons)
   return (
     <div>
       <div className="mb-4 flex items-center justify-between flex-wrap gap-2">
@@ -251,9 +265,27 @@ const Analyser = () => {
         </div>
         <p className="text-textThin font-normal mt-2">Example: @cristiano</p>
       </Card>
-      <ResultAnalyser title="tes" data={showResult} dataAnalyse={dataAnalyse} />
+       {/* Section Comparison */}
+       <div className="mt-6 overflow-x-auto flex gap-4">
+        {comparisons.map((comparison, index) => (
+          <div
+            key={comparison.id}
+            className="w-full bg-white shadow-md rounded-lg p-4 relative"
+          >
+            {comparisons.length > 1 && index !== 0 &&  <button
+              onClick={() => handleRemoveComparison(comparison.id)}
+              className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center"
+            >
+              ×
+            </button>}
+          
+            <ResultAnalyser dataAnalyse={comparison.data} data={showResult}/>
+          </div>
+        ))}
+         </div>
+      {/* <ResultAnalyser title="tes" data={showResult} dataAnalyse={dataAnalyse} /> */}
       <Drawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
-      <AddComparison isDrawerOpen={isModal} setIsDrawerOpen={setIsModal} />
+      <AddComparison isDrawerOpen={isModal} setIsDrawerOpen={setIsModal} onSubmit={handleAddComparison} credits={dataCredits.credits || 0} user={user}/>
     </div>
   );
 };
