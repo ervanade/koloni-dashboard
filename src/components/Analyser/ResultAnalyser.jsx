@@ -489,7 +489,7 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
                     </div>
                     <div className="flex items-center gap-1 mt-2">
                       <FaComment className="text-blue-500" />
-                      <span>{item.like.toLocaleString("id-ID")}</span>
+                      <span>{item.comment.toLocaleString("id-ID")}</span>
                     </div>
                   </div>
                 </div>
