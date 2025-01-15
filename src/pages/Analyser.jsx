@@ -157,7 +157,7 @@ const Analyser = () => {
   };
   
   return (
-    <div>
+    <div className="analyser">
       <div className="mb-4 flex items-center justify-between flex-wrap gap-2">
         <div>
           <h1 className="text-textBold font-bold text-2xl mb-1">Analyser</h1>
@@ -279,7 +279,7 @@ const Analyser = () => {
         {comparisons.map((comparison, index) => (
           <div
             key={comparison.id}
-            className="w-full bg-white shadow-md rounded-lg p-4 relative"
+            className={`${comparisons.length > 1 ? "w-[96%]" : "w-full"} bg-white shadow-md rounded-lg p-4 relative`}
           >
             {comparisons.length > 1 && index !== 0 &&  <button
               onClick={() => handleRemoveComparison(comparison.id)}
@@ -288,7 +288,7 @@ const Analyser = () => {
               ×
             </button>}
           
-            <ResultAnalyser dataAnalyse={comparison.data} data={showResult}/>
+            <ResultAnalyser dataAnalyse={comparison.data} data={showResult} comparisonLength={comparisons.length || 0}/>
           </div>
         ))}
          </div>

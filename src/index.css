@@ -22,6 +22,28 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+.analyser ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.analyser ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.analyser ::-webkit-scrollbar-thumb {
+  background: #accbf2;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+.analyser ::-webkit-scrollbar-thumb:hover {
+  background: #96bcea;
+  cursor: pointer;
+}
+
+
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;

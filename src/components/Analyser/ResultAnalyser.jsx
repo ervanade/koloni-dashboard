@@ -35,7 +35,7 @@ import {
   topSimiliar,
 } from "../../data/dataAnalyser";
 import DataRaffi from "../../data/nagita.json";
-const ResultAnalyser = ({ data, dataAnalyse }) => {
+const ResultAnalyser = ({ data, dataAnalyse, comparisonLength }) => {
 
   const columnColors = {
     series1: "#826af9",
@@ -271,7 +271,8 @@ const ResultAnalyser = ({ data, dataAnalyse }) => {
                       color: "gray",
                     },
                     valueFormatter,
-                    cx: 120,
+                    cx: (comparisonLength > 1 ? 95 : 110), // Ensure `comparisonLength` is defined
+
                   },
                 ]}
                 height={180}
