@@ -122,7 +122,7 @@ const Analyser = () => {
           title: "Error",
           text: "Not Enough Credit",
         });
-      } else if(error.response.status === 404){
+      } else if(error.response.status === 404 || error.response.status === 400){
         return Swal.fire({
           icon: "error",
           title: "Error Not Found",
