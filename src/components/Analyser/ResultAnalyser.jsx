@@ -409,7 +409,7 @@ const ResultAnalyser = ({ data, dataAnalyse, comparisonLength }) => {
           
 
           {
-            dataAnalyse?.topHashtag?.length > 0
+            dataAnalyse?.top_hashtags?.length > 0
             && <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 mt-6">
             <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md">
               <h1 className="font-bold text-textBold ">Top Hashtags</h1>
