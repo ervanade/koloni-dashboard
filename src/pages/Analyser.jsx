@@ -141,6 +141,12 @@ const Analyser = () => {
   };
   const handleSimpan = async (e) => {
     e.preventDefault();
+    if (dataCredits.credits < 1) {
+      Swal.fire("No Remaining Credits", "Contact Admin to Recharge Your Credits", "error");
+      setLoading(false);
+
+      return;
+    }
     return Swal.fire({
       title: "Are you sure?",
       text: "Are you sure this will reduce your credits?",
@@ -168,7 +174,7 @@ const Analyser = () => {
         <div className="flex gap-2 flex-wrap justify-end">
           <div className="bg-[#efeff1] text-blue-500 rounded-full px-4 py-2 shadow-sm">
             <p className="font-medium">
-              Remaining Analyser Credits: {dataCredits?.credits}
+              Remaining Analyser Credits: {dataCredits?.credits || 0}
             </p>
           </div>
           <button
@@ -266,7 +272,7 @@ const Analyser = () => {
             className=" bg-sky-500 flex gap-2 items-center text-white font-medium py-3 px-4 rounded-md focus:outline-none focus:shadow-outline"
             type="submit"
             onClick={(e) => handleSimpan(e)}
-            disabled={loading || dataCredits.credits < 1}
+            disabled={loading}
           >
             {" "}
             Analyse
@@ -279,7 +285,7 @@ const Analyser = () => {
         {comparisons.map((comparison, index) => (
           <div
             key={comparison.id}
-            className={`${comparisons.length > 1 ? "w-[96%]" : "w-full"} bg-white shadow-md rounded-lg p-4 relative`}
+            className={`${comparisons?.length > 1 ? "w-[96%]" : "w-full"} bg-white shadow-md rounded-lg p-4 relative`}
           >
             {comparisons.length > 1 && index !== 0 &&  <button
               onClick={() => handleRemoveComparison(comparison.id)}
@@ -288,7 +294,7 @@ const Analyser = () => {
               ×
             </button>}
           
-            <ResultAnalyser dataAnalyse={comparison.data} data={showResult} comparisonLength={comparisons.length || 0}/>
+            <ResultAnalyser dataAnalyse={comparison.data} data={showResult} comparisonLength={comparisons?.length || 0}/>
           </div>
         ))}
          </div>

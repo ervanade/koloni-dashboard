@@ -84,6 +84,12 @@ const AddComparison = ({isDrawerOpen, setIsDrawerOpen, onSubmit, credits, user})
 
   const handleSimpan = async (e) => {
     e.preventDefault();
+    if (credits < 1) {
+      Swal.fire("No Remaining Credits", "Contact Admin to Recharge Your Credits", "error");
+      setLoading(false);
+
+      return;
+    }
     return Swal.fire({
       title: "Are you sure?",
       text: "Are you sure this will reduce your credits?",
@@ -155,7 +161,7 @@ const AddComparison = ({isDrawerOpen, setIsDrawerOpen, onSubmit, credits, user})
             className=" bg-sky-500 flex gap-2 items-center text-white font-medium py-3 px-4 rounded-md focus:outline-none focus:shadow-outline"
             type="submit"
             onClick={(e) => handleSimpan(e)}
-            disabled={loading || credits < 1}
+            disabled={loading}
           >
             {" "}
             Submit

@@ -181,7 +181,7 @@ export const genderOptions = [
 export const verifiedOptions = [
   {
     label: 'Any',
-    value: "Any",
+    value: "",
   },
   {
     label: 'Verified',
@@ -192,11 +192,11 @@ export const verifiedOptions = [
 export const accountOptions = [
   {
     label: 'Any',
-    value: "Any",
+    value: "",
   },
   {
-    label: 'Busines',
-    value: "Busines",
+    label: 'Bussines',
+    value: "Bussines",
   },
   {
     label: 'Creator',
@@ -211,7 +211,7 @@ export const accountOptions = [
 export const ageOptions = [
   {
     label: 'Any',
-    value: "Any",
+    value: "",
   },
   {
     label: '18 - 24',

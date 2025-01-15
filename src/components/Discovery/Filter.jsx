@@ -42,6 +42,13 @@ const Filter = ({showFilter, setShowFilter}) => {
   const [showAudience, setShowAudience] = useState(false);
   const [showSort, setShowSort] = useState(true);
   const [showResult, setShowResult] = useState(false);
+
+  const handleInputChange = (field, value) => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      [field]: value
+    }));
+  };
   return (
     <div>
     <Card className="mt-6">
@@ -69,54 +76,50 @@ const Filter = ({showFilter, setShowFilter}) => {
           } card font-normal text-textThin text-[15px] mt-4`}
         >
           <p>Social Media</p>
-          <div className="flex items-center gap-4 flex-wrap">
-            <button onClick={() => setFormData(prev => ({...prev, platform: "INSTAGRAM"}))} className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform == "INSTAGRAM" ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""}  rounded-full px-6 py-2 shadow-sm flex items-center`}>
-              <img
-                src="logo-instagram.png"
-                alt="Logo Instagram"
-                className="w-6"
-              />
-              <p className="">Instagram</p>
-            </button>
-
-            <button onClick={() => setFormData(prev => ({...prev, platform: "TIKTOK"}))} className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform == "TIKTOK" ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""}  rounded-full px-6 py-2 shadow-sm flex items-center`}>
-              <img src="logo-tiktok.png" alt="Logo Tiktok" className="w-6" />{" "}
-              <p className="">Tiktok</p>
-            </button>
-
-            <button onClick={() => setFormData(prev => ({...prev, platform: "YOUTUBE"}))} className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform == "YOUTUBE" ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""}  rounded-full px-6 py-2 shadow-sm flex items-center`}>
-              <img src="logo-youtube.png" alt="Logo Youtube" className="w-6" />{" "}
-              <p className="">Youtube</p>
-            </button>
-          </div>
+              <div className="flex items-center gap-4 flex-wrap">
+        {["INSTAGRAM", "TIKTOK", "YOUTUBE"].map((platform) => (
+          <button
+            key={platform}
+            onClick={() => handleInputChange("platform", platform)}
+            className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform === platform ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""} rounded-full px-6 py-2 shadow-sm flex items-center`}
+          >
+            <img src={`logo-${platform.toLowerCase()}.png`} alt={`Logo ${platform}`} className="w-6" />
+            <p>{platform.charAt(0) + platform.slice(1).toLowerCase()}</p>
+          </button>
+        ))}
+      </div>
 
           <div className="form mt-6 items-center gap-4 grid grid-cols-2 md:grid-cols-4">
-            <div className="">
-              <p className="font-normal text-textThin text-sm mb-2">Topic</p>
-              <Autocomplete
-                disablePortal
-                options={topicOptions}
-                sx={{ width: "100%" }}
-                renderInput={(params) => (
-                  <TextField {...params} label="Topic" />
-                )}
-              />
-            </div>
+          <div className="">
+        <p className="font-normal text-textThin text-sm mb-2">Topic</p>
+        <Autocomplete
+          disablePortal
+          options={topicOptions}
+          onChange={(event, newValue) => handleInputChange('discovery_topic_value', [newValue?.value || formData.discovery_topic_value[0]])}
+          sx={{ width: "100%" }}
+          renderInput={(params) => (
+            <TextField {...params} label="Topic" />
+          )}
+        />
+      </div>
 
-            <div className="">
-              <p className="font-normal text-textThin text-sm mb-2">Hashtag</p>
-              <FormControl sx={{ width: '100%' }} variant="outlined">
-              <OutlinedInput
+      <div className="">
+        <p className="font-normal text-textThin text-sm mb-2">Hashtag</p>
+        <FormControl sx={{ width: '100%' }} variant="outlined">
+          <OutlinedInput
             id="outlined-adornment-hashtag"
             className='py-2'
             placeholder='Hashtag'
-            endAdornment={<InputAdornment position="end"><FaSearch className='text-textThin font-thin'/></InputAdornment>}
+            value={formData.discovery_hashtag_value[0]}
+            onChange={(e) => handleInputChange('discovery_hashtag_value', [e.target.value])}
+            endAdornment={<InputAdornment position="end"><FaSearch className='text-textThin font-thin' /></InputAdornment>}
             aria-describedby="outlined-hashtag-helper-text"
             inputProps={{
               'aria-label': 'hashtag',
             }}
           />
         </FormControl>
+      </div>
               {/* <input
                       type="text"
                       id="number-input"
@@ -125,36 +128,38 @@ const Filter = ({showFilter, setShowFilter}) => {
                       placeholder="Hashtag"
                       required
                     /> */}
-            </div>
 
-            <div className="">
-              <p className="font-normal text-textThin text-sm mb-2">Interest</p>
-              <Autocomplete
-                disablePortal
-                options={interestOption}
-                sx={{ width: "100%" }}
-                renderInput={(params) => (
-                  <TextField {...params} label="Interest" />
-                )}
-              />
-            </div>
+<div className="">
+        <p className="font-normal text-textThin text-sm mb-2">Interest</p>
+        <Autocomplete
+          disablePortal
+          options={interestOption}
+          onChange={(event, newValue) => handleInputChange('discovery_interest_value', [newValue?.value || formData.discovery_interest_value[0]])}
+          sx={{ width: "100%" }}
+          renderInput={(params) => (
+            <TextField {...params} label="Interest" />
+          )}
+        />
+      </div>
 
-            <div className="">
-              <p className="font-normal text-textThin text-sm mb-2">Keyword</p>
-              <FormControl sx={{ width: '100%' }} variant="outlined">
-              <OutlinedInput
+      <div className="">
+        <p className="font-normal text-textThin text-sm mb-2">Keyword</p>
+        <FormControl sx={{ width: '100%' }} variant="outlined">
+          <OutlinedInput
             id="outlined-adornment-keyword"
             className='py-2'
             placeholder='Keyword'
-            endAdornment={<InputAdornment position="end"><FaSearch className='text-textThin font-thin'/></InputAdornment>}
+            value={formData.discovery_keyword_value[0]}
+            onChange={(e) => handleInputChange('discovery_keyword_value', [e.target.value])}
+            endAdornment={<InputAdornment position="end"><FaSearch className='text-textThin font-thin' /></InputAdornment>}
             aria-describedby="outlined-keyword-helper-text"
             inputProps={{
               'aria-label': 'keyword',
             }}
           />
         </FormControl>
-            </div>
-          </div>
+      </div>
+    </div>
 
           <div className="creator-form p-6 border border-[#C4C4C4] rounded-md mt-6">
             <div className="flex items-center justify-between">
@@ -187,18 +192,19 @@ const Filter = ({showFilter, setShowFilter}) => {
                     Followers Range
                   </p>
                   <div className="flex items-center gap-2">
-                    <input
-                      type="number"
-                      id="number-input"
-                      aria-describedby="helper-text-explanation"
-                      className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Min"
-                      required
-                    />
+                  <input
+              type="number"
+              value={formData.followers_min}
+              onChange={(e) => handleInputChange("followers_min", Number(e.target.value))}
+              className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4"
+              placeholder="Min"
+            />
                     <FaMinus className="text-2xl" />
                     <input
                       type="number"
                       id="number-input"
+                      value={formData.followers_max}
+              onChange={(e) => handleInputChange("followers_max", Number(e.target.value))}
                       aria-describedby="helper-text-explanation"
                       className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Max"
@@ -215,6 +221,8 @@ const Filter = ({showFilter, setShowFilter}) => {
                     <input
                       type="number"
                       id="number-input"
+                      value={formData.avg_like_min}
+                      onChange={(e) => handleInputChange("avg_like_min", Number(e.target.value))}
                       aria-describedby="helper-text-explanation"
                       className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Min"
@@ -224,6 +232,8 @@ const Filter = ({showFilter, setShowFilter}) => {
                     <input
                       type="number"
                       id="number-input"
+                      value={formData.avg_like_max}
+                      onChange={(e) => handleInputChange("avg_like_max", Number(e.target.value))}
                       aria-describedby="helper-text-explanation"
                       className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Max"
@@ -283,6 +293,8 @@ const Filter = ({showFilter, setShowFilter}) => {
                   <Autocomplete
                     disablePortal
                     options={ageOptions}
+                    value={formData.creator_age}
+            onChange={(e, newValue) => handleInputChange("creator_age", newValue?.value || "")}
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
                       <TextField {...params} label="Creator Age" />
@@ -297,6 +309,8 @@ const Filter = ({showFilter, setShowFilter}) => {
                   <Autocomplete
                     disablePortal
                     options={verifiedOptions}
+                    value={formData.verified}
+            onChange={(e, newValue) => handleInputChange("verified", newValue?.value || "")}
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
                       <TextField {...params} label="Verified" />
@@ -311,6 +325,8 @@ const Filter = ({showFilter, setShowFilter}) => {
                   <Autocomplete
                     disablePortal
                     options={accountOptions}
+                    value={formData.account_type}
+            onChange={(e, newValue) => handleInputChange("account_type", newValue?.value || "")}
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
                       <TextField {...params} label="Account Type" />
