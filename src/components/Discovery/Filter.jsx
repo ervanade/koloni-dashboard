@@ -15,8 +15,8 @@ const Filter = ({showFilter, setShowFilter}) => {
   "platform": "INSTAGRAM",
     "audience_age_max": 100000,
     "audience_age_min": 0,
-    "creator_age_max": 1000000,
-    "creator_age_min": 0,
+    "creator_age_max": 0,
+    "creator_age_min": 10000000000,
     "audience_gender": null,
     "creator_gender": null,
     "audience_location_name": "Indonesia",
@@ -44,10 +44,36 @@ const Filter = ({showFilter, setShowFilter}) => {
   const [showResult, setShowResult] = useState(false);
 
   const handleInputChange = (field, value) => {
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      [field]: value
-    }));
+    if (field === "creator_age") {
+      if (!value) {
+        // Reset jika memilih "Any"
+        setFormData((prev) => ({
+          ...prev,
+          creator_age_min: 0,
+          creator_age_max: 10000000000,
+        }));
+      } else if (value === "55 >") {
+        // Jika memilih "55 >"
+        setFormData((prev) => ({
+          ...prev,
+          creator_age_min: 55,
+          creator_age_max: null,
+        }));
+      } else {
+        // Jika memilih rentang usia (contoh: "18 - 24")
+        const [min, max] = value.split(" - ").map(Number);
+        setFormData((prev) => ({
+          ...prev,
+          creator_age_min: min,
+          creator_age_max: max,
+        }));
+      }
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [field]: value,
+      }));
+    }
   };
   return (
     <div>
@@ -293,8 +319,10 @@ const Filter = ({showFilter, setShowFilter}) => {
                   <Autocomplete
                     disablePortal
                     options={ageOptions}
-                    value={formData.creator_age}
-            onChange={(e, newValue) => handleInputChange("creator_age", newValue?.value || "")}
+                    value={ageOptions.find((option) => option.value === formData.creator_age_min?.toString() + (formData.creator_age_max ? ` - ${formData.creator_age_max}` : " >") || "")}
+                    onChange={(e, newValue) =>
+                      handleInputChange("creator_age", newValue?.value || "")
+                    }
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
                       <TextField {...params} label="Creator Age" />
@@ -449,19 +477,34 @@ const Filter = ({showFilter, setShowFilter}) => {
               } card font-normal text-textThin text-[15px] mt-4`}
             >
               <div className="flex items-center gap-4 flex-wrap">
-            <button className="bg-[#dcdcdf] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] border-2 border-blue-500 rounded-full px-6 py-2 shadow-sm flex items-center">
+              <button
+        className={`${
+          formData.sorting_by === "REELS_VIEWS" ? "bg-[#dcdcdf] border-blue-500 border-2" : "bg-[#efeff1]"
+        } text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center`}
+        onClick={() => handleInputChange("sorting_by", "REELS_VIEWS")}
+      >
+        <p className={`${formData.sorting_by === "REELS_VIEWS" ? "font-bold text-blue-500" : "font-medium"}`}>Instagram Reels View</p>
+      </button>
 
-              <p className="font-bold text-blue-500">Instagram Reels View</p>
-            </button>
+      {/* Button 2: Engagement Rate */}
+      <button
+        className={`${
+          formData.sorting_by === "ENGAGEMENT_RATE" ? "bg-[#dcdcdf] border-blue-500 border-2" : "bg-[#efeff1]"
+        } text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center`}
+        onClick={() => handleInputChange("sorting_by", "ENGAGEMENT_RATE")}
+      >
+        <p className={`${formData.sorting_by === "ENGAGEMENT_RATE" ? "font-bold text-blue-500" : "font-medium"}`}>Engagement Rate</p>
+      </button>
 
-            <button className="bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center">
-
-              <p className="font-medium">Engagement Rate</p>
-            </button>
-
-            <button className="bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center">
-              <p className="font-medium">Followers</p>
-            </button>
+      {/* Button 3: Followers */}
+      <button
+        className={`${
+          formData.sorting_by === "FOLLOWER_COUNT" ? "bg-[#dcdcdf] border-blue-500 border-2" : "bg-[#efeff1]"
+        } text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center`}
+        onClick={() => handleInputChange("sorting_by", "FOLLOWER_COUNT")}
+      >
+        <p className={`${formData.sorting_by === "FOLLOWER_COUNT" ? "font-bold text-blue-500" : "font-medium"}`}>Followers</p>
+      </button>
           </div>
             </div>
           </div>
