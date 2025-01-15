@@ -122,7 +122,15 @@ const Analyser = () => {
           title: "Error",
           text: "Not Enough Credit",
         });
-      } else {
+      } else if(error.response.status === 404){
+        return Swal.fire({
+          icon: "error",
+          title: "Error Not Found",
+          text: "Influencers Not Found",
+        });
+      }
+      
+      else {
         Swal.fire({
           icon: "error",
           title: "Error",

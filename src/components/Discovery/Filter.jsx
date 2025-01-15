@@ -33,10 +33,10 @@ const Filter = ({showFilter, setShowFilter}) => {
     "sorting_by": "REELS_VIEWS",
     "next_page": 0,
     "platform_account_type": null,
-    "discovery_interest_value":["Sports"],
-    "discovery_hashtag_value":["bola"],
-    "discovery_keyword_value":["bola"],
-    "discovery_topic_value":["bola"]
+    "discovery_interest_value":[""],
+    "discovery_hashtag_value":[""],
+    "discovery_keyword_value":[""],
+    "discovery_topic_value":[""]
   })
     const [showCreator, setShowCreator] = useState(true);
   const [showAudience, setShowAudience] = useState(false);
