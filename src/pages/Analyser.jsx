@@ -116,28 +116,29 @@ const Analyser = () => {
       setLoading(false);
     } catch (error) {
       console.log(error);
-      if(error.response.status === 403) {
+      if (error.response.status === 403) {
         return Swal.fire({
           icon: "error",
           title: "Error",
           text: "Not Enough Credit",
         });
-      } else if(error.response.status === 404 || error.response.status === 400){
+      } else if (
+        error.response.status === 404 ||
+        error.response.status === 400
+      ) {
         return Swal.fire({
           icon: "error",
           title: "Error Not Found",
           text: "Influencers Not Found",
         });
-      }
-      
-      else {
+      } else {
         Swal.fire({
           icon: "error",
           title: "Error",
           text: "Failed Search Analyse Profile",
         });
       }
-     
+
       setDataAnalyse(null);
       setFormData({
         platform: "Instagram",
@@ -150,7 +151,11 @@ const Analyser = () => {
   const handleSimpan = async (e) => {
     e.preventDefault();
     if (dataCredits.credits < 1) {
-      Swal.fire("No Remaining Credits", "Contact Admin to Recharge Your Credits", "error");
+      Swal.fire(
+        "No Remaining Credits",
+        "Contact Admin to Recharge Your Credits",
+        "error"
+      );
       setLoading(false);
 
       return;
@@ -169,7 +174,7 @@ const Analyser = () => {
       }
     });
   };
-  
+
   return (
     <div className="analyser">
       <div className="mb-4 flex items-center justify-between flex-wrap gap-2">
@@ -194,7 +199,7 @@ const Analyser = () => {
           </button>
         </div>
       </div>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-1">
         <div className="flex items-center gap-4 flex-wrap">
           <button
             onClick={() =>
@@ -245,7 +250,7 @@ const Analyser = () => {
         {showResult && (
           <div className="flex items-center">
             <button
-              className=" bg-sky-500 flex gap-2 items-center text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
+              className=" bg-sky-500 flex gap-2 items-center text-sm md:text-base  text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
               type="submit"
               onClick={() => setIsModal(true)}
             >
@@ -288,27 +293,41 @@ const Analyser = () => {
         </div>
         <p className="text-textThin font-normal mt-2">Example: @cristiano</p>
       </Card>
-       {/* Section Comparison */}
-       <div className="mt-6 overflow-x-auto flex gap-4">
+      {/* Section Comparison */}
+      <div className="mt-6 overflow-x-auto flex gap-4">
         {comparisons.map((comparison, index) => (
           <div
             key={comparison.id}
-            className={`${comparisons?.length > 1 ? "w-[96%]" : "w-full"} bg-white shadow-md rounded-lg p-4 relative`}
+            className={`${
+              comparisons?.length > 1 ? "w-[96%]" : "w-full"
+            } bg-white shadow-md rounded-lg p-4 relative`}
           >
-            {comparisons.length > 1 && index !== 0 &&  <button
-              onClick={() => handleRemoveComparison(comparison.id)}
-              className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center"
-            >
-              ×
-            </button>}
-          
-            <ResultAnalyser dataAnalyse={comparison.data} data={showResult} comparisonLength={comparisons?.length || 0}/>
+            {comparisons.length > 1 && index !== 0 && (
+              <button
+                onClick={() => handleRemoveComparison(comparison.id)}
+                className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center"
+              >
+                ×
+              </button>
+            )}
+
+            <ResultAnalyser
+              dataAnalyse={comparison.data}
+              data={showResult}
+              comparisonLength={comparisons?.length || 0}
+            />
           </div>
         ))}
-         </div>
+      </div>
       {/* <ResultAnalyser title="tes" data={showResult} dataAnalyse={dataAnalyse} /> */}
       <Drawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
-      <AddComparison isDrawerOpen={isModal} setIsDrawerOpen={setIsModal} onSubmit={handleAddComparison} credits={dataCredits.credits || 0} user={user}/>
+      <AddComparison
+        isDrawerOpen={isModal}
+        setIsDrawerOpen={setIsModal}
+        onSubmit={handleAddComparison}
+        credits={dataCredits.credits || 0}
+        user={user}
+      />
     </div>
   );
 };

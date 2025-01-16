@@ -22,7 +22,7 @@ const Dashboard = () => {
             <span className="text-center">Discovery</span>
           </Card>
         </Link>
-        <Link to={`/analysee`}>
+        <Link to={`/analyser`}>
           <Card className="h-32 bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white flex justify-center items-center font-medium">
             <span className="text-center">Analyser</span>
           </Card>
