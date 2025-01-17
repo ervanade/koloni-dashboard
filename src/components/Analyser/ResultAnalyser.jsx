@@ -643,6 +643,8 @@ const ResultAnalyser = ({ data, dataAnalyse, comparisonLength }) => {
                         <a
                           href={item.profile_url}
                           className="text-[#1E3A8A] mt-2"
+                           target="_blank"
+                      rel="noopener noreferrer"
                         >
                           See Instagram Post
                         </a>
