@@ -129,7 +129,7 @@ const Login = () => {
                 Email
               </label>
               <input
-                className={`bg-white appearance-none border border-[#cacaca] focus:border-[#0ACBC2]
+                className={`bg-white appearance-none border border-[#cacaca] focus:border-sky-500
                     "border-red-500" 
                  rounded w-full py-3 px-3 text-[#728294] mb-3 leading-tight focus:outline-none focus:shadow-outline`}
                 id="email"
@@ -154,7 +154,7 @@ const Login = () => {
               </label>
               <div className="relative">
                 <input
-                  className={`bg-white appearance-none border border-[#cacaca] focus:border-[#0ACBC2]
+                  className={`bg-white appearance-none border border-[#cacaca] focus:border-sky-500
         "border-red-500" 
         rounded w-full py-3 px-3 text-[#728294] mb-3 leading-tight focus:outline-none focus:shadow-outline`}
                   id="password"

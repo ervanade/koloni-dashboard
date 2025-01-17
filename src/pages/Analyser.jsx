@@ -18,7 +18,6 @@ import AddComparison from "../components/Modal/AddComparison";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import domtoimage from 'dom-to-image';
 
