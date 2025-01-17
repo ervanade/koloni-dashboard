@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../components/Card/Card";
 import { FaFilter, FaInstagram, FaMinus } from "react-icons/fa6";
 import { FaHistory, FaLine, FaTiktok, FaUserPlus, FaYoutube } from "react-icons/fa";
@@ -9,14 +9,51 @@ import top100Films from "../data/top100Films";
 import Filter from "../components/Discovery/Filter";
 import Similiar from "../components/Discovery/Similiar";
 import History from "../components/Discovery/History";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 const Discovery = () => {
   const [showFilter, setShowFilter] = useState(true);
   const [showSimiliar, setShowSimiliar] = useState(true);
   const [activeTab, setActiveTab] = useState("filter");
+  const [dataResult, setDataResult] = useState(null);
+  const user = useSelector((a) => a.auth.user);
+  const [dataCredits, setDataCredits] = useState(user);
 
+
+  const fetchUserData = async () => {
+    try {
+      // eslint-disable-next-line
+      const responseUser = await axios({
+        method: "get",
+        url: `${import.meta.env.VITE_APP_API_URL}/user`,
+        headers: {
+          "Content-Type": "application/json",
+          //eslint-disable-next-line
+          Authorization: `Bearer ${user?.accessToken}`,
+        },
+      }).then(function (response) {
+        // handle success
+        // console.log(response)
+        const data = response.data;
+        setDataCredits({
+          email: data?.email,
+          username: data.first_name + data.last_name,
+          profile: "",
+          profileName: "",
+          roles: data?.roles || "",
+          credits: data?.credits || "",
+        });
+      });
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+  useEffect(() => {
+    fetchUserData();
+  }, []);
   return (
-    <div>
+    <div className="discovery">
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h1 className="text-textBold font-bold text-2xl mb-1">Discovery</h1>
@@ -26,7 +63,7 @@ const Discovery = () => {
         </div>
         <div className="bg-[#efeff1] text-blue-500 rounded-full px-4 py-2 shadow-sm">
           <p className="font-medium text-sm">
-            Remaining Discovery Credits / Remaining Credits 2
+            Remaining Credits : {dataCredits?.credits || 0}
           </p>
         </div>
       </div>
@@ -69,7 +106,7 @@ const Discovery = () => {
 </div>
 
 {
-  activeTab === "filter" ?  <Filter showFilter={showFilter} setShowFilter={setShowFilter} /> : activeTab === "similiar" ?  <Similiar showFilter={showSimiliar} setShowFilter={setShowSimiliar} /> : activeTab === "history" ? <History /> : ""
+  activeTab === "filter" ?  <Filter showFilter={showFilter} setShowFilter={setShowFilter} dataResult={dataResult} setDataResult={setDataResult} fetchUserData={fetchUserData} dataCredits={dataCredits}/> : activeTab === "similiar" ?  <Similiar showFilter={showSimiliar} setShowFilter={setShowSimiliar} /> : activeTab === "history" ? <History /> : ""
 }
      
 

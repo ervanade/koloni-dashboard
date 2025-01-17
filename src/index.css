@@ -126,3 +126,6 @@ input[type=number] {
   bottom: 3rem;
 }
 
+.discovery .MuiInputBase-root, .form .MuiAutocomplete-root, .form .MuiFormControl-root {
+  font-size: 14px;
+}

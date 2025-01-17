@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '../Card/Card'
 import { FaFilter, FaInstagram, FaMinus } from "react-icons/fa6";
 import { FaHistory, FaLine, FaSearch, FaTiktok, FaYoutube } from "react-icons/fa";
@@ -9,14 +9,20 @@ import top100Films from '../../data/top100Films';
 import { accountOptions, ageOptions, cityOptions, countryOptions, genderOptions, interestOption, topicOptions, verifiedOptions } from '../../data/data';
 import ResultDiscovery from './ResultDiscovery';
 import { FilledInput, FormControl, FormHelperText, InputAdornment, OutlinedInput } from '@mui/material';
+import axios from 'axios';
+import { debounce } from 'lodash';
+import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 
-const Filter = ({showFilter, setShowFilter}) => {
+
+
+const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUserData, dataCredits}) => {
   const [formData, setFormData] = useState({
   "platform": "INSTAGRAM",
-    "audience_age_max": 100000,
-    "audience_age_min": 0,
-    "creator_age_max": 0,
-    "creator_age_min": 10000000000,
+    "audience_age_max": null,
+    "audience_age_min": null,
+    "creator_age_max": null,
+    "creator_age_min": null,
     "audience_gender": null,
     "creator_gender": null,
     "audience_location_name": "Indonesia",
@@ -43,6 +49,87 @@ const Filter = ({showFilter, setShowFilter}) => {
   const [showSort, setShowSort] = useState(true);
   const [showResult, setShowResult] = useState(false);
 
+  const [topicOptions, setTopicOptions] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+
+  const user = useSelector((a) => a.auth.user);
+  // Debounced function to fetch topics
+  const fetchTopics = debounce(async (searchTerm) => {
+    if (searchTerm.length < 3) {
+      setTopicOptions([]);
+      setLoading(false);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_APP_API_URL}/topic`,
+        {
+          params: {
+            identifier: searchTerm,
+            platform: "INSTAGRAM",
+          },
+          headers: {
+            "Content-Type": "application/json",
+            //eslint-disable-next-line
+            Authorization: `Bearer ${user?.accessToken}`,
+          }
+        }
+      );
+      const topics = response.data?.data || [];
+      setTopicOptions(
+        topics.map((topic) => ({
+          label: topic.name, // Adjust based on API response
+          value: topic.value,
+        }))
+      );
+    } catch (error) {
+      console.error("Error fetching topics:", error);
+    } finally {
+      setLoading(false);
+    }
+  }, 500); // Debounce by 500ms
+
+  useEffect(() => {
+    fetchTopics(inputValue);
+
+    // Cleanup debounce function on unmount
+    return () => fetchTopics.cancel();
+  }, [inputValue]);
+
+  const handleReset = () => {
+    setFormData({
+      "platform": "INSTAGRAM",
+        "audience_age_max": null,
+        "audience_age_min": null,
+        "creator_age_max": null,
+        "creator_age_min": null,
+        "audience_gender": null,
+        "creator_gender": null,
+        "audience_location_name": "Indonesia",
+        "creator_location_name": "Indonesia",
+        "call_id": null,
+        "followers_min": null,
+        "followers_max": null,
+        "avg_views_min": null,
+        "avg_views_max": null,
+        "avg_like_max": null,
+        "avg_like_min": null,
+        "verified": null,
+        "previous_call_id": null,
+        "sorting_by": "REELS_VIEWS",
+        "next_page": 0,
+        "platform_account_type": null,
+        "discovery_interest_value":[""],
+        "discovery_hashtag_value":[""],
+        "discovery_keyword_value":[""],
+        "discovery_topic_value":[""]
+      })
+  }
+
   const handleInputChange = (field, value) => {
     if (field === "creator_age") {
       if (!value) {
@@ -50,7 +137,7 @@ const Filter = ({showFilter, setShowFilter}) => {
         setFormData((prev) => ({
           ...prev,
           creator_age_min: 0,
-          creator_age_max: 10000000000,
+          creator_age_max: 100,
         }));
       } else if (value === "55 >") {
         // Jika memilih "55 >"
@@ -68,12 +155,125 @@ const Filter = ({showFilter, setShowFilter}) => {
           creator_age_max: max,
         }));
       }
+    } else if (field === "audience_age") {
+      if (!value) {
+        // Reset jika memilih "Any"
+        setFormData((prev) => ({
+          ...prev,
+          audience_age_min: 0,
+          audience_age_max: 100,
+        }));
+      } else if (value === "55 >") {
+        // Jika memilih "55 >"
+        setFormData((prev) => ({
+          ...prev,
+          audience_age_min: 55,
+          audience_age_max: null,
+        }));
+      } else {
+        // Jika memilih rentang usia (contoh: "18 - 24")
+        const [min, max] = value.split(" - ").map(Number);
+        setFormData((prev) => ({
+          ...prev,
+          audience_age_min: min,
+          audience_age_max: max,
+        }));
+      }
     } else {
       setFormData((prev) => ({
         ...prev,
         [field]: value,
       }));
     }
+  };
+
+  const searchDiscovery = async () => {
+    setLoading(true);
+    Swal.fire({
+      title: "Search Discovery...",
+      text: "Please Wait Preparing Your Data...",
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      willOpen: () => {
+        Swal.showLoading();
+      },
+    });
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${import.meta.env.VITE_APP_API_URL}/discovery`,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.accessToken}`,
+        },
+        params: {
+          page: page 
+        },
+        data: JSON.stringify({
+          ...formData,
+        }),
+      });
+      setDataResult(response.data);
+      Swal.fire("Success Get Analyse Profile!", "Scroll Down To View Analyse Data", "success");
+      fetchUserData();
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      if (error.response.status === 403) {
+        return Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Not Enough Credit",
+        });
+      } else if (
+        error.response.status === 404 ||
+        error.response.status === 400
+      ) {
+        return Swal.fire({
+          icon: "error",
+          title: "Error Not Found",
+          text: "Influencers Not Found",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Failed Search Analyse Profile",
+        });
+      }
+
+      setDataResult(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+console.log(dataResult)
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    if (dataCredits.credits < 1) {
+      Swal.fire(
+        "No Remaining Credits",
+        "Contact Admin to Recharge Your Credits",
+        "error"
+      );
+      setLoading(false);
+
+      return;
+    }
+    return Swal.fire({
+      title: "Are you sure?",
+      text: "Are you sure this will reduce your credits?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Analyse it!",
+      confirmButtonColor: "#24A5E9",
+    }).then(async (result) => {
+      if (result.value) {
+        setLoading(true);
+        searchDiscovery();
+      }
+    });
   };
   return (
     <div>
@@ -99,7 +299,7 @@ const Filter = ({showFilter, setShowFilter}) => {
         <div
           className={`${
             !showFilter ? "hidden" : ""
-          } card font-normal text-textThin text-[15px] mt-4`}
+          } card font-normal text-textThin text-[15px] mt-4 text-sm`}
         >
           <p>Social Media</p>
               <div className="flex items-center gap-4 flex-wrap">
@@ -119,14 +319,40 @@ const Filter = ({showFilter, setShowFilter}) => {
           <div className="">
         <p className="font-normal text-textThin text-sm mb-2">Topic</p>
         <Autocomplete
-          disablePortal
-          options={topicOptions}
-          onChange={(event, newValue) => handleInputChange('discovery_topic_value', [newValue?.value || formData.discovery_topic_value[0]])}
-          sx={{ width: "100%" }}
-          renderInput={(params) => (
-            <TextField {...params} label="Topic" />
-          )}
-        />
+        disablePortal
+        options={topicOptions}
+        loading={loading}
+        noOptionsText={
+          loading
+            ? "Loading..."
+            : inputValue.length < 3
+            ? "Type at least 3 characters"
+            : "No options"
+        }
+        onInputChange={(event, newValue) => setInputValue(newValue)}
+        onChange={(event, newValue) => {
+          // Masukkan value ke formData
+          handleInputChange('discovery_topic_value', [newValue?.value || ""])
+        }}
+        sx={{ width: "100%" }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Topic"
+            InputProps={{
+              ...params.InputProps,
+              endAdornment: (
+                <>
+                  {loading ? (
+                    <div className="animate-spin w-4 h-4 border-2 border-teal-500 rounded-full border-t-transparent mr-2"></div>
+                  ) : null}
+                  {params.InputProps.endAdornment}
+                </>
+              ),
+            }}
+          />
+        )}
+      />
       </div>
 
       <div className="">
@@ -150,7 +376,7 @@ const Filter = ({showFilter, setShowFilter}) => {
                       type="text"
                       id="number-input"
                       aria-describedby="helper-text-explanation"
-                      className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Hashtag"
                       required
                     /> */}
@@ -232,7 +458,7 @@ const Filter = ({showFilter, setShowFilter}) => {
                       value={formData.followers_max}
               onChange={(e) => handleInputChange("followers_max", Number(e.target.value))}
                       aria-describedby="helper-text-explanation"
-                      className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Max"
                       required
                     />
@@ -250,7 +476,7 @@ const Filter = ({showFilter, setShowFilter}) => {
                       value={formData.avg_like_min}
                       onChange={(e) => handleInputChange("avg_like_min", Number(e.target.value))}
                       aria-describedby="helper-text-explanation"
-                      className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Min"
                       required
                     />
@@ -261,7 +487,7 @@ const Filter = ({showFilter, setShowFilter}) => {
                       value={formData.avg_like_max}
                       onChange={(e) => handleInputChange("avg_like_max", Number(e.target.value))}
                       aria-describedby="helper-text-explanation"
-                      className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Max"
                       required
                     />
@@ -306,6 +532,8 @@ const Filter = ({showFilter, setShowFilter}) => {
                     disablePortal
                     options={genderOptions}
                     sx={{ width: "100%" }}
+                    value={formData.creator_gender}
+            onChange={(e, newValue) => handleInputChange("creator_gender", newValue?.value || "")}
                     renderInput={(params) => (
                       <TextField {...params} label="Creator Gender" />
                     )}
@@ -399,6 +627,8 @@ const Filter = ({showFilter, setShowFilter}) => {
                     disablePortal
                     options={genderOptions}
                     sx={{ width: "100%" }}
+                     value={formData.audience_gender}
+                   onChange={(e, newValue) => handleInputChange("audience_gender", newValue?.value || "")}
                     renderInput={(params) => (
                       <TextField {...params} label="Audience Gender" />
                     )}
@@ -412,6 +642,11 @@ const Filter = ({showFilter, setShowFilter}) => {
                   <Autocomplete
                     disablePortal
                     options={ageOptions}
+                    value={ageOptions.find((option) => option.value === formData.audience_age_min?.toString() + (formData.audience_age_max ? ` - ${formData.audience_age_max}` : " >") || "")}
+                    onChange={(e, newValue) =>
+                      handleInputChange("audience_age", newValue?.value || "")
+                    }
+                    
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
                       <TextField {...params} label="Audience Age" />
@@ -512,13 +747,14 @@ const Filter = ({showFilter, setShowFilter}) => {
         <button
                 className="border border-sky-500  text-sky-500 font-bold py-3 px-8 rounded focus:outline-none focus:shadow-outline"
                 type="submit"
+                onClick={handleReset}
               >
                 Reset
               </button>
               <button
                 className=" bg-sky-500 flex gap-2 items-center text-white font-bold py-3 px-8 rounded focus:outline-none focus:shadow-outline"
                 type="submit"
-                onClick={() => setShowResult(!showResult)}
+                onClick={(e) => handleSearch(e)}
               >
                 <FaSearch />
                 Search
@@ -529,7 +765,11 @@ const Filter = ({showFilter, setShowFilter}) => {
        
       </Card>
 
-      <ResultDiscovery title="Result History Discovery" data={showResult}/>
+      {
+        dataResult &&  <ResultDiscovery title="Result History Discovery" data={showResult} dataResult={dataResult} page={page} setPage={setPage} handleSearch={handleSearch}/>
+      }
+
+     
       </div>
   )
 }
