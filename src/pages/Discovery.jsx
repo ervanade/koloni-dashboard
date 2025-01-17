@@ -25,7 +25,7 @@ const Discovery = () => {
           </p>
         </div>
         <div className="bg-[#efeff1] text-blue-500 rounded-full px-4 py-2 shadow-sm">
-          <p className="font-medium text-sm md:text-base">
+          <p className="font-medium text-sm">
             Remaining Discovery Credits / Remaining Credits 2
           </p>
         </div>

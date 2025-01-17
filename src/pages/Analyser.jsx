@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "../components/Card/Card";
-import { FaCheckCircle, FaEye, FaPlus, FaSearch } from "react-icons/fa";
+import { FaCheckCircle, FaEye, FaFileExport, FaPlus, FaSearch } from "react-icons/fa";
 import { FaAt } from "react-icons/fa6";
 import {
   BiCheckCircle,
@@ -18,6 +18,10 @@ import AddComparison from "../components/Modal/AddComparison";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import domtoimage from 'dom-to-image';
+
 
 const Analyser = () => {
   const [showResult, setShowResult] = useState(false);
@@ -32,6 +36,18 @@ const Analyser = () => {
   const [formData, setFormData] = useState({
     platform: "Instagram",
     identifier: "",
+  });
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 4000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
   });
 
   const fetchUserData = async () => {
@@ -110,7 +126,7 @@ const Analyser = () => {
       setComparisons([
         { id: Date.now(), data: response.data }, // Simpan hasil ke dalam comparisons
       ]);
-      Swal.fire("Success Get Analyse Profile!", "", "success");
+      Swal.fire("Success Get Analyse Profile!", "Scroll Down To View Analyse Data", "success");
       setShowResult(true);
       fetchUserData();
       setLoading(false);
@@ -174,6 +190,74 @@ const Analyser = () => {
       }
     });
   };
+  
+
+  const exportAllToPDF = () => {
+    Swal.fire({
+      title: 'Exporting PDF...',
+      text: 'Please wait while the document is being generated.',
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      didOpen: () => {
+        Swal.showLoading(); // Menampilkan spinner
+      },
+    });
+    const pdf = new jsPDF({
+      orientation: 'p',  // Potrait orientation
+      unit: 'mm',        // Satuan dalam milimeter
+      format: [1000, 300]  // Menggunakan ukuran kertas sesuai dimensi gambar
+    });
+    const pxToMm = 0.264583; // Konversi piksel ke milimeter
+    const margin = 10; // Margin atas dan bawah
+    let currentY = margin; // Posisi Y awal
+
+  
+    const tasks = comparisons?.map((comparison, index) => {
+      const elementId = `comparison-${index}`;
+      const element = document.getElementById(elementId);
+  
+      return domtoimage.toPng(element).then((dataUrl) => {
+        const img = new Image();
+        img.src = dataUrl;
+  
+        return new Promise((resolve) => {
+          img.onload = () => {
+            const imgWidth = img.width * pxToMm;
+            const imgHeight = img.height * pxToMm;
+  
+            if (currentY + imgHeight > pdf.internal.pageSize.getHeight()) {
+              pdf.addPage(); // Tambahkan halaman baru jika penuh
+              currentY = margin;
+            }
+  
+            pdf.addImage(dataUrl, "PNG", margin, currentY, imgWidth, imgHeight);
+            currentY += imgHeight + margin; // Update posisi Y
+            resolve();
+          };
+        });
+      });
+    });
+  
+    Promise.all(tasks)
+      .then(() => {
+        pdf.save(`Results Analyser ${comparisons[0].data?.username || ""}.pdf`);
+        Swal.close()
+        Toast.fire({
+          icon: "success",
+          title: "Success Export PDF",
+        });
+      })
+      .catch((error) => {
+        console.error("Error exporting PDF:", error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Export Failed!',
+          text: 'An error occurred while generating the PDF. Please try again.',
+        });
+      });
+  };
+  
+  
 
   return (
     <div className="analyser">
@@ -184,23 +268,24 @@ const Analyser = () => {
             Analyse creators across Instagram, TikTok, and YouTube
           </p>
         </div>
-        <div className="flex gap-2 flex-wrap justify-end">
+        <div className="flex gap-2 flex-wrap justify-end text-sm">
           <div className="bg-[#efeff1] text-blue-500 rounded-full px-4 py-2 shadow-sm">
             <p className="font-medium">
               Remaining Analyser Credits: {dataCredits?.credits || 0}
             </p>
           </div>
-          <button
-            className=" bg-sky-500 flex gap-2 items-center text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
-            type="submit"
-            onClick={() => setIsDrawerOpen(true)}
-          >
-            History
-          </button>
+          {
+          comparisons?.length > 0 &&  <button
+          onClick={exportAllToPDF}
+          className="mb-4 bg-sky-500 text-white px-4 py-2 rounded-md flex items-center gap-1 text-sm"
+        >
+          <FaFileExport /><span>PDF</span>
+        </button>
+        }
         </div>
       </div>
       <div className="flex items-center justify-between gap-1">
-        <div className="flex items-center gap-4 flex-wrap">
+        <div className="flex items-center gap-4 flex-wrap text-sm">
           <button
             onClick={() =>
               setFormData((prev) => ({ ...prev, platform: "Instagram" }))
@@ -250,7 +335,7 @@ const Analyser = () => {
         {showResult && (
           <div className="flex items-center">
             <button
-              className=" bg-sky-500 flex gap-2 items-center text-sm md:text-base  text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
+              className=" bg-sky-500 flex gap-2 items-center text-sm   text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
               type="submit"
               onClick={() => setIsModal(true)}
             >
@@ -261,7 +346,7 @@ const Analyser = () => {
         )}
       </div>
       <Card className="mt-6">
-        <h1 className="font-medium text-lg mb-1">Instagram Profile Analyser</h1>
+        <h1 className="font-medium text-base mb-1">Instagram Profile Analyser</h1>
         <p className="font-normal text-sm text-textThin">
           Analyser Instagram account for better performance.
         </p>
@@ -291,13 +376,16 @@ const Analyser = () => {
             Analyse
           </button>
         </div>
-        <p className="text-textThin font-normal mt-2">Example: @cristiano</p>
+        <p className="text-textThin font-normal  mt-2 text-sm">Example: @cristiano</p>
+
+       
       </Card>
       {/* Section Comparison */}
-      <div className="mt-6 overflow-x-auto flex gap-4">
+      <div className="overflow-x-auto flex gap-4 mt-6">
         {comparisons.map((comparison, index) => (
           <div
-            key={comparison.id}
+            key={index}
+            id={`comparison-${index}`} // Add ID for each result
             className={`${
               comparisons?.length > 1 ? "w-[96%]" : "w-full"
             } bg-white shadow-md rounded-lg p-4 relative`}
