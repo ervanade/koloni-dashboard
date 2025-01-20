@@ -1,7 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../components/Card/Card";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 const Analytics = () => {
+  const user = useSelector((a) => a.auth.user);
+  const [dataCredits, setDataCredits] = useState(user);
+
+  const fetchUserData = async () => {
+    try {
+      // eslint-disable-next-line
+      const responseUser = await axios({
+        method: "get",
+        url: `${import.meta.env.VITE_APP_API_URL}/user`,
+        headers: {
+          "Content-Type": "application/json",
+          //eslint-disable-next-line
+          Authorization: `Bearer ${user?.accessToken}`,
+        },
+      }).then(function (response) {
+        // handle success
+        // console.log(response)
+        const data = response.data;
+        setDataCredits({
+          email: data?.email,
+          username: data.first_name + data.last_name,
+          profile: "",
+          profileName: "",
+          roles: data?.roles || "",
+          credits: data?.credits || "",
+        });
+      });
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+  useEffect(() => {
+    fetchUserData();
+  }, []);
   return (
     <div>
       <div className="mb-6 flex items-center justify-between">
@@ -14,7 +50,7 @@ const Analytics = () => {
           </p>
         </div>
         <div className="bg-[#efeff1] text-blue-500 rounded-full px-4 py-2 shadow-sm">
-          <p className="font-medium">Remaining Analyser Credits: 2</p>
+          <p className="font-medium">Remaining Credits : {dataCredits?.credits || 0}</p>
         </div>
       </div>
       <Card>
