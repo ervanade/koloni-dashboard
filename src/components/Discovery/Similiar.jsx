@@ -10,6 +10,7 @@ import { FormControl, InputAdornment, OutlinedInput } from '@mui/material';
 import { accountOptions, basedOptions, cityOptions, countryOptions, socialOptions } from '../../data/data';
 import ResultSImiliar from './ResultSimiliar';
 import { useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Similiar = ({showFilter, setShowFilter}) => {
   const [formData, setFormData] = useState({
@@ -23,7 +24,7 @@ const Similiar = ({showFilter, setShowFilter}) => {
     "followers_min": null,
     "followers_max": null,
     "audience_lookalikes": null,
-    "creator_lookalikes": "@refaltamara",
+    "creator_lookalikes": "",
     "sorting_by": "CREATOR_LOOKALIKES",
     "previous_call_id": null,
     "next_page": 0
@@ -92,7 +93,12 @@ const Similiar = ({showFilter, setShowFilter}) => {
   const [showAudience, setShowAudience] = useState(false);
   const [showSort, setShowSort] = useState(true);
   const [showResult, setShowResult] = useState(false);
-  console.log(formData)
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleReset = () => {
+    navigate(location.pathname, { replace: true });
+  }
   return (
     <div>
     <Card className="mt-6">
@@ -245,6 +251,7 @@ const Similiar = ({showFilter, setShowFilter}) => {
         <button
                 className="border border-sky-500  text-sky-500 font-bold py-3 px-8 rounded focus:outline-none focus:shadow-outline"
                 type="submit"
+                onClick={handleReset}
               >
                 Reset
               </button>
