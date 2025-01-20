@@ -9,17 +9,95 @@ import top100Films from '../../data/top100Films';
 import { FormControl, InputAdornment, OutlinedInput } from '@mui/material';
 import { accountOptions, basedOptions, cityOptions, countryOptions, socialOptions } from '../../data/data';
 import ResultSImiliar from './ResultSimiliar';
+import { useSelector } from 'react-redux';
 
 const Similiar = ({showFilter, setShowFilter}) => {
+  const [formData, setFormData] = useState({
+    "platform": "INSTAGRAM",
+    "audience_age_max": null,
+    "audience_age_min": null,
+    "creator_age_max": null,
+    "creator_age_min": null,
+    "audience_location_name": "Indonesia",
+    "creator_location_name": "Indonesia",
+    "followers_min": null,
+    "followers_max": null,
+    "audience_lookalikes": null,
+    "creator_lookalikes": "@refaltamara",
+    "sorting_by": "CREATOR_LOOKALIKES",
+    "previous_call_id": null,
+    "next_page": 0
+
+    })
+    const user = useSelector((a) => a.auth.user);
+
+    const handleInputChange = (field, value) => {
+      if (field === "creator_age") {
+        if (!value) {
+          // Reset jika memilih "Any"
+          setFormData((prev) => ({
+            ...prev,
+            creator_age_min: 0,
+            creator_age_max: 100,
+          }));
+        } else if (value === "55 >") {
+          // Jika memilih "55 >"
+          setFormData((prev) => ({
+            ...prev,
+            creator_age_min: 55,
+            creator_age_max: null,
+          }));
+        } else {
+          // Jika memilih rentang usia (contoh: "18 - 24")
+          const [min, max] = value.split(" - ").map(Number);
+          setFormData((prev) => ({
+            ...prev,
+            creator_age_min: min,
+            creator_age_max: max,
+          }));
+        }
+      } else if (field === "audience_age") {
+        if (!value) {
+          // Reset jika memilih "Any"
+          setFormData((prev) => ({
+            ...prev,
+            audience_age_min: 0,
+            audience_age_max: 100,
+          }));
+        } else if (value === "55 >") {
+          // Jika memilih "55 >"
+          setFormData((prev) => ({
+            ...prev,
+            audience_age_min: 55,
+            audience_age_max: null,
+          }));
+        } else {
+          // Jika memilih rentang usia (contoh: "18 - 24")
+          const [min, max] = value.split(" - ").map(Number);
+          setFormData((prev) => ({
+            ...prev,
+            audience_age_min: min,
+            audience_age_max: max,
+          }));
+        }
+      } else {
+        setFormData((prev) => ({
+          ...prev,
+          [field]: value,
+        }));
+      }
+    };
+
     const [showCreator, setShowCreator] = useState(true);
   const [showAudience, setShowAudience] = useState(false);
   const [showSort, setShowSort] = useState(true);
   const [showResult, setShowResult] = useState(false);
+  console.log(formData)
   return (
     <div>
     <Card className="mt-6">
         <div className="flex items-center justify-between">
-          <h1 className="font-medium text-lg text-textBold">Filter</h1>
+          <h1 className="font-medium text-lg text-textBold">Filter By Similiar</h1>
           {!showFilter ? (
             <button
               className="rounded-full border border-textBold"
@@ -49,6 +127,8 @@ const Similiar = ({showFilter, setShowFilter}) => {
             id="outlined-adornment-creator-name"
             className='py-2'
             placeholder='Creator Name'
+            value={formData.creator_lookalikes}
+              onChange={(e) => handleInputChange("creator_lookalikes", e.target.value)}
             endAdornment={<InputAdornment position="end"><FaSearch className='text-textThin font-thin'/></InputAdornment>}
             aria-describedby="outlined-creator-name-helper-text"
             inputProps={{
@@ -63,6 +143,8 @@ const Similiar = ({showFilter, setShowFilter}) => {
               <Autocomplete
                 disablePortal
                 options={basedOptions}
+                value={basedOptions.find(option => option.value === formData.sorting_by) || null} 
+    onChange={(e, newValue) => handleInputChange("sorting_by", newValue?.value || "")}
                 sx={{ width: "100%" }}
                 renderInput={(params) => (
                   <TextField {...params} label="Based On" />
@@ -75,6 +157,8 @@ const Similiar = ({showFilter, setShowFilter}) => {
               <Autocomplete
                 disablePortal
                 options={socialOptions}
+                value={socialOptions.find(option => option.value === formData.platform) || null} 
+                onChange={(e, newValue) => handleInputChange("platform", newValue?.value || "")}
                 sx={{ width: "100%" }}
                 renderInput={(params) => (
                   <TextField {...params} label="Social Media" />
@@ -91,16 +175,20 @@ const Similiar = ({showFilter, setShowFilter}) => {
                       type="number"
                       id="number-input"
                       aria-describedby="helper-text-explanation"
-                      className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Min"
+                      value={formData.followers_min}
+              onChange={(e) => handleInputChange("followers_min", Number(e.target.value))}
                       required
                     />
                     <FaMinus className="text-2xl" />
                     <input
                       type="number"
                       id="number-input"
+                      value={formData.followers_max}
+              onChange={(e) => handleInputChange("followers_max", Number(e.target.value))}
                       aria-describedby="helper-text-explanation"
-                      className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Max"
                       required
                     />
@@ -144,6 +232,8 @@ const Similiar = ({showFilter, setShowFilter}) => {
                   <Autocomplete
                     disablePortal
                     options={accountOptions}
+                    value={formData.account_type}
+            onChange={(e, newValue) => handleInputChange("account_type", newValue?.value || "")}
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
                       <TextField {...params} label="Account Type" />

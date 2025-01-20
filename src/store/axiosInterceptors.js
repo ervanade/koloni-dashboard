@@ -29,15 +29,15 @@ axios.interceptors.response.use(
                 || error?.response?.data?.detail === "Invalid token: Not enough segments"
             )
         ) {
+            // Logout user
+            store.dispatch(logoutUser());
+            
+            // Redirect ke halaman login
+            window.location.href = "/login";
             Toast.fire({
                 icon: "warning",
                 title: "Session expired. Please log in again.",
               });
-            // Logout user
-            store.dispatch(logoutUser());
-
-            // Redirect ke halaman login
-            window.location.href = "/login";
         }
 
         // Tetap lempar error untuk ditangani oleh caller

@@ -95,11 +95,11 @@ export const countryOptions = [
 export const basedOptions = [
   {
     label: 'Creator',
-    value: "Creator",
+    value: "CREATOR_LOOKALIKES",
   },
   {
     label: 'Audience',
-    value: "Audience",
+    value: "AUDIENCE_LOOKALIKES",
   },
 
 ];
@@ -107,15 +107,15 @@ export const basedOptions = [
 export const socialOptions = [
   {
     label: 'Instagram',
-    value: "Instagram",
+    value: "INSTAGRAM",
   },
   {
     label: 'Tiktok',
-    value: "Tiktok",
+    value: "TIKTOK",
   },
   {
     label: 'Youtube',
-    value: "Youtube",
+    value: "YOUTUBE",
   },
 
 ];

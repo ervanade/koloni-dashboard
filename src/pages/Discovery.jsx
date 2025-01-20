@@ -96,12 +96,12 @@ const Discovery = () => {
                 By Similiar
             </button>
         </li>
-        <li className={`me-2 flex-1 ${activeTab == "history" ? "border-b-2 border-blue-500" : ""}`}>
+        {/* <li className={`me-2 flex-1 ${activeTab == "history" ? "border-b-2 border-blue-500" : ""}`}>
             <button onClick={() => setActiveTab("history")} className={`w-full flex items-center justify-center p-4  rounded-t-lg active ${activeTab == "history" ? "text-blue-500 dark:text-blue-500 dark:border-blue-500" : ""} group`}>
                 <FaHistory className="me-2" />
                 History Discovery
             </button>
-        </li>
+        </li> */}
     </ul>
 </div>
 

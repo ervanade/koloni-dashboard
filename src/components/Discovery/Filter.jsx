@@ -13,6 +13,7 @@ import axios from 'axios';
 import { debounce } from 'lodash';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 
@@ -99,35 +100,40 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
     // Cleanup debounce function on unmount
     return () => fetchTopics.cancel();
   }, [inputValue]);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleReset = () => {
-    setFormData({
-      "platform": "INSTAGRAM",
-        "audience_age_max": null,
-        "audience_age_min": null,
-        "creator_age_max": null,
-        "creator_age_min": null,
-        "audience_gender": null,
-        "creator_gender": null,
-        "audience_location_name": "Indonesia",
-        "creator_location_name": "Indonesia",
-        "call_id": null,
-        "followers_min": null,
-        "followers_max": null,
-        "avg_views_min": null,
-        "avg_views_max": null,
-        "avg_like_max": null,
-        "avg_like_min": null,
-        "verified": null,
-        "previous_call_id": null,
-        "sorting_by": "REELS_VIEWS",
-        "next_page": 0,
-        "platform_account_type": null,
-        "discovery_interest_value":[""],
-        "discovery_hashtag_value":[""],
-        "discovery_keyword_value":[""],
-        "discovery_topic_value":[""]
-      })
+    navigate(location.pathname, { replace: true });
+
+
+    // setFormData({
+    //   "platform": "INSTAGRAM",
+    //     "audience_age_max": null,
+    //     "audience_age_min": null,
+    //     "creator_age_max": null,
+    //     "creator_age_min": null,
+    //     "audience_gender": null,
+    //     "creator_gender": null,
+    //     "audience_location_name": "Indonesia",
+    //     "creator_location_name": "Indonesia",
+    //     "call_id": null,
+    //     "followers_min": null,
+    //     "followers_max": null,
+    //     "avg_views_min": null,
+    //     "avg_views_max": null,
+    //     "avg_like_max": null,
+    //     "avg_like_min": null,
+    //     "verified": null,
+    //     "previous_call_id": null,
+    //     "sorting_by": "REELS_VIEWS",
+    //     "next_page": 0,
+    //     "platform_account_type": null,
+    //     "discovery_interest_value":[""],
+    //     "discovery_hashtag_value":[""],
+    //     "discovery_keyword_value":[""],
+    //     "discovery_topic_value":[""]
+    //   })
   }
 
   const handleInputChange = (field, value) => {
@@ -247,7 +253,6 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
       setLoading(false);
     }
   };
-console.log(dataResult)
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -448,7 +453,7 @@ console.log(dataResult)
               type="number"
               value={formData.followers_min}
               onChange={(e) => handleInputChange("followers_min", Number(e.target.value))}
-              className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4"
+              className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Min"
             />
                     <FaMinus className="text-2xl" />
