@@ -14,14 +14,16 @@ import {
 import Card from "../components/Card/Card";
 import UserDefault from "../assets/user/user-default.png";
 import Swal from "sweetalert2";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { CgSpinner } from "react-icons/cg";
+import { loginUser } from "../store/authSlice";
 
 const Profile = () => {
   const user = useSelector((a) => a.auth.user);
   const [showFilter, setShowFilter] = useState(true);
   const [showSimiliar, setShowSimiliar] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("profile");
   const [previewImages, setPreviewImages] = useState({
     profile: null,
@@ -30,6 +32,8 @@ const Profile = () => {
     password: "",
     email: "",
     username: "",
+    first_name: "",
+    last_name: "",
     profile: "",
     profileName: "",
     roles: "",
@@ -38,6 +42,7 @@ const Profile = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [getLoading, setGetLoading] = useState(false);
+  const dispatch = useDispatch()
 
   const fetchUserData = async () => {
     setGetLoading(true);
@@ -57,7 +62,9 @@ const Profile = () => {
         const data = response.data;
         setFormData({
           email: data?.email,
-          username: data.first_name + data.last_name,
+          username: data.first_name + " " + data.last_name,
+          first_name: data.first_name || "",
+          last_name: data.last_name || "",
           profile: "",
           profileName: "",
           roles: data?.roles || "",
@@ -99,6 +106,76 @@ const Profile = () => {
     } else {
       setFormData((prev) => ({ ...prev, [id]: value }));
     }
+  };
+
+  const editUser = async () => {
+    if (!formData.email || !formData.password) {
+      Swal.fire("Error", "Ada Form yang belum di lengkapi", "error");
+      return;
+    }
+    try {
+      await axios({
+        method: "patch",
+        url: `${import.meta.env.VITE_APP_API_URL}/users`,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.accessToken}`,
+        },
+        data: JSON.stringify({
+          ...formData,
+        }),
+      });
+      Swal.fire("Success Edit User!", "", "success");
+      const fullUserData = {
+        ...user,
+        first_name: formData.first_name,
+        last_name: formData.last_name,
+        email: formData.email,
+
+        
+      }
+      dispatch(loginUser(fullUserData))
+      setIsDrawerOpen(false);
+      setFormData({
+        password: "",
+        email: "",
+        username: "",
+        first_name: "",
+        last_name: "",
+        profile: "",
+        profileName: "",
+        roles: "",
+        credits: "",
+    
+      })
+      
+      fetchUserData();
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+      setFormData({
+        password: "",
+        email: "",
+        username: "",
+        first_name: "",
+        last_name: "",
+        profile: "",
+        profileName: "",
+        roles: "",
+        credits: "",
+    
+      })
+      if (error?.response?.status === 500) {
+        Swal.fire("Error", "Email Telah Digunakan", "error");
+        setLoading(false);
+        return;
+      }
+    }
+  };
+  const handleSimpan = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    editUser();
   };
 
   if (getLoading) {
@@ -190,7 +267,8 @@ const Profile = () => {
                 }}
               />
             </div>
-            <div className="flex items-center justify-center gap-2">
+            <p>{formData?.username}</p>
+            {/* <div className="flex items-center justify-center gap-2">
               <div className="sm:flex-[5_5_0%] flex flex-col items-start gap-1">
                 <div className="flex items-center">
                   <label className="bg-sky-500 disabled:bg-slate-500 cursor-pointer text-white text-sm font-normal py-2 px-4 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1">
@@ -209,17 +287,9 @@ const Profile = () => {
                     </p>
                   )}
                 </div>
-                {/* <p className="text-gray-500 text-xs mt-1">
-                  Max file size: 2MB, Type: PNG/JPG
-                </p> */}
-              </div>
-              {/* <button
-  className="bg-sky-500 disabled:bg-slate-500 text-white text-sm font-normal py-2 px-4 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"
-  type="submit"
 
->
-Change Profile
-</button> */}
+              </div>
+
               <button
                 onClick={() => setIsDrawerOpen(false)}
                 className="bg-slate-300 disabled:bg-slate-500 text-sm text-textThin font-normal py-2 px-4 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"
@@ -227,7 +297,7 @@ Change Profile
               >
                 Reset
               </button>
-            </div>
+            </div> */}
           </div>
           <form className="">
             <div className="mt-6 flex-auto w-full">
@@ -302,31 +372,57 @@ Change Profile
                   </button>
                 </div>
                 <div className="col-span-2 md:col-span-1">
-                  <label
-                    className=" block text-textBold text-sm font-medium mb-2"
-                    htmlFor="email"
-                  >
-                    Username
-                  </label>
+                      <label
+                        className=" block text-textBold text-sm font-medium mb-2"
+                        htmlFor="email"
+                      >
+                        First Name
+                      </label>
 
-                  <input
-                    className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
+                      <input
+                        className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
                   "border-red-500" 
                rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
-                    id="jumlah_barang_dikirim"
-                    type="text"
-                    value={formData.username}
-                    onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        username: e.target.value,
-                      }))
-                    }
-                    placeholder="Username"
-                    required
-                  />
-                </div>
-                <div className="col-span-2 md:col-span-1">
+                        id="jumlah_barang_dikirim"
+                        type="text"
+                        placeholder="FirstName"
+                        required
+                        value={formData.first_name}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            first_name: e.target.value,
+                          }))
+                        }
+                      />
+                    </div>
+
+                    <div className="col-span-2 md:col-span-1">
+                      <label
+                        className=" block text-textBold text-sm font-medium mb-2"
+                        htmlFor="email"
+                      >
+                        Last Name
+                      </label>
+
+                      <input
+                        className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
+                  "border-red-500" 
+               rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
+                        id="jumlah_barang_dikirim"
+                        type="text"
+                        placeholder="LastName"
+                        // required
+                        value={formData.last_name}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            last_name: e.target.value,
+                          }))
+                        }
+                      />
+                    </div>
+                {/* <div className="col-span-2 md:col-span-1">
                   <label
                     for="category"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -348,7 +444,7 @@ Change Profile
                     <option value="user">User</option>
                     <option value="admin">Admin</option>
                   </select>
-                </div>
+                </div> */}
               </div>
 
               <div className="flex items-center justify-center gap-2 mt-8">
