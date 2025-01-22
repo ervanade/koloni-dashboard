@@ -109,20 +109,23 @@ const Profile = () => {
   };
 
   const editUser = async () => {
-    if (!formData.email || !formData.password) {
+    if (!formData.email || !formData.first_name || !formData.last_name) {
       Swal.fire("Error", "Ada Form yang belum di lengkapi", "error");
       return;
     }
     try {
       await axios({
         method: "patch",
-        url: `${import.meta.env.VITE_APP_API_URL}/users`,
+        url: `${import.meta.env.VITE_APP_API_URL}/user`,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${user?.accessToken}`,
         },
         data: JSON.stringify({
-          ...formData,
+          password : formData.password ? formData.password : null,
+          email: formData.email,
+          first_name: formData.first_name,
+          last_name: formData.last_name,
         }),
       });
       Swal.fire("Success Edit User!", "", "success");
@@ -175,7 +178,19 @@ const Profile = () => {
   const handleSimpan = async (e) => {
     e.preventDefault();
     setLoading(true);
-    editUser();
+    return Swal.fire({
+      title: "Are you sure?",
+      text: "Are you sure this will update your profile?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Update it!",
+      confirmButtonColor: "#24A5E9",
+    }).then(async (result) => {
+      if (result.value) {
+        setLoading(true);
+        editUser();
+      }
+    });
   };
 
   if (getLoading) {
@@ -449,6 +464,7 @@ const Profile = () => {
 
               <div className="flex items-center justify-center gap-2 mt-8">
                 <button
+                onClick={handleSimpan}
                   className="bg-sky-500 disabled:bg-slate-500  text-white font-bold py-2 px-6 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"
                   type="submit"
                 >
