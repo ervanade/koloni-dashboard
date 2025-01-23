@@ -76,7 +76,8 @@ const Users = () => {
     try {
       // Menambahkan email_confirmed_at dengan tanggal sekarang
       const updatedData = {
-        email_confirmed_at: new Date().toISOString(), // Menambahkan tanggal sekarang
+        email_confirmed_at: new Date().toISOString(), // Menambahkan tanggal sekarang,
+        disabled: false,
       };
 
       await axios({

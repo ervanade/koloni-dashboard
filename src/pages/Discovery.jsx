@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Card from "../components/Card/Card";
 import { FaFilter, FaInstagram, FaMinus } from "react-icons/fa6";
-import { FaHistory, FaLine, FaTiktok, FaUserPlus, FaYoutube } from "react-icons/fa";
+import {
+  FaHistory,
+  FaLine,
+  FaTiktok,
+  FaUserPlus,
+  FaYoutube,
+} from "react-icons/fa";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -19,7 +25,6 @@ const Discovery = () => {
   const [dataResult, setDataResult] = useState(null);
   const user = useSelector((a) => a.auth.user);
   const [dataCredits, setDataCredits] = useState(user);
-
 
   const fetchUserData = async () => {
     try {
@@ -79,40 +84,75 @@ const Discovery = () => {
         </div>
       </Card> */}
 
-
-
-<div className="border border-[#edebeb] dark:border-gray-700 w-full bg-slate-150 mt-6 shadow-sm">
-    <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-textBold dark:text-gray-400 w-full">
-        
-        <li className={`me-2 flex-1 ${activeTab == "filter" ? "border-b-2 border-blue-500" : ""}`}>
-            <button onClick={() => setActiveTab("filter")} className={`w-full flex items-center justify-center p-4  rounded-t-lg active ${activeTab == "filter" ? "text-blue-500 dark:text-blue-500 dark:border-blue-500" : ""} group`} aria-current="page">
-               <FaFilter className="me-2"/>
-                Filter
+      <div className="border border-[#edebeb] dark:border-gray-700 w-full bg-slate-150 mt-6 shadow-sm">
+        <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-textBold dark:text-gray-400 w-full">
+          <li
+            className={`me-2 flex-1 ${
+              activeTab == "filter" ? "border-b-2 border-blue-500" : ""
+            }`}
+          >
+            <button
+              onClick={() => setActiveTab("filter")}
+              className={`w-full flex items-center justify-center p-4  rounded-t-lg active ${
+                activeTab == "filter"
+                  ? "text-blue-500 dark:text-blue-500 dark:border-blue-500"
+                  : ""
+              } group`}
+              aria-current="page"
+            >
+              <FaFilter className="me-2" />
+              Filter
             </button>
-        </li>
-        <li className={`me-2 flex-1 ${activeTab == "similiar" ? "border-b-2 border-blue-500" : ""}`}>
-            <button onClick={() => setActiveTab("similiar")} className={`w-full flex items-center justify-center p-4  rounded-t-lg active ${activeTab == "similiar" ? "text-blue-500 dark:text-blue-500 dark:border-blue-500" : ""} group`}>
-                <FaUserPlus className="me-2"/>
-                By Similiar
+          </li>
+          <li
+            className={`me-2 flex-1 ${
+              activeTab == "similiar" ? "border-b-2 border-blue-500" : ""
+            }`}
+          >
+            <button
+              onClick={() => setActiveTab("similiar")}
+              className={`w-full flex items-center justify-center p-4  rounded-t-lg active ${
+                activeTab == "similiar"
+                  ? "text-blue-500 dark:text-blue-500 dark:border-blue-500"
+                  : ""
+              } group`}
+            >
+              <FaUserPlus className="me-2" />
+              By Similiar
             </button>
-        </li>
-        {/* <li className={`me-2 flex-1 ${activeTab == "history" ? "border-b-2 border-blue-500" : ""}`}>
+          </li>
+          {/* <li className={`me-2 flex-1 ${activeTab == "history" ? "border-b-2 border-blue-500" : ""}`}>
             <button onClick={() => setActiveTab("history")} className={`w-full flex items-center justify-center p-4  rounded-t-lg active ${activeTab == "history" ? "text-blue-500 dark:text-blue-500 dark:border-blue-500" : ""} group`}>
                 <FaHistory className="me-2" />
                 History Discovery
             </button>
         </li> */}
-    </ul>
-</div>
+        </ul>
+      </div>
 
-{
-  activeTab === "filter" ?  <Filter showFilter={showFilter} setShowFilter={setShowFilter} dataResult={dataResult} setDataResult={setDataResult} fetchUserData={fetchUserData} dataCredits={dataCredits}/> : activeTab === "similiar" ?  <Similiar showFilter={showSimiliar} setShowFilter={setShowSimiliar} /> : activeTab === "history" ? <History /> : ""
-}
-     
-
-     
-
-
+      {activeTab === "filter" ? (
+        <Filter
+          showFilter={showFilter}
+          setShowFilter={setShowFilter}
+          dataResult={dataResult}
+          setDataResult={setDataResult}
+          fetchUserData={fetchUserData}
+          dataCredits={dataCredits}
+        />
+      ) : activeTab === "similiar" ? (
+        <Similiar
+          showFilter={showSimiliar}
+          setShowFilter={setShowSimiliar}
+          fetchUserData={fetchUserData}
+          dataCredits={dataCredits}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+      ) : activeTab === "history" ? (
+        <History />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

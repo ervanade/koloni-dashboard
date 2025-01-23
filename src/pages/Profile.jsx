@@ -38,11 +38,11 @@ const Profile = () => {
     profileName: "",
     roles: "",
     credits: "",
-
+    id: "",
   });
   const [showPassword, setShowPassword] = useState(false);
   const [getLoading, setGetLoading] = useState(false);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const fetchUserData = async () => {
     setGetLoading(true);
@@ -69,6 +69,7 @@ const Profile = () => {
           profileName: "",
           roles: data?.roles || "",
           credits: data?.credits || "",
+          id: data?.id || "",
         });
         setPreviewImages({
           profile: data.profile ? `${data.profile}` : null,
@@ -83,7 +84,6 @@ const Profile = () => {
   useEffect(() => {
     fetchUserData();
   }, []);
-
 
   const handleShowPassword = (e) => {
     e.preventDefault();
@@ -115,17 +115,19 @@ const Profile = () => {
     }
     try {
       await axios({
-        method: "patch",
-        url: `${import.meta.env.VITE_APP_API_URL}/user`,
+        method: "put",
+        url: `${import.meta.env.VITE_APP_API_URL}/users/${encodeURIComponent(
+          formData?.id
+        )}`,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${user?.accessToken}`,
         },
         data: JSON.stringify({
-          password : formData.password ? formData.password : null,
           email: formData.email,
           first_name: formData.first_name,
           last_name: formData.last_name,
+          ...(formData.password && { password: formData.password }), // Tambahkan password hanya jika ada
         }),
       });
       Swal.fire("Success Edit User!", "", "success");
@@ -134,11 +136,8 @@ const Profile = () => {
         first_name: formData.first_name,
         last_name: formData.last_name,
         email: formData.email,
-
-        
-      }
-      dispatch(loginUser(fullUserData))
-      setIsDrawerOpen(false);
+      };
+      dispatch(loginUser(fullUserData));
       setFormData({
         password: "",
         email: "",
@@ -149,9 +148,9 @@ const Profile = () => {
         profileName: "",
         roles: "",
         credits: "",
-    
-      })
-      
+        id: "",
+      });
+
       fetchUserData();
     } catch (error) {
       setLoading(false);
@@ -166,8 +165,7 @@ const Profile = () => {
         profileName: "",
         roles: "",
         credits: "",
-    
-      })
+      });
       if (error?.response?.status === 500) {
         Swal.fire("Error", "Email Telah Digunakan", "error");
         setLoading(false);
@@ -387,56 +385,56 @@ const Profile = () => {
                   </button>
                 </div>
                 <div className="col-span-2 md:col-span-1">
-                      <label
-                        className=" block text-textBold text-sm font-medium mb-2"
-                        htmlFor="email"
-                      >
-                        First Name
-                      </label>
+                  <label
+                    className=" block text-textBold text-sm font-medium mb-2"
+                    htmlFor="email"
+                  >
+                    First Name
+                  </label>
 
-                      <input
-                        className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
+                  <input
+                    className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
                   "border-red-500" 
                rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
-                        id="jumlah_barang_dikirim"
-                        type="text"
-                        placeholder="FirstName"
-                        required
-                        value={formData.first_name}
-                        onChange={(e) =>
-                          setFormData((prev) => ({
-                            ...prev,
-                            first_name: e.target.value,
-                          }))
-                        }
-                      />
-                    </div>
+                    id="jumlah_barang_dikirim"
+                    type="text"
+                    placeholder="FirstName"
+                    required
+                    value={formData.first_name}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        first_name: e.target.value,
+                      }))
+                    }
+                  />
+                </div>
 
-                    <div className="col-span-2 md:col-span-1">
-                      <label
-                        className=" block text-textBold text-sm font-medium mb-2"
-                        htmlFor="email"
-                      >
-                        Last Name
-                      </label>
+                <div className="col-span-2 md:col-span-1">
+                  <label
+                    className=" block text-textBold text-sm font-medium mb-2"
+                    htmlFor="email"
+                  >
+                    Last Name
+                  </label>
 
-                      <input
-                        className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
+                  <input
+                    className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
                   "border-red-500" 
                rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
-                        id="jumlah_barang_dikirim"
-                        type="text"
-                        placeholder="LastName"
-                        // required
-                        value={formData.last_name}
-                        onChange={(e) =>
-                          setFormData((prev) => ({
-                            ...prev,
-                            last_name: e.target.value,
-                          }))
-                        }
-                      />
-                    </div>
+                    id="jumlah_barang_dikirim"
+                    type="text"
+                    placeholder="LastName"
+                    // required
+                    value={formData.last_name}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        last_name: e.target.value,
+                      }))
+                    }
+                  />
+                </div>
                 {/* <div className="col-span-2 md:col-span-1">
                   <label
                     for="category"
@@ -464,7 +462,7 @@ const Profile = () => {
 
               <div className="flex items-center justify-center gap-2 mt-8">
                 <button
-                onClick={handleSimpan}
+                  onClick={handleSimpan}
                   className="bg-sky-500 disabled:bg-slate-500  text-white font-bold py-2 px-6 rounded-md focus:outline-none focus:shadow-outline dark:bg-transparent mr-1 mb-1"
                   type="submit"
                 >
