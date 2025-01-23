@@ -115,10 +115,8 @@ const Profile = () => {
     }
     try {
       await axios({
-        method: "put",
-        url: `${import.meta.env.VITE_APP_API_URL}/users/${encodeURIComponent(
-          formData?.id
-        )}`,
+        method: "patch",
+        url: `${import.meta.env.VITE_APP_API_URL}/user`,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${user?.accessToken}`,
@@ -328,6 +326,7 @@ const Profile = () => {
                rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
                     id="jumlah_barang_dikirim"
                     type="email"
+                    disabled
                     value={formData.email}
                     onChange={(e) =>
                       setFormData((prev) => ({
