@@ -231,12 +231,15 @@ export const ageOptions = [
 ];
 
 export const followersOptions = [
-  { label: 'Any', value: null },
-  { label: '< 10.000', value: '0 - 10000' },
-  { label: '10.000 - 1.000.000', value: '10000 - 1000000' },
-  { label: '1.000.000 - 10.000.000', value: '1000000 - 10000000' },
-  { label: '>= 10.000.000', value: '10000000 - null' },
+  { label: "Any", value: null },
+  { label: "1.000 - 10.000", value: "1000 - 10000" },
+  { label: "10.000 - 50.000", value: "10000 - 50000" },
+  { label: "50.000 - 500.000", value: "50000 - 500000" },
+  { label: "500.000 - 1.000.000", value: "500000 - 1000000" },
+  { label: "1.000.000 - 5.000.000", value: "1000000 - 5000000" },
+  { label: "> 5.000.000", value: "5000000 - null" },
 ];
+
 
 
 export const interestOption = [
