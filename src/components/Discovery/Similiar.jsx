@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import { FaFilter, FaInstagram, FaMinus } from "react-icons/fa6";
 import {
@@ -18,6 +18,7 @@ import {
   basedOptions,
   cityOptions,
   countryOptions,
+  followersOptions,
   socialOptions,
 } from "../../data/data";
 import ResultSImiliar from "./ResultSimiliar";
@@ -53,54 +54,70 @@ const Similiar = ({
   const user = useSelector((a) => a.auth.user);
 
   const handleInputChange = (field, value) => {
-    if (field === "creator_age") {
+    if (field === "creator_age" || field === "audience_age") {
+      const isCreator = field === "creator_age";
       if (!value) {
-        // Reset jika memilih "Any"
         setFormData((prev) => ({
           ...prev,
-          creator_age_min: 0,
-          creator_age_max: 100,
+          [isCreator ? "creator_age_min" : "audience_age_min"]: 0,
+          [isCreator ? "creator_age_max" : "audience_age_max"]: 100,
         }));
       } else if (value === "55 >") {
-        // Jika memilih "55 >"
         setFormData((prev) => ({
           ...prev,
-          creator_age_min: 55,
-          creator_age_max: null,
+          [isCreator ? "creator_age_min" : "audience_age_min"]: 55,
+          [isCreator ? "creator_age_max" : "audience_age_max"]: null,
         }));
       } else {
-        // Jika memilih rentang usia (contoh: "18 - 24")
         const [min, max] = value.split(" - ").map(Number);
         setFormData((prev) => ({
           ...prev,
-          creator_age_min: min,
-          creator_age_max: max,
+          [isCreator ? "creator_age_min" : "audience_age_min"]: min,
+          [isCreator ? "creator_age_max" : "audience_age_max"]: max,
         }));
       }
-    } else if (field === "audience_age") {
+    } else if (field === "followers_range") {
       if (!value) {
-        // Reset jika memilih "Any"
         setFormData((prev) => ({
           ...prev,
-          audience_age_min: 0,
-          audience_age_max: 100,
-        }));
-      } else if (value === "55 >") {
-        // Jika memilih "55 >"
-        setFormData((prev) => ({
-          ...prev,
-          audience_age_min: 55,
-          audience_age_max: null,
+          followers_min: null,
+          followers_max: null,
         }));
       } else {
-        // Jika memilih rentang usia (contoh: "18 - 24")
-        const [min, max] = value.split(" - ").map(Number);
+        const [min, max] = value
+          .split(" - ")
+          .map((v) => (v === "null" ? null : Number(v)));
         setFormData((prev) => ({
           ...prev,
-          audience_age_min: min,
-          audience_age_max: max,
+          followers_min: min,
+          followers_max: max,
         }));
       }
+    } else if (
+      field === "creator_location_name" ||
+      field === "audience_location_name"
+    ) {
+      if (!value) {
+        // Reset ke default jika tidak diisi
+        setFormData((prev) => ({
+          ...prev,
+          [field]: "Indonesia",
+        }));
+      } else {
+        setFormData((prev) => ({
+          ...prev,
+          [field]: value,
+        }));
+      }
+    } else if (field === "platform") {
+      setFormData((prev) => ({
+        ...prev,
+        platform: value,
+        creator_location_name:
+          value === "INSTAGRAM" ? prev.creator_location_name : "Indonesia",
+        audience_location_name:
+          value === "INSTAGRAM" ? prev.audience_location_name : "Indonesia",
+      }));
     } else {
       setFormData((prev) => ({
         ...prev,
@@ -137,7 +154,7 @@ const Similiar = ({
     try {
       const response = await axios({
         method: "post",
-        url: `${import.meta.env.VITE_APP_API_URL}/discovery`,
+        url: `${import.meta.env.VITE_APP_API_URL}/discovery/similiar`,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${user?.accessToken}`,
@@ -191,6 +208,37 @@ const Similiar = ({
     }
   };
 
+  const handlePagination = async (newPage) => {
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${import.meta.env.VITE_APP_API_URL}/discovery/similiar`,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.accessToken}`,
+        },
+        params: { page: newPage },
+        data: JSON.stringify({
+          ...formData, // Spread dulu semua data form
+          creator_lookalikes: formData.creator_lookalikes
+            ? "@" + formData.creator_lookalikes // Tambahkan "@" jika ada nilainya
+            : "", // Jika tidak ada, tetap string kosong
+        }),
+      });
+      setDataResult(response.data);
+      setLoading(false);
+      fetchUserData();
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Failed to fetch data for the next page",
+      });
+    }
+  };
+
   const handleSearch = async (e) => {
     e.preventDefault();
     if (dataCredits.credits < 1) {
@@ -213,10 +261,44 @@ const Similiar = ({
     }).then(async (result) => {
       if (result.value) {
         setLoading(true);
-        searchDiscovery();
+        setPage(1); // Reset ke halaman pertama
+        await searchDiscovery();
       }
     });
   };
+
+  const handleSearchPagination = async () => {
+    if (dataCredits.credits < 1) {
+      Swal.fire(
+        "No Remaining Credits",
+        "Contact Admin to Recharge Your Credits",
+        "error"
+      );
+      setLoading(false);
+      return;
+    }
+
+    // Konfirmasi pengguna hanya saat tombol Next Page diklik
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Are you sure this will reduce your credits?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Analyse it!",
+      confirmButtonColor: "#24A5E9",
+    }).then(async (result) => {
+      if (result.value) {
+        setLoading(true);
+        setPage((prevPage) => prevPage + 1); // Update halaman
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (page > 1) {
+      handlePagination(page); // Fetch data setelah halaman diperbarui
+    }
+  }, [page]); // Panggil fetchData setiap kali halaman berubah
   return (
     <div>
       <Card className="mt-6">
@@ -313,8 +395,32 @@ const Similiar = ({
                 )}
               />
             </div>
-
             <div className="">
+              <p className="font-normal text-textThin text-sm mb-2">
+                Followers Range
+              </p>
+              <Autocomplete
+                disablePortal
+                options={followersOptions}
+                value={followersOptions.find(
+                  (option) =>
+                    option.value ===
+                    (formData.followers_min !== null
+                      ? `${formData.followers_min} - ${
+                          formData.followers_max || "null"
+                        }`
+                      : null)
+                )}
+                onChange={(e, newValue) =>
+                  handleInputChange("followers_range", newValue?.value || "")
+                }
+                sx={{ width: "100%" }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Followers Range" />
+                )}
+              />
+            </div>
+            {/* <div className="">
               <p className="font-normal text-textThin text-sm mb-2">
                 Followers Range
               </p>
@@ -345,7 +451,7 @@ const Similiar = ({
                   required
                 />
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="form mt-6 items-center gap-4 grid grid-cols-1 md:grid-cols-3">
@@ -356,6 +462,7 @@ const Similiar = ({
               <Autocomplete
                 disablePortal
                 options={countryOptions}
+                value={countryOptions[0]}
                 sx={{ width: "100%" }}
                 renderInput={(params) => (
                   <TextField {...params} label="Creator Country" />
@@ -369,7 +476,18 @@ const Similiar = ({
               </p>
               <Autocomplete
                 disablePortal
-                options={cityOptions}
+                options={formData.platform === "INSTAGRAM" ? cityOptions : []} // Batasi pilihan jika platform bukan INSTAGRAM
+                value={
+                  cityOptions.find(
+                    (option) => option.value === formData.creator_location_name
+                  ) || cityOptions[0]
+                } // Default ke "Any"
+                onChange={(e, newValue) =>
+                  handleInputChange(
+                    "creator_location_name",
+                    newValue.value || "Indonesia"
+                  )
+                }
                 sx={{ width: "100%" }}
                 renderInput={(params) => (
                   <TextField {...params} label="Creator City" />
@@ -421,8 +539,10 @@ const Similiar = ({
           data={showResult}
           dataResult={dataResult}
           page={page}
+          loading={loading}
           setPage={setPage}
           handleSearch={handleSearch}
+          handleSearchPagination={handleSearchPagination}
         />
       )}
     </div>

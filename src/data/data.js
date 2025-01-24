@@ -120,48 +120,42 @@ export const socialOptions = [
 
 ];
 export const cityOptions = [
-  {
-    label: 'Jakarta',
-    value: "Jakarta",
-  },
-  {
-    label: 'Bandung',
-    value: "Bandung",
-  },
-  {
-    label: 'Surabaya',
-    value: "Surabaya",
-  },
-  {
-    label: 'Yogyakarta',
-    value: "Yogyakarta",
-  },
-  {
-    label: 'Makassar',
-    value: "Makassar",
-  },
-  {
-    label: 'Medan',
-    value: "Medan",
-  },
-  {
-    label: 'Bekasi',
-    value: "Bekasi",
-  },
-  {
-    label: 'Semarang',
-    value: "Semarang",
-  },
-  {
-    label: 'Denpasar',
-    value: "Denpasar",
-  },
-  {
-    label: 'Bogor',
-    value: "Bogor",
-  },
-
+  { label: 'Any', value: 'Indonesia' },
+  { label: 'Banda Aceh', value: 'Banda Aceh' },
+  { label: 'Bandar Lampung', value: 'Bandar Lampung' },
+  { label: 'Bandung', value: 'Bandung' },
+  { label: 'Banjarmasin', value: 'Banjarmasin' },
+  { label: 'Batam', value: 'Batam' },
+  { label: 'Bekasi', value: 'Bekasi' },
+  { label: 'Bengkulu', value: 'Bengkulu' },
+  { label: 'Bogor', value: 'Bogor' },
+  { label: 'Cikarang', value: 'Cikarang' },
+  { label: 'Denpasar', value: 'Denpasar' },
+  { label: 'Depok', value: 'Depok' },
+  { label: 'Gorontalo', value: 'Gorontalo' },
+  { label: 'Jakarta', value: 'Jakarta' },
+  { label: 'Jambi', value: 'Jambi' },
+  { label: 'Jayapura', value: 'Jayapura' },
+  { label: 'Jember', value: 'Jember' },
+  { label: 'Karawang', value: 'Karawang' },
+  { label: 'Makassar', value: 'Makassar' },
+  { label: 'Malang', value: 'Malang' },
+  { label: 'Manado', value: 'Manado' },
+  { label: 'Medan', value: 'Medan' },
+  { label: 'Padang', value: 'Padang' },
+  { label: 'Palembang', value: 'Palembang' },
+  { label: 'Palu', value: 'Palu' },
+  { label: 'Pekanbaru', value: 'Pekanbaru' },
+  { label: 'Purwokerto', value: 'Purwokerto' },
+  { label: 'Samarinda', value: 'Samarinda' },
+  { label: 'Semarang', value: 'Semarang' },
+  { label: 'Serang', value: 'Serang' },
+  { label: 'South Tangerang', value: 'South Tangerang' },
+  { label: 'Surabaya', value: 'Surabaya' },
+  { label: 'Tangerang', value: 'Tangerang' },
+  { label: 'Yogyakarta', value: 'Yogyakarta' }
 ];
+
 
 export const genderOptions = [
   {
@@ -195,8 +189,8 @@ export const accountOptions = [
     value: null,
   },
   {
-    label: 'Bussines',
-    value: "Bussines",
+    label: 'Business',
+    value: "Business",
   },
   {
     label: 'Creator',
@@ -235,6 +229,15 @@ export const ageOptions = [
   },
 
 ];
+
+export const followersOptions = [
+  { label: 'Any', value: null },
+  { label: '< 10.000', value: '0 - 10000' },
+  { label: '10.000 - 1.000.000', value: '10000 - 1000000' },
+  { label: '1.000.000 - 10.000.000', value: '1000000 - 10000000' },
+  { label: '>= 10.000.000', value: '10000000 - null' },
+];
+
 
 export const interestOption = [
   { label: "Television & Film", value: "Television & Film" },
@@ -502,8 +505,8 @@ export const optionsProfileGrowth = (categories) => ({
     custom(data) {
       return `<div class='px-1 py-4'>
             <span>${DataFormater(
-              data.series[data.seriesIndex][data.dataPointIndex]
-            )}</span>
+        data.series[data.seriesIndex][data.dataPointIndex]
+      )}</span>
           </div>`;
     },
   },
@@ -627,9 +630,8 @@ export const optionsAge = {
   tooltip: {
     custom(data) {
       return `<div className='px-1 py-4'>
-                <span>${
-                  data.series[data.seriesIndex][data.dataPointIndex]
-                }%</span>
+                <span>${data.series[data.seriesIndex][data.dataPointIndex]
+        }%</span>
               </div>`;
     },
   },

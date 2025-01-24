@@ -1,51 +1,78 @@
-import React, { useEffect, useState } from 'react'
-import Card from '../Card/Card'
+import React, { useEffect, useState } from "react";
+import Card from "../Card/Card";
 import { FaFilter, FaInstagram, FaMinus } from "react-icons/fa6";
-import { FaHistory, FaLine, FaSearch, FaTiktok, FaYoutube } from "react-icons/fa";
-import { BiChevronDown, BiChevronUp } from 'react-icons/bi';
+import {
+  FaHistory,
+  FaLine,
+  FaSearch,
+  FaTiktok,
+  FaYoutube,
+} from "react-icons/fa";
+import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import top100Films from '../../data/top100Films';
-import { accountOptions, ageOptions, cityOptions, countryOptions, genderOptions, interestOption, topicOptions, verifiedOptions } from '../../data/data';
-import ResultDiscovery from './ResultDiscovery';
-import { FilledInput, FormControl, FormHelperText, InputAdornment, OutlinedInput } from '@mui/material';
-import axios from 'axios';
-import { debounce } from 'lodash';
-import { useSelector } from 'react-redux';
-import Swal from 'sweetalert2';
-import { useLocation, useNavigate } from 'react-router-dom';
+import top100Films from "../../data/top100Films";
+import {
+  accountOptions,
+  ageOptions,
+  cityOptions,
+  countryOptions,
+  followersOptions,
+  genderOptions,
+  interestOption,
+  topicOptions,
+  verifiedOptions,
+} from "../../data/data";
+import ResultDiscovery from "./ResultDiscovery";
+import {
+  FilledInput,
+  FormControl,
+  FormHelperText,
+  InputAdornment,
+  OutlinedInput,
+} from "@mui/material";
+import axios from "axios";
+import { debounce } from "lodash";
+import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
-
-
-const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUserData, dataCredits}) => {
+const Filter = ({
+  showFilter,
+  setShowFilter,
+  dataResult,
+  setDataResult,
+  fetchUserData,
+  dataCredits,
+}) => {
   const [formData, setFormData] = useState({
-  "platform": "INSTAGRAM",
-    "audience_age_max": null,
-    "audience_age_min": null,
-    "creator_age_max": null,
-    "creator_age_min": null,
-    "audience_gender": null,
-    "creator_gender": null,
-    "audience_location_name": "Indonesia",
-    "creator_location_name": "Indonesia",
-    "call_id": null,
-    "followers_min": null,
-    "followers_max": null,
-    "avg_views_min": null,
-    "avg_views_max": null,
-    "avg_like_max": null,
-    "avg_like_min": null,
-    "verified": null,
-    "previous_call_id": null,
-    "sorting_by": "REELS_VIEWS",
-    "next_page": 0,
-    "platform_account_type": null,
-    "discovery_interest_value":[""],
-    "discovery_hashtag_value":[""],
-    "discovery_keyword_value":[""],
-    "discovery_topic_value":[""]
-  })
-    const [showCreator, setShowCreator] = useState(true);
+    platform: "INSTAGRAM",
+    audience_age_max: null,
+    audience_age_min: null,
+    creator_age_max: null,
+    creator_age_min: null,
+    audience_gender: null,
+    creator_gender: null,
+    audience_location_name: "Indonesia",
+    creator_location_name: "Indonesia",
+    call_id: null,
+    followers_min: null,
+    followers_max: null,
+    avg_views_min: null,
+    avg_views_max: null,
+    avg_like_max: null,
+    avg_like_min: null,
+    verified: null,
+    previous_call_id: null,
+    sorting_by: "REELS_VIEWS",
+    next_page: 0,
+    platform_account_type: null,
+    discovery_interest_value: [""],
+    discovery_hashtag_value: [""],
+    discovery_keyword_value: [""],
+    discovery_topic_value: [""],
+  });
+  const [showCreator, setShowCreator] = useState(true);
   const [showAudience, setShowAudience] = useState(false);
   const [showSort, setShowSort] = useState(true);
   const [showResult, setShowResult] = useState(false);
@@ -77,7 +104,7 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
             "Content-Type": "application/json",
             //eslint-disable-next-line
             Authorization: `Bearer ${user?.accessToken}`,
-          }
+          },
         }
       );
       const topics = response.data?.data || [];
@@ -106,7 +133,6 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
   const handleReset = () => {
     navigate(location.pathname, { replace: true });
 
-
     // setFormData({
     //   "platform": "INSTAGRAM",
     //     "audience_age_max": null,
@@ -134,57 +160,73 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
     //     "discovery_keyword_value":[""],
     //     "discovery_topic_value":[""]
     //   })
-  }
+  };
 
   const handleInputChange = (field, value) => {
-    if (field === "creator_age") {
+    if (field === "creator_age" || field === "audience_age") {
+      const isCreator = field === "creator_age";
       if (!value) {
-        // Reset jika memilih "Any"
         setFormData((prev) => ({
           ...prev,
-          creator_age_min: 0,
-          creator_age_max: 100,
+          [isCreator ? "creator_age_min" : "audience_age_min"]: 0,
+          [isCreator ? "creator_age_max" : "audience_age_max"]: 100,
         }));
       } else if (value === "55 >") {
-        // Jika memilih "55 >"
         setFormData((prev) => ({
           ...prev,
-          creator_age_min: 55,
-          creator_age_max: null,
+          [isCreator ? "creator_age_min" : "audience_age_min"]: 55,
+          [isCreator ? "creator_age_max" : "audience_age_max"]: null,
         }));
       } else {
-        // Jika memilih rentang usia (contoh: "18 - 24")
         const [min, max] = value.split(" - ").map(Number);
         setFormData((prev) => ({
           ...prev,
-          creator_age_min: min,
-          creator_age_max: max,
+          [isCreator ? "creator_age_min" : "audience_age_min"]: min,
+          [isCreator ? "creator_age_max" : "audience_age_max"]: max,
         }));
       }
-    } else if (field === "audience_age") {
+    } else if (field === "followers_range") {
       if (!value) {
-        // Reset jika memilih "Any"
         setFormData((prev) => ({
           ...prev,
-          audience_age_min: 0,
-          audience_age_max: 100,
-        }));
-      } else if (value === "55 >") {
-        // Jika memilih "55 >"
-        setFormData((prev) => ({
-          ...prev,
-          audience_age_min: 55,
-          audience_age_max: null,
+          followers_min: null,
+          followers_max: null,
         }));
       } else {
-        // Jika memilih rentang usia (contoh: "18 - 24")
-        const [min, max] = value.split(" - ").map(Number);
+        const [min, max] = value
+          .split(" - ")
+          .map((v) => (v === "null" ? null : Number(v)));
         setFormData((prev) => ({
           ...prev,
-          audience_age_min: min,
-          audience_age_max: max,
+          followers_min: min,
+          followers_max: max,
         }));
       }
+    } else if (
+      field === "creator_location_name" ||
+      field === "audience_location_name"
+    ) {
+      if (!value) {
+        // Reset ke default jika tidak diisi
+        setFormData((prev) => ({
+          ...prev,
+          [field]: "Indonesia",
+        }));
+      } else {
+        setFormData((prev) => ({
+          ...prev,
+          [field]: value,
+        }));
+      }
+    } else if (field === "platform") {
+      setFormData((prev) => ({
+        ...prev,
+        platform: value,
+        creator_location_name:
+          value === "INSTAGRAM" ? prev.creator_location_name : "Indonesia",
+        audience_location_name:
+          value === "INSTAGRAM" ? prev.audience_location_name : "Indonesia",
+      }));
     } else {
       setFormData((prev) => ({
         ...prev,
@@ -213,14 +255,18 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
           Authorization: `Bearer ${user?.accessToken}`,
         },
         params: {
-          page: page 
+          page: page,
         },
         data: JSON.stringify({
           ...formData,
         }),
       });
       setDataResult(response.data);
-      Swal.fire("Success Get Analyse Profile!", "Scroll Down To View Analyse Data", "success");
+      Swal.fire(
+        "Success Get Analyse Profile!",
+        "Scroll Down To View Analyse Data",
+        "success"
+      );
       fetchUserData();
       setLoading(false);
     } catch (error) {
@@ -254,6 +300,32 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
     }
   };
 
+  const handlePagination = async (newPage) => {
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${import.meta.env.VITE_APP_API_URL}/discovery`,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.accessToken}`,
+        },
+        params: { page: newPage },
+        data: JSON.stringify({ ...formData }),
+      });
+      setDataResult(response.data);
+      setLoading(false);
+      fetchUserData();
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Failed to fetch data for the next page",
+      });
+    }
+  };
+
   const handleSearch = async (e) => {
     e.preventDefault();
     if (dataCredits.credits < 1) {
@@ -276,13 +348,48 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
     }).then(async (result) => {
       if (result.value) {
         setLoading(true);
-        searchDiscovery();
+        setPage(1); // Reset ke halaman pertama
+        await searchDiscovery();
       }
     });
   };
+
+  const handleSearchPagination = async () => {
+    if (dataCredits.credits < 1) {
+      Swal.fire(
+        "No Remaining Credits",
+        "Contact Admin to Recharge Your Credits",
+        "error"
+      );
+      setLoading(false);
+      return;
+    }
+
+    // Konfirmasi pengguna hanya saat tombol Next Page diklik
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Are you sure this will reduce your credits?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Analyse it!",
+      confirmButtonColor: "#24A5E9",
+    }).then(async (result) => {
+      if (result.value) {
+        setLoading(true);
+        setPage((prevPage) => prevPage + 1); // Update halaman
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (page > 1) {
+      handlePagination(page); // Fetch data setelah halaman diperbarui
+    }
+  }, [page]); // Panggil fetchData setiap kali halaman berubah
+
   return (
     <div>
-    <Card className="mt-6">
+      <Card className="mt-6">
         <div className="flex items-center justify-between">
           <h1 className="font-medium text-lg text-textBold">Filter</h1>
           {!showFilter ? (
@@ -307,77 +414,95 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
           } card font-normal text-textThin text-[15px] mt-4 text-sm`}
         >
           <p>Social Media</p>
-              <div className="flex items-center gap-4 flex-wrap">
-        {["INSTAGRAM", "TIKTOK", "YOUTUBE"].map((platform) => (
-          <button
-            key={platform}
-            onClick={() => handleInputChange("platform", platform)}
-            className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${formData.platform === platform ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold " : ""} rounded-full px-6 py-2 shadow-sm flex items-center`}
-          >
-            <img src={`logo-${platform.toLowerCase()}.png`} alt={`Logo ${platform}`} className="w-6" />
-            <p>{platform.charAt(0) + platform.slice(1).toLowerCase()}</p>
-          </button>
-        ))}
-      </div>
+          <div className="flex items-center gap-4 flex-wrap">
+            {["INSTAGRAM", "TIKTOK", "YOUTUBE"].map((platform) => (
+              <button
+                key={platform}
+                onClick={() => handleInputChange("platform", platform)}
+                className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${
+                  formData.platform === platform
+                    ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold "
+                    : ""
+                } rounded-full px-6 py-2 shadow-sm flex items-center`}
+              >
+                <img
+                  src={`logo-${platform.toLowerCase()}.png`}
+                  alt={`Logo ${platform}`}
+                  className="w-6"
+                />
+                <p>{platform.charAt(0) + platform.slice(1).toLowerCase()}</p>
+              </button>
+            ))}
+          </div>
 
           <div className="form mt-6 items-center gap-4 grid grid-cols-2 md:grid-cols-4">
-          <div className="">
-        <p className="font-normal text-textThin text-sm mb-2">Topic</p>
-        <Autocomplete
-        disablePortal
-        options={topicOptions}
-        loading={loading}
-        noOptionsText={
-          loading
-            ? "Loading..."
-            : inputValue.length < 3
-            ? "Type at least 3 characters"
-            : "No options"
-        }
-        onInputChange={(event, newValue) => setInputValue(newValue)}
-        onChange={(event, newValue) => {
-          // Masukkan value ke formData
-          handleInputChange('discovery_topic_value', [newValue?.value || ""])
-        }}
-        sx={{ width: "100%" }}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Topic"
-            InputProps={{
-              ...params.InputProps,
-              endAdornment: (
-                <>
-                  {loading ? (
-                    <div className="animate-spin w-4 h-4 border-2 border-teal-500 rounded-full border-t-transparent mr-2"></div>
-                  ) : null}
-                  {params.InputProps.endAdornment}
-                </>
-              ),
-            }}
-          />
-        )}
-      />
-      </div>
+            <div className="">
+              <p className="font-normal text-textThin text-sm mb-2">Topic</p>
+              <Autocomplete
+                disablePortal
+                options={topicOptions}
+                loading={loading}
+                noOptionsText={
+                  loading
+                    ? "Loading..."
+                    : inputValue.length < 3
+                    ? "Type at least 3 characters"
+                    : "No options"
+                }
+                onInputChange={(event, newValue) => setInputValue(newValue)}
+                onChange={(event, newValue) => {
+                  // Masukkan value ke formData
+                  handleInputChange("discovery_topic_value", [
+                    newValue?.value || "",
+                  ]);
+                }}
+                sx={{ width: "100%" }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Topic"
+                    InputProps={{
+                      ...params.InputProps,
+                      endAdornment: (
+                        <>
+                          {loading ? (
+                            <div className="animate-spin w-4 h-4 border-2 border-teal-500 rounded-full border-t-transparent mr-2"></div>
+                          ) : null}
+                          {params.InputProps.endAdornment}
+                        </>
+                      ),
+                    }}
+                  />
+                )}
+              />
+            </div>
 
-      <div className="">
-        <p className="font-normal text-textThin text-sm mb-2">Hashtag</p>
-        <FormControl sx={{ width: '100%' }} variant="outlined">
-          <OutlinedInput
-            id="outlined-adornment-hashtag"
-            className='py-2'
-            placeholder='Hashtag'
-            value={formData.discovery_hashtag_value[0]}
-            onChange={(e) => handleInputChange('discovery_hashtag_value', [e.target.value])}
-            endAdornment={<InputAdornment position="end"><FaSearch className='text-textThin font-thin' /></InputAdornment>}
-            aria-describedby="outlined-hashtag-helper-text"
-            inputProps={{
-              'aria-label': 'hashtag',
-            }}
-          />
-        </FormControl>
-      </div>
-              {/* <input
+            <div className="">
+              <p className="font-normal text-textThin text-sm mb-2">Hashtag</p>
+              <FormControl sx={{ width: "100%" }} variant="outlined">
+                <OutlinedInput
+                  id="outlined-adornment-hashtag"
+                  className="py-2"
+                  placeholder="Hashtag"
+                  value={formData.discovery_hashtag_value[0]}
+                  onChange={(e) =>
+                    handleInputChange("discovery_hashtag_value", [
+                      e.target.value,
+                    ])
+                  }
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <FaSearch className="text-textThin font-thin" />
+                    </InputAdornment>
+                  }
+                  aria-describedby="outlined-hashtag-helper-text"
+                  inputProps={{
+                    "aria-label": "hashtag",
+                  }}
+                />
+              </FormControl>
+            </div>
+            {/* <input
                       type="text"
                       id="number-input"
                       aria-describedby="helper-text-explanation"
@@ -386,37 +511,49 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
                       required
                     /> */}
 
-<div className="">
-        <p className="font-normal text-textThin text-sm mb-2">Interest</p>
-        <Autocomplete
-          disablePortal
-          options={interestOption}
-          onChange={(event, newValue) => handleInputChange('discovery_interest_value', [newValue?.value || formData.discovery_interest_value[0]])}
-          sx={{ width: "100%" }}
-          renderInput={(params) => (
-            <TextField {...params} label="Interest" />
-          )}
-        />
-      </div>
+            <div className="">
+              <p className="font-normal text-textThin text-sm mb-2">Interest</p>
+              <Autocomplete
+                disablePortal
+                options={interestOption}
+                onChange={(event, newValue) =>
+                  handleInputChange("discovery_interest_value", [
+                    newValue?.value || formData.discovery_interest_value[0],
+                  ])
+                }
+                sx={{ width: "100%" }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Interest" />
+                )}
+              />
+            </div>
 
-      <div className="">
-        <p className="font-normal text-textThin text-sm mb-2">Keyword</p>
-        <FormControl sx={{ width: '100%' }} variant="outlined">
-          <OutlinedInput
-            id="outlined-adornment-keyword"
-            className='py-2'
-            placeholder='Keyword'
-            value={formData.discovery_keyword_value[0]}
-            onChange={(e) => handleInputChange('discovery_keyword_value', [e.target.value])}
-            endAdornment={<InputAdornment position="end"><FaSearch className='text-textThin font-thin' /></InputAdornment>}
-            aria-describedby="outlined-keyword-helper-text"
-            inputProps={{
-              'aria-label': 'keyword',
-            }}
-          />
-        </FormControl>
-      </div>
-    </div>
+            <div className="">
+              <p className="font-normal text-textThin text-sm mb-2">Keyword</p>
+              <FormControl sx={{ width: "100%" }} variant="outlined">
+                <OutlinedInput
+                  id="outlined-adornment-keyword"
+                  className="py-2"
+                  placeholder="Keyword"
+                  value={formData.discovery_keyword_value[0]}
+                  onChange={(e) =>
+                    handleInputChange("discovery_keyword_value", [
+                      e.target.value,
+                    ])
+                  }
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <FaSearch className="text-textThin font-thin" />
+                    </InputAdornment>
+                  }
+                  aria-describedby="outlined-keyword-helper-text"
+                  inputProps={{
+                    "aria-label": "keyword",
+                  }}
+                />
+              </FormControl>
+            </div>
+          </div>
 
           <div className="creator-form p-6 border border-[#C4C4C4] rounded-md mt-6">
             <div className="flex items-center justify-between">
@@ -448,27 +585,65 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
                   <p className="font-normal text-textThin text-sm mb-2">
                     Followers Range
                   </p>
+                  <Autocomplete
+                    disablePortal
+                    options={followersOptions}
+                    value={followersOptions.find(
+                      (option) =>
+                        option.value ===
+                        (formData.followers_min !== null
+                          ? `${formData.followers_min} - ${
+                              formData.followers_max || "null"
+                            }`
+                          : null)
+                    )}
+                    onChange={(e, newValue) =>
+                      handleInputChange(
+                        "followers_range",
+                        newValue?.value || ""
+                      )
+                    }
+                    sx={{ width: "100%" }}
+                    renderInput={(params) => (
+                      <TextField {...params} label="Followers Range" />
+                    )}
+                  />
+                </div>
+                {/* <div className="">
+                  <p className="font-normal text-textThin text-sm mb-2">
+                    Followers Range
+                  </p>
                   <div className="flex items-center gap-2">
-                  <input
-              type="number"
-              value={formData.followers_min}
-              onChange={(e) => handleInputChange("followers_min", Number(e.target.value))}
-              className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Min"
-            />
+                    <input
+                      type="number"
+                      value={formData.followers_min}
+                      onChange={(e) =>
+                        handleInputChange(
+                          "followers_min",
+                          Number(e.target.value)
+                        )
+                      }
+                      className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Min"
+                    />
                     <FaMinus className="text-2xl" />
                     <input
                       type="number"
                       id="number-input"
                       value={formData.followers_max}
-              onChange={(e) => handleInputChange("followers_max", Number(e.target.value))}
+                      onChange={(e) =>
+                        handleInputChange(
+                          "followers_max",
+                          Number(e.target.value)
+                        )
+                      }
                       aria-describedby="helper-text-explanation"
                       className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Max"
                       required
                     />
                   </div>
-                </div>
+                </div> */}
 
                 <div className="">
                   <p className="font-normal text-textThin text-sm mb-2">
@@ -479,7 +654,12 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
                       type="number"
                       id="number-input"
                       value={formData.avg_like_min}
-                      onChange={(e) => handleInputChange("avg_like_min", Number(e.target.value))}
+                      onChange={(e) =>
+                        handleInputChange(
+                          "avg_like_min",
+                          Number(e.target.value)
+                        )
+                      }
                       aria-describedby="helper-text-explanation"
                       className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Min"
@@ -490,7 +670,12 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
                       type="number"
                       id="number-input"
                       value={formData.avg_like_max}
-                      onChange={(e) => handleInputChange("avg_like_max", Number(e.target.value))}
+                      onChange={(e) =>
+                        handleInputChange(
+                          "avg_like_max",
+                          Number(e.target.value)
+                        )
+                      }
                       aria-describedby="helper-text-explanation"
                       className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Max"
@@ -505,6 +690,7 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
                   </p>
                   <Autocomplete
                     disablePortal
+                    value={countryOptions[0]}
                     options={countryOptions}
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
@@ -519,7 +705,21 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
                   </p>
                   <Autocomplete
                     disablePortal
-                    options={cityOptions}
+                    options={
+                      formData.platform === "INSTAGRAM" ? cityOptions : []
+                    } // Batasi pilihan jika platform bukan INSTAGRAM
+                    value={
+                      cityOptions.find(
+                        (option) =>
+                          option.value === formData.creator_location_name
+                      ) || cityOptions[0]
+                    } // Default ke "Any"
+                    onChange={(e, newValue) =>
+                      handleInputChange(
+                        "creator_location_name",
+                        newValue?.value || "Indonesia"
+                      )
+                    }
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
                       <TextField {...params} label="Creator City" />
@@ -538,7 +738,9 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
                     options={genderOptions}
                     sx={{ width: "100%" }}
                     value={formData.creator_gender}
-            onChange={(e, newValue) => handleInputChange("creator_gender", newValue?.value || "")}
+                    onChange={(e, newValue) =>
+                      handleInputChange("creator_gender", newValue?.value || "")
+                    }
                     renderInput={(params) => (
                       <TextField {...params} label="Creator Gender" />
                     )}
@@ -552,7 +754,14 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
                   <Autocomplete
                     disablePortal
                     options={ageOptions}
-                    value={ageOptions.find((option) => option.value === formData.creator_age_min?.toString() + (formData.creator_age_max ? ` - ${formData.creator_age_max}` : " >") || "")}
+                    value={ageOptions.find(
+                      (option) =>
+                        option.value ===
+                          formData.creator_age_min?.toString() +
+                            (formData.creator_age_max
+                              ? ` - ${formData.creator_age_max}`
+                              : " >") || ""
+                    )}
                     onChange={(e, newValue) =>
                       handleInputChange("creator_age", newValue?.value || "")
                     }
@@ -571,7 +780,9 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
                     disablePortal
                     options={verifiedOptions}
                     value={formData.verified}
-            onChange={(e, newValue) => handleInputChange("verified", newValue?.value || "")}
+                    onChange={(e, newValue) =>
+                      handleInputChange("verified", newValue?.value || "")
+                    }
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
                       <TextField {...params} label="Verified" />
@@ -587,7 +798,9 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
                     disablePortal
                     options={accountOptions}
                     value={formData.account_type}
-            onChange={(e, newValue) => handleInputChange("account_type", newValue?.value || "")}
+                    onChange={(e, newValue) =>
+                      handleInputChange("account_type", newValue?.value || "")
+                    }
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
                       <TextField {...params} label="Account Type" />
@@ -624,7 +837,7 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
               } card font-normal text-textThin text-[15px] mt-4`}
             >
               <div className="form mt-6 items-center gap-4 grid grid-cols-2 md:grid-cols-4">
-              <div className="">
+                <div className="">
                   <p className="font-normal text-textThin text-sm mb-2">
                     Audience Gender
                   </p>
@@ -632,8 +845,13 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
                     disablePortal
                     options={genderOptions}
                     sx={{ width: "100%" }}
-                     value={formData.audience_gender}
-                   onChange={(e, newValue) => handleInputChange("audience_gender", newValue?.value || "")}
+                    value={formData.audience_gender}
+                    onChange={(e, newValue) =>
+                      handleInputChange(
+                        "audience_gender",
+                        newValue?.value || ""
+                      )
+                    }
                     renderInput={(params) => (
                       <TextField {...params} label="Audience Gender" />
                     )}
@@ -647,11 +865,17 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
                   <Autocomplete
                     disablePortal
                     options={ageOptions}
-                    value={ageOptions.find((option) => option.value === formData.audience_age_min?.toString() + (formData.audience_age_max ? ` - ${formData.audience_age_max}` : " >") || "")}
+                    value={ageOptions.find(
+                      (option) =>
+                        option.value ===
+                          formData.audience_age_min?.toString() +
+                            (formData.audience_age_max
+                              ? ` - ${formData.audience_age_max}`
+                              : " >") || ""
+                    )}
                     onChange={(e, newValue) =>
                       handleInputChange("audience_age", newValue?.value || "")
                     }
-                    
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
                       <TextField {...params} label="Audience Age" />
@@ -666,6 +890,7 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
                   <Autocomplete
                     disablePortal
                     options={countryOptions}
+                    value={countryOptions[0]}
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
                       <TextField {...params} label="Audience Country" />
@@ -679,7 +904,21 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
                   </p>
                   <Autocomplete
                     disablePortal
-                    options={cityOptions}
+                    options={
+                      formData.platform === "INSTAGRAM" ? cityOptions : []
+                    } // Batasi pilihan jika platform bukan INSTAGRAM
+                    value={
+                      cityOptions.find(
+                        (option) =>
+                          option.value === formData.audience_location_name
+                      ) || cityOptions[0]
+                    } // Default ke "Any"
+                    onChange={(e, newValue) =>
+                      handleInputChange(
+                        "audience_location_name",
+                        newValue.value || "Indonesia"
+                      )
+                    }
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
                       <TextField {...params} label="Audience City" />
@@ -687,7 +926,6 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
                   />
                 </div>
               </div>
-
             </div>
           </div>
 
@@ -717,66 +955,105 @@ const Filter = ({showFilter, setShowFilter, dataResult, setDataResult, fetchUser
               } card font-normal text-textThin text-[15px] mt-4`}
             >
               <div className="flex items-center gap-4 flex-wrap">
-              <button
-        className={`${
-          formData.sorting_by === "REELS_VIEWS" ? "bg-[#dcdcdf] border-blue-500 border-2" : "bg-[#efeff1]"
-        } text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center`}
-        onClick={() => handleInputChange("sorting_by", "REELS_VIEWS")}
-      >
-        <p className={`${formData.sorting_by === "REELS_VIEWS" ? "font-bold text-blue-500" : "font-medium"}`}>Instagram Reels View</p>
-      </button>
+                <button
+                  className={`${
+                    formData.sorting_by === "REELS_VIEWS"
+                      ? "bg-[#dcdcdf] border-blue-500 border-2"
+                      : "bg-[#efeff1]"
+                  } text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center`}
+                  onClick={() => handleInputChange("sorting_by", "REELS_VIEWS")}
+                >
+                  <p
+                    className={`${
+                      formData.sorting_by === "REELS_VIEWS"
+                        ? "font-bold text-blue-500"
+                        : "font-medium"
+                    }`}
+                  >
+                    Instagram Reels View
+                  </p>
+                </button>
 
-      {/* Button 2: Engagement Rate */}
-      <button
-        className={`${
-          formData.sorting_by === "ENGAGEMENT_RATE" ? "bg-[#dcdcdf] border-blue-500 border-2" : "bg-[#efeff1]"
-        } text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center`}
-        onClick={() => handleInputChange("sorting_by", "ENGAGEMENT_RATE")}
-      >
-        <p className={`${formData.sorting_by === "ENGAGEMENT_RATE" ? "font-bold text-blue-500" : "font-medium"}`}>Engagement Rate</p>
-      </button>
+                {/* Button 2: Engagement Rate */}
+                <button
+                  className={`${
+                    formData.sorting_by === "ENGAGEMENT_RATE"
+                      ? "bg-[#dcdcdf] border-blue-500 border-2"
+                      : "bg-[#efeff1]"
+                  } text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center`}
+                  onClick={() =>
+                    handleInputChange("sorting_by", "ENGAGEMENT_RATE")
+                  }
+                >
+                  <p
+                    className={`${
+                      formData.sorting_by === "ENGAGEMENT_RATE"
+                        ? "font-bold text-blue-500"
+                        : "font-medium"
+                    }`}
+                  >
+                    Engagement Rate
+                  </p>
+                </button>
 
-      {/* Button 3: Followers */}
-      <button
-        className={`${
-          formData.sorting_by === "FOLLOWER_COUNT" ? "bg-[#dcdcdf] border-blue-500 border-2" : "bg-[#efeff1]"
-        } text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center`}
-        onClick={() => handleInputChange("sorting_by", "FOLLOWER_COUNT")}
-      >
-        <p className={`${formData.sorting_by === "FOLLOWER_COUNT" ? "font-bold text-blue-500" : "font-medium"}`}>Followers</p>
-      </button>
-          </div>
+                {/* Button 3: Followers */}
+                <button
+                  className={`${
+                    formData.sorting_by === "FOLLOWER_COUNT"
+                      ? "bg-[#dcdcdf] border-blue-500 border-2"
+                      : "bg-[#efeff1]"
+                  } text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center`}
+                  onClick={() =>
+                    handleInputChange("sorting_by", "FOLLOWER_COUNT")
+                  }
+                >
+                  <p
+                    className={`${
+                      formData.sorting_by === "FOLLOWER_COUNT"
+                        ? "font-bold text-blue-500"
+                        : "font-medium"
+                    }`}
+                  >
+                    Followers
+                  </p>
+                </button>
+              </div>
             </div>
           </div>
           <div className="flex items-center justify-between mt-6">
-        <button
-                className="border border-sky-500  text-sky-500 font-bold py-3 px-8 rounded focus:outline-none focus:shadow-outline"
-                type="submit"
-                onClick={handleReset}
-              >
-                Reset
-              </button>
-              <button
-                className=" bg-sky-500 flex gap-2 items-center text-white font-bold py-3 px-8 rounded focus:outline-none focus:shadow-outline"
-                type="submit"
-                onClick={(e) => handleSearch(e)}
-              >
-                <FaSearch />
-                Search
-              </button>
+            <button
+              className="border border-sky-500  text-sky-500 font-bold py-3 px-8 rounded focus:outline-none focus:shadow-outline"
+              type="submit"
+              onClick={handleReset}
+            >
+              Reset
+            </button>
+            <button
+              className=" bg-sky-500 flex gap-2 items-center text-white font-bold py-3 px-8 rounded focus:outline-none focus:shadow-outline"
+              type="submit"
+              onClick={(e) => handleSearch(e)}
+            >
+              <FaSearch />
+              Search
+            </button>
+          </div>
         </div>
-        </div>
-
-       
       </Card>
 
-      {
-        dataResult &&  <ResultDiscovery title="Result History Discovery" data={showResult} dataResult={dataResult} page={page} setPage={setPage} handleSearch={handleSearch}/>
-      }
+      {dataResult && (
+        <ResultDiscovery
+          title="Result History Discovery"
+          data={showResult}
+          dataResult={dataResult}
+          loading={loading}
+          page={page}
+          setPage={setPage}
+          handleSearch={handleSearch}
+          handleSearchPagination={handleSearchPagination}
+        />
+      )}
+    </div>
+  );
+};
 
-     
-      </div>
-  )
-}
-
-export default Filter
+export default Filter;
