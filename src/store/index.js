@@ -11,10 +11,12 @@ const persistAuthConfig = {
 const persistedAuth = persistReducer(persistAuthConfig, authSlice);
 
 export const store = configureStore({
-    reducer: {
-        auth: persistedAuth,
-    },
+    reducer: {auth : persistedAuth},
     devTools: true,
-});
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: false, // Matikan serializable check untuk redux-persist
+      }),
+  });
 
 export const persistor = persistStore(store);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "../components/Card/Card";
-import { FaFilter, FaInstagram, FaMinus } from "react-icons/fa6";
+import { FaFileExport, FaFilter, FaInstagram, FaMinus } from "react-icons/fa6";
 import {
   FaHistory,
   FaLine,
@@ -17,6 +17,9 @@ import Similiar from "../components/Discovery/Similiar";
 import History from "../components/Discovery/History";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import Swal from "sweetalert2";
+import jsPDF from "jspdf";
+import domtoimage from 'dom-to-image';
 
 const Discovery = () => {
   const [showFilter, setShowFilter] = useState(true);
@@ -25,6 +28,69 @@ const Discovery = () => {
   const [dataResult, setDataResult] = useState(null);
   const user = useSelector((a) => a.auth.user);
   const [dataCredits, setDataCredits] = useState(user);
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 4000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  });
+  const exportAllToPDF = async () => {
+    Swal.fire({
+      title: "Exporting PDF...",
+      text: "Please wait while the document is being generated.",
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+  
+    const element = document.getElementById("discovery");
+    if (!element) {
+      Swal.fire({
+        icon: "error",
+        title: "Export Failed!",
+        text: "Element #discovery not found.",
+      });
+      return;
+    }
+  
+    try {
+      const dataUrl = await domtoimage.toPng(element);
+      const img = new Image();
+      img.src = dataUrl;
+  
+      img.onload = () => {
+        const pdf = new jsPDF({
+          orientation: "p",
+          unit: "mm",
+          format: [1000 * 0.264583, 300 * 0.264583], // Konversi dari px ke mm
+        });
+  
+        pdf.addImage(dataUrl, "PNG", 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
+        pdf.save(`Results_Discovery.pdf`);
+  
+        Swal.close();
+        Toast.fire({
+          icon: "success",
+          title: "Success Export PDF",
+        });
+      };
+    } catch (error) {
+      console.error("Error exporting PDF:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Export Failed!",
+        text: "An error occurred while generating the PDF. Please try again.",
+      });
+    }
+  };
+  
 
   const fetchUserData = async () => {
     try {
@@ -58,7 +124,7 @@ const Discovery = () => {
     fetchUserData();
   }, []);
   return (
-    <div className="discovery">
+    <div className="discovery" id="discovery">
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h1 className="text-textBold font-bold text-2xl mb-1">Discovery</h1>
@@ -70,6 +136,14 @@ const Discovery = () => {
           <p className="font-medium text-sm">
             Remaining Credits : {dataCredits?.credits || 0}
           </p>
+          {
+          dataResult?.data.length > 0 &&  <button
+          onClick={exportAllToPDF}
+          className="mt-2 bg-sky-500 text-white px-4 py-2 rounded-md flex items-center gap-1 text-sm"
+        >
+          <FaFileExport /><span>PDF</span>
+        </button>
+        }
         </div>
       </div>
       {/* <Card>
