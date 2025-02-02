@@ -33,9 +33,9 @@ const Faq = () => {
     <div>
       <div className="mb-6 flex items-center justify-between flex-wrap gap-2">
         <div>
-          <h1 className="text-textBold font-bold text-2xl mb-1">Faqs</h1>
+          <h1 className="text-textBold font-bold text-2xl mb-1">FAQs</h1>
           <p className="font-normal text-textThin">
-            Follow Koloni Dashboard Faq's
+            Follow Koloni Dashboard FAQ's
           </p>
         </div>
       </div>
