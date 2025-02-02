@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
-import { FaFilter, FaInstagram, FaMinus } from "react-icons/fa6";
+import { FaFilter, FaInstagram, FaMinus, FaQuestion } from "react-icons/fa6";
 import {
   FaHistory,
   FaLine,
@@ -36,6 +36,8 @@ import { debounce } from "lodash";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import Tooltip from "@mui/material/Tooltip";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 const Filter = ({
   showFilter,
@@ -437,7 +439,16 @@ const Filter = ({
 
           <div className="form mt-6 items-center gap-4 grid grid-cols-2 md:grid-cols-4">
             <div className="">
-              <p className="font-normal text-textThin text-sm mb-2">Topic</p>
+              <div className="flex items-center gap-1 mb-2">
+                <p className="font-normal text-textThin text-sm">Topic</p>
+                <Tooltip title="Pilih topik utama yang relevan dengan influencer yang ingin Anda cari, Ketik Minimal 3 huruf untuk mencari topic yang tersedia.">
+                  <div className="p-[2px] bg-sky-500 cursor-pointer rounded-full">
+                    {" "}
+                    <FaQuestion className="text-[10px] text-white" />
+                  </div>
+                </Tooltip>
+              </div>
+
               <Autocomplete
                 disablePortal
                 options={topicOptions}
@@ -451,7 +462,6 @@ const Filter = ({
                 }
                 onInputChange={(event, newValue) => setInputValue(newValue)}
                 onChange={(event, newValue) => {
-                  // Masukkan value ke formData
                   handleInputChange("discovery_topic_value", [
                     newValue?.value || "",
                   ]);
@@ -478,7 +488,15 @@ const Filter = ({
             </div>
 
             <div className="">
-              <p className="font-normal text-textThin text-sm mb-2">Hashtag</p>
+              <div className="flex items-center gap-1 mb-2">
+                <p className="font-normal text-textThin text-sm">Hashtag</p>
+                <Tooltip title="Gunakan hashtag populer yang sering digunakan oleh influencer, misalnya #fitness atau #travel, untuk menemukan konten yang sesuai.">
+                  <div className="p-[2px] bg-sky-500 cursor-pointer rounded-full">
+                    {" "}
+                    <FaQuestion className="text-[10px] text-white" />
+                  </div>
+                </Tooltip>
+              </div>
               <FormControl sx={{ width: "100%" }} variant="outlined">
                 <OutlinedInput
                   id="outlined-adornment-hashtag"
@@ -512,7 +530,15 @@ const Filter = ({
                     /> */}
 
             <div className="">
-              <p className="font-normal text-textThin text-sm mb-2">Interest</p>
+              <div className="flex items-center gap-1 mb-2">
+                <p className="font-normal text-textThin text-sm">Interest</p>
+                <Tooltip title="Tentukan kategori minat audiens influencer, seperti olahraga, musik, atau gaming, agar pencarian lebih relevan.">
+                  <div className="p-[2px] bg-sky-500 cursor-pointer rounded-full">
+                    {" "}
+                    <FaQuestion className="text-[10px] text-white" />
+                  </div>
+                </Tooltip>
+              </div>
               <Autocomplete
                 disablePortal
                 options={interestOption}
@@ -529,7 +555,15 @@ const Filter = ({
             </div>
 
             <div className="">
-              <p className="font-normal text-textThin text-sm mb-2">Keyword</p>
+              <div className="flex items-center gap-1 mb-2">
+                <p className="font-normal text-textThin text-sm">Keyword</p>
+                <Tooltip title="Masukkan kata kunci spesifik yang menggambarkan influencer atau niche yang Anda cari, seperti ‘review gadget’ atau ‘fashion tips’.">
+                  <div className="p-[2px] bg-sky-500 cursor-pointer rounded-full">
+                    {" "}
+                    <FaQuestion className="text-[10px] text-white" />
+                  </div>
+                </Tooltip>
+              </div>
               <FormControl sx={{ width: "100%" }} variant="outlined">
                 <OutlinedInput
                   id="outlined-adornment-keyword"
@@ -557,7 +591,15 @@ const Filter = ({
 
           <div className="creator-form p-6 border border-[#C4C4C4] rounded-md mt-6">
             <div className="flex items-center justify-between">
-              <h1 className="font-medium text-lg text-textBold">Creator</h1>
+              <div className="flex items-center gap-1">
+                <h1 className="font-medium text-lg text-textBold">Creator</h1>
+                <Tooltip title="Pilih jenis kreator berdasarkan ukuran dan jenis konten mereka, misalnya jumlah pengikut, lokasu, usia, dll.">
+                  <div className="p-[2px] bg-sky-500 cursor-pointer rounded-full">
+                    {" "}
+                    <FaQuestion className="text-[10px] text-white" />
+                  </div>
+                </Tooltip>
+              </div>
               {!showCreator ? (
                 <button
                   className="rounded-full border border-textBold"
@@ -813,7 +855,16 @@ const Filter = ({
 
           <div className="audience-form p-6 border border-[#C4C4C4] rounded-md mt-6">
             <div className="flex items-center justify-between">
-              <h1 className="font-medium text-lg text-textBold">Audience</h1>
+              <div className="flex items-center gap-1">
+                <h1 className="font-medium text-lg text-textBold">Audience</h1>
+                <Tooltip title="Filter influencer berdasarkan karakteristik audiens mereka, seperti demografi, lokasi, atau ketertarikan spesifik.">
+                  <div className="p-[2px] bg-sky-500 cursor-pointer rounded-full">
+                    {" "}
+                    <FaQuestion className="text-[10px] text-white" />
+                  </div>
+                </Tooltip>
+              </div>
+
               {!showAudience ? (
                 <button
                   className="rounded-full border border-textBold"

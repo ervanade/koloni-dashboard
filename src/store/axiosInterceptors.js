@@ -11,10 +11,10 @@ const Toast = Swal.mixin({
     timer: 3000,
     timerProgressBar: true,
     didOpen: (toast) => {
-      toast.onmouseenter = Swal.stopTimer;
-      toast.onmouseleave = Swal.resumeTimer;
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
     },
-  });
+});
 axios.interceptors.response.use(
     (response) => {
         // Jika response berhasil, langsung return
@@ -31,13 +31,13 @@ axios.interceptors.response.use(
         ) {
             // Logout user
             store.dispatch(logoutUser());
-            
+
             // Redirect ke halaman login
             window.location.href = "/login";
-            Toast.fire({
+            Swal.fire({
                 icon: "warning",
                 title: "Session expired. Please log in again.",
-              });
+            });
         }
 
         // Tetap lempar error untuk ditangani oleh caller

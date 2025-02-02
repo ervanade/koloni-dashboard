@@ -12,6 +12,7 @@ import {
   FaBars,
   FaChevronLeft,
   FaHistory,
+  FaQuestion,
   FaTasks,
   FaUsers,
 } from "react-icons/fa";
@@ -145,7 +146,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 </NavLink>
               </li>
 
-              <li>
+              {/* <li>
                 <NavLink
                   to="/analytics"
                   className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-75 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
@@ -157,9 +158,22 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   <FaChartColumn size={22} />
                   Brand Analytics
                 </NavLink>
-              </li>
+              </li> */}
 
               <li>
+                <NavLink
+                  to="/faq"
+                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-75 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                    (pathname === "/faq" || pathname.includes("faq")) &&
+                    "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
+                  }`}
+                >
+                  <FaQuestion size={22} />
+                  FAQ
+                </NavLink>
+              </li>
+
+              {/* <li>
                 <NavLink
                   to="/history"
                   className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-75 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
@@ -170,7 +184,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   <FaHistory size={22} />
                   History
                 </NavLink>
-              </li>
+              </li> */}
             </ul>
             {user?.roles === "admin" && (
               <div>

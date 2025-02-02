@@ -12,6 +12,7 @@ import History from "./pages/History";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/Layout/ProtectedRoutes";
+import Faq from "./pages/Faq";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -32,17 +33,17 @@ function App() {
     <>
       <Wrapper>
         <Routes>
-        <Route path="/" element={<ProtectedRoute />}>
-
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="/discovery" element={<Discovery />} />
-            <Route path="/analyser" element={<Analyser />} />
-            <Route path="/analytics" element={<Analytics />} />
-            <Route path="/history" element={<History />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/profile" element={<Profile />} />
-          </Route>
+          <Route path="/" element={<ProtectedRoute />}>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="/discovery" element={<Discovery />} />
+              <Route path="/analyser" element={<Analyser />} />
+              <Route path="/analytics" element={<Analytics />} />
+              <Route path="/history" element={<History />} />
+              <Route path="/users" element={<Users />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/faq" element={<Faq />} />
+            </Route>
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="*" exact={true} element={<NotFound />} />

@@ -236,7 +236,7 @@ const Profile = () => {
               Profile Information
             </button>
           </li>
-          <li
+          {/* <li
             className={`me-2 flex-1 ${
               activeTab == "similiar" ? "border-b-2 border-blue-500" : ""
             }`}
@@ -252,7 +252,7 @@ const Profile = () => {
               <FaLock className="me-2" />
               Change Password
             </button>
-          </li>
+          </li> */}
         </ul>
       </div>
 
