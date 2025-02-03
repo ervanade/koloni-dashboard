@@ -20,6 +20,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import jsPDF from "jspdf";
 import domtoimage from 'dom-to-image';
+import { useSearchParams } from "react-router-dom";
 
 const Discovery = () => {
   const [showFilter, setShowFilter] = useState(true);
@@ -91,6 +92,13 @@ const Discovery = () => {
       });
     }
   };
+  const [searchParams] = useSearchParams();
+  const similiar = searchParams.get("similiar"); // Ambil query parameter
+  useEffect(() => {
+    if (similiar) {
+      setActiveTab("similiar")
+    }
+  }, [similiar]);
   
 
   const fetchUserData = async () => {
@@ -213,6 +221,7 @@ const Discovery = () => {
           setDataResult={setDataResult}
           fetchUserData={fetchUserData}
           dataCredits={dataCredits}
+          setActiveTab={setActiveTab}
         />
       ) : activeTab === "similiar" ? (
         <Similiar

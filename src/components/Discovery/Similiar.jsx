@@ -24,7 +24,7 @@ import {
 } from "../../data/data";
 import ResultSImiliar from "./ResultSimiliar";
 import { useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 import Tooltip from "@mui/material/Tooltip";
@@ -54,6 +54,13 @@ const Similiar = ({
     next_page: 0,
   });
   const user = useSelector((a) => a.auth.user);
+  const [searchParams] = useSearchParams();
+  const similiar = searchParams.get("similiar"); // Ambil query parameter
+  useEffect(() => {
+    if (similiar) {
+      setFormData(prev => ({...prev, creator_lookalikes : similiar}));
+    }
+  }, [similiar]);
 
   const handleInputChange = (field, value) => {
     if (field === "creator_age" || field === "audience_age") {

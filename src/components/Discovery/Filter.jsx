@@ -46,6 +46,7 @@ const Filter = ({
   setDataResult,
   fetchUserData,
   dataCredits,
+  setActiveTab
 }) => {
   const [formData, setFormData] = useState({
     platform: "INSTAGRAM",
@@ -1101,6 +1102,7 @@ const Filter = ({
           setPage={setPage}
           handleSearch={handleSearch}
           handleSearchPagination={handleSearchPagination}
+          setActiveTab={setActiveTab}
         />
       )}
     </div>

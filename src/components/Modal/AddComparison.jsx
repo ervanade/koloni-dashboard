@@ -9,6 +9,7 @@ const AddComparison = ({
   onSubmit,
   credits,
   user,
+  fetchUserData
 }) => {
   const [formData, setFormData] = useState({
     platform: "Instagram",
@@ -60,10 +61,12 @@ const AddComparison = ({
         "Scroll Right To View Data",
         "success"
       );
+      fetchUserData();
       setFormData({
         platform: "Instagram",
         identifier: "",
       });
+      
 
       // Tutup popup setelah submit berhasil
       setIsDrawerOpen(false);

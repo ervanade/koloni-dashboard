@@ -16,6 +16,7 @@ import {
   FaSpinner,
 } from "react-icons/fa6";
 import DataBola from "../../data/discovery_bola.json";
+import { useNavigate } from "react-router-dom";
 
 const ResultDiscovery = ({
   title,
@@ -26,9 +27,10 @@ const ResultDiscovery = ({
   handleSearch,
   handleSearchPagination,
   loading,
+  setActiveTab
 }) => {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
+  const navigate = useNavigate(); // React Router Hook
   const columnsDiscovery = [
     { id: "creator", label: "Creator", minWidth: 300 },
     {
@@ -190,9 +192,18 @@ const ResultDiscovery = ({
                       >
                         Ask For Price
                       </a>
-                      <button className="font-publicSans px-4 py-2 text-white rounded-md bg-sky-500">
-                        Similiar Creator
-                      </button>
+                      <button
+  className="font-publicSans px-4 py-2 text-white rounded-md bg-sky-500"
+  onClick={(e) => {
+    e.preventDefault();
+    // setActiveTab("similiar"); // Ubah active tab
+    const match = row?.creator_name.match(/\(([^)]+)\)/);
+    const username = match ? match[1] : row?.creator_name;
+    window.open(`/discovery?similiar=${username}`, "_blank"); // Buka di tab baru
+  }}
+>
+  Similiar Creator
+</button>
                     </div>
                   </td>
                 </tr>

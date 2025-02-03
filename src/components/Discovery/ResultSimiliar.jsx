@@ -265,9 +265,9 @@ const ResultSimiliar = ({
                         >
                           Ask For Price
                         </a>
-                        <button className="font-publicSans px-4 py-2 text-white rounded-md bg-sky-500">
+                        {/* <button className="font-publicSans px-4 py-2 text-white rounded-md bg-sky-500">
                           Similiar Creator
-                        </button>
+                        </button> */}
                       </div>
                     </td>
                   </tr>

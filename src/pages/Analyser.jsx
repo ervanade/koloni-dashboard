@@ -416,6 +416,7 @@ const Analyser = () => {
         onSubmit={handleAddComparison}
         credits={dataCredits.credits || 0}
         user={user}
+        fetchUserData={fetchUserData}
       />
     </div>
   );
