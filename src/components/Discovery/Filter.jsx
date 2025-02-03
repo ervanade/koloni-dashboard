@@ -341,6 +341,14 @@ const Filter = ({
 
       return;
     }
+    if (!formData.discovery_interest_value || formData.discovery_interest_value.length === 0 || formData.discovery_interest_value[0] === ""  || formData.discovery_interest_value[0] === '') {
+      Swal.fire({
+        icon: "warning",
+        title: "Interest Belum Diisi",
+        text: "Silakan isi interest terlebih dahulu sebelum mencari creator.",
+      });
+      return; // Stop eksekusi jika interest belum diisi
+    }
     return Swal.fire({
       title: "Are you sure?",
       text: "Are you sure this will reduce your credits?",
