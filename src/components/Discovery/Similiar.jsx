@@ -4,6 +4,7 @@ import { FaFilter, FaInstagram, FaMinus } from "react-icons/fa6";
 import {
   FaHistory,
   FaLine,
+  FaQuestion,
   FaSearch,
   FaTiktok,
   FaYoutube,
@@ -26,6 +27,7 @@ import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
+import Tooltip from "@mui/material/Tooltip";
 
 const Similiar = ({
   showFilter,
@@ -303,9 +305,18 @@ const Similiar = ({
     <div>
       <Card className="mt-6">
         <div className="flex items-center justify-between">
+        
+          <div className="flex items-center gap-1 mb-2">
           <h1 className="font-medium text-lg text-textBold">
             Filter By Similiar
           </h1>
+                <Tooltip title="Filter discovery berdasarkan kemiripan creator dan demografi creator.">
+                  <div className="p-[2px] bg-sky-500 cursor-pointer rounded-full">
+                    {" "}
+                    <FaQuestion className="text-[10px] text-white" />
+                  </div>
+                </Tooltip>
+              </div>
           {!showFilter ? (
             <button
               className="rounded-full border border-textBold"
