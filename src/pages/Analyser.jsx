@@ -201,10 +201,12 @@ const Analyser = () => {
         Swal.showLoading(); // Menampilkan spinner
       },
     });
+    const widthPaper = window.innerWidth < 1280 ? window.innerWidth / 3 : window.innerWidth / 4;
+    const heightPaper = window.innerWidth < 1280 ? 1500 : 1000;
     const pdf = new jsPDF({
       orientation: 'p',  // Potrait orientation
       unit: 'mm',        // Satuan dalam milimeter
-      format: [1000, 300]  // Menggunakan ukuran kertas sesuai dimensi gambar
+      format: [heightPaper, widthPaper]  // Menggunakan ukuran kertas sesuai dimensi gambar
     });
     const pxToMm = 0.264583; // Konversi piksel ke milimeter
     const margin = 10; // Margin atas dan bawah

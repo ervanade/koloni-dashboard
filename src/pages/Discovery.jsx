@@ -64,12 +64,13 @@ const Discovery = () => {
       const dataUrl = await domtoimage.toPng(element);
       const img = new Image();
       img.src = dataUrl;
-  
+      const widthPaper = window.innerWidth < 1280 ? window.innerWidth / 3 : window.innerWidth / 4;
+      const heightPaper = window.innerWidth < 768 ? 1500 : 1000;
       img.onload = () => {
         const pdf = new jsPDF({
           orientation: "p",
           unit: "mm",
-          format: [1000 * 0.264583, 300 * 0.264583], // Konversi dari px ke mm
+          format: [heightPaper * 0.264583, widthPaper * 0.264583], // Konversi dari px ke mm
         });
   
         pdf.addImage(dataUrl, "PNG", 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
