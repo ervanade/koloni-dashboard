@@ -207,6 +207,18 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                       User Management
                     </NavLink>
                   </li>
+                  <li>
+                    <NavLink
+                      to="/logs"
+                      className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-75 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                        (pathname === "/logs" || pathname.includes("logs")) &&
+                        "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
+                      }`}
+                    >
+                      <FaTasks size={22} />
+                      Activity Logs
+                    </NavLink>
+                  </li>
                 </ul>
               </div>
             )}

@@ -13,6 +13,7 @@ import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/Layout/ProtectedRoutes";
 import Faq from "./pages/Faq";
+import Logs from "./pages/admin/Logs";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -41,6 +42,7 @@ function App() {
               <Route path="/analytics" element={<Analytics />} />
               <Route path="/history" element={<History />} />
               <Route path="/users" element={<Users />} />
+              <Route path="/logs" element={<Logs />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/faq" element={<Faq />} />
             </Route>

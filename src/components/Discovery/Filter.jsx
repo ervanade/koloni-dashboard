@@ -46,7 +46,7 @@ const Filter = ({
   setDataResult,
   fetchUserData,
   dataCredits,
-  setActiveTab
+  setActiveTab,
 }) => {
   const [formData, setFormData] = useState({
     platform: "INSTAGRAM",
@@ -341,7 +341,12 @@ const Filter = ({
 
       return;
     }
-    if (!formData.discovery_interest_value || formData.discovery_interest_value.length === 0 || formData.discovery_interest_value[0] === ""  || formData.discovery_interest_value[0] === '') {
+    if (
+      !formData.discovery_interest_value ||
+      formData.discovery_interest_value.length === 0 ||
+      formData.discovery_interest_value[0] === "" ||
+      formData.discovery_interest_value[0] === ""
+    ) {
       Swal.fire({
         icon: "warning",
         title: "Interest Belum Diisi",
@@ -540,7 +545,9 @@ const Filter = ({
 
             <div className="">
               <div className="flex items-center gap-1 mb-2">
-                <p className="font-normal text-textThin text-sm">Interest</p>
+                <p className="font-normal text-textThin text-sm">
+                  Interest <span className="text-sm text-red-500">*</span>
+                </p>
                 <Tooltip title="Tentukan kategori minat audiens influencer, seperti olahraga, musik, atau gaming, agar pencarian lebih relevan.">
                   <div className="p-[2px] bg-sky-500 cursor-pointer rounded-full">
                     {" "}
