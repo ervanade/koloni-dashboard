@@ -3,6 +3,7 @@ import Card from "../components/Card/Card";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { FaAt, FaLink } from "react-icons/fa6";
+import Swal from "sweetalert2";
 
 const Analytics = () => {
   const user = useSelector((a) => a.auth.user);
@@ -11,6 +12,7 @@ const Analytics = () => {
     platform: "Instagram",
     username: "",
   });
+  const [dataResult, setDataResult] = useState(null);
   const [fieldType, setFieldType] = useState("username"); // Default input
   const [loading, setLoading] = useState(false);
 
@@ -47,6 +49,97 @@ const Analytics = () => {
   useEffect(() => {
     fetchUserData();
   }, []);
+
+  const searchAnalytics = async () => {
+    setLoading(true);
+    Swal.fire({
+      title: "Search Analytics...",
+      text: "Please Wait Preparing Your Data...",
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      willOpen: () => {
+        Swal.showLoading();
+      },
+    });
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${import.meta.env.VITE_APP_API_URL}/analyticstes`,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.accessToken}`,
+        },
+        params: {
+          platform: formData?.platform,
+          [fieldType]: formData[fieldType], // Hanya kirim parameter yang dipilih (username/contenturl)
+
+        },
+      });
+      setDataResult(response.data);
+      Swal.fire(
+        "Success Get Analyse Profile!",
+        "Scroll Down To View Analyse Data",
+        "success"
+      );
+      fetchUserData();
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      if (error.response.status === 403) {
+        return Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Not Enough Credit",
+        });
+      } else if (
+        error.response.status === 404 ||
+        error.response.status === 400
+      ) {
+        return Swal.fire({
+          icon: "error",
+          title: "Error Not Found",
+          text: "Influencers Not Found",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Failed Search Analytics",
+        });
+      }
+
+      setDataResult(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    if (dataCredits.credits < 1) {
+      Swal.fire(
+        "No Remaining Credits",
+        "Contact Admin to Recharge Your Credits",
+        "error"
+      );
+      setLoading(false);
+
+      return;
+    }
+    return Swal.fire({
+      title: "Are you sure?",
+      text: "Are you sure this will reduce your credits?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Analyse it!",
+      confirmButtonColor: "#24A5E9",
+    }).then(async (result) => {
+      if (result.value) {
+        setLoading(true);
+        searchAnalytics();
+      }
+    });
+  };
   return (
     <div>
       <div className="mb-6 flex items-center justify-between flex-wrap gap-2">
@@ -126,7 +219,7 @@ const Analytics = () => {
         }}
       >
         <option value="username">Username</option>
-        <option value="contentUrl">Content URL</option>
+        <option value="contenturl">Content URL</option>
       </select>
           <div className="relative w-full">
             <button className="absolute left-2 top-1/2 -translate-y-1/2">
@@ -146,7 +239,7 @@ const Analytics = () => {
           <button
             className=" bg-sky-500 flex gap-2 items-center text-white font-medium py-3 px-4 rounded-md focus:outline-none focus:shadow-outline"
             type="submit"
-            onClick={(e) => handleSimpan(e)}
+            onClick={(e) => handleSearch(e)}
             disabled={loading}
           >
             {" "}
