@@ -27,7 +27,8 @@ const ResultDiscovery = ({
   handleSearch,
   handleSearchPagination,
   loading,
-  setActiveTab
+  setActiveTab,
+  platform,
 }) => {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const navigate = useNavigate(); // React Router Hook
@@ -52,6 +53,16 @@ const ResultDiscovery = ({
       minWidth: 150,
       align: "center",
     },
+    ...(platform === "YOUTUBE"
+      ? [
+          {
+            id: "avg_views",
+            label: "Average Views",
+            minWidth: 150,
+            align: "center",
+          },
+        ]
+      : []), // Tambah kolom jika ada YouTube
     { id: "actions", label: "Actions", minWidth: 150, align: "center" },
   ];
 
@@ -158,7 +169,9 @@ const ResultDiscovery = ({
                         ) : (
                           <FaBusinessTime />
                         )}
-                        <p className="font-bold">{row?.creator_account_type}</p>
+                        <p className="font-bold">
+                          {row?.creator_account_type || "CREATOR"}
+                        </p>
                       </div>
                     }
                   </td>
@@ -180,6 +193,14 @@ const ResultDiscovery = ({
                       {row?.avg_likes?.toLocaleString()}
                     </h2>
                   </td>
+                  {platform === "YOUTUBE" && (
+                    <td className="px-6 py-4 text-sm text-center">
+                      <h2 className="px-4 py-2 text-sky-500 font-bold text-lg rounded-md font-publicSans">
+                        {row?.avg_views?.toLocaleString()}
+                      </h2>
+                    </td>
+                  )}
+
                   <td className={`px-6 py-4 text-sm text-center`}>
                     <div className="flex gap-2 flex-col text-sm">
                       <a
@@ -193,17 +214,20 @@ const ResultDiscovery = ({
                         Ask For Price
                       </a>
                       <button
-  className="font-publicSans px-4 py-2 text-white rounded-md bg-sky-500"
-  onClick={(e) => {
-    e.preventDefault();
-    // setActiveTab("similiar"); // Ubah active tab
-    const match = row?.creator_name.match(/\(([^)]+)\)/);
-    const username = match ? match[1] : row?.creator_name;
-    window.open(`/discovery?similiar=${username}`, "_blank"); // Buka di tab baru
-  }}
->
-  Similiar Creator
-</button>
+                        className="font-publicSans px-4 py-2 text-white rounded-md bg-sky-500"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          // setActiveTab("similiar"); // Ubah active tab
+                          const match = row?.creator_name.match(/\(([^)]+)\)/);
+                          const username = match ? match[1] : row?.creator_name;
+                          window.open(
+                            `/discovery?similiar=${username}`,
+                            "_blank"
+                          ); // Buka di tab baru
+                        }}
+                      >
+                        Similiar Creator
+                      </button>
                     </div>
                   </td>
                 </tr>

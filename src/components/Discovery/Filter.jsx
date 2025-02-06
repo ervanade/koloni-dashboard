@@ -429,7 +429,7 @@ const Filter = ({
             !showFilter ? "hidden" : ""
           } card font-normal text-textThin text-[15px] mt-4 text-sm`}
         >
-          <p>Social Media</p>
+          <p>Platform</p>
           <div className="flex items-center gap-4 flex-wrap">
             {["INSTAGRAM", "TIKTOK", "YOUTUBE"].map((platform) => (
               <button
@@ -1131,6 +1131,7 @@ const Filter = ({
         <ResultDiscovery
           title="Result History Discovery"
           data={showResult}
+          platform={formData?.platform}
           dataResult={dataResult}
           loading={loading}
           page={page}

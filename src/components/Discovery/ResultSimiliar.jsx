@@ -25,6 +25,7 @@ const ResultSimiliar = ({
   setPage,
   handleSearchPagination,
   loading,
+  platform,
 }) => {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -49,6 +50,16 @@ const ResultSimiliar = ({
       minWidth: 150,
       align: "center",
     },
+    ...(platform === "YOUTUBE"
+      ? [
+          {
+            id: "avg_views",
+            label: "Average Views",
+            minWidth: 150,
+            align: "center",
+          },
+        ]
+      : []), // Tambah kolom jika ada YouTube
     { id: "actions", label: "Actions", minWidth: 150, align: "center" },
   ];
 
@@ -230,7 +241,7 @@ const ResultSimiliar = ({
                             <FaBusinessTime />
                           )}
                           <p className="font-bold">
-                            {row?.creator_account_type}
+                            {row?.creator_account_type || "CREATOR"}
                           </p>
                         </div>
                       }
@@ -253,6 +264,13 @@ const ResultSimiliar = ({
                         {row?.avg_likes?.toLocaleString()}
                       </h2>
                     </td>
+                    {platform === "YOUTUBE" && (
+                      <td className="px-6 py-4 text-sm text-center">
+                        <h2 className="px-4 py-2 text-sky-500 font-bold text-lg rounded-md font-publicSans">
+                          {row?.avg_views?.toLocaleString()}
+                        </h2>
+                      </td>
+                    )}
                     <td className={`px-6 py-4 text-sm text-center`}>
                       <div className="flex gap-2 flex-col text-sm">
                         <a

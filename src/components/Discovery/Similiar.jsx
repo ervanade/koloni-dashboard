@@ -564,6 +564,7 @@ const Similiar = ({
           dataResult={dataResult}
           page={page}
           loading={loading}
+          platform={formData?.platform}
           setPage={setPage}
           handleSearch={handleSearch}
           handleSearchPagination={handleSearchPagination}
