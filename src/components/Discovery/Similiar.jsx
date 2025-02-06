@@ -58,7 +58,7 @@ const Similiar = ({
   const similiar = searchParams.get("similiar"); // Ambil query parameter
   useEffect(() => {
     if (similiar) {
-      setFormData(prev => ({...prev, creator_lookalikes : similiar}));
+      setFormData((prev) => ({ ...prev, creator_lookalikes: similiar }));
     }
   }, [similiar]);
 
@@ -312,18 +312,17 @@ const Similiar = ({
     <div>
       <Card className="mt-6">
         <div className="flex items-center justify-between">
-        
           <div className="flex items-center gap-1 mb-2">
-          <h1 className="font-medium text-lg text-textBold">
-            Filter By Similiar
-          </h1>
-                <Tooltip title="Filter discovery berdasarkan kemiripan creator dan demografi creator.">
-                  <div className="p-[2px] bg-sky-500 cursor-pointer rounded-full">
-                    {" "}
-                    <FaQuestion className="text-[10px] text-white" />
-                  </div>
-                </Tooltip>
+            <h1 className="font-medium text-lg text-textBold">
+              Filter By Similiar
+            </h1>
+            <Tooltip title="Filter discovery berdasarkan kemiripan creator dan demografi creator.">
+              <div className="p-[2px] bg-sky-500 cursor-pointer rounded-full">
+                {" "}
+                <FaQuestion className="text-[10px] text-white" />
               </div>
+            </Tooltip>
+          </div>
           {!showFilter ? (
             <button
               className="rounded-full border border-textBold"
@@ -520,9 +519,16 @@ const Similiar = ({
               <Autocomplete
                 disablePortal
                 options={accountOptions}
-                value={formData.account_type}
+                value={
+                  accountOptions.find(
+                    (option) => option.value === formData.platform_account_type
+                  ) || accountOptions[0]
+                }
                 onChange={(e, newValue) =>
-                  handleInputChange("account_type", newValue?.value || "")
+                  handleInputChange(
+                    "platform_account_type",
+                    newValue?.value || ""
+                  )
                 }
                 sx={{ width: "100%" }}
                 renderInput={(params) => (

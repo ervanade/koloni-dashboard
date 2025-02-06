@@ -160,45 +160,45 @@ export const cityOptions = [
 export const genderOptions = [
   {
     label: 'Any',
-    value: null,
+    value: "ANY",
   },
   {
     label: 'Male',
-    value: "Male",
+    value: "MALE",
   },
   {
     label: 'Female',
-    value: "Female",
+    value: "FEMALE",
   },
 
 ];
 export const verifiedOptions = [
   {
     label: 'Any',
-    value: null,
+    value: "ANY",
   },
   {
     label: 'Verified',
-    value: "Verified",
+    value: "VERIFIED",
   },
 
 ];
 export const accountOptions = [
   {
     label: 'Any',
-    value: null,
+    value: "ANY",
   },
   {
     label: 'Business',
-    value: "Business",
+    value: "BUSINESS",
   },
   {
     label: 'Creator',
-    value: "Creator",
+    value: "CREATOR",
   },
   {
     label: 'Personal',
-    value: "Personal",
+    value: "PERSONAL",
   },
 
 ];

@@ -795,7 +795,11 @@ const Filter = ({
                     disablePortal
                     options={genderOptions}
                     sx={{ width: "100%" }}
-                    value={formData.creator_gender}
+                    value={
+                      genderOptions.find(
+                        (option) => option.value === formData.creator_gender
+                      ) || genderOptions[0]
+                    }
                     onChange={(e, newValue) =>
                       handleInputChange("creator_gender", newValue?.value || "")
                     }
@@ -832,18 +836,22 @@ const Filter = ({
 
                 <div className="">
                   <p className="font-normal text-textThin text-sm mb-2">
-                    Verified
+                    Is Verified
                   </p>
                   <Autocomplete
                     disablePortal
                     options={verifiedOptions}
-                    value={formData.verified}
+                    value={
+                      verifiedOptions.find(
+                        (option) => option.value === formData.verified
+                      ) || verifiedOptions[0]
+                    }
                     onChange={(e, newValue) =>
                       handleInputChange("verified", newValue?.value || "")
                     }
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
-                      <TextField {...params} label="Verified" />
+                      <TextField {...params} label="Is Verified" />
                     )}
                   />
                 </div>
@@ -855,9 +863,17 @@ const Filter = ({
                   <Autocomplete
                     disablePortal
                     options={accountOptions}
-                    value={formData.account_type}
+                    value={
+                      accountOptions.find(
+                        (option) =>
+                          option.value === formData.platform_account_type
+                      ) || accountOptions[0]
+                    }
                     onChange={(e, newValue) =>
-                      handleInputChange("account_type", newValue?.value || "")
+                      handleInputChange(
+                        "platform_account_type",
+                        newValue?.value || ""
+                      )
                     }
                     sx={{ width: "100%" }}
                     renderInput={(params) => (
@@ -912,7 +928,11 @@ const Filter = ({
                     disablePortal
                     options={genderOptions}
                     sx={{ width: "100%" }}
-                    value={formData.audience_gender}
+                    value={
+                      genderOptions.find(
+                        (option) => option.value === formData.audience_gender
+                      ) || genderOptions[0]
+                    }
                     onChange={(e, newValue) =>
                       handleInputChange(
                         "audience_gender",
