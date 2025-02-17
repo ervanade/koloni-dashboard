@@ -1,0 +1,368 @@
+{
+    "success": true,
+    "message": "SUCCESS",
+    "data": {
+        "data": [
+            {
+                "work_platfrom_dto": {
+                    "id": "9bb8913b-ddd9-430b-a66a-d74d846e6c66",
+                    "name": "Instagram",
+                    "logo_url": null
+                },
+                "engagement": {
+                    "like_count": 20389,
+                    "dislike_count": null,
+                    "comment_count": 125,
+                    "impression_organic_count": null,
+                    "reach_organic_count": null,
+                    "save_count": null,
+                    "view_count": null,
+                    "watch_time_in_hours": null,
+                    "share_count": null,
+                    "impression_paid_count": null,
+                    "reach_paid_count": null
+                },
+                "platform_content_id": "3559053594282583335",
+                "title": "Homemade Ice Pops 🍓🍏🍍🫐\nTanpa Pewarna dan pemanis buatan \n\nBuat cemilan di rumah biar anak-anak ga jajan ice cream 😁",
+                "format": "VIDEO",
+                "type": "REELS",
+                "url": "https://www.instagram.com/p/DFkTGMnymUn",
+                "media_url": "https://scontent-iad3-1.cdninstagram.com/o1/v/t16/f2/m86/AQPMcmWwHPXurs27JlGaeYcca1Xs6ZJEepQv49LXaMBmzZzaZl3Fs3INTC-ER_jRWupgX9IcXfgMCKBf9lIB7hkHkWColK_mdWMbsug.mp4?efg=eyJ4cHZfYXNzZXRfaWQiOjE2OTE3MjgxNjg0NDQ2MTcsInZlbmNvZGVfdGFnIjoieHB2X3Byb2dyZXNzaXZlLklOU1RBR1JBTS5DTElQUy5DMy43MjAuZGFzaF9iYXNlbGluZV8xX3YxIn0&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=102&vs=5a8b0ccaa7ae51d&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8zNzRCRUFGQzc2MURGNzMyNDI1MDZEN0VFQURCNzdBQl92aWRlb19kYXNoaW5pdC5tcDQVAALIAQAVAhg6cGFzc3Rocm91Z2hfZXZlcnN0b3JlL0dGUGxXaHpwbkRNaGNIOERBQ3VRSFFydWk5bGxicV9FQUFBRhUCAsgBACgAGAAbAogHdXNlX29pbAExEnByb2dyZXNzaXZlX3JlY2lwZQExFQAAJpKLy4jFp4EGFQIoAkMzLBdARshysCDEnBgSZGFzaF9iYXNlbGluZV8xX3YxEQB1_gcA&ccb=9-4&oh=00_AYA-jc1LhAJTJojt6EEK1EaUQKkFbSzXc4yvz5UeimM9Kg&oe=67A2AFAB&_nc_sid=1d576d",
+                "duration": 45.566,
+                "description": "Homemade Ice Pops 🍓🍏🍍🫐\nTanpa Pewarna dan pemanis buatan \n\nBuat cemilan di rumah biar anak-anak ga jajan ice cream 😁",
+                "thumbnail_url": "https://scontent-iad3-2.cdninstagram.com/v/t51.29350-15/476137883_3873304789596165_7554988749340702683_n.jpg?stp=dst-jpg_e15_p360x360_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDE5MjMuc2RyLmYyOTM1MC5kZWZhdWx0X2NvdmVyX2ZyYW1lIn0&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=109&_nc_ohc=qANct9V98BYQ7kNvgGNa1Lv&_nc_gid=a71f306d7268470b8e2842faca16cd73&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=MzU1OTA1MzU5NDI4MjU4MzMzNQ%3D%3D.3-ccb7-5&oh=00_AYAXUU_EqWin2FmFb9XR-hDLpVMHXMOCYflrfDa6w65nUw&oe=67A684AB&_nc_sid=b41fef",
+                "published_at": "2025-02-02T10:34:04"
+            },
+            {
+                "work_platfrom_dto": {
+                    "id": "9bb8913b-ddd9-430b-a66a-d74d846e6c66",
+                    "name": "Instagram",
+                    "logo_url": null
+                },
+                "engagement": {
+                    "like_count": 3,
+                    "dislike_count": null,
+                    "comment_count": 30,
+                    "impression_organic_count": null,
+                    "reach_organic_count": null,
+                    "save_count": null,
+                    "view_count": null,
+                    "watch_time_in_hours": null,
+                    "share_count": null,
+                    "impression_paid_count": null,
+                    "reach_paid_count": null
+                },
+                "platform_content_id": "3555194017627744595",
+                "title": "Black and black harmony ❤︎\n\n——one set @ncpstudio \n——hand bag @thajaofficial \n——hijab @nistjaya",
+                "format": "COLLECTION",
+                "type": "FEED",
+                "url": "https://www.instagram.com/p/DFWlh9wS6lT",
+                "media_url": null,
+                "duration": null,
+                "description": "Black and black harmony ❤︎\n\n——one set @ncpstudio \n——hand bag @thajaofficial \n——hijab @nistjaya",
+                "thumbnail_url": "https://scontent-iad3-2.cdninstagram.com/v/t51.2885-15/475526284_18478494100040745_3968208295449665150_n.jpg?stp=dst-jpg_e35_p1080x1080_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDE4MDAuc2RyLmY3NTc2MS5kZWZhdWx0X2ltYWdlIn0&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=109&_nc_ohc=GqHTlzr-yWwQ7kNvgEaqI0j&_nc_gid=a71f306d7268470b8e2842faca16cd73&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=MzU1NTE5NDAwNDE5NzU2MTQ2Mg%3D%3D.3-ccb7-5&oh=00_AYDNvupn89DLfhJFfaSTRoTaatR50Ztxh4GvaIeNlM-O7Q&oe=67A69770&_nc_sid=b41fef",
+                "published_at": "2025-01-28T02:42:54"
+            },
+            {
+                "work_platfrom_dto": {
+                    "id": "9bb8913b-ddd9-430b-a66a-d74d846e6c66",
+                    "name": "Instagram",
+                    "logo_url": null
+                },
+                "engagement": {
+                    "like_count": 35576,
+                    "dislike_count": null,
+                    "comment_count": 667,
+                    "impression_organic_count": null,
+                    "reach_organic_count": null,
+                    "save_count": null,
+                    "view_count": null,
+                    "watch_time_in_hours": null,
+                    "share_count": null,
+                    "impression_paid_count": null,
+                    "reach_paid_count": null
+                },
+                "platform_content_id": "3552319556523981676",
+                "title": "ASMR Unboxing Smeg Fridge Fab 32 ♡\n\nAfter a long wait, my dream fridge finally arrived\nAllahumma Baarik 🤲🏻",
+                "format": "VIDEO",
+                "type": "REELS",
+                "url": "https://www.instagram.com/p/DFMX9DPSPts",
+                "media_url": "https://scontent-iad3-1.cdninstagram.com/o1/v/t16/f2/m86/AQP4fGbCFevkfauj_myhtuPWDQqS-MNVhe7rzkBjzuCP8zFGLUCHjQMqR3vj8yRAZQr0xYMie8ahhaDlZtvBc-2Tee_o3LWigI_2y9Y.mp4?efg=eyJ4cHZfYXNzZXRfaWQiOjIzNDkyNDI3MTU0NDM0MDQsInZlbmNvZGVfdGFnIjoieHB2X3Byb2dyZXNzaXZlLklOU1RBR1JBTS5DTElQUy5DMy43MjAuZGFzaF9iYXNlbGluZV8xX3YxIn0&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=102&vs=fc8650ec60fff75&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9FNTQ2QzdCMjZENjUxRTRGQjEzOEU1Q0EwOTdCODU5RV92aWRlb19kYXNoaW5pdC5tcDQVAALIAQAVAhg6cGFzc3Rocm91Z2hfZXZlcnN0b3JlL0dDWXhTQnk2WDg3VkhCNEdBUDIzS3Vxbl9pRjFicV9FQUFBRhUCAsgBACgAGAAbAogHdXNlX29pbAExEnByb2dyZXNzaXZlX3JlY2lwZQExFQAAJpjD3Jj2p6wIFQIoAkMzLBdARd3S8an75xgSZGFzaF9iYXNlbGluZV8xX3YxEQB1_gcA&ccb=9-4&oh=00_AYCkzTrL5Gde34Als2jYl7cC9MR_6f-2LzltB9czs84gHw&oe=67A28AA7&_nc_sid=1d576d",
+                "duration": 43.733,
+                "description": "ASMR Unboxing Smeg Fridge Fab 32 ♡\n\nAfter a long wait, my dream fridge finally arrived\nAllahumma Baarik 🤲🏻",
+                "thumbnail_url": "https://scontent-iad3-1.cdninstagram.com/v/t51.29350-15/474866267_548487434886763_3137809512025723243_n.jpg?stp=dst-jpg_e15_p360x360_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDE5MTkuc2RyLmYyOTM1MC5kZWZhdWx0X2NvdmVyX2ZyYW1lIn0&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=107&_nc_ohc=Y0kLISrV4BwQ7kNvgGmL-OA&_nc_gid=a71f306d7268470b8e2842faca16cd73&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=MzU1MjMxOTU1NjUyMzk4MTY3Ng%3D%3D.3-ccb7-5&oh=00_AYBb8jqYDsdNJyGtGgal1xfYKXqnhINpmV1AIVYOz08-0Q&oe=67A6846C&_nc_sid=b41fef",
+                "published_at": "2025-01-24T03:36:59"
+            },
+            {
+                "work_platfrom_dto": {
+                    "id": "9bb8913b-ddd9-430b-a66a-d74d846e6c66",
+                    "name": "Instagram",
+                    "logo_url": null
+                },
+                "engagement": {
+                    "like_count": 75917,
+                    "dislike_count": null,
+                    "comment_count": 1123,
+                    "impression_organic_count": null,
+                    "reach_organic_count": null,
+                    "save_count": null,
+                    "view_count": null,
+                    "watch_time_in_hours": null,
+                    "share_count": null,
+                    "impression_paid_count": null,
+                    "reach_paid_count": null
+                },
+                "platform_content_id": "3548196125935294014",
+                "title": "Jumat Berkah kemarin 🤍\nAllahumma Baarik 🤲🏻",
+                "format": "VIDEO",
+                "type": "REELS",
+                "url": "https://www.instagram.com/p/DE9uZPPylY-",
+                "media_url": "https://scontent-iad3-1.cdninstagram.com/o1/v/t16/f2/m86/AQPNoF_umGwxeHFmqar1EZgSlMeDJESAKYo6he5aUUb8oJMCyc0qZXyOc5odZelVv-g-0x29wE4eFdWyKwHlAEGd6rnsoCkPlb_WwR4.mp4?efg=eyJ4cHZfYXNzZXRfaWQiOjEzNDE5OTUwNDM0ODcxNjEsInZlbmNvZGVfdGFnIjoieHB2X3Byb2dyZXNzaXZlLklOU1RBR1JBTS5DTElQUy5DMy43MjAuZGFzaF9iYXNlbGluZV8xX3YxIn0&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=104&vs=df5500a238883de5&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9GQzRBREZDRDVGNTAzQzJBMEFCNzAzMjNCNTM4Qzc5Ml92aWRlb19kYXNoaW5pdC5tcDQVAALIAQAVAhg6cGFzc3Rocm91Z2hfZXZlcnN0b3JlL0dLZkdRQnk3bWVGcE5HY0RBSGVVdl9SaktGMVFicV9FQUFBRhUCAsgBACgAGAAbAogHdXNlX29pbAExEnByb2dyZXNzaXZlX3JlY2lwZQExFQAAJvL2252youIEFQIoAkMzLBdASJU_fO2RaBgSZGFzaF9iYXNlbGluZV8xX3YxEQB1_gcA&ccb=9-4&oh=00_AYAs8yFhhM2ZQSOft-NHfQFUokQUOYtefzNiFjGiTrbtTQ&oe=67A28235&_nc_sid=1d576d",
+                "duration": 49.166,
+                "description": "Jumat Berkah kemarin 🤍\nAllahumma Baarik 🤲🏻",
+                "thumbnail_url": "https://scontent-iad3-2.cdninstagram.com/v/t51.2885-15/474194912_18476900980040745_3071747447624433655_n.jpg?stp=dst-jpg_e15_p360x360_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDU4eDE4ODAuc2RyLmY3NTc2MS5kZWZhdWx0X2NvdmVyX2ZyYW1lIn0&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=109&_nc_ohc=-26gUA1jY6sQ7kNvgG3XEbL&_nc_gid=a71f306d7268470b8e2842faca16cd73&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=MzU0ODE5NjEyNTkzNTI5NDAxNA%3D%3D.3-ccb7-5&oh=00_AYCTocP7Mrgxcf2io6CxgyetWfPrl-cGufGopxY64ajwfg&oe=67A68369&_nc_sid=b41fef",
+                "published_at": "2025-01-18T11:01:46"
+            },
+            {
+                "work_platfrom_dto": {
+                    "id": "9bb8913b-ddd9-430b-a66a-d74d846e6c66",
+                    "name": "Instagram",
+                    "logo_url": null
+                },
+                "engagement": {
+                    "like_count": 9913,
+                    "dislike_count": null,
+                    "comment_count": 103,
+                    "impression_organic_count": null,
+                    "reach_organic_count": null,
+                    "save_count": null,
+                    "view_count": null,
+                    "watch_time_in_hours": null,
+                    "share_count": null,
+                    "impression_paid_count": null,
+                    "reach_paid_count": null
+                },
+                "platform_content_id": "3546002660820292001",
+                "title": "Luncheon Daging Ayam 🍗\n\nBisa nyetok karna awet disimpan di kulkas, pas mau makan tinggal digoreng 😋\n\nFungsi angka untuk pewarna makanan, kalo ga mau pakai angkak boleh di skip ya!",
+                "format": "VIDEO",
+                "type": "REELS",
+                "url": "https://www.instagram.com/p/DE17qHqyJGh",
+                "media_url": "https://scontent-iad3-1.cdninstagram.com/o1/v/t16/f2/m86/AQNT-Xcz5zep6P5r_Y1om6KJPUrIWyu1R0yVlX7THDKGLGYNZheiI-DXWPNCRHMzittHzBJXKjkjkMRHPl_wy0jqIn5ZN9NIet5005A.mp4?efg=eyJ4cHZfYXNzZXRfaWQiOjUwMjU3MTk4MjM3MTE0OSwidmVuY29kZV90YWciOiJ4cHZfcHJvZ3Jlc3NpdmUuSU5TVEFHUkFNLkNMSVBTLkMzLjcyMC5kYXNoX2Jhc2VsaW5lXzFfdjEifQ&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=109&vs=ca7c10f3d0be3a20&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8xQTRGQjdCOTYyNTFEOEQyNEMyRkI5MTFGODUzQzhBRF92aWRlb19kYXNoaW5pdC5tcDQVAALIAQAVAhg6cGFzc3Rocm91Z2hfZXZlcnN0b3JlL0dJbVVPeHlXdTFQTU1kNERBRWxYU2Y1YkhoMVNicV9FQUFBRhUCAsgBACgAGAAbAogHdXNlX29pbAExEnByb2dyZXNzaXZlX3JlY2lwZQExFQAAJprl3YfFxeQBFQIoAkMzLBdATHMzMzMzMxgSZGFzaF9iYXNlbGluZV8xX3YxEQB1_gcA&ccb=9-4&oh=00_AYDGCAKn-artJW6HnVoO7gml7wlLSgEnnVrWa9g1kDr7jw&oe=67A2895E&_nc_sid=1d576d",
+                "duration": 56.9,
+                "description": "Luncheon Daging Ayam 🍗\n\nBisa nyetok karna awet disimpan di kulkas, pas mau makan tinggal digoreng 😋\n\nFungsi angka untuk pewarna makanan, kalo ga mau pakai angkak boleh di skip ya!",
+                "thumbnail_url": "https://scontent-iad3-2.cdninstagram.com/v/t51.29350-15/473807070_1251276536175570_4288938228350850992_n.jpg?stp=dst-jpg_e15_p360x360_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDE5MjAuc2RyLmYyOTM1MC5kZWZhdWx0X2NvdmVyX2ZyYW1lIn0&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=106&_nc_ohc=9PH6G3s9FhwQ7kNvgHps33p&_nc_gid=a71f306d7268470b8e2842faca16cd73&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=MzU0NjAwMjY2MDgyMDI5MjAwMQ%3D%3D.3-ccb7-5&oh=00_AYB9x84QHwPR-WOtiIRxwmxMtvDxhcfINDm_QrMYhdMA4w&oe=67A68B00&_nc_sid=b41fef",
+                "published_at": "2025-01-15T10:26:46"
+            },
+            {
+                "work_platfrom_dto": {
+                    "id": "9bb8913b-ddd9-430b-a66a-d74d846e6c66",
+                    "name": "Instagram",
+                    "logo_url": null
+                },
+                "engagement": {
+                    "like_count": 10401,
+                    "dislike_count": null,
+                    "comment_count": 127,
+                    "impression_organic_count": null,
+                    "reach_organic_count": null,
+                    "save_count": null,
+                    "view_count": null,
+                    "watch_time_in_hours": null,
+                    "share_count": null,
+                    "impression_paid_count": null,
+                    "reach_paid_count": null
+                },
+                "platform_content_id": "3542381155553156929",
+                "title": "Hacks menu baru, Mie Bakso Geprek🌶️\n\nNext bikin hacks apalagi nih? Komen dibawah ya✨\n\n#MieBaksoGeprek",
+                "format": "VIDEO",
+                "type": "REELS",
+                "url": "https://www.instagram.com/p/DEpEOSDyJ9B",
+                "media_url": "https://scontent-iad3-1.cdninstagram.com/o1/v/t16/f2/m86/AQOwHisW1HIVOqpSmS_Nb3zGlym1ZybTBRVgmJrDsKQyA0LLgKtx56oi00xnfiyKZS79I0zBYz0ybT3F8nQxTuv3A_7ze28EQhfXV1U.mp4?efg=eyJ4cHZfYXNzZXRfaWQiOjM3ODQyMDQwNTE4NDIwOTYsInZlbmNvZGVfdGFnIjoieHB2X3Byb2dyZXNzaXZlLklOU1RBR1JBTS5DTElQUy5DMy43MjAuZGFzaF9iYXNlbGluZV8xX3YxIn0&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=100&vs=290fa55c32c80422&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9DNDRGN0ZDNjAyQkE3OUYwQjBCNTIzMkVEQTUzMkU4Ml92aWRlb19kYXNoaW5pdC5tcDQVAALIAQAVAhg6cGFzc3Rocm91Z2hfZXZlcnN0b3JlL0dKVkNMUnhSNm14YkV1b0ZBTjJPcENlR25haHJicV9FQUFBRhUCAsgBACgAGAAbAogHdXNlX29pbAExEnByb2dyZXNzaXZlX3JlY2lwZQExFQAAJuCQpKTV7bgNFQIoAkMzLBdARx3S8an75xgSZGFzaF9iYXNlbGluZV8xX3YxEQB1_gcA&ccb=9-4&oh=00_AYBNn3UB9qRBz_iqttXNNcrx8oiqRVyn1Bx9WZ0ob0bqVg&oe=67A2AA21&_nc_sid=1d576d",
+                "duration": 46.233,
+                "description": "Hacks menu baru, Mie Bakso Geprek🌶️\n\nNext bikin hacks apalagi nih? Komen dibawah ya✨\n\n#MieBaksoGeprek",
+                "thumbnail_url": "https://scontent-iad3-1.cdninstagram.com/v/t51.29350-15/473717445_582736881185092_989229728425534310_n.jpg?stp=dst-jpg_e15_p360x360_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMTcweDIwODAuc2RyLmYyOTM1MC5kZWZhdWx0X2NvdmVyX2ZyYW1lIn0&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=104&_nc_ohc=WSFQTWjnw4EQ7kNvgHEBu3G&_nc_gid=a71f306d7268470b8e2842faca16cd73&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=MzU0MjM4MTE1NTU1MzE1NjkyOTkwMTY0NzQ2MzUxMzM5NDA%3D.3-ccb7-5&oh=00_AYBjsAitKZk1S5IvmYkHrwb-VRNq8IczLwVSjYE_Vo6qiQ&oe=67A69DB3&_nc_sid=b41fef",
+                "published_at": "2025-01-10T10:27:24"
+            },
+            {
+                "work_platfrom_dto": {
+                    "id": "9bb8913b-ddd9-430b-a66a-d74d846e6c66",
+                    "name": "Instagram",
+                    "logo_url": null
+                },
+                "engagement": {
+                    "like_count": 43467,
+                    "dislike_count": null,
+                    "comment_count": 167,
+                    "impression_organic_count": null,
+                    "reach_organic_count": null,
+                    "save_count": null,
+                    "view_count": null,
+                    "watch_time_in_hours": null,
+                    "share_count": null,
+                    "impression_paid_count": null,
+                    "reach_paid_count": null
+                },
+                "platform_content_id": "3541473771234473622",
+                "title": "Ayam Bawang Putih, di video ini resepnya utk 1kg ayam..\n\nDi rumah selalu pada lahap tiap menunya ayam baput ini 🤭\n\nDari pas awal ayam baput ini viral gegara liat kak itsfriday, waktu itu langsung cobain bikin dan sekarang menu ini jadi andalan buat makan di rumah 😋👍🏼",
+                "format": "VIDEO",
+                "type": "REELS",
+                "url": "https://www.instagram.com/p/DEl16GjyzaW",
+                "media_url": "https://scontent-iad3-1.cdninstagram.com/o1/v/t16/f2/m86/AQMafuoPxJY7e1Gh01zesJWXXOb0MJVjykLMbx_3TiG1sHBdj6FUw8TvoXByS_xYbzFi4fWavsnAqQgfUc_d8Tp4ZFRv5PTQCx4girk.mp4?efg=eyJ4cHZfYXNzZXRfaWQiOjEyODc5ODY3NzI0NjEwNjksInZlbmNvZGVfdGFnIjoieHB2X3Byb2dyZXNzaXZlLklOU1RBR1JBTS5DTElQUy5DMy43MjAuZGFzaF9iYXNlbGluZV8xX3YxIn0&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=111&vs=262644b511cfb2c1&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8wRTQwNEI5QkNFM0E4NjA2RjIxNzA1NzQxRkE1QkI4N192aWRlb19kYXNoaW5pdC5tcDQVAALIAQAVAhg6cGFzc3Rocm91Z2hfZXZlcnN0b3JlL0dGeTFLUndIWTYzbEp1TUZBR1Q4eUZKd29QVnVicV9FQUFBRhUCAsgBACgAGAAbAogHdXNlX29pbAExEnByb2dyZXNzaXZlX3JlY2lwZQExFQAAJpqY4qDZ2skEFQIoAkMzLBdATZmZmZmZmhgSZGFzaF9iYXNlbGluZV8xX3YxEQB1_gcA&ccb=9-4&oh=00_AYB9CsfoRrLHMX6IVAD119Lpwcd4CvjmakoMdRCb-l8qhw&oe=67A2A400&_nc_sid=1d576d",
+                "duration": 59.2,
+                "description": "Ayam Bawang Putih, di video ini resepnya utk 1kg ayam..\n\nDi rumah selalu pada lahap tiap menunya ayam baput ini 🤭\n\nDari pas awal ayam baput ini viral gegara liat kak itsfriday, waktu itu langsung cobain bikin dan sekarang menu ini jadi andalan buat makan di rumah 😋👍🏼",
+                "thumbnail_url": "https://scontent-iad3-1.cdninstagram.com/v/t51.29350-15/473655551_613987731031748_6493019233250516958_n.jpg?stp=dst-jpg_e15_p360x360_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4yMjY4eDQwMzIuc2RyLmYyOTM1MC5kZWZhdWx0X2NvdmVyX2ZyYW1lIn0&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=108&_nc_ohc=OU6KresK6CkQ7kNvgG-HkX6&_nc_gid=a71f306d7268470b8e2842faca16cd73&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=MzU0MTQ3Mzc3MTIzNDQ3MzYyMg%3D%3D.3-ccb7-5&oh=00_AYArvNkqM-4313vDD7uUsmqAX2cpjDurAPYqkOSTsUOSrA&oe=67A696AF&_nc_sid=b41fef",
+                "published_at": "2025-01-09T04:25:37"
+            },
+            {
+                "work_platfrom_dto": {
+                    "id": "9bb8913b-ddd9-430b-a66a-d74d846e6c66",
+                    "name": "Instagram",
+                    "logo_url": null
+                },
+                "engagement": {
+                    "like_count": 3,
+                    "dislike_count": null,
+                    "comment_count": 62,
+                    "impression_organic_count": null,
+                    "reach_organic_count": null,
+                    "save_count": null,
+                    "view_count": null,
+                    "watch_time_in_hours": null,
+                    "share_count": null,
+                    "impression_paid_count": null,
+                    "reach_paid_count": null
+                },
+                "platform_content_id": "3540664559692532037",
+                "title": "My sweet love ♡\nslide 4 ada yang ngambek 🤭\n\n—outfit @ncpstudio",
+                "format": "COLLECTION",
+                "type": "FEED",
+                "url": "https://www.instagram.com/p/DEi96hlSclF",
+                "media_url": null,
+                "duration": null,
+                "description": "My sweet love ♡\nslide 4 ada yang ngambek 🤭\n\n—outfit @ncpstudio",
+                "thumbnail_url": "https://scontent-iad3-2.cdninstagram.com/v/t51.29350-15/472886221_1555251135129834_4039919486732241668_n.jpg?stp=dst-jpg_e35_p1080x1080_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDE4MDAuc2RyLmYyOTM1MC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=106&_nc_ohc=O7ZsOPNlOAwQ7kNvgGKKwMP&_nc_gid=a71f306d7268470b8e2842faca16cd73&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=MzU0MDY2NDU0ODY0NDgyNjcwMQ%3D%3D.3-ccb7-5&oh=00_AYBH3IqX6jsCkrOUynwncErBAsB966v7t5xO6D7Xt7pMrw&oe=67A68887&_nc_sid=b41fef",
+                "published_at": "2025-01-08T01:35:28"
+            },
+            {
+                "work_platfrom_dto": {
+                    "id": "9bb8913b-ddd9-430b-a66a-d74d846e6c66",
+                    "name": "Instagram",
+                    "logo_url": null
+                },
+                "engagement": {
+                    "like_count": 10597,
+                    "dislike_count": null,
+                    "comment_count": 70,
+                    "impression_organic_count": null,
+                    "reach_organic_count": null,
+                    "save_count": null,
+                    "view_count": null,
+                    "watch_time_in_hours": null,
+                    "share_count": null,
+                    "impression_paid_count": null,
+                    "reach_paid_count": null
+                },
+                "platform_content_id": "3539207293017545803",
+                "title": "Nyiapin bekal lagi 🍣\n\nHari ini anak2 mulai sekolah lagi setelah libur kemarin. Semangat semuanya! 🫰🏻",
+                "format": "VIDEO",
+                "type": "REELS",
+                "url": "https://www.instagram.com/p/DEdykgOyFxL",
+                "media_url": "https://scontent-iad3-1.cdninstagram.com/o1/v/t16/f2/m86/AQOZ1T9DYqV1ysIB5LFmMsvc4aixVVrOIE6OPn-mgUqrLwC5fknAz-y05S7X6l2OllG7rKWcdT0h-Mm831Hp8bhhWuJcjSnvpdAV7gQ.mp4?efg=eyJ4cHZfYXNzZXRfaWQiOjg0NTAwMzQ1NzY0NTYzNCwidmVuY29kZV90YWciOiJ4cHZfcHJvZ3Jlc3NpdmUuSU5TVEFHUkFNLkNMSVBTLkMzLjcyMC5kYXNoX2Jhc2VsaW5lXzFfdjEifQ&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=105&vs=60e9dfca16370a7c&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9GQTRBMjU5Q0I0MUZERjNCNTYwRjMwQTBCQkRCNkM5OV92aWRlb19kYXNoaW5pdC5tcDQVAALIAQAVAhg6cGFzc3Rocm91Z2hfZXZlcnN0b3JlL0dLSXhJUnp2QkpsbEhhRUVBTnJ3aFAtalJZRlJicV9FQUFBRhUCAsgBACgAGAAbAogHdXNlX29pbAExEnByb2dyZXNzaXZlX3JlY2lwZQExFQAAJoSx6q7WoYADFQIoAkMzLBdARbMzMzMzMxgSZGFzaF9iYXNlbGluZV8xX3YxEQB1_gcA&ccb=9-4&oh=00_AYA7uiycCmu027i4lF1sP9thxFIo5Ss7WyVPu16SKwhR-Q&oe=67A2817E&_nc_sid=1d576d",
+                "duration": 43.4,
+                "description": "Nyiapin bekal lagi 🍣\n\nHari ini anak2 mulai sekolah lagi setelah libur kemarin. Semangat semuanya! 🫰🏻",
+                "thumbnail_url": "https://scontent-iad3-2.cdninstagram.com/v/t51.2885-15/472724970_18474714016040745_3930404584463969655_n.jpg?stp=dst-jpg_e15_p360x360_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4yMjY4eDQwMzIuc2RyLmY3NTc2MS5kZWZhdWx0X2NvdmVyX2ZyYW1lIn0&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=109&_nc_ohc=BBB6vz8P_TQQ7kNvgFHhBe1&_nc_gid=a71f306d7268470b8e2842faca16cd73&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=MzUzOTIwNzI5MzAxNzU0NTgwMzE4NDc0NzE0MDEwMDQwNzQ1.3-ccb7-5&oh=00_AYBm-XSTXfmnBpd7jvLU1728n5xAjgstBh5EFQ5AtiC_DA&oe=67A67CF4&_nc_sid=b41fef",
+                "published_at": "2025-01-06T01:25:04"
+            },
+            {
+                "work_platfrom_dto": {
+                    "id": "9bb8913b-ddd9-430b-a66a-d74d846e6c66",
+                    "name": "Instagram",
+                    "logo_url": null
+                },
+                "engagement": {
+                    "like_count": 3,
+                    "dislike_count": null,
+                    "comment_count": 66,
+                    "impression_organic_count": null,
+                    "reach_organic_count": null,
+                    "save_count": null,
+                    "view_count": null,
+                    "watch_time_in_hours": null,
+                    "share_count": null,
+                    "impression_paid_count": null,
+                    "reach_paid_count": null
+                },
+                "platform_content_id": "3538537880010421891",
+                "title": "Blessed to call her My Daughter 👧🏻\nI ❤️U Kaka Sheena..",
+                "format": "COLLECTION",
+                "type": "FEED",
+                "url": "https://www.instagram.com/p/DEbaXQySPaD",
+                "media_url": null,
+                "duration": null,
+                "description": "Blessed to call her My Daughter 👧🏻\nI ❤️U Kaka Sheena..",
+                "thumbnail_url": "https://scontent-iad3-2.cdninstagram.com/v/t51.29350-15/472515833_1318153509192839_3684948311395425712_n.jpg?stp=dst-jpg_e35_p1080x1080_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDE3OTkuc2RyLmYyOTM1MC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=111&_nc_ohc=K_lhM0W7JyMQ7kNvgH0SMHh&_nc_gid=a71f306d7268470b8e2842faca16cd73&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=MzUzODUzNzg2ODc4NjUzNzMxNA%3D%3D.3-ccb7-5&oh=00_AYCnHzaqoA53LwBZZKOOcBjxQPFZkiu9vT5pLAUNSjn2_Q&oe=67A67EB8&_nc_sid=b41fef",
+                "published_at": "2025-01-05T03:10:08"
+            },
+            {
+                "work_platfrom_dto": {
+                    "id": "9bb8913b-ddd9-430b-a66a-d74d846e6c66",
+                    "name": "Instagram",
+                    "logo_url": null
+                },
+                "engagement": {
+                    "like_count": 5265,
+                    "dislike_count": null,
+                    "comment_count": 25,
+                    "impression_organic_count": null,
+                    "reach_organic_count": null,
+                    "save_count": null,
+                    "view_count": null,
+                    "watch_time_in_hours": null,
+                    "share_count": null,
+                    "impression_paid_count": null,
+                    "reach_paid_count": null
+                },
+                "platform_content_id": "3538016020613187249",
+                "title": "Exhibition day out with kiddos ✨🔮\n\n📍Imagi Space, Senayan",
+                "format": "VIDEO",
+                "type": "REELS",
+                "url": "https://www.instagram.com/p/DEZjtNWSkax",
+                "media_url": "https://scontent-iad3-1.cdninstagram.com/o1/v/t16/f2/m86/AQMMN_Lq90XiTWFiNVE0zmreFJVjz7ueyWBxlPKoyTGolHone8w3XVV-FPQAZJqq2z_l-LWSHFqwFIIfR1EX6_sPSITu8sJf7bbK1Mk.mp4?efg=eyJ4cHZfYXNzZXRfaWQiOjEyODkzNjU2OTg5NzY3MzUsInZlbmNvZGVfdGFnIjoieHB2X3Byb2dyZXNzaXZlLklOU1RBR1JBTS5DTElQUy5DMy43MjAuZGFzaF9iYXNlbGluZV8xX3YxIn0&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=109&vs=bd3ca97ae9faf09a&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8yNDQ3MTU5OEQ4RDlDQjI1QjQ3N0UzRDFCMTc2NjJBNl92aWRlb19kYXNoaW5pdC5tcDQVAALIAQAVAhg6cGFzc3Rocm91Z2hfZXZlcnN0b3JlL0dFU0tJeHpGM0IyQktYb0VBRTBaZGstSmxRWkdicV9FQUFBRhUCAsgBACgAGAAbAogHdXNlX29pbAExEnByb2dyZXNzaXZlX3JlY2lwZQExFQAAJr7vyIf7qsoEFQIoAkMzLBdAN27ZFocrAhgSZGFzaF9iYXNlbGluZV8xX3YxEQB1_gcA&ccb=9-4&oh=00_AYDx-CbcJ53yL3gBTNHFDXv3qQsazKZUlo6dk_tramiu_w&oe=67A2B056&_nc_sid=1d576d",
+                "duration": 23.433,
+                "description": "Exhibition day out with kiddos ✨🔮\n\n📍Imagi Space, Senayan",
+                "thumbnail_url": "https://scontent-iad3-2.cdninstagram.com/v/t51.2885-15/472275868_18474384847040745_1353902079255834328_n.jpg?stp=dst-jpg_e15_p360x360_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4yMjY4eDQwMzIuc2RyLmY3NTc2MS5kZWZhdWx0X2NvdmVyX2ZyYW1lIn0&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=109&_nc_ohc=NZ8nrCVaXw0Q7kNvgFAXPQo&_nc_gid=a71f306d7268470b8e2842faca16cd73&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=MzUzODAxNjAyMDYxMzE4NzI0OQ%3D%3D.3-ccb7-5&oh=00_AYCwAJGy_WB9-Wdu4qtBaE2U_KEjNgrqrIk0dLT63yhsIw&oe=67A67F65&_nc_sid=b41fef",
+                "published_at": "2025-01-04T09:57:15"
+            },
+            {
+                "work_platfrom_dto": {
+                    "id": "9bb8913b-ddd9-430b-a66a-d74d846e6c66",
+                    "name": "Instagram",
+                    "logo_url": null
+                },
+                "engagement": {
+                    "like_count": 8987,
+                    "dislike_count": null,
+                    "comment_count": 31,
+                    "impression_organic_count": null,
+                    "reach_organic_count": null,
+                    "save_count": null,
+                    "view_count": null,
+                    "watch_time_in_hours": null,
+                    "share_count": null,
+                    "impression_paid_count": null,
+                    "reach_paid_count": null
+                },
+                "platform_content_id": "3537417642305110909",
+                "title": "Captionnya ❤︎\n\nKira2 ngobrolin apa ya? 🤭",
+                "format": "VIDEO",
+                "type": "REELS",
+                "url": "https://www.instagram.com/p/DEXbpqHy8N9",
+                "media_url": "https://scontent-iad3-1.cdninstagram.com/o1/v/t16/f2/m86/AQO5ZkaQpTErtxfFlw7hhfKD--GfAhH9WKDFkcsHinymyL5HD5XZKJ0NFtnPmGOusfAi2jdXvDwJ3CSLppnqTSZru5LIuQwTzLgCJes.mp4?efg=eyJ4cHZfYXNzZXRfaWQiOjEyNTE4Njg5ODI1NzcwMDYsInZlbmNvZGVfdGFnIjoieHB2X3Byb2dyZXNzaXZlLklOU1RBR1JBTS5DTElQUy5DMy43MjAuZGFzaF9iYXNlbGluZV8xX3YxIn0&_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=106&vs=8c344af1b686cd91&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC83MjQ4OEQ1QjE0OTVBMEY0NkY0NThCMTFBQjZCQTk5NV92aWRlb19kYXNoaW5pdC5tcDQVAALIAQAVAhg6cGFzc3Rocm91Z2hfZXZlcnN0b3JlL0dLZF9IUnpPZzlRVWxXWURBTHBCZjUzWDF2QWxicV9FQUFBRhUCAsgBACgAGAAbAogHdXNlX29pbAExEnByb2dyZXNzaXZlX3JlY2lwZQExFQAAJtydmOCupLkEFQIoAkMzLBdAMszMzMzMzRgSZGFzaF9iYXNlbGluZV8xX3YxEQB1_gcA&ccb=9-4&oh=00_AYB6G7tWbS1QibqQcM5nhJvew6wyp5gmR1grqQpkEMclxw&oe=67A29043&_nc_sid=1d576d",
+                "duration": 18.8,
+                "description": "Captionnya ❤︎\n\nKira2 ngobrolin apa ya? 🤭",
+                "thumbnail_url": "https://scontent-iad3-2.cdninstagram.com/v/t51.29350-15/472589918_2012706049233563_3944575243991306427_n.jpg?stp=dst-jpg_e15_p360x360_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMTE0eDE5ODAuc2RyLmYyOTM1MC5kZWZhdWx0X2NvdmVyX2ZyYW1lIn0&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_cat=111&_nc_ohc=kre2i15FhiUQ7kNvgHtPwzM&_nc_gid=a71f306d7268470b8e2842faca16cd73&edm=ABmJApABAAAA&ccb=7-5&ig_cache_key=MzUzNzQxNzY0MjMwNTExMDkwOQ%3D%3D.3-ccb7-5&oh=00_AYCX3B2Agi_tFD2QZ-bLrial3PCM1JfHMY1bUgmhhhQW3g&oe=67A69034&_nc_sid=b41fef",
+                "published_at": "2025-01-03T14:07:06"
+            }
+        ]
+    }
+}

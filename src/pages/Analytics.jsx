@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { FaAt, FaLink } from "react-icons/fa6";
 import Swal from "sweetalert2";
+import ResultAnalytics from "../components/Analytics/ResultAnalytics";
 
 const Analytics = () => {
   const user = useSelector((a) => a.auth.user);
@@ -254,6 +255,7 @@ const Analytics = () => {
 
        
       </Card>
+      <ResultAnalytics />
     </div>
   );
 };
