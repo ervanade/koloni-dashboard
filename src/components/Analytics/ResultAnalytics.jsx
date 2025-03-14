@@ -22,7 +22,7 @@ const ResultAnalytics = () => {
           <p className="font-bold text-sky-500 text-2xl">
             {DataFormater(
               data?.user_performance?.avg_likes_per_post
-            ) || 0}
+            ) || 1}
           </p>
         </Card>
 
@@ -35,7 +35,7 @@ const ResultAnalytics = () => {
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
             {DataFormater(
-              data?.user_performance?.avg_comment_per_post
+              data[0].engagement?.view_count
             ) || 0}
           </p>
         </Card>
@@ -48,8 +48,9 @@ const ResultAnalytics = () => {
            ENGAGEMENT
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
-            {DataFormater(data?.user_performance?.avg_reels) ||
-              0}
+          {DataFormater(
+             data[0].engagement?.like_count
+            ) || 0}
           </p>
         </Card>
 
@@ -61,8 +62,9 @@ const ResultAnalytics = () => {
             COMMENT
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
-            {DataFormater(data?.user_performance?.avg_reels) ||
-              0}
+          {DataFormater(
+              data[0].engagement?.comment_count
+            ) || 0}
           </p>
         </Card>
 
@@ -74,8 +76,8 @@ const ResultAnalytics = () => {
           ENGAGEMENT RATE
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
-            {DataFormater(
-              data?.user_performance?.avg_likes_per_post
+          {DataFormater(
+             data[0].engagement?.view_count / data[0].engagement?.like_count
             ) || 0}
           </p>
         </Card>
@@ -122,11 +124,48 @@ const ResultAnalytics = () => {
       </div>
             : ""
       }
-          <h1 className="font-medium text-lg mb-4 mt-6" >Latest 12 Content</h1>
+          <h1 className="font-medium text-lg mb-4 mt-6" >Content</h1>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
+              <div className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 gap-4 mt-4">
 
-{
+              <Card className="!px-4 !py-4">
+              {data[0].url && (
+                          <a
+                            href={data[0].url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <img
+                              src="/logo-instagram.png"
+                              alt="Logo Instagram"
+                              className="w-5 h-5"
+                            />
+                          </a>
+                        )}
+                          <div className="img w-full h-54 flex justify-center items-center">
+                          <img
+                            src={data[0].media_url}
+                            className="w-full object-cover max-h-54"
+                            alt=""
+                          />
+                        </div>
+         <h2 className="font-bold text-textBold text-base mt-2 line-clamp-3 min-h-19 overflow-hidden">
+         {data[0].title}
+          </h2>
+         
+                          <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <div className="flex items-center gap-1 mt-2">
+                      <FaHeart className="text-red-500" />
+                      <span>{data[0].engagement.like_count.toLocaleString("id-ID")}</span>
+                    </div>
+                    <div className="flex items-center gap-1 mt-2">
+                      <FaComment className="text-blue-500" />
+                      <span>{data[0].engagement.comment_count.toLocaleString("id-ID")}</span>
+                    </div>
+                  </div>
+        </Card>
+
+{/* {
     data ? data?.map((item, index) => (
         <Card className="!px-4 !py-4" key={index}>
               {item?.url && (
@@ -165,7 +204,7 @@ const ResultAnalytics = () => {
                   </div>
         </Card>
     )) : ""
-}
+} */}
      
     </div>
     </div>

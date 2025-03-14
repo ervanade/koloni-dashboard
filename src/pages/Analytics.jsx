@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "../components/Card/Card";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { FaAt, FaLink } from "react-icons/fa6";
+import { FaAt, FaDollarSign, FaLink } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import ResultAnalytics from "../components/Analytics/ResultAnalytics";
 
@@ -12,9 +12,10 @@ const Analytics = () => {
   const [formData, setFormData] = useState({
     platform: "Instagram",
     username: "",
+    budget: ""
   });
   const [dataResult, setDataResult] = useState(null);
-  const [fieldType, setFieldType] = useState("username"); // Default input
+  const [fieldType, setFieldType] = useState("contenturl"); // Default input
   const [loading, setLoading] = useState(false);
 
 
@@ -218,6 +219,7 @@ const Analytics = () => {
           setFieldType(e.target.value);
           setFormData((prev) => ({ ...prev, [e.target.value]: "" }))
         }}
+        disabled
       >
         <option value="username">Username</option>
         <option value="contenturl">Content URL</option>
@@ -237,7 +239,7 @@ const Analytics = () => {
               className="w-full bg-white pl-9 pr-4 text-black outline outline-1 outline-zinc-200 focus:outline-primary dark:text-white py-3 rounded-md"
             />
           </div>
-          <button
+          {/* <button
             className=" bg-sky-500 flex gap-2 items-center text-white font-medium py-3 px-4 rounded-md focus:outline-none focus:shadow-outline"
             type="submit"
             onClick={(e) => handleSearch(e)}
@@ -245,8 +247,37 @@ const Analytics = () => {
           >
             {" "}
             Analyse
-          </button>
+          </button> */}
         </div>
+         <div className="mt-6 font-normal text-textThin text-[15px] flex items-center gap-2">
+<label              className="w-1/2 bg-white p-2 text-black focus:outline-primary dark:text-white py-3 rounded-md"
+>Budget :</label>
+          <div className="relative w-full">
+            <button className="absolute left-2 top-1/2 -translate-y-1/2">
+              {<FaDollarSign className="text-[#bebaba]" /> }
+            </button>
+
+            <input
+              type="number"
+              value={formData.budget}
+              onChange={(e) =>
+                setFormData((prev) => ({ ...prev, budget: e.target.value }))
+              }
+              placeholder={"Enter Budget Campaign"}
+              className="w-full bg-white pl-9 pr-4 text-black outline outline-1 outline-zinc-200 focus:outline-primary dark:text-white py-3 rounded-md"
+            />
+          </div>
+         
+        </div>
+        <button
+            className=" bg-sky-500 mt-4 justify-center w-full flex gap-2 items-center text-white font-medium py-3 px-4 rounded-md focus:outline-none focus:shadow-outline"
+            type="submit"
+            onClick={(e) => handleSearch(e)}
+            disabled={loading}
+          >
+            {" "}
+            Analyse
+          </button>
         <div className="flex items-center justify-between gap-2 mt-2 flex-wrap">
 
         <p className="text-textThin font-normal text-sm">Example: @cristiano</p>
