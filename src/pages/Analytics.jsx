@@ -18,6 +18,33 @@ const Analytics = () => {
   const [fieldType, setFieldType] = useState("contenturl"); // Default input
   const [loading, setLoading] = useState(false);
 
+  const formatRupiah = (value) => {
+    if (isNaN(value)) return ""; // Tangani NaN
+    return value.toLocaleString("id-ID");
+  };
+
+  const handleChangeBudget = (e) => {
+    const unformattedValue = e.target.value.replace(/\./g, "");
+    const parsedValue = parseInt(unformattedValue, 10);
+
+    if (!isNaN(parsedValue)) {
+      setFormData((prev) => ({
+        ...prev,
+        budget: parsedValue, // Simpan angka mentah
+      }));
+    } else if (e.target.value === "") {
+        setFormData((prev) => ({
+            ...prev,
+            budget: 0,
+        }));
+    }
+  };
+
+
+  // Fungsi untuk mendapatkan nilai asli (tanpa format)
+  const getRawValue = (formattedValue) => {
+    return formattedValue.replace(/\./g, "");
+  };
 
 
   const fetchUserData = async () => {
@@ -74,6 +101,7 @@ const Analytics = () => {
         params: {
           platform: formData?.platform,
           [fieldType]: formData[fieldType], // Hanya kirim parameter yang dipilih (username/contenturl)
+          budget: formData?.budget
 
         },
       });
@@ -87,15 +115,15 @@ const Analytics = () => {
       setLoading(false);
     } catch (error) {
       console.log(error);
-      if (error.response.status === 403) {
+      if (error.response?.status === 403) {
         return Swal.fire({
           icon: "error",
           title: "Error",
           text: "Not Enough Credit",
         });
       } else if (
-        error.response.status === 404 ||
-        error.response.status === 400
+        error.response?.status === 404 ||
+        error.response?.status === 400
       ) {
         return Swal.fire({
           icon: "error",
@@ -211,8 +239,10 @@ const Analytics = () => {
       <p className="font-normal text-sm text-textThin">
       Provide real-time performance data of campaigns, contents, or specific creator accounts.
         </p>
-        <div className="mt-6 font-normal text-textThin text-[15px] flex items-center gap-2">
-        <select
+        <div className="mt-6 font-normal text-textThin text-[15px] flex flex-col sm:flex-row items-center gap-2">
+        <label              className="w-full sm:w-1/2 bg-white p-2 text-black focus:outline-primary dark:text-white py-3 rounded-md"
+        >Content URL :</label>
+        {/* <select
               className="w-1/2 bg-white p-2 text-black outline outline-1 outline-zinc-200 focus:outline-primary dark:text-white py-3 rounded-md"
               value={fieldType}
         onChange={(e) => {
@@ -223,7 +253,7 @@ const Analytics = () => {
       >
         <option value="username">Username</option>
         <option value="contenturl">Content URL</option>
-      </select>
+      </select> */}
           <div className="relative w-full">
             <button className="absolute left-2 top-1/2 -translate-y-1/2">
               {fieldType === "username" ? <FaAt className="text-[#bebaba]" /> : <FaLink  className="text-[#bebaba]"/>}
@@ -249,20 +279,19 @@ const Analytics = () => {
             Analyse
           </button> */}
         </div>
-         <div className="mt-6 font-normal text-textThin text-[15px] flex items-center gap-2">
-<label              className="w-1/2 bg-white p-2 text-black focus:outline-primary dark:text-white py-3 rounded-md"
+         <div className="mt-6 font-normal text-textThin text-[15px] flex flex-col sm:flex-row items-center gap-2">
+<label              className="w-full sm:w-1/2 bg-white p-2 text-black focus:outline-primary dark:text-white py-3 rounded-md"
 >Budget :</label>
           <div className="relative w-full">
             <button className="absolute left-2 top-1/2 -translate-y-1/2">
-              {<FaDollarSign className="text-[#bebaba]" /> }
+            Rp.
             </button>
 
             <input
-              type="number"
-              value={formData.budget}
-              onChange={(e) =>
-                setFormData((prev) => ({ ...prev, budget: e.target.value }))
-              }
+              type="text"
+              value={formatRupiah(formData.budget)} // Format saat ditampilkan
+              onChange={handleChangeBudget}
+
               placeholder={"Enter Budget Campaign"}
               className="w-full bg-white pl-9 pr-4 text-black outline outline-1 outline-zinc-200 focus:outline-primary dark:text-white py-3 rounded-md"
             />
@@ -280,7 +309,7 @@ const Analytics = () => {
           </button>
         <div className="flex items-center justify-between gap-2 mt-2 flex-wrap">
 
-        <p className="text-textThin font-normal text-sm">Example: @cristiano</p>
+        {/* <p className="text-textThin font-normal text-sm">Example: @cristiano</p> */}
         <p className="text-textThin font-normal text-sm">Example: https://www.instagram.com/reels/C9JpcPKv89i/</p>
         </div>
 
