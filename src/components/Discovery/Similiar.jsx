@@ -344,16 +344,16 @@ const Similiar = ({
             !showFilter ? "hidden" : ""
           } card font-normal text-textThin text-[15px] mt-4`}
         >
-          <div className="form mt-6 items-center gap-4 grid grid-cols-2 md:grid-cols-4">
+          <div className="form mt-6 items-center gap-2 md:gap-4 gap-y-6 grid grid-cols-2 md:grid-cols-3">
             <div className="">
               <p className="font-normal text-textThin text-sm mb-2">
-                Creator Name
+                Creator Username
               </p>
               <FormControl sx={{ width: "100%" }} variant="outlined">
                 <OutlinedInput
                   id="outlined-adornment-creator-name"
                   className="py-2"
-                  placeholder="Creator Name"
+                  placeholder="Creator Username"
                   value={formData.creator_lookalikes}
                   onChange={(e) =>
                     handleInputChange("creator_lookalikes", e.target.value)
@@ -412,6 +412,7 @@ const Similiar = ({
                 )}
               />
             </div>
+
             <div className="">
               <p className="font-normal text-textThin text-sm mb-2">
                 Followers Range
@@ -439,41 +440,6 @@ const Similiar = ({
             </div>
             {/* <div className="">
               <p className="font-normal text-textThin text-sm mb-2">
-                Followers Range
-              </p>
-              <div className="flex items-center gap-2">
-                <input
-                  type="number"
-                  id="number-input"
-                  aria-describedby="helper-text-explanation"
-                  className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Min"
-                  value={formData.followers_min}
-                  onChange={(e) =>
-                    handleInputChange("followers_min", Number(e.target.value))
-                  }
-                  required
-                />
-                <FaMinus className="text-2xl" />
-                <input
-                  type="number"
-                  id="number-input"
-                  value={formData.followers_max}
-                  onChange={(e) =>
-                    handleInputChange("followers_max", Number(e.target.value))
-                  }
-                  aria-describedby="helper-text-explanation"
-                  className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Max"
-                  required
-                />
-              </div>
-            </div> */}
-          </div>
-
-          <div className="form mt-6 items-center gap-4 grid grid-cols-1 md:grid-cols-3">
-            <div className="">
-              <p className="font-normal text-textThin text-sm mb-2">
                 Creator Country
               </p>
               <Autocomplete
@@ -485,7 +451,7 @@ const Similiar = ({
                   <TextField {...params} label="Creator Country" />
                 )}
               />
-            </div>
+            </div> */}
 
             <div className="">
               <p className="font-normal text-textThin text-sm mb-2">
@@ -536,6 +502,43 @@ const Similiar = ({
                 )}
               />
             </div>
+          
+            {/* <div className="">
+              <p className="font-normal text-textThin text-sm mb-2">
+                Followers Range
+              </p>
+              <div className="flex items-center gap-2">
+                <input
+                  type="number"
+                  id="number-input"
+                  aria-describedby="helper-text-explanation"
+                  className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Min"
+                  value={formData.followers_min}
+                  onChange={(e) =>
+                    handleInputChange("followers_min", Number(e.target.value))
+                  }
+                  required
+                />
+                <FaMinus className="text-2xl" />
+                <input
+                  type="number"
+                  id="number-input"
+                  value={formData.followers_max}
+                  onChange={(e) =>
+                    handleInputChange("followers_max", Number(e.target.value))
+                  }
+                  aria-describedby="helper-text-explanation"
+                  className="bg-gray-50 border border-[#C4C4C4] text-textBold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Max"
+                  required
+                />
+              </div>
+            </div> */}
+          </div>
+
+          <div className="form mt-6 items-center gap-2 md:gap-4 gap-y-6 grid grid-cols-1 md:grid-cols-3">
+       
           </div>
           <div className="flex items-center justify-between mt-6">
             <button

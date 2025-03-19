@@ -152,28 +152,41 @@ const ResultAnalyser = ({ data, dataAnalyse, comparisonLength }) => {
                   {" "}
                   {"@" + dataAnalyse?.username || ""}
                 </p>
+               
                 <div className="flex items-center gap-2">
                   {" "}
+                  <span className="text-textThin text-xs font-medium">
+                  Other Platforms : {!dataAnalyse?.instagram && !dataAnalyse?.youtube && !dataAnalyse?.tiktok ? "~" : ""}
+                </span>
                   {dataAnalyse?.instagram && (
+                    <a   target="_blank"
+                    rel="noopener noreferrer" href={dataAnalyse?.instagram}>
                     <img
                       src="logo-instagram.png"
                       alt="Logo Instagram"
                       className="w-5 md:w-6"
                     />
+                    </a>
                   )}
                   {dataAnalyse?.youtube && (
+                     <a   target="_blank"
+                     rel="noopener noreferrer" href={dataAnalyse?.youtube}>
                     <img
                       src="logo-youtube.png"
                       alt="Logo youtube"
                       className="w-5 md:w-6"
                     />
+                     </a>
                   )}
                   {dataAnalyse?.tiktok && (
+                      <a   target="_blank"
+                      rel="noopener noreferrer" href={dataAnalyse?.tiktok}>
                     <img
                       src="logo-tiktok.png"
                       alt="Logo tiktok"
                       className="w-5 md:w-6"
                     />
+                     </a>
                   )}
                 </div>
                 <a

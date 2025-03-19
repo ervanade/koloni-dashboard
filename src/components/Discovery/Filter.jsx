@@ -451,7 +451,7 @@ const Filter = ({
             ))}
           </div>
 
-          <div className="form mt-6 items-center gap-4 grid grid-cols-2 md:grid-cols-4">
+          <div className="form mt-6 items-center gap-2 md:gap-4 grid grid-cols-2 md:grid-cols-4">
             <div className="">
               <div className="flex items-center gap-1 mb-2">
                 <p className="font-normal text-textThin text-sm">Topic</p>
@@ -605,7 +605,7 @@ const Filter = ({
             </div>
           </div>
 
-          <div className="creator-form p-6 border border-[#C4C4C4] rounded-md mt-6">
+          <div className="creator-form p-2 md:p-6 border border-[#C4C4C4] rounded-md mt-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1">
                 <h1 className="font-medium text-lg text-textBold">Creator</h1>
@@ -638,7 +638,7 @@ const Filter = ({
                 !showCreator ? "hidden" : ""
               } card font-normal text-textThin text-[15px] mt-4`}
             >
-              <div className="form mt-6 items-center gap-4 grid grid-cols-2 md:grid-cols-4">
+              <div className="form mt-6 items-center gap-2 md:gap-4 grid grid-cols-2 md:grid-cols-2">
                 <div className="">
                   <p className="font-normal text-textThin text-sm mb-2">
                     Followers Range
@@ -703,7 +703,7 @@ const Filter = ({
                   </div>
                 </div> */}
 
-                <div className="">
+                {/* <div className="">
                   <p className="font-normal text-textThin text-sm mb-2">
                     Average Likes
                   </p>
@@ -740,9 +740,9 @@ const Filter = ({
                       required
                     />
                   </div>
-                </div>
+                </div> */}
 
-                <div className="">
+                {/* <div className="">
                   <p className="font-normal text-textThin text-sm mb-2">
                     Creator Country
                   </p>
@@ -755,7 +755,7 @@ const Filter = ({
                       <TextField {...params} label="Creator Country" />
                     )}
                   />
-                </div>
+                </div> */}
 
                 <div className="">
                   <p className="font-normal text-textThin text-sm mb-2">
@@ -784,9 +784,11 @@ const Filter = ({
                     )}
                   />
                 </div>
+                
               </div>
 
-              <div className="form mt-6 items-center gap-4 grid grid-cols-2 md:grid-cols-4">
+              <div className="form mt-6 items-center gap-2 md:gap-4 grid grid-cols-2 md:grid-cols-3">
+             
                 <div className="">
                   <p className="font-normal text-textThin text-sm mb-2">
                     Creator Gender
@@ -808,6 +810,7 @@ const Filter = ({
                     )}
                   />
                 </div>
+                
 
                 <div className="">
                   <p className="font-normal text-textThin text-sm mb-2">
@@ -833,8 +836,9 @@ const Filter = ({
                     )}
                   />
                 </div>
+              
 
-                <div className="">
+                {/* <div className="">
                   <p className="font-normal text-textThin text-sm mb-2">
                     Is Verified
                   </p>
@@ -854,7 +858,7 @@ const Filter = ({
                       <TextField {...params} label="Is Verified" />
                     )}
                   />
-                </div>
+                </div> */}
 
                 <div className="">
                   <p className="font-normal text-textThin text-sm mb-2">
@@ -885,7 +889,7 @@ const Filter = ({
             </div>
           </div>
 
-          <div className="audience-form p-6 border border-[#C4C4C4] rounded-md mt-6">
+          <div className="audience-form p-2 md:p-6 border border-[#C4C4C4] rounded-md mt-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1">
                 <h1 className="font-medium text-lg text-textBold">Audience</h1>
@@ -919,7 +923,7 @@ const Filter = ({
                 !showAudience ? "hidden" : ""
               } card font-normal text-textThin text-[15px] mt-4`}
             >
-              <div className="form mt-6 items-center gap-4 grid grid-cols-2 md:grid-cols-4">
+              <div className="form mt-6 items-center gap-2 md:gap-4 grid grid-cols-2 md:grid-cols-3">
                 <div className="">
                   <p className="font-normal text-textThin text-sm mb-2">
                     Audience Gender
@@ -970,7 +974,7 @@ const Filter = ({
                   />
                 </div>
 
-                <div className="">
+                {/* <div className="">
                   <p className="font-normal text-textThin text-sm mb-2">
                     Audience Country
                   </p>
@@ -983,7 +987,7 @@ const Filter = ({
                       <TextField {...params} label="Audience Country" />
                     )}
                   />
-                </div>
+                </div> */}
 
                 <div className="">
                   <p className="font-normal text-textThin text-sm mb-2">
@@ -1016,7 +1020,7 @@ const Filter = ({
             </div>
           </div>
 
-          <div className="audience-form p-6 border border-[#C4C4C4] rounded-md mt-6">
+          <div className="audience-form p-2 md:p-6 border border-[#C4C4C4] rounded-md mt-6">
             <div className="flex items-center justify-between">
               <h1 className="font-medium text-lg text-textBold">Sort By</h1>
               {!showSort ? (

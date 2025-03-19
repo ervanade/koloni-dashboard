@@ -205,7 +205,7 @@ export const accountOptions = [
 export const ageOptions = [
   {
     label: 'Any',
-    value: null,
+    value: "0 - 100",
   },
   {
     label: '18 - 24',
@@ -232,12 +232,10 @@ export const ageOptions = [
 
 export const followersOptions = [
   { label: "Any", value: null },
-  { label: "1.000 - 10.000", value: "1000 - 10000" },
-  { label: "10.000 - 50.000", value: "10000 - 50000" },
-  { label: "50.000 - 500.000", value: "50000 - 500000" },
-  { label: "500.000 - 1.000.000", value: "500000 - 1000000" },
-  { label: "1.000.000 - 5.000.000", value: "1000000 - 5000000" },
-  { label: "> 5.000.000", value: "5000000 - null" },
+  { label: "1.000 - 9.999", value: "1000 - 9999" },
+  { label: "10.000 - 99.999", value: "10000 - 99999" },
+  { label: "100.000 - 999.999", value: "100000 - 999999" },
+  { label: "> 1.000.000", value: "1000000 - null" },
 ];
 
 
