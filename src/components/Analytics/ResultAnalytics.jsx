@@ -11,7 +11,7 @@ const ResultAnalytics = () => {
     <div className='w-full'>
       {
         data ? 
-        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
         <Card className="flex flex-col gap-2 border border-[#C4C4C4] p-4 px-6 rounded-md  ">
           <div className="rounded-full bg-[#EBEEF4] flex items-center justify-center w-9 h-9 ">
             <BiSolidLike className="text-sky-500" size={20} />

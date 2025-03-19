@@ -82,7 +82,7 @@ const Analytics = () => {
   const searchAnalytics = async () => {
     setLoading(true);
     Swal.fire({
-      title: "Search Analytics...",
+      title: "Search Brand Analytics...",
       text: "Please Wait Preparing Your Data...",
       allowOutsideClick: false,
       showConfirmButton: false,
@@ -107,8 +107,8 @@ const Analytics = () => {
       });
       setDataResult(response.data);
       Swal.fire(
-        "Success Get Analyse Profile!",
-        "Scroll Down To View Analyse Data",
+        "Success Get Brand Analytics!",
+        "Scroll Down To View Brand Analytics Data",
         "success"
       );
       fetchUserData();
