@@ -93,7 +93,7 @@ const Analytics = () => {
     try {
       const response = await axios({
         method: "get",
-        url: `${import.meta.env.VITE_APP_API_URL}/analyticstes`,
+        url: `${import.meta.env.VITE_APP_API_URL}/analytics`,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${user?.accessToken}`,
@@ -101,7 +101,7 @@ const Analytics = () => {
         params: {
           platform: formData?.platform,
           [fieldType]: formData[fieldType], // Hanya kirim parameter yang dipilih (username/contenturl)
-          budget: formData?.budget
+          // budget: formData?.budget
 
         },
       });
@@ -279,7 +279,7 @@ const Analytics = () => {
             Analyse
           </button> */}
         </div>
-         <div className="mt-6 font-normal text-textThin text-[15px] flex flex-col sm:flex-row items-center gap-2">
+         {/* <div className="mt-6 font-normal text-textThin text-[15px] flex flex-col sm:flex-row items-center gap-2">
 <label              className="w-full sm:w-1/2 bg-white p-2 text-black focus:outline-primary dark:text-white py-3 rounded-md"
 >Budget :</label>
           <div className="relative w-full">
@@ -297,7 +297,7 @@ const Analytics = () => {
             />
           </div>
          
-        </div>
+        </div> */}
         <button
             className=" bg-sky-500 mt-4 justify-center w-full flex gap-2 items-center text-white font-medium py-3 px-4 rounded-md focus:outline-none focus:shadow-outline"
             type="submit"
@@ -315,7 +315,10 @@ const Analytics = () => {
 
        
       </Card>
-      <ResultAnalytics />
+      {
+        dataResult &&   <ResultAnalytics dataResult={dataResult}/>
+      }
+    
     </div>
   );
 };

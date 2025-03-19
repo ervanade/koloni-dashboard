@@ -5,13 +5,13 @@ import { DataFormater } from '../../data/data';
 import { BiSolidComment, BiSolidLike } from 'react-icons/bi';
 import { FaChartBar, FaChartColumn, FaComment, FaEye, FaHeart, FaMoneyBill } from 'react-icons/fa6';
 
-const ResultAnalytics = () => {
-    const data = DataAnalytics.data.data
+const ResultAnalytics = ({dataResult}) => {
+    const data = dataResult?.data || DataAnalytics.data.data
   return (
     <div className='w-full'>
       {
         data ? 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-6">
         <Card className="flex flex-col gap-2 border border-[#C4C4C4] p-4 px-6 rounded-md  ">
           <div className="rounded-full bg-[#EBEEF4] flex items-center justify-center w-9 h-9 ">
             <BiSolidLike className="text-sky-500" size={20} />
@@ -20,9 +20,7 @@ const ResultAnalytics = () => {
           TOTAL INFLUENCER
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
-            {DataFormater(
-              data?.user_performance?.avg_likes_per_post
-            ) || 1}
+            {1}
           </p>
         </Card>
 
@@ -49,7 +47,7 @@ const ResultAnalytics = () => {
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
           {DataFormater(
-             data[0].engagement?.like_count
+             data[0].engagement?.like_count + data[0].engagement?.comment_count
             ) || 0}
           </p>
         </Card>
@@ -76,13 +74,13 @@ const ResultAnalytics = () => {
           ENGAGEMENT RATE
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
-          {DataFormater(
-             data[0].engagement?.view_count / data[0].engagement?.like_count
-            ) || 0}
+          {
+             (data[0].engagement?.view_count / data[0].engagement?.like_count
+          ).toFixed(2) || 0}
           </p>
         </Card>
 
-        <Card className="flex flex-col gap-2 border border-[#C4C4C4] p-4 px-6 rounded-md  ">
+        {/* <Card className="flex flex-col gap-2 border border-[#C4C4C4] p-4 px-6 rounded-md  ">
           <div className="rounded-full bg-[#EBEEF4] flex items-center justify-center w-9 h-9 ">
             <FaMoneyBill className="text-sky-500" size={20} />
           </div>
@@ -120,7 +118,7 @@ const ResultAnalytics = () => {
             {DataFormater(data?.user_performance?.avg_reels) ||
               0}
           </p>
-        </Card>
+        </Card> */}
       </div>
             : ""
       }
@@ -129,26 +127,43 @@ const ResultAnalytics = () => {
               <div className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 gap-4 mt-4">
 
               <Card className="!px-4 !py-4">
-              {data[0].url && (
+               
+                {data[0].url && (
                           <a
                             href={data[0].url}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
                             <img
-                              src="/logo-instagram.png"
+                              src={`${data[0].platform == "Tiktok" ? "/logo-tiktok.png" : data[0].platform == "Youtube" ? "/logo-youtube.png" : "/logo-instagram.png"}`}
                               alt="Logo Instagram"
                               className="w-5 h-5"
                             />
                           </a>
                         )}
+             
                           <div className="img w-full h-54 flex justify-center items-center">
                           <img
-                            src={data[0].media_url}
+                            src={data[0].thumbnail_url}
+                            crossOrigin="anonymous"
                             className="w-full object-cover max-h-54"
                             alt=""
+                            referrerPolicy="no-referrer"
+
                           />
                         </div>
+                        <div className="flex items-center gap-1">
+                   <div className="rounded-full w-12 md:w-16 overflow-hidden">
+                <img
+                  src={data[0]?.profile?.image_url || "/cristiano.jpeg"}
+                  alt=""
+                  className="w-full"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <span className='font-bold'>@ {data[0]?.profile?.platform_username}</span>
+              
+                </div>
          <h2 className="font-bold text-textBold text-base mt-2 line-clamp-3 min-h-19 overflow-hidden">
          {data[0].title}
           </h2>
