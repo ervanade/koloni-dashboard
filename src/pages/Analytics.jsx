@@ -128,13 +128,13 @@ const Analytics = () => {
         return Swal.fire({
           icon: "error",
           title: "Error Not Found",
-          text: "Influencers Not Found",
+          text: "Content Url Not Found",
         });
       } else {
         Swal.fire({
           icon: "error",
           title: "Error",
-          text: "Failed Search Analytics",
+          text: "Failed Search Brand Analytics",
         });
       }
 
