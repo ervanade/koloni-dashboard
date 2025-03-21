@@ -324,7 +324,7 @@ const Profile = () => {
                     className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
                   "border-red-500" 
                rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
-                    id="jumlah_barang_dikirim"
+                    id="email"
                     type="email"
                     disabled
                     value={formData.email}
@@ -395,7 +395,7 @@ const Profile = () => {
                     className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
                   "border-red-500" 
                rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
-                    id="jumlah_barang_dikirim"
+                    id="first_name"
                     type="text"
                     placeholder="FirstName"
                     required
@@ -421,7 +421,7 @@ const Profile = () => {
                     className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
                   "border-red-500" 
                rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
-                    id="jumlah_barang_dikirim"
+                    id="last_name"
                     type="text"
                     placeholder="LastName"
                     // required

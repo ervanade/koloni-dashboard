@@ -1,12 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '../Card/Card'
 import DataAnalytics from "../../data/analytics.json";
 import { DataFormater } from '../../data/data';
 import { BiSolidComment, BiSolidLike } from 'react-icons/bi';
 import { FaChartBar, FaChartColumn, FaComment, FaEye, FaHeart, FaMoneyBill, FaUser } from 'react-icons/fa6';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const ResultAnalytics = ({dataResult}) => {
     const data = dataResult?.data || DataAnalytics.data.data
+    const user = useSelector((a) => a.auth.user);
+
+    const [thumbnailBase64, setThumbnailBase64] = useState(null);
+    const [profileBase64, setProfileBase64] = useState(null);
+
+    useEffect(() => {
+        const fetchBase64 = async (url, setter) => {
+            if (!url) return;
+            try {
+                const response = await axios.get(`${import.meta.env.VITE_APP_API_URL}/content/get`, {
+                    params: { image_url: url }, // Menggunakan image_url sebagai params
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${user?.accessToken}`,
+                    },
+                });
+                        const dataURI = `data:image/jpeg;base64,${response.data}`;
+
+                setter(dataURI);
+            } catch (error) {
+                console.error('Error fetching base64:', error);
+                setter("/user-default.png");
+            }
+        };
+
+        fetchBase64(data[0]?.thumbnail_url, setThumbnailBase64);
+        fetchBase64(data[0]?.profile?.image_url, setProfileBase64);
+    }, [data]);
+  
 
   return (
     <div className='w-full'>
@@ -21,14 +52,14 @@ const ResultAnalytics = ({dataResult}) => {
           INFLUENCER
           </h2>
           <div className="flex items-center sm:flex-row flex-col gap-3 md:gap-4 ">
-              <div className="rounded-full w-12 md:w-16 overflow-hidden">
+              <div className="rounded-full w-12 md:w-14 overflow-hidden">
                 <img
                  onError={({ currentTarget }) => {
                   currentTarget.onerror = null; // prevents looping
                   currentTarget.src = "/user-default.png";
                 }}
-                  src={data[0]?.profile?.image_url + "?not-from-cache-please" || "/user-default.png"}
-                  alt=""
+                src={profileBase64 || "/user-default.png"}
+                alt=""
                   className="w-full"
                   referrerPolicy="no-referrer"
                 />
@@ -148,7 +179,7 @@ const ResultAnalytics = ({dataResult}) => {
 
               <Card className="!px-4 !py-4">
                
-                {data[0].url && (
+                {/* {data[0].url && (
                           <a
                             href={data[0].url}
                             target="_blank"
@@ -160,23 +191,43 @@ const ResultAnalytics = ({dataResult}) => {
                               className="w-5 h-5"
                             />
                           </a>
-                        )}
-             
-                          <div className="img w-full h-54 flex justify-center items-center">
+                        )} */}
+              <div className="grid md:grid-cols-2 gap-4 border border-slate-300 p-4">
+                          <div className="img w-full flex justify-center items-center my-4">
+                          <a
+                            href={data[0].url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
                           <img
-                            src={data[0].thumbnail_url + + "?not-from-cache-please" || "/user-default.png"}
-                            crossOrigin="anonymous"
-                            className="w-full object-cover max-h-54"
+                    src={thumbnailBase64 || "/user-default.png"}
+                    crossOrigin="anonymous"
+                            className="w-full object-cover rounded-md aspect-square"
                             alt=""
                             referrerPolicy="no-referrer"
 
                           />
+                          </a>
                         </div>
-                        <div className="flex items-center gap-1">
+                        <div className='flex flex-col py-4 md:py-8'>
+                        <div className="flex items-center justify-between gap-2 flex-wrap md:hidden">
+                    <div className="flex items-center gap-1 mt-2">
+                      <FaHeart className="text-red-500" />
+                      <span>{data[0].engagement.like_count.toLocaleString("id-ID")}</span>
+                    </div>
+                    <div className="flex items-center gap-1 mt-2">
+                      <FaComment className="text-blue-500" />
+                      <span>{data[0].engagement.comment_count.toLocaleString("id-ID")}</span>
+                    </div>
+                  </div>
+                  <a href={data[0]?.profile?.url || "https://instagram.com"} target="_blank"
+                            rel="noopener noreferrer" cla>
+
+                        <div className="flex items-center gap-1 my-2">
                    <div className="rounded-full w-8 md:w-10 overflow-hidden">
                 <img
-                  src={data[0]?.profile?.image_url + "?not-from-cache-please"  || "/user-default.png"}
-                  onError={({ currentTarget }) => {
+                src={profileBase64 || "/user-default.png"}
+                onError={({ currentTarget }) => {
                     currentTarget.onerror = null; // prevents looping
                     currentTarget.src = "/user-default.png";
                   }}
@@ -188,11 +239,12 @@ const ResultAnalytics = ({dataResult}) => {
               <span className='font-bold'>@ {data[0]?.profile?.platform_username}</span>
               
                 </div>
-         <h2 className="font-bold text-textBold text-base mt-2 line-clamp-3 min-h-19 overflow-hidden">
+                </a>
+
+         <h2 className="font-medium text-textBold text-sm  mt-2 min-h-19 overflow-hidden">
          {data[0].title}
           </h2>
-         
-                          <div className="flex items-center justify-between gap-2 flex-wrap">
+          <div className="items-center justify-between gap-2 flex-wrap hidden md:flex">
                     <div className="flex items-center gap-1 mt-2">
                       <FaHeart className="text-red-500" />
                       <span>{data[0].engagement.like_count.toLocaleString("id-ID")}</span>
@@ -202,6 +254,9 @@ const ResultAnalytics = ({dataResult}) => {
                       <span>{data[0].engagement.comment_count.toLocaleString("id-ID")}</span>
                     </div>
                   </div>
+          </div>
+          </div>
+                          
         </Card>
 
        
@@ -229,7 +284,7 @@ const ResultAnalytics = ({dataResult}) => {
                             alt=""
                           />
                         </div>
-         <h2 className="font-bold text-textBold text-base mt-2 line-clamp-3 min-h-19 overflow-hidden">
+         <h2 className="font-bold text-textBold text-base mt-2 min-h-19 overflow-hidden">
          {item?.title}
           </h2>
          
@@ -275,7 +330,7 @@ const ResultAnalytics = ({dataResult}) => {
                   {data[0]?.mentions
                     ?.map((item, index) => (
                       <p className="text-[#1E3A8A]" key={index}>
-                        {"@" + item}{" "}
+                        {"@" + item.platform_username}{" "}
                         <span
                           className={`${
                             index == 9 ? "hidden" : ""
