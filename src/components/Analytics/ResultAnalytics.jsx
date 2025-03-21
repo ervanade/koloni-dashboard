@@ -330,7 +330,7 @@ const ResultAnalytics = ({dataResult}) => {
                   {data[0]?.mentions
                     ?.map((item, index) => (
                       <p className="text-[#1E3A8A]" key={index}>
-                        {"@" + item.platform_username}{" "}
+                        {"@" + item?.platform_username}{" "}
                         <span
                           className={`${
                             index == 9 ? "hidden" : ""
