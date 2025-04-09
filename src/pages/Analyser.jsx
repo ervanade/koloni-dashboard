@@ -147,7 +147,7 @@ const Analyser = () => {
           text: "Influencers Not Found",
         });
       } else {
-        Swal.fire({
+        return Swal.fire({
           icon: "error",
           title: "Error",
           text: "Failed Search Analyse Profile",
