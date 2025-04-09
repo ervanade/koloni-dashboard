@@ -195,8 +195,8 @@ const Similiar = ({
           text: "Not Enough Credit",
         });
       } else if (
-        error.response.status === 404 ||
-        error.response.status === 400
+        error?.response?.status === 404 ||
+        error?.response?.status === 400
       ) {
         return Swal.fire({
           icon: "error",

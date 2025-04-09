@@ -73,7 +73,7 @@ const AddComparison = ({
       setLoading(false); // Matikan loading state
     } catch (error) {
       console.error(error);
-      if (error.response.status === 403) {
+      if (error?.response?.status === 403) {
         return Swal.fire({
           icon: "error",
           title: "Error",

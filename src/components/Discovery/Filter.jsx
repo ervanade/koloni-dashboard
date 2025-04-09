@@ -274,15 +274,15 @@ const Filter = ({
       setLoading(false);
     } catch (error) {
       console.log(error);
-      if (error.response.status === 403) {
+      if (error?.response?.status === 403) {
         return Swal.fire({
           icon: "error",
           title: "Error",
           text: "Not Enough Credit",
         });
       } else if (
-        error.response.status === 404 ||
-        error.response.status === 400
+        error?.response?.status === 404 ||
+        error?.response?.status === 400
       ) {
         return Swal.fire({
           icon: "error",

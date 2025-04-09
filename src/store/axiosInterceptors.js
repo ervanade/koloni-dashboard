@@ -23,7 +23,7 @@ axios.interceptors.response.use(
     (error) => {
         if (
             error.response &&
-            error.response.status === 401 
+            error?.response?.status === 401 
             &&
             (
                 error?.response?.data?.detail === "Token time expired: Signature has expired."
