@@ -39,6 +39,7 @@ const Faq = () => {
           </p>
         </div>
       </div>
+      {/* faq card */}
 
       <Card className="mt-6">
         <h1 className="font-semibold text-lg mb-4">Discovery</h1>
