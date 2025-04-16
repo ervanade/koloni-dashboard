@@ -347,9 +347,9 @@ const Analyser = () => {
         )}
       </div>
       <Card className="mt-6">
-        <h1 className="font-medium text-base mb-1">Instagram Profile Analyser</h1>
+        <h1 className="font-medium text-base mb-1">{formData.platform || "Instagram"} Profile Analyser</h1>
         <p className="font-normal text-sm text-textThin">
-          Analyser Instagram account for better performance.
+          Analyser {formData.platform || "Instagram"} account for better performance.
         </p>
         <div className="mt-6 font-normal text-textThin text-[15px] flex items-center gap-2">
           <div className="relative w-full">
