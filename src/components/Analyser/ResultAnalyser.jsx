@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaCheckCircle, FaEye, FaSearch } from "react-icons/fa";
+import { FaCheckCircle, FaEye, FaQuestion, FaSearch } from "react-icons/fa";
 import { FaAt, FaComment, FaHeart } from "react-icons/fa6";
 import {
   BiCheckCircle,
@@ -35,6 +35,7 @@ import {
   topSimiliar,
 } from "../../data/dataAnalyser";
 import DataRaffi from "../../data/nagita.json";
+import { Tooltip } from "@mui/material";
 const ResultAnalyser = ({ data, dataAnalyse, comparisonLength }) => {
   const columnColors = {
     series1: "#826af9",
@@ -283,7 +284,25 @@ const ResultAnalyser = ({ data, dataAnalyse, comparisonLength }) => {
 
             {dataAnalyse?.user_authenticity?.length > 0 && (
               <div className="flex flex-col gap-2 border border-[#C4C4C4] p-4 rounded-md col-span-2 xl:col-span-1">
-                <h1 className="font-bold text-textBold ">User Authenticity </h1>
+                <div className="flex items-center justify-between">
+                <h1 className="font-bold text-textBold ">User Authenticity </h1> 
+                <Tooltip title={
+    <>
+      Mass Follower: Akun ini mengikuti banyak pengguna lain, yang mungkin menunjukkan upaya untuk mendapatkan pengikut.<br />
+      Suspicious Account: Akun mencurigakan.<br />
+      Influencer Account: Akun ini memiliki pengaruh yang signifikan terhadap audiens tertentu.<br />
+      Real Account: Akun asli individu tertentu.
+    </>
+  }
+>
+                  <div className="p-[2px] bg-sky-500 cursor-pointer rounded-full flex">
+                    {" "}
+                    <FaQuestion className="text-[12px] text-white" />
+                  </div>
+                </Tooltip>
+                </div>
+               
+               
                 <PieChart
                   slotProps={{
                     legend: {
