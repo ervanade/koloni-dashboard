@@ -606,38 +606,43 @@ const ResultAnalyser = ({ data, dataAnalyse, comparisonLength }) => {
               </div>
             </div>
           )}
-          <div className="flex flex-col border border-[#C4C4C4] p-4 rounded-md  overflow-hidden mt-6">
-            <h1 className="font-bold text-textBold ">Top Contents </h1>
-            <div className="scroll items-center mt-6 !overflow-x-auto w-full whitespace-nowrap pb-2">
-              {dataAnalyse?.top_contents?.slice(0, 10)?.map((item, index) => (
-                <div className="w-54 inline-block me-4" key={index}>
-                  <a
-                    href={item.content_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <div className="img w-full h-54 flex justify-center items-center">
-                      <img
-                        src={item.image_url}
-                        className="w-full object-cover max-h-54"
-                        alt=""
-                      />
-                    </div>
-                  </a>
-                  <div className="flex items-center justify-between gap-2 flex-wrap">
-                    <div className="flex items-center gap-1 mt-2">
-                      <FaHeart className="text-red-500" />
-                      <span>{item.like.toLocaleString("id-ID")}</span>
-                    </div>
-                    <div className="flex items-center gap-1 mt-2">
-                      <FaComment className="text-blue-500" />
-                      <span>{item.comment.toLocaleString("id-ID")}</span>
+          {
+            dataAnalyse?.top_contents?.length > 0 && (
+              <div className="flex flex-col border border-[#C4C4C4] p-4 rounded-md  overflow-hidden mt-6">
+              <h1 className="font-bold text-textBold ">Top Contents </h1>
+              <div className="scroll items-center mt-6 !overflow-x-auto w-full whitespace-nowrap pb-2">
+                {dataAnalyse?.top_contents?.slice(0, 10)?.map((item, index) => (
+                  <div className="w-54 inline-block me-4" key={index}>
+                    <a
+                      href={item.content_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <div className="img w-full h-54 flex justify-center items-center">
+                        <img
+                          src={item.image_url}
+                          className="w-full object-cover max-h-54"
+                          alt=""
+                        />
+                      </div>
+                    </a>
+                    <div className="flex items-center justify-between gap-2 flex-wrap">
+                      <div className="flex items-center gap-1 mt-2">
+                        <FaHeart className="text-red-500" />
+                        <span>{item.like.toLocaleString("id-ID")}</span>
+                      </div>
+                      <div className="flex items-center gap-1 mt-2">
+                        <FaComment className="text-blue-500" />
+                        <span>{item.comment.toLocaleString("id-ID")}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+            )
+          }
+         
           {dataAnalyse?.look_alies_content_creators?.length > 0 && (
             <div className="flex flex-col border border-[#C4C4C4] p-4 rounded-md overflow-hidden mt-6">
               <h1 className="font-bold text-textBold ">
