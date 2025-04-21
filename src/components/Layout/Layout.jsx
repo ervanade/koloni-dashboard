@@ -55,7 +55,7 @@ const Layout = () => {
       </div>
       <section className="footer bg-white text-[#495565] py-2 sm:py-4 border-t border-slate-200 ">
 
-<p className="text-center text-sm">Copyright 2025 - Media Lab</p>
+<p className="text-center text-sm">Copyright 2025 - Media-Lab</p>
 </section>
       {/* <!-- ===== Page Wrapper End ===== --> */}
     </div>
