@@ -94,7 +94,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
       </div>
       {/* <!-- SIDEBAR HEADER --> */}
 
-      <div className="no-scrollbar flex flex-col overflow-y-auto duration-75 ease-linear">
+      <div className="no-scrollbar flex flex-col overflow-y-auto duration-0 ease-linear">
         {/* <!-- Sidebar Menu --> */}
         <nav className=" py-4 px-4 ">
           {/* <!-- Menu Group --> */}
@@ -108,7 +108,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               <li>
                 <NavLink
                   to="/"
-                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-75 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-0 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
                     (pathname === "/" || pathname.includes("dashboard")) &&
                     "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
                   }`}
@@ -121,7 +121,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               <li>
                 <NavLink
                   to="/discovery"
-                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-75 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-0 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
                     (pathname === "/discovery" ||
                       pathname.includes("discovery")) &&
                     "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
@@ -135,7 +135,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               <li>
                 <NavLink
                   to="/analyser"
-                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-75 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-0 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
                     (pathname === "/analyser" ||
                       pathname.includes("analyser")) &&
                     "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
@@ -149,7 +149,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               {/* <li>
                 <NavLink
                   to="/analytics"
-                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-75 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-0 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
                     (pathname === "/analytics" ||
                       pathname.includes("analytics")) &&
                     "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
@@ -163,7 +163,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               <li>
                 <NavLink
                   to="/faq"
-                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-75 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-0 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
                     (pathname === "/faq" || pathname.includes("faq")) &&
                     "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
                   }`}
@@ -176,7 +176,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               {/* <li>
                 <NavLink
                   to="/history"
-                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-75 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                  className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-0 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
                     (pathname === "/history" || pathname.includes("history")) &&
                     "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
                   }`}
@@ -198,7 +198,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   <li>
                     <NavLink
                       to="/users"
-                      className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-75 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                      className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-0 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
                         (pathname === "/users" || pathname.includes("users")) &&
                         "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
                       }`}
@@ -210,7 +210,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   <li>
                     <NavLink
                       to="/logs"
-                      className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-75 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                      className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-0 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
                         (pathname === "/logs" || pathname.includes("logs")) &&
                         "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
                       }`}

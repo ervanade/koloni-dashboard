@@ -45,11 +45,18 @@ const Layout = () => {
             <div className="mx-auto px-4 md:px-0  py-4 md:py-6 2xl:py-10">
               <Outlet />
             </div>
+          
           </main>
+          
           {/* <!-- ===== Main Content End ===== --> */}
         </div>
+        
         {/* <!-- ===== Content Area End ===== --> */}
       </div>
+      <section className="footer bg-white text-[#495565] py-2 sm:py-4 border-t border-slate-200 ">
+
+<p className="text-center text-sm">Copyright 2025 - Media Lab</p>
+</section>
       {/* <!-- ===== Page Wrapper End ===== --> */}
     </div>
   );

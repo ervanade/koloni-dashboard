@@ -347,7 +347,7 @@ const Similiar = ({
           <div className="form mt-6 items-center gap-2 md:gap-4 gap-y-6 grid grid-cols-2 md:grid-cols-3">
             <div className="">
               <p className="font-normal text-textThin text-sm mb-2">
-                Creator Username
+                Creator Username <span className="text-sm text-red-500">*</span>
               </p>
               <FormControl sx={{ width: "100%" }} variant="outlined">
                 <OutlinedInput
