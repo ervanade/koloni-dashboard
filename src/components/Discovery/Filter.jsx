@@ -609,7 +609,7 @@ const Filter = ({
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1">
                 <h1 className="font-medium text-lg text-textBold">Creator</h1>
-                <Tooltip title="Pilih jenis kreator berdasarkan ukuran dan jenis konten mereka, misalnya jumlah pengikut, lokasu, usia, dll.">
+                <Tooltip title="Pilih jenis kreator berdasarkan ukuran dan jenis konten mereka, misalnya jumlah pengikut, lokasi, usia, dll.">
                   <div className="p-[2px] bg-sky-500 cursor-pointer rounded-full">
                     {" "}
                     <FaQuestion className="text-[10px] text-white" />
