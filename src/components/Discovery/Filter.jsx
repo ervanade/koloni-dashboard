@@ -48,7 +48,7 @@ const Filter = ({
   dataCredits,
   setActiveTab,
 }) => {
-  const [formData, setFormData] = useState({
+  const defaultFormData = {
     platform: "INSTAGRAM",
     audience_age_max: null,
     audience_age_min: null,
@@ -74,7 +74,9 @@ const Filter = ({
     discovery_hashtag_value: [""],
     discovery_keyword_value: [""],
     discovery_topic_value: [""],
-  });
+  };
+
+  const [formData, setFormData] = useState(defaultFormData);
   const [showCreator, setShowCreator] = useState(true);
   const [showAudience, setShowAudience] = useState(false);
   const [showSort, setShowSort] = useState(true);
@@ -165,6 +167,19 @@ const Filter = ({
     //   })
   };
 
+  const getDefaultSortBy = (platform) => {
+    switch (platform) {
+      case "INSTAGRAM":
+        return "REELS_VIEWS";
+      case "TIKTOK":
+        return "AVERAGE_VIEWS";
+      case "YOUTUBE":
+        return "AVERAGE_VIEWS";
+      default:
+        return "REELS_VIEWS"; // Sebagai fallback
+    }
+  };
+
   const handleInputChange = (field, value) => {
     if (field === "creator_age" || field === "audience_age") {
       const isCreator = field === "creator_age";
@@ -222,14 +237,21 @@ const Filter = ({
         }));
       }
     } else if (field === "platform") {
-      setFormData((prev) => ({
-        ...prev,
+      // Reset form ke nilai default saat platform berubah
+      setFormData({
+        ...defaultFormData,
         platform: value,
+        // Atur ulang sorting_by sesuai platform yang baru dipilih
+        sorting_by: getDefaultSortBy(value),
         creator_location_name:
-          value === "INSTAGRAM" ? prev.creator_location_name : "Indonesia",
+          value === "INSTAGRAM"
+            ? defaultFormData.creator_location_name
+            : "Indonesia",
         audience_location_name:
-          value === "INSTAGRAM" ? prev.audience_location_name : "Indonesia",
-      }));
+          value === "INSTAGRAM"
+            ? defaultFormData.audience_location_name
+            : "Indonesia",
+      });
     } else {
       setFormData((prev) => ({
         ...prev,
@@ -341,18 +363,19 @@ const Filter = ({
 
       return;
     }
-    if (
-      !formData.discovery_interest_value ||
-      formData.discovery_interest_value.length === 0 ||
-      formData.discovery_interest_value[0] === "" ||
-      formData.discovery_interest_value[0] === ""
-    ) {
-      Swal.fire({
-        icon: "warning",
-        title: "Interest Belum Diisi",
-        text: "Silakan isi interest terlebih dahulu sebelum mencari creator.",
-      });
-      return; // Stop eksekusi jika interest belum diisi
+    if (formData.platform === "INSTAGRAM") {
+      if (
+        !formData.discovery_interest_value ||
+        formData.discovery_interest_value.length === 0 ||
+        formData.discovery_interest_value[0] === ""
+      ) {
+        Swal.fire({
+          icon: "warning",
+          title: "Interest Belum Diisi",
+          text: "Silakan isi interest terlebih dahulu sebelum mencari creator.",
+        });
+        return; // Stop eksekusi jika platform Instagram dan interest belum diisi
+      }
     }
     return Swal.fire({
       title: "Are you sure?",
@@ -403,6 +426,192 @@ const Filter = ({
     }
   }, [page]); // Panggil fetchData setiap kali halaman berubah
 
+  const renderSortByOptions = () => {
+    switch (formData.platform) {
+      case "INSTAGRAM":
+        return (
+          <div className="flex items-center gap-4 flex-wrap">
+            <button
+              className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${
+                formData.sorting_by === "REELS_VIEWS"
+                  ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold "
+                  : ""
+              } rounded-full px-6 py-2 shadow-sm flex items-center`}
+              onClick={() => handleInputChange("sorting_by", "REELS_VIEWS")}
+            >
+              <p
+                className={`${
+                  formData.sorting_by === "REELS_VIEWS"
+                    ? "font-bold text-blue-500"
+                    : "font-medium"
+                }`}
+              >
+                Instagram Reels View
+              </p>
+            </button>
+            <button
+              className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${
+                formData.sorting_by === "ENGAGEMENT_RATE"
+                  ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold "
+                  : ""
+              } rounded-full px-6 py-2 shadow-sm flex items-center`}
+              onClick={() => handleInputChange("sorting_by", "ENGAGEMENT_RATE")}
+            >
+              <p
+                className={`${
+                  formData.sorting_by === "ENGAGEMENT_RATE"
+                    ? "font-bold text-blue-500"
+                    : "font-medium"
+                }`}
+              >
+                Engagement Rate
+              </p>
+            </button>
+            <button
+              className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${
+                formData.sorting_by === "FOLLOWER_COUNT"
+                  ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold "
+                  : ""
+              } rounded-full px-6 py-2 shadow-sm flex items-center`}
+              onClick={() => handleInputChange("sorting_by", "FOLLOWER_COUNT")}
+            >
+              <p
+                className={`${
+                  formData.sorting_by === "FOLLOWER_COUNT"
+                    ? "font-bold text-blue-500"
+                    : "font-medium"
+                }`}
+              >
+                Followers
+              </p>
+            </button>
+          </div>
+        );
+      case "TIKTOK":
+        return (
+          <div className="flex items-center gap-4 flex-wrap">
+            <button
+              className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${
+                formData.sorting_by === "AVERAGE_VIEWS"
+                  ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold "
+                  : ""
+              } rounded-full px-6 py-2 shadow-sm flex items-center`}
+              onClick={() => handleInputChange("sorting_by", "AVERAGE_VIEWS")}
+            >
+              <p
+                className={`${
+                  formData.sorting_by === "AVERAGE_VIEWS"
+                    ? "font-bold text-blue-500"
+                    : "font-medium"
+                }`}
+              >
+                Average Views
+              </p>
+            </button>
+            <button
+              className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${
+                formData.sorting_by === "ENGAGEMENT_RATE"
+                  ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold "
+                  : ""
+              } rounded-full px-6 py-2 shadow-sm flex items-center`}
+              onClick={() => handleInputChange("sorting_by", "ENGAGEMENT_RATE")}
+            >
+              <p
+                className={`${
+                  formData.sorting_by === "ENGAGEMENT_RATE"
+                    ? "font-bold text-blue-500"
+                    : "font-medium"
+                }`}
+              >
+                Engagement Rate
+              </p>
+            </button>
+            <button
+              className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${
+                formData.sorting_by === "FOLLOWER_COUNT"
+                  ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold "
+                  : ""
+              } rounded-full px-6 py-2 shadow-sm flex items-center`}
+              onClick={() => handleInputChange("sorting_by", "FOLLOWER_COUNT")}
+            >
+              <p
+                className={`${
+                  formData.sorting_by === "FOLLOWER_COUNT"
+                    ? "font-bold text-blue-500"
+                    : "font-medium"
+                }`}
+              >
+                Followers
+              </p>
+            </button>
+          </div>
+        );
+      case "YOUTUBE":
+        return (
+          <div className="flex items-center gap-4 flex-wrap">
+            <button
+              className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${
+                formData.sorting_by === "AVERAGE_VIEWS"
+                  ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold "
+                  : ""
+              } rounded-full px-6 py-2 shadow-sm flex items-center`}
+              onClick={() => handleInputChange("sorting_by", "AVERAGE_VIEWS")}
+            >
+              <p
+                className={`${
+                  formData.sorting_by === "AVERAGE_VIEWS"
+                    ? "font-bold text-blue-500"
+                    : "font-medium"
+                }`}
+              >
+                Average Views
+              </p>
+            </button>
+            <button
+              className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${
+                formData.sorting_by === "ENGAGEMENT_RATE"
+                  ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold "
+                  : ""
+              } rounded-full px-6 py-2 shadow-sm flex items-center`}
+              onClick={() => handleInputChange("sorting_by", "ENGAGEMENT_RATE")}
+            >
+              <p
+                className={`${
+                  formData.sorting_by === "ENGAGEMENT_RATE"
+                    ? "font-bold text-blue-500"
+                    : "font-medium"
+                }`}
+              >
+                Engagement Rate
+              </p>
+            </button>
+            <button
+              className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${
+                formData.sorting_by === "SUBSCRIBER_COUNT"
+                  ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold "
+                  : ""
+              } rounded-full px-6 py-2 shadow-sm flex items-center`}
+              onClick={() =>
+                handleInputChange("sorting_by", "SUBSCRIBER_COUNT")
+              }
+            >
+              <p
+                className={`${
+                  formData.sorting_by === "SUBSCRIBER_COUNT"
+                    ? "font-bold text-blue-500"
+                    : "font-medium"
+                }`}
+              >
+                Subscribers
+              </p>
+            </button>
+          </div>
+        );
+      default:
+        return null; // Atau tampilan default jika platform tidak dikenali
+    }
+  };
+
   return (
     <div>
       <Card className="mt-6">
@@ -451,7 +660,11 @@ const Filter = ({
             ))}
           </div>
 
-          <div className="form mt-6 items-center gap-2 md:gap-4 grid grid-cols-2 md:grid-cols-4">
+          <div
+            className={`form mt-6 items-center gap-2 md:gap-4 grid grid-cols-2  ${
+              formData?.platform === "INSTAGRAM" ? "md:grid-cols-4" : ""
+            }`}
+          >
             <div className="">
               <div className="flex items-center gap-1 mb-2">
                 <p className="font-normal text-textThin text-sm">Topic</p>
@@ -501,39 +714,42 @@ const Filter = ({
               />
             </div>
 
-            <div className="">
-              <div className="flex items-center gap-1 mb-2">
-                <p className="font-normal text-textThin text-sm">Hashtag</p>
-                <Tooltip title="Gunakan hashtag populer yang sering digunakan oleh influencer, misalnya #fitness atau #travel, untuk menemukan konten yang sesuai.">
-                  <div className="p-[2px] bg-sky-500 cursor-pointer rounded-full">
-                    {" "}
-                    <FaQuestion className="text-[10px] text-white" />
-                  </div>
-                </Tooltip>
+            {formData?.platform === "INSTAGRAM" && (
+              <div className="">
+                <div className="flex items-center gap-1 mb-2">
+                  <p className="font-normal text-textThin text-sm">Hashtag</p>
+                  <Tooltip title="Gunakan hashtag populer yang sering digunakan oleh influencer, misalnya #fitness atau #travel, untuk menemukan konten yang sesuai.">
+                    <div className="p-[2px] bg-sky-500 cursor-pointer rounded-full">
+                      {" "}
+                      <FaQuestion className="text-[10px] text-white" />
+                    </div>
+                  </Tooltip>
+                </div>
+                <FormControl sx={{ width: "100%" }} variant="outlined">
+                  <OutlinedInput
+                    id="outlined-adornment-hashtag"
+                    className="py-2"
+                    placeholder="Hashtag"
+                    value={formData.discovery_hashtag_value[0]}
+                    onChange={(e) =>
+                      handleInputChange("discovery_hashtag_value", [
+                        e.target.value,
+                      ])
+                    }
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <FaSearch className="text-textThin font-thin" />
+                      </InputAdornment>
+                    }
+                    aria-describedby="outlined-hashtag-helper-text"
+                    inputProps={{
+                      "aria-label": "hashtag",
+                    }}
+                  />
+                </FormControl>
               </div>
-              <FormControl sx={{ width: "100%" }} variant="outlined">
-                <OutlinedInput
-                  id="outlined-adornment-hashtag"
-                  className="py-2"
-                  placeholder="Hashtag"
-                  value={formData.discovery_hashtag_value[0]}
-                  onChange={(e) =>
-                    handleInputChange("discovery_hashtag_value", [
-                      e.target.value,
-                    ])
-                  }
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <FaSearch className="text-textThin font-thin" />
-                    </InputAdornment>
-                  }
-                  aria-describedby="outlined-hashtag-helper-text"
-                  inputProps={{
-                    "aria-label": "hashtag",
-                  }}
-                />
-              </FormControl>
-            </div>
+            )}
+
             {/* <input
                       type="text"
                       id="number-input"
@@ -543,32 +759,34 @@ const Filter = ({
                       required
                     /> */}
 
-            <div className="">
-              <div className="flex items-center gap-1 mb-2">
-                <p className="font-normal text-textThin text-sm">
-                  Interest <span className="text-sm text-red-500">*</span>
-                </p>
-                <Tooltip title="Tentukan kategori minat audiens influencer, seperti olahraga, musik, atau gaming, agar pencarian lebih relevan.">
-                  <div className="p-[2px] bg-sky-500 cursor-pointer rounded-full">
-                    {" "}
-                    <FaQuestion className="text-[10px] text-white" />
-                  </div>
-                </Tooltip>
+            {formData.platform === "INSTAGRAM" && (
+              <div className="">
+                <div className="flex items-center gap-1 mb-2">
+                  <p className="font-normal text-textThin text-sm">
+                    Interest <span className="text-sm text-red-500">*</span>
+                  </p>
+                  <Tooltip title="Tentukan kategori minat audiens influencer, seperti olahraga, musik, atau gaming, agar pencarian lebih relevan.">
+                    <div className="p-[2px] bg-sky-500 cursor-pointer rounded-full">
+                      {" "}
+                      <FaQuestion className="text-[10px] text-white" />
+                    </div>
+                  </Tooltip>
+                </div>
+                <Autocomplete
+                  disablePortal
+                  options={interestOption}
+                  onChange={(event, newValue) =>
+                    handleInputChange("discovery_interest_value", [
+                      newValue?.value || formData.discovery_interest_value[0],
+                    ])
+                  }
+                  sx={{ width: "100%" }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Interest" />
+                  )}
+                />
               </div>
-              <Autocomplete
-                disablePortal
-                options={interestOption}
-                onChange={(event, newValue) =>
-                  handleInputChange("discovery_interest_value", [
-                    newValue?.value || formData.discovery_interest_value[0],
-                  ])
-                }
-                sx={{ width: "100%" }}
-                renderInput={(params) => (
-                  <TextField {...params} label="Interest" />
-                )}
-              />
-            </div>
+            )}
 
             <div className="">
               <div className="flex items-center gap-1 mb-2">
@@ -784,11 +1002,9 @@ const Filter = ({
                     )}
                   />
                 </div>
-                
               </div>
 
               <div className="form mt-6 items-center gap-2 md:gap-4 grid grid-cols-2 md:grid-cols-3">
-             
                 <div className="">
                   <p className="font-normal text-textThin text-sm mb-2">
                     Creator Gender
@@ -810,7 +1026,6 @@ const Filter = ({
                     )}
                   />
                 </div>
-                
 
                 <div className="">
                   <p className="font-normal text-textThin text-sm mb-2">
@@ -836,7 +1051,6 @@ const Filter = ({
                     )}
                   />
                 </div>
-              
 
                 {/* <div className="">
                   <p className="font-normal text-textThin text-sm mb-2">
@@ -1045,70 +1259,7 @@ const Filter = ({
                 !showSort ? "hidden" : ""
               } card font-normal text-textThin text-[15px] mt-4`}
             >
-              <div className="flex items-center gap-4 flex-wrap">
-                <button
-                  className={`${
-                    formData.sorting_by === "REELS_VIEWS"
-                      ? "bg-[#dcdcdf] border-blue-500 border-2"
-                      : "bg-[#efeff1]"
-                  } text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center`}
-                  onClick={() => handleInputChange("sorting_by", "REELS_VIEWS")}
-                >
-                  <p
-                    className={`${
-                      formData.sorting_by === "REELS_VIEWS"
-                        ? "font-bold text-blue-500"
-                        : "font-medium"
-                    }`}
-                  >
-                    Instagram Reels View
-                  </p>
-                </button>
-
-                {/* Button 2: Engagement Rate */}
-                <button
-                  className={`${
-                    formData.sorting_by === "ENGAGEMENT_RATE"
-                      ? "bg-[#dcdcdf] border-blue-500 border-2"
-                      : "bg-[#efeff1]"
-                  } text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center`}
-                  onClick={() =>
-                    handleInputChange("sorting_by", "ENGAGEMENT_RATE")
-                  }
-                >
-                  <p
-                    className={`${
-                      formData.sorting_by === "ENGAGEMENT_RATE"
-                        ? "font-bold text-blue-500"
-                        : "font-medium"
-                    }`}
-                  >
-                    Engagement Rate
-                  </p>
-                </button>
-
-                {/* Button 3: Followers */}
-                <button
-                  className={`${
-                    formData.sorting_by === "FOLLOWER_COUNT"
-                      ? "bg-[#dcdcdf] border-blue-500 border-2"
-                      : "bg-[#efeff1]"
-                  } text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] rounded-full px-6 py-2 shadow-sm flex items-center`}
-                  onClick={() =>
-                    handleInputChange("sorting_by", "FOLLOWER_COUNT")
-                  }
-                >
-                  <p
-                    className={`${
-                      formData.sorting_by === "FOLLOWER_COUNT"
-                        ? "font-bold text-blue-500"
-                        : "font-medium"
-                    }`}
-                  >
-                    Followers
-                  </p>
-                </button>
-              </div>
+              {renderSortByOptions()}
             </div>
           </div>
           <div className="flex items-center justify-between mt-6">
