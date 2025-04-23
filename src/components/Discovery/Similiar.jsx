@@ -260,6 +260,19 @@ const Similiar = ({
 
       return;
     }
+
+    if (
+      !formData.creator_lookalikes
+    ) {
+      Swal.fire({
+        icon: "warning",
+        title: "Creator Username Belum Diisi",
+        text: "Silakan isi creator username dahulu sebelum mencari similiar creator.",
+      });
+      setLoading(false);
+
+      return; // Stop eksekusi jika platform Instagram dan interest belum diisi
+    }
     return Swal.fire({
       title: "Are you sure?",
       text: "Are you sure this will reduce your credits?",
