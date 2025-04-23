@@ -16,7 +16,7 @@ const Dashboard = () => {
           </p>
         </div>
       </Card>
-      <div className="grid grid-cols-3 gap-6 mt-6">
+      <div className="grid grid-cols-2 gap-6 mt-6">
         <Link to={`/discovery`}>
           <Card className="h-32 bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white flex justify-center items-center font-medium">
             <span className="text-center">Discovery</span>
@@ -27,11 +27,11 @@ const Dashboard = () => {
             <span className="text-center">Analyser</span>
           </Card>
         </Link>
-        <Link to={`analytics`}>
+        {/* <Link to={`analytics`}>
           <Card className="h-32 bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white flex justify-center items-center font-medium">
             <span className="text-center">Brand Analytics</span>
           </Card>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

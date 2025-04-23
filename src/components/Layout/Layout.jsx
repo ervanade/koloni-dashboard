@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import { Outlet } from "react-router-dom";
 import Header from "../Header/Header";
+import { FaWhatsapp } from "react-icons/fa6";
 
 // eslint-disable-next-line react/prop-types
 const Layout = () => {
@@ -55,8 +56,20 @@ const Layout = () => {
       </div>
       <section className="footer bg-white text-[#495565] py-2 sm:py-4 border-t border-slate-200 ">
 
-<p className="text-center text-sm">Copyright 2025 - Media-Lab</p>
+<p className="text-center text-sm">Copyright 2025 - <a href="https://media-lab.id/"  target="_blank" rel="noopener noreferrer" className="text-sky-500">Media-Lab</a></p>
 </section>
+<a
+        href="https://wa.me/+6281288756302
+      "
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-8 right-8 z-50 bg-sky-500 text-white p-4 rounded-full shadow-lg transition duration-300 flex items-center gap-2 md:gap-2"
+      >
+        <FaWhatsapp className="h-6 w-6" />
+        <span className="hidden md:inline font-medium">
+         Contact Us
+        </span>
+      </a>
       {/* <!-- ===== Page Wrapper End ===== --> */}
     </div>
   );

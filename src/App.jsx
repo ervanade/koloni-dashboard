@@ -39,7 +39,7 @@ function App() {
               <Route index element={<Dashboard />} />
               <Route path="/discovery" element={<Discovery />} />
               <Route path="/analyser" element={<Analyser />} />
-              <Route path="/analytics" element={<Analytics />} />
+              {/* <Route path="/analytics" element={<Analytics />} /> */}
               <Route path="/history" element={<History />} />
               <Route path="/users" element={<Users />} />
               <Route path="/logs" element={<Logs />} />
