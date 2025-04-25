@@ -323,7 +323,7 @@ const Similiar = ({
   }, [page]); // Panggil fetchData setiap kali halaman berubah
   return (
     <div>
-      <Card className="mt-6">
+      <Card className="mt-6 mb-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1 mb-2">
             <h1 className="font-medium text-lg text-textBold">
