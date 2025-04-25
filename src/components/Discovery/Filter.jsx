@@ -280,7 +280,7 @@ const Filter = ({
           Authorization: `Bearer ${user?.accessToken}`,
         },
         params: {
-          page: page,
+          page: (page - 1),
         },
         data: JSON.stringify({
           ...formData,
@@ -334,7 +334,7 @@ const Filter = ({
           "Content-Type": "application/json",
           Authorization: `Bearer ${user?.accessToken}`,
         },
-        params: { page: newPage },
+        params: { page: (newPage - 1) },
         data: JSON.stringify({ ...formData }),
       });
       setDataResult(response.data);

@@ -169,7 +169,7 @@ const Similiar = ({
           Authorization: `Bearer ${user?.accessToken}`,
         },
         params: {
-          page: page,
+          page: (page - 1),
         },
         data: JSON.stringify({
           ...formData, // Spread dulu semua data form
@@ -226,7 +226,7 @@ const Similiar = ({
           "Content-Type": "application/json",
           Authorization: `Bearer ${user?.accessToken}`,
         },
-        params: { page: newPage },
+        params: { page: (newPage - 1) },
         data: JSON.stringify({
           ...formData, // Spread dulu semua data form
           creator_lookalikes: formData.creator_lookalikes

@@ -308,7 +308,7 @@ const ResultSimiliar = ({
       )}
       <div className="flex items-center justify-between">
         <p>
-          Total Page : {page} / {dataResult?.total_page || 0}
+          Total Page : {page} / {(dataResult?.total_page + 1) || 0}
         </p>
         {dataResult?.has_next_page && (
           <button
