@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "../components/Card/Card";
-import { FaCheckCircle, FaEye, FaFileExport, FaPlus, FaSearch } from "react-icons/fa";
+import { FaCheckCircle, FaEye, FaFileExport, FaPlay, FaPlus, FaSearch } from "react-icons/fa";
 import { FaAt } from "react-icons/fa6";
 import {
   BiCheckCircle,
@@ -268,6 +268,9 @@ const Analyser = () => {
           <p className="font-normal text-textThin">
             Analyse creators across Instagram, TikTok, and YouTube
           </p>
+          <a href="https://drive.google.com/file/d/16Hlf-ywzgWVwRXF1qjmN-MWANF9hqryI/view?usp=drive_link" className=" " 
+        target="_blank"
+        rel="noopener noreferrer"><div className="flex items-center gap-2 w-max bg-sky-500 text-white px-4 py-2 rounded-md text-xs font-normal "><span>Watch Tutorial</span> <FaPlay className="h-3 w-3" /></div></a>
         </div>
         <div className="flex gap-2 flex-wrap justify-end text-sm">
           <div className="bg-[#efeff1] text-blue-500 rounded-full px-4 py-2 shadow-sm">

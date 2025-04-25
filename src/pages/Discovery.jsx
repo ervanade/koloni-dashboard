@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Card from "../components/Card/Card";
-import { FaFileExport, FaFilter, FaInstagram, FaMinus } from "react-icons/fa6";
+import { FaFileExport, FaFilter, FaInstagram, FaMinus, FaVideo } from "react-icons/fa6";
 import {
   FaHistory,
   FaLine,
+  FaPlay,
   FaTiktok,
   FaUserPlus,
   FaYoutube,
@@ -21,6 +22,7 @@ import Swal from "sweetalert2";
 import jsPDF from "jspdf";
 import domtoimage from 'dom-to-image';
 import { useSearchParams } from "react-router-dom";
+
 
 const Discovery = () => {
   const [showFilter, setShowFilter] = useState(true);
@@ -140,6 +142,10 @@ const Discovery = () => {
           <p className="font-normal text-textThin">
             Discover the right creators for your campaigns
           </p>
+          <a href="https://drive.google.com/file/d/1ko5jFUV-r_gfY_mrj9fuvTEnquiNFgby/view?usp=drive_link" className=" " 
+        target="_blank"
+        rel="noopener noreferrer"><div className="flex items-center gap-2 w-max bg-sky-500 text-white px-4 py-2 rounded-md text-xs font-normal "><span>Watch Tutorial</span> <FaPlay className="h-3 w-3" /></div></a>
+
         </div>
         <div className="bg-[#efeff1] text-blue-500 rounded-full px-4 py-2 shadow-sm">
           <p className="font-medium text-sm">
