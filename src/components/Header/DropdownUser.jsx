@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../store/authSlice";
 import { returnRole } from "../../data/utils";
 import axios from "axios";
+import { RiUserHeartLine } from "react-icons/ri";
 
 const DropdownUser = () => {
   const navigate = useNavigate();
@@ -113,6 +114,20 @@ const DropdownUser = () => {
                     />
                   </svg>
                   My Profile
+                </Link>
+              </li>
+            </ul>
+          </Link>
+          <Link to="/favorites">
+            <ul className="hover:bg-[#F3F3F4] hover:cursor-pointer flex flex-col gap-5 border-b border-stroke px-6 py-4 dark:border-strokedark">
+              <li>
+                <Link
+                  to="/favorites"
+                  className="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out  lg:text-base"
+                >
+                                      <RiUserHeartLine size={22} />
+
+                  My Favorites KOL
                 </Link>
               </li>
             </ul>

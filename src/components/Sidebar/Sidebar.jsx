@@ -17,8 +17,8 @@ import {
   FaUsers,
 } from "react-icons/fa";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import { FaChartBar, FaChartColumn } from "react-icons/fa6";
-import { RiUserSearchLine } from "react-icons/ri";
+import { FaChartBar, FaChartColumn, FaFaceGrinHearts, FaHeart, FaRegFaceGrinHearts } from "react-icons/fa6";
+import { RiUserHeartLine, RiUserSearchLine } from "react-icons/ri";
 import { useSelector } from "react-redux";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
@@ -160,6 +160,19 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 </NavLink>
               </li> */}
 
+{/* <li>
+                    <NavLink
+                      to="/favorites"
+                      className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-0 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                        (pathname === "/favorites" || pathname.includes("favorites")) &&
+                        "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
+                      }`}
+                    >
+                      <RiUserHeartLine size={22} />
+                      My Favorite Creators
+                    </NavLink>
+                  </li> */}
+
               <li>
                 <NavLink
                   to="/faq"
@@ -217,6 +230,18 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     >
                       <FaTasks size={22} />
                       Activity Logs
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/credits"
+                      className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-0 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                        (pathname === "/credits" || pathname.includes("credits")) &&
+                        "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
+                      }`}
+                    >
+                      <FaChartColumn size={22} />
+                      Credit Reports
                     </NavLink>
                   </li>
                 </ul>
