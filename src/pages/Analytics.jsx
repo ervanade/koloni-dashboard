@@ -68,7 +68,11 @@ const Analytics = () => {
           profile: "",
           profileName: "",
           roles: data?.roles || "",
-          credits: data?.credits || "",
+          credits: data?.credits || 0,
+          credits_analyzer: data?.credits_analyzer || 0,
+          credits_analytics: data?.credits_analytics || 0,
+          credits_discovery: data?.credits_discovery || 0,
+          credits_listeing: data?.credits_listeing || 0,
         });
       });
     } catch (error) {
@@ -146,10 +150,10 @@ const Analytics = () => {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    if (dataCredits.credits < 1) {
+    if (dataCredits.credits_analytics < 1) {
       Swal.fire(
-        "No Remaining Credits",
-        "Contact Admin to Recharge Your Credits",
+        "No Remaining Analytics Credits",
+        "Contact Admin to Recharge Your Analytics Credits",
         "error"
       );
       setLoading(false);
@@ -158,7 +162,7 @@ const Analytics = () => {
     }
     return Swal.fire({
       title: "Are you sure?",
-      text: "Are you sure this will reduce your credits?",
+      text: "Are you sure this will reduce your analytics credits?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Yes, Analyse it!",
@@ -182,7 +186,7 @@ const Analytics = () => {
           </p>
         </div>
         <div className="bg-[#efeff1] text-blue-500 rounded-full px-4 py-2 shadow-sm text-sm">
-          <p className="font-medium">Remaining Credits : {dataCredits?.credits || 0}</p>
+          <p className="font-medium">Remaining Analytics Credits : {dataCredits?.credits_analytics || 0}</p>
         </div>
       </div>
       <div className="flex items-center justify-between gap-1">
