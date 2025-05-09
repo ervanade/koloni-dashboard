@@ -16,7 +16,11 @@ const EditUser = ({
     first_name: userData?.first_name || "",
     last_name: userData?.last_name || "",
     roles: userData?.roles || "",
-    credits: userData?.credits || "",
+    credits: userData?.credits || 0,
+    credits_analyzer: userData?.credits_analyzer || 0,
+    credits_analytics: userData?.credits_analytics,
+    credits_discovery: userData?.credits_discovery,
+    credits_listeing: userData?.credits_listeing,
   });
   useEffect(() => {
     setFormData({
@@ -24,7 +28,11 @@ const EditUser = ({
       first_name: userData?.first_name || "",
       last_name: userData?.last_name || "",
       roles: userData?.roles || "",
-      credits: userData?.credits || "",
+      credits: userData?.credits || 0,
+      credits_analyzer: userData?.credits_analyzer || 0,
+    credits_analytics: userData?.credits_analytics || 0,
+    credits_discovery: userData?.credits_discovery || 0,
+    credits_listeing: userData?.credits_listeing || 0,
     });
   }, [userData]);
 
@@ -271,6 +279,106 @@ const EditUser = ({
                           setFormData((prev) => ({
                             ...prev,
                             credits: e.target.value,
+                          }))
+                        }
+                      />
+                    </div>
+                    <div className="col-span-2 md:col-span-1">
+                      <label
+                        className=" block text-textBold text-sm font-medium mb-2"
+                        htmlFor="email"
+                      >
+                        Credits Discovery
+                      </label>
+
+                      <input
+                        className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
+                  "border-red-500" 
+               rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
+                        id="credits"
+                        type="number"
+                        placeholder="Credits Discovery"
+                        required
+                        value={formData.credits_discovery}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            credits_discovery: e.target.value,
+                          }))
+                        }
+                      />
+                    </div>
+                    <div className="col-span-2 md:col-span-1">
+                      <label
+                        className=" block text-textBold text-sm font-medium mb-2"
+                        htmlFor="email"
+                      >
+                        Credits Analyser
+                      </label>
+
+                      <input
+                        className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
+                  "border-red-500" 
+               rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
+                        id="credits"
+                        type="number"
+                        placeholder="Credits Analyser"
+                        required
+                        value={formData.credits_analyzer}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            credits_analyzer: e.target.value,
+                          }))
+                        }
+                      />
+                    </div>
+                    <div className="col-span-2 md:col-span-1">
+                      <label
+                        className=" block text-textBold text-sm font-medium mb-2"
+                        htmlFor="email"
+                      >
+                        Credits Analytics
+                      </label>
+
+                      <input
+                        className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
+                  "border-red-500" 
+               rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
+                        id="credits"
+                        type="number"
+                        placeholder="Credits Analytics"
+                        required
+                        value={formData.credits_analytics}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            credits_analytics: e.target.value,
+                          }))
+                        }
+                      />
+                    </div>
+                    <div className="col-span-2 md:col-span-1">
+                      <label
+                        className=" block text-textBold text-sm font-medium mb-2"
+                        htmlFor="email"
+                      >
+                        Credits Listening
+                      </label>
+
+                      <input
+                        className={` bg-white disabled:bg-[#F2F2F2] appearance-none text-sm border border-[#cacaca] focus:border-sky-500
+                  "border-red-500" 
+               rounded-md w-full py-2 px-2 text-textBold leading-tight focus:outline-none focus:shadow-outline dark:bg-transparent`}
+                        id="credits"
+                        type="number"
+                        placeholder="Credits Listening"
+                        required
+                        value={formData.credits_listeing}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            credits_listeing: e.target.value,
                           }))
                         }
                       />

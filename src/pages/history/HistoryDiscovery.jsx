@@ -12,10 +12,10 @@ import {
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import top100Films from "../data/top100Films";
-import Filter from "../components/Discovery/Filter";
-import Similiar from "../components/Discovery/Similiar";
-import History from "../components/Discovery/History";
+import top100Films from "../../data/top100Films";
+import Filter from "../../components/Discovery/Filter";
+import Similiar from "../../components/Discovery/Similiar";
+import History from "../../components/Discovery/History";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -24,7 +24,7 @@ import domtoimage from 'dom-to-image';
 import { useSearchParams } from "react-router-dom";
 
 
-const Discovery = () => {
+const HistoryDiscovery = () => {
   const [showFilter, setShowFilter] = useState(true);
   const [showSimiliar, setShowSimiliar] = useState(true);
   const [activeTab, setActiveTab] = useState("filter");
@@ -124,11 +124,7 @@ const Discovery = () => {
           profile: "",
           profileName: "",
           roles: data?.roles || "",
-          credits: data?.credits || 0,
-    credits_analyzer: data?.credits_analyzer || 0,
-    credits_analytics: data?.credits_analytics || 0,
-    credits_discovery: data?.credits_discovery || 0,
-    credits_listeing: data?.credits_listeing || 0,
+          credits: data?.credits || "",
         });
       });
     } catch (error) {
@@ -153,7 +149,7 @@ const Discovery = () => {
         </div>
         <div className="bg-[#efeff1] text-blue-500 rounded-full px-4 py-2 shadow-sm">
           <p className="font-medium text-sm">
-             Credits Discovery : {dataCredits?.credits_discovery || 0}
+            Remaining Credits : {dataCredits?.credits || 0}
           </p>
           {
           dataResult?.data.length > 0 &&  <button
@@ -251,4 +247,4 @@ const Discovery = () => {
   );
 };
 
-export default Discovery;
+export default HistoryDiscovery;

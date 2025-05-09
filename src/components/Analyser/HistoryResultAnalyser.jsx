@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { FaCheckCircle, FaEye, FaQuestion, FaSearch, FaStar, FaRegStar } from "react-icons/fa";
+import { FaCheckCircle, FaEye, FaQuestion, FaSearch } from "react-icons/fa";
 import { FaAt, FaComment, FaHeart } from "react-icons/fa6";
-import { useSelector, useDispatch } from 'react-redux';
-
 import {
   BiCheckCircle,
   BiLike,
@@ -38,86 +36,12 @@ import {
 } from "../../data/dataAnalyser";
 import DataRaffi from "../../data/nagita.json";
 import { Tooltip } from "@mui/material";
-import axios from "axios";
-import { loginUser } from "../../store/authSlice";
-const ResultAnalyser = ({ data, dataAnalyse, comparisonLength }) => {
+const HistoryResultAnalyser = ({ data, dataAnalyse, comparisonLength }) => {
   const columnColors = {
     series1: "#826af9",
     series2: "#d2b0ff",
     bg: "#f8d3ff",
     bg2: "#53D86A",
-  };
-  const user = useSelector((a) => a.auth.user);
-  const dispatch = useDispatch();
-  const [isFavoriteLocal, setIsFavoriteLocal] = useState(false);
-
-  useEffect(() => {
-    const isInitiallyFavorite = user?.favorites?.some(
-      (fav) => fav.username === dataAnalyse?.username && fav.platform ===  dataAnalyse?.platform
-    );
-    setIsFavoriteLocal(isInitiallyFavorite);
-  }, [user?.favorites, dataAnalyse]);
-
-  const handleFavoriteClick = async (username, platform, followers, engagement_rate, e) => {
-    e.preventDefault()
-    const newFavoriteStatus = !isFavoriteLocal;
-    setIsFavoriteLocal(newFavoriteStatus);
-
-    const favoriteData = { username, platform, followers, engagement_rate };
-    const userId = user?._id; // Assuming user ID is available in the user object
-
-    if (!userId) {
-      console.error("User ID not found. Cannot update favorites.");
-      return;
-    }
-
-    try {
-      let updatedFavorites = [...(user?.favorites || [])];
-
-      if (newFavoriteStatus) {
-        // Add to favorites
-        const response = await axios.post(
-          `${import.meta.env.VITE_APP_API_URL}/users/${userId}/favorites`,
-          JSON.stringify({ username, platform, followers, engagement_rate }),
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${user?.accessToken}`,
-            },
-          }
-        );
-        if (response.status === 200) {
-          updatedFavorites = [...updatedFavorites, favoriteData];
-          dispatch(loginUser({ ...user, favorites: updatedFavorites }));
-        } else {
-          console.error("Failed to add to favorites:", response);
-          setIsFavoriteLocal(!newFavoriteStatus); // Revert local state on error
-        }
-      } else {
-        // Remove from favorites
-        const response = await axios.delete(
-          `${import.meta.env.VITE_APP_API_URL}/users/${encodeURIComponent(userId)}/favorites/${encodeURIComponent(dataAnalyse?.username)}/${encodeURIComponent(dataAnalyse?.platform)}`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${user?.accessToken}`,
-            },
-          }
-        );
-        if (response.status === 200) {
-          updatedFavorites = updatedFavorites.filter(
-            (fav) => fav.username !== username || fav.platform !== platform
-          );
-          dispatch(loginUser({ ...user, favorites: updatedFavorites }));
-        } else {
-          console.error("Failed to remove from favorites:", response);
-          setIsFavoriteLocal(!newFavoriteStatus); // Revert local state on error
-        }
-      }
-    } catch (error) {
-      console.error("Error updating favorites:", error);
-      setIsFavoriteLocal(!newFavoriteStatus); // Revert local state on error
-    }
   };
 
   const [profileOptions, setProfileOptions] = useState(optionsProfile2);
@@ -213,7 +137,6 @@ const ResultAnalyser = ({ data, dataAnalyse, comparisonLength }) => {
         <Card className={`mt-6`}>
           <div className="flex items-center gap-3 border border-[#C4C4C4] p-4 rounded-md justify-between ">
             <div className="flex items-center sm:flex-row flex-col gap-3 md:gap-4 ">
-              <div className="div flex flex-col justify-center items-center gap-2">
               <div className="rounded-full w-12 md:w-16 overflow-hidden">
                 <img
                   src={dataAnalyse?.profile_image || "/cristiano.jpeg"}
@@ -222,21 +145,6 @@ const ResultAnalyser = ({ data, dataAnalyse, comparisonLength }) => {
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <button onClick={(e) => handleFavoriteClick(dataAnalyse?.username, dataAnalyse?.platform, dataAnalyse?.followers, dataAnalyse?.engagement_rate, e)} className="flex items-center gap-2 text-sm hover:text-yellow-500">
-              {isFavoriteLocal ? (
-        <>
-          <FaStar className="text-yellow-500" size={16} />
-          <span className="">Remove</span>
-        </>
-      ) : (
-        <>
-          <FaRegStar className="text-gray-400 hover:text-yellow-500" size={16} />
-          <span className="">Favorite</span>
-        </>
-      )}
-    </button>
-              </div>
-             
               <div className="flex flex-col gap-3">
                 <h1 className="font-medium md:text-lg ">
                   {dataAnalyse?.username || ""}
@@ -255,7 +163,7 @@ const ResultAnalyser = ({ data, dataAnalyse, comparisonLength }) => {
                     <a   target="_blank"
                     rel="noopener noreferrer" href={dataAnalyse?.instagram}>
                     <img
-                      src="logo-instagram.png"
+                      src="/logo-instagram.png"
                       alt="Logo Instagram"
                       className="w-5 md:w-6"
                     />
@@ -265,7 +173,7 @@ const ResultAnalyser = ({ data, dataAnalyse, comparisonLength }) => {
                      <a   target="_blank"
                      rel="noopener noreferrer" href={dataAnalyse?.youtube}>
                     <img
-                      src="logo-youtube.png"
+                      src="/logo-youtube.png"
                       alt="Logo youtube"
                       className="w-5 md:w-6"
                     />
@@ -275,14 +183,13 @@ const ResultAnalyser = ({ data, dataAnalyse, comparisonLength }) => {
                       <a   target="_blank"
                       rel="noopener noreferrer" href={dataAnalyse?.tiktok}>
                     <img
-                      src="logo-tiktok.png"
+                      src="/logo-tiktok.png"
                       alt="Logo tiktok"
                       className="w-5 md:w-6"
                     />
                      </a>
                   )}
                 </div>
-                <div className="flex items-center gap-1">
                 <a
                   className=" bg-sky-500 text-sm flex gap-2 items-center text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
                   target="_blank"
@@ -293,9 +200,6 @@ const ResultAnalyser = ({ data, dataAnalyse, comparisonLength }) => {
                 >
                   Ask For Price
                 </a>
-                 </div>
-              
-                
               </div>
             </div>
 
@@ -795,4 +699,4 @@ const ResultAnalyser = ({ data, dataAnalyse, comparisonLength }) => {
   );
 };
 
-export default ResultAnalyser;
+export default HistoryResultAnalyser;

@@ -18,6 +18,7 @@ import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import EditUser from "../../components/Modal/EditUser";
+import { Link } from "react-router-dom";
 
 const Logs = () => {
   const [page, setPage] = React.useState(0);
@@ -226,7 +227,29 @@ const Logs = () => {
       {
         name: "Search Date",
         selector: (row) => row.search_date,
+        cell: (row) => (
+          <div className="text-wrap py-2 leading-5">{row.search_date}</div>
+        ),
         sortable: true,
+      },
+      
+      {
+        name: "Action",
+        cell: (row) => (
+          <div className="flex items-center space-x-2">
+            <Link
+                        // target="_blank"
+                        to={row?.search_type == "analyzer" ? `/history/analyser/${row._id}` : `/logs`}
+                        // rel="noopener noreferrer"
+                        className="font-publicSans px-4 py-2 text-white bg-sky-500 rounded-md text-center text-sm"
+                      >
+                        Detail
+                      </Link>
+          </div>
+        ),
+        ignoreRowClick: true,
+        // allowOverflow: true,
+        button: true,
       },
     ],
     []

@@ -16,6 +16,7 @@ import Faq from "./pages/Faq";
 import Logs from "./pages/admin/Logs";
 import Favorites from "./pages/admin/Favorites";
 import Credits from "./pages/admin/Credits";
+import HistoryAnalyser from "./pages/history/HistoryAnalyser";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -43,6 +44,7 @@ function App() {
               <Route path="/analyser" element={<Analyser />} />
               {/* <Route path="/analytics" element={<Analytics />} /> */}
               <Route path="/history" element={<History />} />
+              <Route path="/history/analyser/:id" element={<HistoryAnalyser />} />
               <Route path="/favorites" element={<Favorites />} />
               <Route path="/users" element={<Users />} />
               <Route path="/logs" element={<Logs />} />

@@ -15,9 +15,11 @@ import { CgSpinner } from "react-icons/cg";
 import { dataUser } from "../../data/dummyData";
 import AddUser from "../../components/Modal/AddUser";
 import Swal from "sweetalert2";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import EditUser from "../../components/Modal/EditUser";
+import { DataFormater } from "../../data/data";
+import { loginUser } from "../../store/authSlice";
 
 const Favorites = () => {
   const [page, setPage] = React.useState(0);
@@ -25,6 +27,8 @@ const Favorites = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [userEdit, setUserEdit] = useState(null);
+  const dispatch = useDispatch();
+
 
   const [search, setSearch] = useState(""); // Initialize search state with an empty string
   const [data, setData] = useState([]);
@@ -90,7 +94,9 @@ const Favorites = () => {
       const userData = dataUser;
       const response = await axios({
         method: "get",
-        url: `${import.meta.env.VITE_APP_API_URL}/users`,
+        url: `${import.meta.env.VITE_APP_API_URL}/users/${encodeURIComponent(
+          user?._id
+        )}/favorites`,
         headers: {
           "Content-Type": "application/json",
           //eslint-disable-next-line
@@ -166,17 +172,22 @@ const Favorites = () => {
     });
   };
 
-  const deleteUser = async (id) => {
+  const deleteUser = async (id,username, platform) => {
     await axios({
       method: "delete",
-      url: `${import.meta.env.VITE_APP_API_URL}/users/${id}`,
+      url: `${import.meta.env.VITE_APP_API_URL}/users/${encodeURIComponent(id)}/favorites/${encodeURIComponent(username)}/${encodeURIComponent(platform)}`,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${user?.accessToken}`,
       },
     })
       .then(() => {
+        const updatedFavorites = user?.favorites.filter(
+          (fav) => fav.username !== username || fav.platform !== platform
+        );
+        dispatch(loginUser({ ...user, favorites: updatedFavorites }));
         fetchUserData();
+        
       })
       .catch((error) => {
         fetchUserData();
@@ -185,7 +196,7 @@ const Favorites = () => {
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleConfirmDeleteUser = async (id) => {
+  const handleConfirmDeleteUser = async (id, username, platform) => {
     return Swal.fire({
       title: "Are you sure?",
       text: "You will Delete This User!",
@@ -195,7 +206,7 @@ const Favorites = () => {
       confirmButtonColor: "#24A5E9",
     }).then(async (result) => {
       if (result.value) {
-        await deleteUser(id);
+        await deleteUser(id, username, platform);
         Swal.fire({
           icon: "success",
           title: "Deleted!",
@@ -208,7 +219,7 @@ const Favorites = () => {
   const columns = useMemo(
     () => [
       {
-        name: "Creator Name",
+        name: "Creator Username",
         selector: (row) => row.email,
         cell: (row) => (
           <div className="flex items-center gap-2  text-sm font-publicSans">
@@ -222,25 +233,31 @@ const Favorites = () => {
                 currentTarget.src = "/user-default.png";
               }}
             />
-            <p className="text-center">{row.email}</p>
+            <p className="text-center">{row.username}</p>
           </div>
         ),
         sortable: true,
         width: "250px",
       },
       {
-        name: "Username",
-        selector: (row) => row.first_name + " " + row.last_name,
+        name: "Followers",
+        selector: (row) => DataFormater(row.followers) || 0,
+        sortable: true,
+      },
+      {
+        name:<div className="text-wrap text-center">Engagement Rate</div>,
+        selector: (row) => row.engagement_rate.toFixed(2) + "%"
+        || "0%",
         sortable: true,
       },
       {
         name: "Platform",
-        selector: (row) => "Instagram",
+        selector: (row) => row?.platform || "Instagram",
         sortable: true,
       },
 
       {
-        name: "Aksi",
+        name: "Action",
         cell: (row) => (
           <div className="flex items-center space-x-2">
             <a
@@ -256,7 +273,7 @@ const Favorites = () => {
                       <button
                 title="Delete"
                 className="text-red-500 hover:text-red-700"
-                // onClick={() => handleConfirmDeleteUser(row._id)}
+                onClick={() => handleConfirmDeleteUser(user?._id,row?.username, row?.platform || "Instagram" )}
               >
                 <FaTrash size={16} />
               </button>

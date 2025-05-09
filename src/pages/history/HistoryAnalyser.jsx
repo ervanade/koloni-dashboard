@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Card from "../components/Card/Card";
+import Card from "../../components/Card/Card";
 import { FaCheckCircle, FaEye, FaFileExport, FaPlay, FaPlus, FaSearch } from "react-icons/fa";
 import { FaAt } from "react-icons/fa6";
 import {
@@ -10,28 +10,32 @@ import {
 } from "react-icons/bi";
 import { BsViewList } from "react-icons/bs";
 import { PieChart } from "@mui/x-charts/PieChart";
-import { desktopOS, desktopOS2, valueFormatter } from "../data/data";
+import { desktopOS, desktopOS2, valueFormatter } from "../../data/data";
 import { BarChart, LineChart } from "@mui/x-charts";
-import ResultAnalyser from "../components/Analyser/ResultAnalyser";
-import Drawer from "../components/Modal/Drawer";
-import AddComparison from "../components/Modal/AddComparison";
+import Drawer from "../../components/Modal/Drawer";
+import AddComparison from "../../components/Modal/AddComparison";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import jsPDF from "jspdf";
 import domtoimage from 'dom-to-image';
+import HistoryResultAnalyser from "../../components/Analyser/HistoryResultAnalyser";
+import { Link, useParams } from "react-router-dom";
+import { CgSpinner } from "react-icons/cg";
 
 
-const Analyser = () => {
+const HistoryAnalyser = () => {
   const [showResult, setShowResult] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [error, setError] = useState(false);
   const [isModal, setIsModal] = useState(false);
   const [dataAnalyse, setDataAnalyse] = useState({});
   const user = useSelector((a) => a.auth.user);
   const [dataCredits, setDataCredits] = useState(user);
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const dispatch = useDispatch();
-  console.log(dataCredits)
 
   const [formData, setFormData] = useState({
     platform: "Instagram",
@@ -71,19 +75,48 @@ const Analyser = () => {
           profile: "",
           profileName: "",
           roles: data?.roles || "",
-          credits: data?.credits || 0,
-          credits_analyzer: data?.credits_analyzer || 0,
-          credits_analytics: data?.credits_analytics || 0,
-          credits_discovery: data?.credits_discovery || 0,
-          credits_listeing: data?.credits_listeing || 0,
+          credits: data?.credits || "",
         });
       });
     } catch (error) {
       console.log(error.response);
     }
   };
+  const { id } = useParams();
+
+
+  const fetchLogsData = async () => {
+    setLoading(true);
+    setError(false);
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${import.meta.env.VITE_APP_API_URL}/logs/${encodeURIComponent(id)}`,
+        headers: {
+          "Content-Type": "application/json",
+          //eslint-disable-next-line
+          Authorization: `Bearer ${user?.accessToken}`,
+        },
+      });
+      const data = response?.data[0]
+      const responseAnalyser = await JSON.parse(data.response)
+      // console.log(responseAnalyser)
+      setFormData((prev) => ({ ...prev, identifier: responseAnalyser?.username || "", platform: responseAnalyser?.platform || "" }))
+      setDataAnalyse(responseAnalyser);
+      setComparisons([
+        { id: Date.now(), data: responseAnalyser }, // Simpan hasil ke dalam comparisons
+      ]);
+      setShowResult(true);
+    } catch (error) {
+      setError(true);
+      setFilteredData([]);
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
     fetchUserData();
+    fetchLogsData()
   }, []);
 
   const [comparisons, setComparisons] = useState([]);
@@ -170,10 +203,10 @@ const Analyser = () => {
   };
   const handleSimpan = async (e) => {
     e.preventDefault();
-    if (dataCredits.credits_analyzer < 1) {
+    if (dataCredits.credits < 1) {
       Swal.fire(
         "No Remaining Credits",
-        "Contact Admin to Recharge Your Analyser Credits",
+        "Contact Admin to Recharge Your Credits",
         "error"
       );
       setLoading(false);
@@ -182,7 +215,7 @@ const Analyser = () => {
     }
     return Swal.fire({
       title: "Are you sure?",
-      text: "Are you sure this will reduce your analyser credits?",
+      text: "Are you sure this will reduce your credits?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Yes, Analyse it!",
@@ -263,26 +296,21 @@ const Analyser = () => {
       });
   };
   
+
   
 
   return (
+    !loading && dataAnalyse ?
     <div className="analyser">
       <div className="mb-4 flex items-center justify-between flex-wrap gap-2">
         <div>
-          <h1 className="text-textBold font-bold text-2xl mb-1">Analyser</h1>
+          <h1 className="text-textBold font-bold text-2xl mb-1">History Analyser</h1>
           <p className="font-normal text-textThin">
-            Analyse creators across Instagram, TikTok, and YouTube
+            History Analyse creators across Instagram, TikTok, and YouTube
           </p>
-          <a href="https://drive.google.com/file/d/16Hlf-ywzgWVwRXF1qjmN-MWANF9hqryI/view?usp=drive_link" className=" " 
-        target="_blank"
-        rel="noopener noreferrer"><div className="flex items-center gap-2 w-max bg-sky-500 text-white px-4 py-2 rounded-md text-xs font-normal "><span>Watch Tutorial</span> <FaPlay className="h-3 w-3" /></div></a>
         </div>
         <div className="flex gap-2 flex-wrap justify-end text-sm">
-          <div className="bg-[#efeff1] text-blue-500 rounded-full px-4 py-2 shadow-sm">
-            <p className="font-medium">
-              Remaining Analyser Credits: {dataCredits?.credits_analyzer || 0}
-            </p>
-          </div>
+
           {
           comparisons?.length > 0 &&  <button
           onClick={exportAllToPDF}
@@ -291,14 +319,15 @@ const Analyser = () => {
           <FaFileExport /><span>PDF</span>
         </button>
         }
+        <Link to="/logs" className="mb-4 bg-sky-500 text-white px-4 py-2 rounded-md flex items-center gap-1 text-sm">Back</Link>
         </div>
       </div>
       <div className="flex items-center justify-between gap-1">
         <div className="flex items-center gap-4 flex-wrap text-sm">
           <button
-            onClick={() =>
-              setFormData((prev) => ({ ...prev, platform: "Instagram" }))
-            }
+            // onClick={() =>
+            //   setFormData((prev) => ({ ...prev, platform: "Instagram" }))
+            // }
             className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${
               formData.platform == "Instagram"
                 ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold "
@@ -306,7 +335,7 @@ const Analyser = () => {
             }  rounded-full px-6 py-2 shadow-sm flex items-center`}
           >
             <img
-              src="logo-instagram.png"
+              src="/logo-instagram.png"
               alt="Logo Instagram"
               className="w-6"
             />
@@ -314,34 +343,34 @@ const Analyser = () => {
           </button>
 
           <button
-            onClick={() =>
-              setFormData((prev) => ({ ...prev, platform: "Tiktok" }))
-            }
+            // onClick={() =>
+            //   setFormData((prev) => ({ ...prev, platform: "Tiktok" }))
+            // }
             className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${
               formData.platform == "Tiktok"
                 ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold "
                 : ""
             }  rounded-full px-6 py-2 shadow-sm flex items-center`}
           >
-            <img src="logo-tiktok.png" alt="Logo Tiktok" className="w-6" />{" "}
+            <img src="/logo-tiktok.png" alt="Logo Tiktok" className="w-6" />{" "}
             <p className="">Tiktok</p>
           </button>
 
           <button
-            onClick={() =>
-              setFormData((prev) => ({ ...prev, platform: "Youtube" }))
-            }
+            // onClick={() =>
+            //   setFormData((prev) => ({ ...prev, platform: "Youtube" }))
+            // }
             className={`bg-[#efeff1] text-textBold gap-2 mt-2 hover:bg-[#dcdcdf] font-medium ${
               formData.platform == "Youtube"
                 ? "border-2 border-blue-500 !bg-[#dcdcdf] !text-blue-500 !font-bold "
                 : ""
             }  rounded-full px-6 py-2 shadow-sm flex items-center`}
           >
-            <img src="logo-youtube.png" alt="Logo Youtube" className="w-6" />{" "}
+            <img src="/logo-youtube.png" alt="Logo Youtube" className="w-6" />{" "}
             <p className="">Youtube</p>
           </button>
         </div>
-        {showResult && (
+        {/* {showResult && (
           <div className="flex items-center">
             <button
               className=" bg-sky-500 flex gap-2 items-center text-sm   text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
@@ -352,30 +381,28 @@ const Analyser = () => {
               <span>Add Comparison</span>
             </button>
           </div>
-        )}
+        )} */}
       </div>
       <Card className="mt-6">
         <h1 className="font-medium text-base mb-1">{formData.platform || "Instagram"} Profile Analyser</h1>
-        <p className="font-normal text-sm text-textThin">
-          Analyser {formData.platform || "Instagram"} account for better performance.
-        </p>
         <div className="mt-6 font-normal text-textThin text-[15px] flex items-center gap-2">
           <div className="relative w-full">
             <button className="absolute left-2 top-1/2 -translate-y-1/2">
-              <FaAt className="text-[#bebaba]" />
+              <FaAt className="text-[#bebaba] font-bold" />
             </button>
 
             <input
               type="text"
+              disabled
               value={formData.identifier}
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, identifier: e.target.value }))
               }
               placeholder="Enter Instagram Username..."
-              className="w-full bg-white pl-9 pr-4 text-black outline outline-1 outline-zinc-200 focus:outline-primary dark:text-white py-3 rounded-md"
+              className="w-full bg-white pl-9 pr-4 font-semibold text-black outline outline-1 outline-zinc-200 focus:outline-primary dark:text-white py-3 rounded-md"
             />
           </div>
-          <button
+          {/* <button
             className=" bg-sky-500 flex gap-2 items-center text-white font-medium py-3 px-4 rounded-md focus:outline-none focus:shadow-outline"
             type="submit"
             onClick={(e) => handleSimpan(e)}
@@ -383,9 +410,9 @@ const Analyser = () => {
           >
             {" "}
             Analyse
-          </button>
+          </button> */}
         </div>
-        <p className="text-textThin font-normal  mt-2 text-sm">Example: @cristiano</p>
+        {/* <p className="text-textThin font-normal  mt-2 text-sm">Example: @cristiano</p> */}
 
        
       </Card>
@@ -408,7 +435,7 @@ const Analyser = () => {
               </button>
             )}
 
-            <ResultAnalyser
+            <HistoryResultAnalyser
               dataAnalyse={comparison.data}
               data={showResult}
               comparisonLength={comparisons?.length || 0}
@@ -422,12 +449,16 @@ const Analyser = () => {
         isDrawerOpen={isModal}
         setIsDrawerOpen={setIsModal}
         onSubmit={handleAddComparison}
-        credits={dataCredits?.credits_analyzer || 0}
+        credits={dataCredits.credits || 0}
         user={user}
         fetchUserData={fetchUserData}
       />
     </div>
+    : <div className="flex justify-center items-center">
+    <CgSpinner className="animate-spin inline-block w-8 h-8 text-sky-500" />
+    <span className="ml-2">Loading...</span>
+  </div>
   );
 };
 
-export default Analyser;
+export default HistoryAnalyser;

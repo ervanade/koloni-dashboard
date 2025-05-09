@@ -353,10 +353,10 @@ const Filter = ({
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    if (dataCredits.credits < 1) {
+    if (dataCredits.credits_discovery < 1) {
       Swal.fire(
         "No Remaining Credits",
-        "Contact Admin to Recharge Your Credits",
+        "Contact Admin to Recharge Your Discovery Credits",
         "error"
       );
       setLoading(false);
@@ -379,7 +379,7 @@ const Filter = ({
     }
     return Swal.fire({
       title: "Are you sure?",
-      text: "Are you sure this will reduce your credits?",
+      text: "Are you sure this will reduce your discovery credits?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Yes, Analyse it!",
@@ -394,7 +394,7 @@ const Filter = ({
   };
 
   const handleSearchPagination = async () => {
-    if (dataCredits.credits < 1) {
+    if (dataCredits.credits_discovery < 1) {
       Swal.fire(
         "No Remaining Credits",
         "Contact Admin to Recharge Your Credits",

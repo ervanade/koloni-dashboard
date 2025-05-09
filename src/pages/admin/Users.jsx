@@ -172,7 +172,7 @@ const Users = () => {
         name: "Email",
         selector: (row) => row.email,
         cell: (row) => (
-          <div className="flex items-center gap-2  text-sm font-publicSans">
+          <div className="flex items-center gap-2  text-sm font-publicSans text-wrap">
             {" "}
             <img
               src={"/user-default.png"}
@@ -187,11 +187,11 @@ const Users = () => {
           </div>
         ),
         sortable: true,
-        width: "250px",
+        width: "220px",
       },
       {
-        name: "Username",
-        selector: (row) => row.first_name + " " + row.last_name,
+        name: <div className="text-wrap">Username</div>,
+        selector: (row) => <p className="text-wrap"> {row.first_name + " " + row.last_name}</p>,
         sortable: true,
       },
       {
@@ -200,10 +200,25 @@ const Users = () => {
         sortable: true,
       },
       {
-        name: "Credits",
-        selector: (row) => row.credits,
+        name: <div className="text-wrap">Credits Discovery</div>,
+        selector: (row) => row?.credits_discovery,
         sortable: true,
       },
+      {
+             name: <div className="text-wrap">Credits Analyser</div>,
+        selector: (row) => row?.credits_analyzer,
+        sortable: true,
+      },
+      {
+             name: <div className="text-wrap">Credits Analytics</div>,
+        selector: (row) => row?.credits_analytics,
+        sortable: true,
+      },
+      // {
+      //        name: <div className="text-wrap">Credits Listening</div>,
+      //   selector: (row) => row?.credits_discovery,
+      //   sortable: true,
+      // },
       {
         name: "Status",
         cell: (row) => (
