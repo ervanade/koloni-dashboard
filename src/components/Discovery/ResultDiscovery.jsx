@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import { FaPaintBrush, FaSearch } from "react-icons/fa";
 import Paper from "@mui/material/Paper";
@@ -17,6 +17,7 @@ import {
 } from "react-icons/fa6";
 import DataBola from "../../data/discovery_bola.json";
 import { useNavigate } from "react-router-dom";
+import AddToFavoriteButton from "./AddToFavoriteButton";
 
 const ResultDiscovery = ({
   title,
@@ -31,6 +32,7 @@ const ResultDiscovery = ({
   platform,
 }) => {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [isFavoriteLocal, setIsFavoriteLocal] = useState(false);
   const navigate = useNavigate(); // React Router Hook
   const columnsDiscovery = [
     { id: "creator", label: "Creator", minWidth: 300 },
@@ -65,6 +67,7 @@ const ResultDiscovery = ({
       : []), // Tambah kolom jika ada YouTube
     { id: "actions", label: "Actions", minWidth: 150, align: "center" },
   ];
+  
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -213,6 +216,12 @@ const ResultDiscovery = ({
                       >
                         Ask For Price
                       </a>
+                      <AddToFavoriteButton
+          username={row?.creator_name}
+          platform={platform || "Instagram"}
+          followers={row?.followers}
+          engagement_rate={row?.engagement_rate}
+        />
                       <button
                         className="font-publicSans px-4 py-2 text-white rounded-md bg-sky-500"
                         onClick={(e) => {

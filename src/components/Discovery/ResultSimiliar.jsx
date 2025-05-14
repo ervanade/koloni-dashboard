@@ -16,6 +16,7 @@ import {
   FaSpinner,
 } from "react-icons/fa6";
 import DataBola from "../../data/discovery_bola.json";
+import AddToFavoriteButton from "./AddToFavoriteButton";
 
 const ResultSimiliar = ({
   title,
@@ -283,6 +284,12 @@ const ResultSimiliar = ({
                         >
                           Ask For Price
                         </a>
+                        <AddToFavoriteButton
+          username={row?.creator_name}
+          platform={platform || "Instagram"}
+          followers={row?.followers}
+          engagement_rate={row?.engagement_rate}
+        />
                         {/* <button className="font-publicSans px-4 py-2 text-white rounded-md bg-sky-500">
                           Similiar Creator
                         </button> */}

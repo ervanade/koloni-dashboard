@@ -38,6 +38,8 @@ const Favorites = () => {
 
   const [selectedRows, setSelectedRows] = useState([]);
   const [toggleCleared, setToggleCleared] = useState(false);
+  
+
 
   const contextActions = React.useMemo(() => {
     const handleDelete = () => {
@@ -49,10 +51,33 @@ const Favorites = () => {
       setSelectedRows([]);
     };
 
+    const handleAskForPrice = () => {
+      if (selectedRows.length === 0) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Pilih Influencer',
+          text: 'Silakan pilih setidaknya satu influencer untuk meminta perkiraan harga.',
+        });
+        return;
+      }
+
+      let message = "Halo Admin, Saya dari website Koloni tertarik dan ingin meminta perkiraan harga untuk beberapa influencer berikut:\n\n";
+    selectedRows.forEach((row, index) => {
+      message += `*${row?.username || 'Tidak Diketahui'}* (Platform: ${row?.platform || 'Tidak Diketahui'})`;
+      if (index < selectedRows.length - 1) {
+        message += "\n"; // Tambahkan baris baru antar kreator
+      }
+    });
+    message += "\n\nMohon informasinya lebih lanjut. Terima kasih.";
+
+    const whatsappLink = `https://api.whatsapp.com/send?phone=6281288756302&text=${encodeURIComponent(message)}`;
+    window.open(whatsappLink, '_blank');
+    };
+
     return (
       <div className="flex items-center gap-2 !text-sm">
         <button
-          key="delete"
+          key="reset"
           onClick={() => handleReset()}
           className="p-2 bg-red-500 rounded-md text-white text-sm"
           icon
@@ -60,8 +85,8 @@ const Favorites = () => {
           Reset
         </button>
         <button
-          key="delete"
-          onClick={handleDelete}
+          key="ask-price"
+          onClick={handleAskForPrice}
           className="p-2 px-4 bg-sky-500 rounded-md text-white text-sm"
           icon
         >
@@ -220,7 +245,7 @@ const Favorites = () => {
     () => [
       {
         name: "Creator Username",
-        selector: (row) => row.email,
+        selector: (row) => row.username,
         cell: (row) => (
           <div className="flex items-center gap-2  text-sm font-publicSans">
             {" "}
@@ -233,7 +258,7 @@ const Favorites = () => {
                 currentTarget.src = "/user-default.png";
               }}
             />
-            <p className="text-center">{row.username}</p>
+            <p className="text-left">{row.username}</p>
           </div>
         ),
         sortable: true,
@@ -253,6 +278,7 @@ const Favorites = () => {
       {
         name: "Platform",
         selector: (row) => row?.platform || "Instagram",
+        cell: (row) =>  <p className="uppercase">{row?.platform || "Instagram"}</p>,
         sortable: true,
       },
 
