@@ -34,6 +34,7 @@ const Credits = () => {
 
   const [search, setSearch] = useState(""); // Initialize search state with an empty string
   const [data, setData] = useState([]);
+  const [creditsData, setCreditsData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -246,6 +247,32 @@ const Credits = () => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  const fetchCreditsData = async () => {
+    setLoading(true);
+    setError(false);
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${import.meta.env.VITE_APP_API_URL}/users/credits`,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.accessToken}`,
+        },
+      });
+      const data = response?.data;
+      setCreditsData(data)
+     
+    } catch (error) {
+      setError(true);
+      console.error("Error fetching credits data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchCreditsData();
+  }, []);
   return (
     <div>
       <AddUser
@@ -278,7 +305,7 @@ const Credits = () => {
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
 
-             {(1174).toLocaleString("id-ID")}
+             {(creditsData?.credits_discovery).toLocaleString("id-ID")}
           </p>
         </Card>
 
@@ -290,7 +317,7 @@ const Credits = () => {
           Credits Analyser 
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
-          {(1256).toLocaleString("id-ID")}
+          {(creditsData?.credits_analyzer).toLocaleString("id-ID")}
 
           </p>
         </Card>
@@ -303,7 +330,7 @@ const Credits = () => {
           Credits Analytics 
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
-          {(392).toLocaleString("id-ID")}
+          {(creditsData?.credits_analytics).toLocaleString("id-ID")}
 
           </p>
         </Card>

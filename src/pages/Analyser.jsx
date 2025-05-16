@@ -31,7 +31,6 @@ const Analyser = () => {
   const user = useSelector((a) => a.auth.user);
   const [dataCredits, setDataCredits] = useState(user);
   const dispatch = useDispatch();
-  console.log(dataCredits)
 
   const [formData, setFormData] = useState({
     platform: "Instagram",

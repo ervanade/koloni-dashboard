@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Card from "../components/Card/Card";
+import Card from "../../components/Card/Card";
 import { FaFileExport, FaFilter, FaInstagram, FaMinus, FaVideo } from "react-icons/fa6";
 import {
   FaHistory,
@@ -21,10 +21,12 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import jsPDF from "jspdf";
 import domtoimage from 'dom-to-image';
-import { useSearchParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
+import HistoryFilter from "../../components/Discovery/HistoryFilter";
+import HistorySimiliar from "../../components/Discovery/HistorySimiliar";
 
 
-const HistoryDiscovery = () => {
+const HistoryDiscovery = ({type}) => {
   const [showFilter, setShowFilter] = useState(true);
   const [showSimiliar, setShowSimiliar] = useState(true);
   const [activeTab, setActiveTab] = useState("filter");
@@ -131,6 +133,7 @@ const HistoryDiscovery = () => {
       console.log(error.response);
     }
   };
+
   useEffect(() => {
     fetchUserData();
   }, []);
@@ -138,27 +141,27 @@ const HistoryDiscovery = () => {
     <div className="discovery" id="discovery">
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-textBold font-bold text-2xl mb-1">Discovery</h1>
+          <h1 className="text-textBold font-bold text-2xl mb-1">History Discovery</h1>
           <p className="font-normal text-textThin">
-            Discover the right creators for your campaigns
+           History Discovery {type}
           </p>
           <a href="https://drive.google.com/file/d/1ko5jFUV-r_gfY_mrj9fuvTEnquiNFgby/view?usp=drive_link" className=" " 
         target="_blank"
         rel="noopener noreferrer"><div className="flex items-center gap-2 w-max bg-sky-500 text-white px-4 py-2 rounded-md text-xs font-normal "><span>Watch Tutorial</span> <FaPlay className="h-3 w-3" /></div></a>
 
         </div>
-        <div className="bg-[#efeff1] text-blue-500 rounded-full px-4 py-2 shadow-sm">
-          <p className="font-medium text-sm">
-            Remaining Credits : {dataCredits?.credits || 0}
-          </p>
+        <div className="bg-[#efeff1] text-blue-500 rounded-full px-4 py-2 shadow-sm flex items-center flex-wrap gap-1">
           {
           dataResult?.data.length > 0 &&  <button
           onClick={exportAllToPDF}
-          className="mt-2 bg-sky-500 text-white px-4 py-2 rounded-md flex items-center gap-1 text-sm"
+          className=" bg-sky-500 text-white px-4 py-2 rounded-md flex items-center gap-1 text-sm"
         >
           <FaFileExport /><span>PDF</span>
         </button>
         }
+                 <Link to="/logs" className=" bg-sky-500 text-white px-4 py-2 rounded-md flex items-center text-sm">Back</Link>
+       
+
         </div>
       </div>
       {/* <Card>
@@ -177,13 +180,12 @@ const HistoryDiscovery = () => {
         <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-textBold dark:text-gray-400 w-full">
           <li
             className={`me-2 flex-1 ${
-              activeTab == "filter" ? "border-b-2 border-blue-500" : ""
+              type == "filter" ? "border-b-2 border-blue-500" : "hidden"
             }`}
           >
             <button
-              onClick={() => setActiveTab("filter")}
               className={`w-full flex items-center justify-center p-4  rounded-t-lg active ${
-                activeTab == "filter"
+                type == "filter"
                   ? "text-blue-500 dark:text-blue-500 dark:border-blue-500"
                   : ""
               } group`}
@@ -195,13 +197,12 @@ const HistoryDiscovery = () => {
           </li>
           <li
             className={`me-2 flex-1 ${
-              activeTab == "similiar" ? "border-b-2 border-blue-500" : ""
+              type == "similiar" ? "border-b-2 border-blue-500" : "hidden"
             }`}
           >
             <button
-              onClick={() => setActiveTab("similiar")}
               className={`w-full flex items-center justify-center p-4  rounded-t-lg active ${
-                activeTab == "similiar"
+                type == "similiar"
                   ? "text-blue-500 dark:text-blue-500 dark:border-blue-500"
                   : ""
               } group`}
@@ -219,7 +220,40 @@ const HistoryDiscovery = () => {
         </ul>
       </div>
 
-      {activeTab === "filter" ? (
+      {
+        type == "filter" ? 
+        <HistoryFilter
+        showFilter={showFilter}
+        setShowFilter={setShowFilter}
+        dataResult={dataResult}
+        setDataResult={setDataResult}
+        fetchUserData={fetchUserData}
+        dataCredits={dataCredits}
+        setActiveTab={setActiveTab}
+      />
+      : type == "similiar" ?  <HistorySimiliar
+      showFilter={showFilter}
+      setShowFilter={setShowFilter}
+      dataResult={dataResult}
+      setDataResult={setDataResult}
+      fetchUserData={fetchUserData}
+      dataCredits={dataCredits}
+      setActiveTab={setActiveTab}
+    />
+    :  <HistoryFilter
+    showFilter={showFilter}
+    setShowFilter={setShowFilter}
+    dataResult={dataResult}
+    setDataResult={setDataResult}
+    fetchUserData={fetchUserData}
+    dataCredits={dataCredits}
+    setActiveTab={setActiveTab}
+  />
+      }
+
+     
+
+      {/* {activeTab === "filter" ? (
         <Filter
           showFilter={showFilter}
           setShowFilter={setShowFilter}
@@ -242,7 +276,7 @@ const HistoryDiscovery = () => {
         <History />
       ) : (
         ""
-      )}
+      )} */}
     </div>
   );
 };

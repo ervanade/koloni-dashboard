@@ -239,7 +239,7 @@ const Logs = () => {
           <div className="flex items-center space-x-2">
             <Link
                         // target="_blank"
-                        to={row?.search_type == "analyzer" ? `/history/analyser/${row._id}` : `/logs`}
+                        to={row?.search_type == "analyzer" ? `/history/analyser/${row._id}` : row?.search_type == "discovery" ? `/history/discovery/${row._id}`: row?.search_type == "similiar" ? `/history/similiar/${row._id}` :`/logs`}
                         // rel="noopener noreferrer"
                         className="font-publicSans px-4 py-2 text-white bg-sky-500 rounded-md text-center text-sm"
                       >
