@@ -305,7 +305,7 @@ const Credits = () => {
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
 
-             {(creditsData?.credits_discovery).toLocaleString("id-ID")}
+             {(creditsData?.credits_discovery)?.toLocaleString("id-ID")}
           </p>
         </Card>
 
@@ -317,7 +317,7 @@ const Credits = () => {
           Credits Analyser 
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
-          {(creditsData?.credits_analyzer).toLocaleString("id-ID")}
+          {(creditsData?.credits_analyzer)?.toLocaleString("id-ID")}
 
           </p>
         </Card>
@@ -330,7 +330,7 @@ const Credits = () => {
           Credits Analytics 
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
-          {(creditsData?.credits_analytics).toLocaleString("id-ID")}
+          {(creditsData?.credits_analytics)?.toLocaleString("id-ID")}
 
           </p>
         </Card>
