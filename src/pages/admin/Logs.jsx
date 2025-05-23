@@ -210,13 +210,61 @@ const Logs = () => {
       //     width: "150px",
       //   },
       {
-        name: <div className="text-wrap">Action</div>,
+        name: <div className="text-wrap">Filter</div>,
         selector: (row) => row.search_query,
         sortable: true,
-        cell: (row) => (
-          <div className="text-wrap py-2 leading-5">{row.search_query}</div>
-        ),
-        minWidth: "120px",
+        cell: (row) => {
+          let searchQuery = {};
+          try {
+            // Coba parse string ke objek JSON
+            searchQuery = JSON.parse(row.search_query);
+          } catch (e) {
+            // Jika gagal parse (bukan JSON string valid), set ke objek kosong
+            console.error("Failed to parse search_query string:", row.search_query, e);
+            searchQuery = {};
+          }
+      
+          // Function to format the value
+          const formatValue = (key, value) => {
+            // For array values (like discovery_topic_value), join them
+            if (Array.isArray(value)) {
+              const filteredValues = value.filter(v => v !== '');
+              return filteredValues.length > 0 ? filteredValues.join(', ') : '';
+            }
+            // For null, empty string, or undefined, display a dash or empty string
+            if (value === null || value === '' || value === undefined) {
+              return '-';
+            }
+            // For other types (numbers, booleans, simple strings), return as is
+            return String(value);
+          };
+      
+          // Render each key-value pair on a new line
+          return (
+            <div className="text-wrap py-2 leading-5">
+              {Object.entries(searchQuery).map(([key, value], index) => {
+                // Exclude 'next_page' and 'previous_call_id' if you don't want to display them
+                if (key === 'next_page' || key === 'previous_call_id') {
+                  return null;
+                }
+      
+                const formattedVal = formatValue(key, value);
+      
+                // Only render if formatted value is not empty, to avoid empty lines for '-'
+                if (formattedVal === '-') {
+                  return null; // Skip if value is '-'
+                }
+      
+                return (
+                  <p key={key}> {/* Use key prop for list items */}
+                    <span className="font-medium text-sky-600">{key.replace(/_/g, ' ')}:</span> <span className="text-xs"> {formattedVal}</span>
+                  </p>
+                );
+              })}
+            </div>
+          );
+        },
+        minWidth: "200px",
       },
       {
         name: "Search Type",
