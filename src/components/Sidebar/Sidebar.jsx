@@ -173,7 +173,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     </NavLink>
                   </li> */}
                   {
-                    user?.roles === "user" && <li>
+                    user?.roles === "user" && 
+                    <><li>
                     <NavLink
                       to="/logs"
                       className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-0 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
@@ -185,6 +186,19 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                       My History
                     </NavLink>
                   </li>
+                    <li>
+                    <NavLink
+                      to="/credits"
+                      className={`group relative flex items-center gap-2.5 rounded-md px-4 py-3 font-medium hover:text-white text-textBold duration-0 ease-in-out hover:bg-gradient-to-r from-blue-600 to-sky-500 dark:hover:bg-meta-4 ${
+                        (pathname === "/credits" || pathname.includes("credits")) &&
+                        "bg-gradient-to-r from-blue-600 to-sky-500 dark:bg-meta-4 !text-white"
+                      }`}
+                    >
+                      <FaChartColumn size={22} />
+                      Credit Reports
+                    </NavLink>
+                  </li>
+                  </>
                   }
                     
 

@@ -38,6 +38,10 @@ const Profile = () => {
     profileName: "",
     roles: "",
     credits: "",
+    credits_analyzer: "",
+    credits_analytics: "",
+    credits_discovery: "",
+    credits_listening: "",
     id: "",
   });
   const [showPassword, setShowPassword] = useState(false);
@@ -69,6 +73,10 @@ const Profile = () => {
           profileName: "",
           roles: data?.roles || "",
           credits: data?.credits || "",
+          credits_analyzer: data?.credits_analyzer || "",
+    credits_analytics: data?.credits_analytics || "",
+    credits_discovery: data?.credits_discovery || "",
+    credits_listening: data?.credits_listening || "",
           id: data?.id || "",
         });
         setPreviewImages({
@@ -146,6 +154,10 @@ const Profile = () => {
         profileName: "",
         roles: "",
         credits: "",
+        credits_analyzer: "",
+    credits_analytics: "",
+    credits_discovery: "",
+    credits_listening: "",
         id: "",
       });
 
@@ -163,6 +175,10 @@ const Profile = () => {
         profileName: "",
         roles: "",
         credits: "",
+        credits_analyzer: "",
+    credits_analytics: "",
+    credits_discovery: "",
+    credits_listening: "",
       });
       if (error?.response?.status === 500) {
         Swal.fire("Error", "Email Telah Digunakan", "error");
@@ -260,9 +276,15 @@ const Profile = () => {
         <Card className="mt-6">
           <div className="flex items-center justify-between">
             <h1 className="font-medium text-lg text-textBold">Profile</h1>
-            <div>
-              <p className="font-xs">
-                Credits: <span className="font-bold">{formData?.credits}</span>
+            <div className="flex items-center flex-wrap gap-2">
+              <p className="text-sm">
+                Credits Discovery: <span className="font-bold">{formData?.credits_discovery}</span>
+              </p>
+              <p className="text-sm">
+                Credits Analyser: <span className="font-bold">{formData?.credits_analyzer}</span>
+              </p>
+              <p className="text-sm">
+                Credits Analytics: <span className="font-bold">{formData?.credits_analytics}</span>
               </p>
             </div>
           </div>

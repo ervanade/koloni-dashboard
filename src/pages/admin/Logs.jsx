@@ -33,6 +33,36 @@ const Logs = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
+  const dateFormatterWIB = new Intl.DateTimeFormat('id-ID', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'Asia/Jakarta', // Zona waktu WIB
+  });
+  
+  const timeFormatterWIB = new Intl.DateTimeFormat('id-ID', {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false, // Penting: Gunakan format 24 jam
+    timeZone: 'Asia/Jakarta', // Zona waktu WIB
+  });
+  
+   const formatSearchDate = (isoString) => {
+    if (!isoString) {
+      return '-';
+    }
+    try {
+      const date = new Date(isoString + (isoString.endsWith('Z') ? '' : 'Z'));
+      const formattedDate = dateFormatterWIB.format(date);
+      const formattedTime = timeFormatterWIB.format(date);
+      return `${formattedDate}, ${formattedTime}`; // Tambahkan GMT +7 di sini
+    } catch (e) {
+      console.error("Failed to parse search_date:", isoString, e);
+      return 'Invalid Date';
+    }
+  };
+
   const handleSearch = (event) => {
     const value = event.target.value.toLowerCase();
     setSearch(value);
@@ -276,7 +306,9 @@ const Logs = () => {
         name: "Search Date",
         selector: (row) => row.search_date,
         cell: (row) => (
-          <div className="text-wrap py-2 leading-5">{row.search_date}</div>
+          <div className="text-wrap py-2 leading-5">
+            {formatSearchDate(row.search_date)} {/* Panggil fungsi yang sudah di-memoize */}
+          </div>
         ),
         sortable: true,
       },

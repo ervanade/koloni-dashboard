@@ -35,6 +35,7 @@ const Credits = () => {
   const [search, setSearch] = useState(""); // Initialize search state with an empty string
   const [data, setData] = useState([]);
   const [creditsData, setCreditsData] = useState([]);
+  const [usageData, setUsageData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -55,68 +56,35 @@ const Credits = () => {
   };
   const user = useSelector((a) => a.auth.user);
 
-  const fetchUserData = async () => {
-    setLoading(true);
-    setError(false);
-    try {
-      const userData = dataUser;
-      const response = await axios({
-        method: "get",
-        url: `${import.meta.env.VITE_APP_API_URL}/logs`,
-        headers: {
-          "Content-Type": "application/json",
-          //eslint-disable-next-line
-          Authorization: `Bearer ${user?.accessToken}`,
-        },
-      });
-      setData(response.data);
-      setFilteredData(response.data);
-    } catch (error) {
-      setError(true);
-      setFilteredData([]);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const fetchUserData = async () => {
+  //   setLoading(true);
+  //   setError(false);
+  //   try {
+  //     const userData = dataUser;
+  //     const response = await axios({
+  //       method: "get",
+  //       url: `${import.meta.env.VITE_APP_API_URL}/logs`,
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         //eslint-disable-next-line
+  //         Authorization: `Bearer ${user?.accessToken}`,
+  //       },
+  //     });
+  //     setData(response.data);
+  //     setFilteredData(response.data);
+  //   } catch (error) {
+  //     setError(true);
+  //     setFilteredData([]);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchUserData();
-  }, []);
+  // useEffect(() => {
+  //   fetchUserData();
+  // }, []);
 
-  const confirmEmail = async (id, formDataToSend) => {
-    try {
-      // Menambahkan email_confirmed_at dengan tanggal sekarang
-      const updatedData = {
-        email_confirmed_at: new Date().toISOString(), // Menambahkan tanggal sekarang,
-        disabled: false,
-      };
 
-      await axios({
-        method: "put",
-        url: `${import.meta.env.VITE_APP_API_URL}/users/${encodeURIComponent(
-          id
-        )}`,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user?.accessToken}`,
-        },
-        data: JSON.stringify(updatedData),
-      });
-
-      Swal.fire("Success Confirm User!", "", "success");
-      fetchUserData();
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
-      // if (error.response?.status === 500) {
-      //   Swal.fire("Error", "Email Telah Digunakan", "error");
-      //   setLoading(false);
-      //   return;
-      // } else {
-      //   Swal.fire("Error", "Terjadi Kesalahan, Coba Lagi", "error");
-      // }
-    }
-  };
 
   const handleConfirmUser = async (id) => {
     return Swal.fire({
@@ -138,23 +106,6 @@ const Credits = () => {
     });
   };
 
-  const deleteUser = async (id) => {
-    await axios({
-      method: "delete",
-      url: `${import.meta.env.VITE_APP_API_URL}/users/${id}`,
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user?.accessToken}`,
-      },
-    })
-      .then(() => {
-        fetchUserData();
-      })
-      .catch((error) => {
-        fetchUserData();
-        console.log(error);
-      });
-  };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleConfirmDeleteUser = async (id) => {
@@ -270,22 +221,35 @@ const Credits = () => {
       setLoading(false);
     }
   };
+  const fetchUsageData = async () => {
+    setLoading(true);
+    setError(false);
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${import.meta.env.VITE_APP_API_URL}/logs/credits`,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.accessToken}`,
+        },
+      });
+      const data = response?.data;
+      setUsageData(data)
+     
+    } catch (error) {
+      setError(true);
+      console.error("Error fetching credits data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
     fetchCreditsData();
+    fetchUsageData()
   }, []);
+  console.log(usageData)
   return (
     <div>
-      <AddUser
-        isDrawerOpen={isDrawerOpen}
-        setIsDrawerOpen={setIsDrawerOpen}
-        fetchUserData={fetchUserData}
-      />
-      <EditUser
-        isDrawerOpen={isEditOpen}
-        setIsDrawerOpen={setIsEditOpen}
-        fetchUserData={fetchUserData}
-        userData={userEdit}
-      />
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h1 className="text-textBold font-bold text-2xl mb-1">
@@ -305,7 +269,7 @@ const Credits = () => {
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
 
-             {(creditsData?.credits_discovery)?.toLocaleString("id-ID")}
+             {user?.roles === "admin" ? (creditsData?.credits_discovery)?.toLocaleString("id-ID") : (user?.credits_discovery)?.toLocaleString("id-ID")}
           </p>
         </Card>
 
@@ -317,7 +281,7 @@ const Credits = () => {
           Credits Analyser 
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
-          {(creditsData?.credits_analyzer)?.toLocaleString("id-ID")}
+          {user?.roles === "admin" ? (creditsData?.credits_analyzer)?.toLocaleString("id-ID") : (user?.credits_analyzer)?.toLocaleString("id-ID")}
 
           </p>
         </Card>
@@ -330,8 +294,7 @@ const Credits = () => {
           Credits Analytics 
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
-          {(creditsData?.credits_analytics)?.toLocaleString("id-ID")}
-
+          {user?.roles === "admin" ? (creditsData?.credits_analytics)?.toLocaleString("id-ID") : (user?.credits_analytics)?.toLocaleString("id-ID")}
           </p>
         </Card>
 
@@ -343,7 +306,7 @@ const Credits = () => {
           Credit Discovery Usage 
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
-          {(145).toLocaleString("id-ID")}
+          {(usageData?.discovery)?.toLocaleString("id-ID")}
 
           </p>
         </Card>
@@ -356,7 +319,7 @@ const Credits = () => {
           Credits Analyser Usage 
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
-          {(120).toLocaleString("id-ID")}
+          {(usageData?.analyzer)?.toLocaleString("id-ID")}
 
           </p>
         </Card>
@@ -369,12 +332,12 @@ const Credits = () => {
           Credits Analytics Usage 
           </h2>
           <p className="font-bold text-sky-500 text-2xl">
-          {(23).toLocaleString("id-ID")}
+          {(usageData?.analytics)?.toLocaleString("id-ID")}
 
           </p>
         </Card>
       </div>
-      <div className="my-6 flex items-center justify-between">
+      {/* <div className="my-6 flex items-center justify-between">
         <div>
           <h1 className="text-textBold font-bold text-2xl mb-1">
             Credits Activity
@@ -397,14 +360,7 @@ const Credits = () => {
               className="w-full bg-white pl-9 pr-4 text-black outline outline-1 outline-zinc-200 focus:outline-primary dark:text-white py-2 rounded-md"
             />
           </div>
-          {/* <button
-            className=" bg-sky-500 text-sm flex gap-2 items-center text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
-            type="submit"
-            onClick={() => setIsDrawerOpen(true)}
-          >
-            {" "}
-            Add User
-          </button> */}
+
         </div>
         <div className="overflow-x-auto mt-6 font-publicSans">
           {loading ? (
@@ -444,7 +400,7 @@ const Credits = () => {
             />
           )}
         </div>
-      </Card>
+      </Card> */}
     </div>
   );
 };

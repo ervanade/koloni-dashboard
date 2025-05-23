@@ -91,7 +91,7 @@ const HistoryAnalyser = () => {
     try {
       const response = await axios({
         method: "get",
-        url: `${import.meta.env.VITE_APP_API_URL}/logs/${encodeURIComponent(id)}`,
+        url: `${import.meta.env.VITE_APP_API_URL}/logs/detail/${encodeURIComponent(id)}`,
         headers: {
           "Content-Type": "application/json",
           //eslint-disable-next-line
