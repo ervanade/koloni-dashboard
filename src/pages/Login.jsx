@@ -108,7 +108,7 @@ const Login = () => {
               Welcome To KOLONI Inlfuencer Analytics!
             </h1>
             <p className="text-textThin text-sm mb-6 font-normal text-center">
-              Please sign-in to your account and start the adventure
+            Lets Sign-in and Start Your Journey
             </p>
           </div>
           <form
